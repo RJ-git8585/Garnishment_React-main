@@ -1,0 +1,14 @@
+{
+    "id": "2e238c0b-6182-442d-837a-894f79f22bf0",
+    "orgId": 41042,
+    "name": "Garnishment",
+    "version": "1.0.0",
+    "createdDate": "2024-05-14T05:27:17.865Z",
+    "handler": "garnishment",
+    "region": "US",
+    "description": " ",
+    "repository": null,
+    "branch": null,
+    "gitProvider": null,
+    "gitOrganization": null
+}

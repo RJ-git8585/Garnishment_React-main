@@ -1,0 +1,38 @@
+nav.navbar.navbar-expand-lg.bg-body-tertiary {
+  background: rgb(14, 15, 15)  !important;
+}
+.aix {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+.text-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255) !important;
+}
+.dark\:bg-slate-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(25, 26, 28) !important;
+ 
+}
+.border-gray-50{
+  border: 1px solid #ffffff4a !important; 
+    background: rgb(255 255 255 / 10%);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+   
+}
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(12, 12, 13) !important;
+}
+.logo-inner {
+  height: 3.5rem !important;
+}
+.error{
+  color: red !important;
+  text-align: center !important; 
+  font-weight: 600 !important;
+
+}
