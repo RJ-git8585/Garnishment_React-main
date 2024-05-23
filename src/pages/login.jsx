@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
   const [errorMessage, setErrorMessage] = useState('');
@@ -51,13 +51,13 @@ function Login() {
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="username" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">Username</label>
+            <label htmlFor="username" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">Email</label>
             <div className="mt-2">
               <input
-                id="username"
-                name="username"
+                id="email"
+                name="email"
                 type="text"
-                value={formData.username}
+                value={formData.email}
                 onChange={handleChange}
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
