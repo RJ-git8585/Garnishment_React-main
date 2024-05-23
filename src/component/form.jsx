@@ -7,13 +7,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Form() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const loginCredentials = { username, password };
+    const loginCredentials = { email, password };
 
     try {
       const response = await axios.post('http://127.0.0.1:8000/User/login', loginCredentials);
@@ -42,16 +42,16 @@ function Form() {
           <form onSubmit={handleSubmit} className="border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50">
             <div>
               <label htmlFor="username" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">
-                Username
+                Email
               </label>
               <div className="mt-2">
                 <input
-                  id="username"
-                  name="username"
+                  id="email"
+                  name="email"
                   type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  autoComplete="username"
+                  value={email}
+                  onChange={(e) => setemail(e.target.value)}
+                  autoComplete="email"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
