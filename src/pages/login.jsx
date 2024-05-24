@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -98,7 +99,7 @@ function Login() {
           />
         </form>
         <p className="mt-1 text-center text-sm p-6 text-gray-500 dark:text-white">
-          Don't have an account?{' '}
+          Dont have an account?{' '}
           <a href="/signup" className="font-semibold leading-6 text-orange-500 hover:text-indigo-500">Sign up</a>
         </p>
       </div>

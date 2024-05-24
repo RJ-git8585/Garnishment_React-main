@@ -14,6 +14,59 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
   background-color: rgb(25, 26, 28) !important;
  
 }
+.nav {
+  /* background-color: yellow;  */
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px;
+}
+.custom-btn
+{
+margin-right:4px ;    
+}
+
+.main {
+  width:100%;
+    height:100vh; 
+    display:flex;
+}
+
+.sidebar {
+  height: 100%;
+  width: 260px;
+  position: fixed;
+  z-index: 1;
+  top:115px;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+    padding: 14px;
+    margin-right: 20px;
+    background: #f7f7f791 !important;
+    box-shadow: 10px 10px 16px 7px rgb(0 0 0 / 12%);
+}
+
+li.sidebar-item {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.content {
+  width: 100%;
+  position: relative;
+  margin-left: 190px !important; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
 .border-gray-50{
   border: 1px solid #ffffff4a !important; 
     background: rgb(255 255 255 / 10%);
@@ -35,4 +88,10 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
   text-align: center !important; 
   font-weight: 600 !important;
 
+}
+
+.edit-profile {
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
 }

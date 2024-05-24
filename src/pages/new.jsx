@@ -1,1 +1,0 @@
-// new.jsx build dashboard page using apis for showing details

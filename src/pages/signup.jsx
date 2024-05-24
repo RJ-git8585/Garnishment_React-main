@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -41,8 +42,8 @@ function Form() {
         </h2>
       </div>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" onSubmit={handleSubmit}>
-          <div>
+        <form className= "grid grid-cols-2 gap-4 space-y-6 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" onSubmit={handleSubmit}>
+          <div className="mt-4">
             <label htmlFor="name" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">Employer Name</label>
             <div className="mt-2">
               <input
@@ -56,7 +57,7 @@ function Form() {
               />
             </div>
           </div>
-          <div>
+          <div >
             <label htmlFor="username" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">Username</label>
             <div className="mt-2">
               <input
@@ -70,7 +71,7 @@ function Form() {
               />
             </div>
           </div>
-          <div>
+          <div className="col-span-2">
             <label htmlFor="email" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">Email</label>
             <div className="mt-2">
               <input
@@ -84,7 +85,7 @@ function Form() {
               />
             </div>
           </div>
-          <div>
+          <div > 
             <label htmlFor="password1" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">Password</label>
             <div className="mt-2">
               <input

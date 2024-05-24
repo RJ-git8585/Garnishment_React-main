@@ -3,19 +3,18 @@ import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
-import Products from './pages/Products'
+import Products from './pages/Tax'
 import Signup from './pages/signup'
-// import Header from './component  /header'
-// import Navbar from './Navbar'
-// import Footers from './Footers'
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Form from './component/form'  
 import Dashboard from './pages/dashboard';
 import Logout from './pages/Logout';
-
+import Profile from './pages/profile';
 import Forgot from './pages/forgot';
-
+import Setting from './pages/setting';
+import Help from './pages/Help';
+import Tax from './pages/Tax';
+import Garnishment from './pages/Garnishment';
 
 
 function App() {
@@ -35,6 +34,12 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/setting" element={<Setting />} />
+        <Route path="/help" element={<Help />} />
+        <Route path="/tax" element={<Tax />} />
+        <Route path="/garnishment" element={<Garnishment />} />
+      
       </Routes>
     </BrowserRouter>
        
