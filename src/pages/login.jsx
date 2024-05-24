@@ -41,6 +41,8 @@ function Login() {
     }
   };
 
+
+  
   return (
     <div className="flex h-screen dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -91,7 +93,7 @@ function Login() {
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
-            rtl={false}
+            rtl={false} 
             pauseOnFocusLoss
             draggable
             pauseOnHover
