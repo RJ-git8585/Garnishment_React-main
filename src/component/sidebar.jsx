@@ -3,6 +3,7 @@
 import { React } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Logout from '../pages/Logout';
 
 const Sidebar = () => {
   return (
@@ -47,10 +48,8 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="sidebar-item">
-          <Link to="/logout" className="sidebar-link">
-            <i className="fas fa-sign-out-alt"></i>
-            <span>Logout</span>
-          </Link>
+          <Logout />
+          
         </li>
       </ul>
     
