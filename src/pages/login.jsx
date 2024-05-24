@@ -22,7 +22,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/User/login', formData);
+      const response = await axios.post('https://garnishment-backend.onrender.com/User/login', formData);
       if (response.data.success) {
         // Save the tokens or any other relevant data
         localStorage.setItem('access_token', response.data.access);
