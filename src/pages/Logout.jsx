@@ -3,12 +3,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 const Logout = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // Clear the token from localStorage
-    navigate('/login', { replace: true }); // Redirect to login and prevent back button issues
+    navigate('/', { replace: true }); // Redirect to login and prevent back button issues
   };
 
   return (

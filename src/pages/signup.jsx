@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '/src/Logo (1).png';
+// eslint-disable-next-line no-unused-vars
+// import {  toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -25,7 +28,17 @@ function Form() {
       const response = await axios.post('https://garnishment-backend.onrender.com/User/register', formData);
       if (response.data.message) {
         alert('Registration successful');
-        navigate('/login');
+      
+      //   toast.info('Registration successful', {
+      //     position: 'top-center',
+      //     // autoClose: delay,
+      //     hideProgressBar: false,
+      //     closeOnClick: true,
+      //     pauseOnHover: true,
+      //     draggable: true,
+      //     progress: undefined
+      // });
+        navigate('/');
       }
     } catch (error) {
       console.error(error.response.data);
@@ -37,7 +50,7 @@ function Form() {
     <div className="flex h-screen dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />
-        <h2 className="mt-10 text-center dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className=" text-center dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign up to your account
         </h2>
       </div>
@@ -114,7 +127,7 @@ function Form() {
               />
             </div>
           </div>
-          <div>
+          <div className="col-span-2">
             <button type="submit" className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500">
               Sign up
             </button>

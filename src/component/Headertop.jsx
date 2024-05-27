@@ -14,7 +14,7 @@ const user = {
   const navigation = [
     // { name: 'Dashboard', href: '/form', current: true },
     { name: 'Orders', href: '#', current: false },
-    { name: 'Employee', href: '#', current: false },
+    { name: 'Employee', href: '/employee', current: false },
     { name: 'IWO', href: '#', current: false },
     // { name: 'Garnishment', href: '#', current: false },
   ]

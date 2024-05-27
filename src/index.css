@@ -17,3 +17,14 @@ background: red;
   font-size: 1.1rem;
   line-height: 2rem;
 }
+
+.h-screen {
+  height: 100vh !important;
+}
+.error {
+  color: red !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  margin-top: 5px !important;
+}

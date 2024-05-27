@@ -3,8 +3,9 @@ import  { React, useState } from 'react';
 import logo from '/src/Logo (1).png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 
 function Form() {
   const navigate = useNavigate();
@@ -14,6 +15,19 @@ function Form() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage('Please enter a valid email address.');
+      return; // Exit function if email is invalid
+    }
+
+    // Password validation (adjust validation rules as needed)
+    if (password.length < 9 ) {
+      setErrorMessage('Password must be at least 9 characters long.');
+      return; // Exit function if password is invalid
+    }
+
     const loginCredentials = { email, password };
 
     try {
@@ -37,7 +51,7 @@ function Form() {
       <div className="flex h-screen dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />
-          <h2 className="mt-10 text-center dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className=" text-center dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>
         </div>
@@ -74,7 +88,15 @@ function Form() {
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
+              {errorMessage && <p className="error">{errorMessage}</p>}
             </div>
+            <div className="text-sm">
+                <a href="/forgot" className="font-semibold py-1.5 text-orange-500 hover:text-indigo-500">
+                  Forgot password?
+                </a>
+                <p className="italic text-xs text-gray-400">By signing in, you agree to our  <a href="/privacy" className="font-semibold py-1.5 text-orange-500 hover:text-indigo-500">Privacy Policy. </a></p>
+              </div>
+             
             <div>
               <button
                 type="submit"
@@ -82,19 +104,8 @@ function Form() {
               >
                 Sign in
               </button>
-              {errorMessage && <p className="error">{errorMessage}</p>}
-              <ToastContainer
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-              />
+             
+              
             </div>
           </form>
           <p className="mt-10 text-center text-sm p-6 text-gray-500 dark:text-white">
