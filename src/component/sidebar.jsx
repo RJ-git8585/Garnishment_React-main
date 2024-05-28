@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import { React } from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logout from '../pages/Logout';
 
 const Sidebar = () => {
@@ -13,7 +13,7 @@ const Sidebar = () => {
       <ul className="sidebar-nav">
         <li className="sidebar-item">
           <Link to="/dashboard" className="sidebar-link">
-            <FontAwesomeIcon className="fas fa-tachometer-alt"></FontAwesomeIcon>
+            {/* <FontAwesomeIcon className="fas fa-tachometer-alt"></FontAwesomeIcon> */}
             <span>Dashboard</span>
           </Link>
         </li>

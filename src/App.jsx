@@ -16,23 +16,13 @@ import Setting from './pages/setting';
 import Help from './pages/Help';
 import Tax from './pages/Tax';
 import Garnishment from './pages/Garnishment';
-import Privacy from './pages/privacy';
+// import Privacy from './pages/privacy';
 import PrivateRoute from './component/PrivateRoute';
 import Employee from './pages/employee';
 import Notfound from './pages/Notfound';
 
 function App() {
- 
-  // eslint-disable-next-line no-unused-vars
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // useEffect(() => { 
-  //   const storedEmail = localStorage.getItem('user');
-  //   const parsedEmail = storedEmail ? JSON.parse(storedEmail) : null;
-  //   if (parsedEmail?.email) {
-  //     setIsLoggedIn(true);
-  //   }
-  // }, []);
  
   return (
     <>
@@ -52,9 +42,11 @@ function App() {
         <Route path="/help" element={<PrivateRoute><Help /></PrivateRoute>} />
         <Route path="/tax" element={<PrivateRoute><Tax /></PrivateRoute>} />
         <Route path="/garnishment" element={<PrivateRoute><Garnishment /></PrivateRoute>} />
-        <Route path="/privacy" element={<Privacy />} />
+        {/* <Route path="/privacy" element={<Privacy />} /> */}
         <Route path="/employee" element={<PrivateRoute><Employee /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
+     
+
       
       </Routes>
     </BrowserRouter>
