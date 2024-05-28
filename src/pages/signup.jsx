@@ -28,16 +28,6 @@ function Form() {
       const response = await axios.post('https://garnishment-backend.onrender.com/User/register', formData);
       if (response.data.message) {
         alert('Registration successful');
-      
-      //   toast.info('Registration successful', {
-      //     position: 'top-center',
-      //     // autoClose: delay,
-      //     hideProgressBar: false,
-      //     closeOnClick: true,
-      //     pauseOnHover: true,
-      //     draggable: true,
-      //     progress: undefined
-      // });
         navigate('/');
       }
     } catch (error) {
