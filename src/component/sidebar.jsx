@@ -26,7 +26,7 @@ const Sidebar = () => {
         <li className="sidebar-item">
           <Link to="/tax" className="sidebar-link ">
           <i className="fa-solid fa-user"></i>
-            <span>Taxes/Tax</span>
+            <span>Tax</span>
           </Link>
         </li>
         <li className="sidebar-item">
