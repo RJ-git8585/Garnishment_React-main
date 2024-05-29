@@ -12,9 +12,6 @@ function dashboard() {
   
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [jsonData, setData] = useState([]);
-  // const [at, setData] = useState([]);
-  // const ID = localStorage.getItem("id")
-  // const name = localStorage.getItem("name");
     const fetchData = async () => {
       try {
         const response = await fetch('https://garnishment-backend.onrender.com/User/DashboardData'); // Replace with your API URL
