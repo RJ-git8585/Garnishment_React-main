@@ -3,7 +3,7 @@ import  { React, useState } from 'react';
 import logo from '/src/Logo (1).png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {  toast } from "react-toastify";
+import {  ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -19,14 +19,14 @@ function Form() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     if (!emailRegex.test(email)) {
       setErrorMessage('Please enter a valid email address.');
-      toast.warning("Please enter a valid email address.!");
+      
       return; // Exit function if email is invalid
     }
 
     // Password validation (adjust validation rules as needed)
     if (password.length < 9 ) {
       setErrorMessage('Password must be at least 9 characters long.');
-      toast.warning('Password must be at least 9 characters long.');
+      
       return; // Exit function if password is invalid
     }
 
@@ -41,8 +41,9 @@ function Form() {
         navigate('/dashboard');
         toast.success("You have successfully logged in!");
       } else {
+        toast.success("Please Check Credentials!");
         setErrorMessage(response.data.message);
-        toast.warning("Please Check Credentials!");
+        
       }
     } catch (error) {
       setErrorMessage(error.response?.data?.message || 'Login failed');
@@ -121,6 +122,7 @@ function Form() {
             </a>
           </p>
         </div>
+        <ToastContainer />
       </div>
     </>
   );
