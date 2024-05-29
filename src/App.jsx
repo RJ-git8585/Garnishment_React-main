@@ -22,8 +22,6 @@ import Employee from './pages/employee';
 import Notfound from './pages/Notfound';
 
 function App() {
-
- 
   return (
     <>
     
@@ -46,7 +44,6 @@ function App() {
         <Route path="/employee" element={<PrivateRoute><Employee /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
      
-
       
       </Routes>
     </BrowserRouter>
