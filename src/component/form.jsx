@@ -40,9 +40,11 @@ function Form() {
         toast.success("You have successfully logged in!");
       } else {
         setErrorMessage(response.data.message);
+        toast.warning("Please Check Credentials!");
       }
     } catch (error) {
       setErrorMessage(error.response?.data?.message || 'Login failed');
+      toast.warning("Please Check Credentials!");
     }
   };
 
