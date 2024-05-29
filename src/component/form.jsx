@@ -19,12 +19,14 @@ function Form() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     if (!emailRegex.test(email)) {
       setErrorMessage('Please enter a valid email address.');
+      toast.warning("Please enter a valid email address.!");
       return; // Exit function if email is invalid
     }
 
     // Password validation (adjust validation rules as needed)
     if (password.length < 9 ) {
       setErrorMessage('Password must be at least 9 characters long.');
+      toast.warning('Password must be at least 9 characters long.');
       return; // Exit function if password is invalid
     }
 
