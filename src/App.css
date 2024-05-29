@@ -13,6 +13,10 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
   --tw-text-opacity: 1;
   color: rgb(255 255 255) !important;
 }
+.custom_tab .mx-auto.flex.max-w-xs.flex-col.shadow-lg.px-4.py-4.gap-y-4 {
+  width: 230px;
+  text-align: center;
+}
 
 .dark\:bg-slate-800 {
   --tw-bg-opacity: 1;

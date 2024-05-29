@@ -50,21 +50,21 @@ function dashboard() {
             <hr />
      
   
-            <div className="grid grid-cols-4 gap-4 mt-8">
+            <div className="grid grid-cols-4 gap-4 mt-8 custom_tab">
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
-                              <dt className="text-xs leading-3 text-gray-600">Total IWO</dt>
+                              <dt className="text-xs leading-3 text-black-600">Total IWO</dt>
                               <dd className=" text-3xl font-semibold text-center tracking-tight text-black-900 sm:text-5xl">{Total_IWO}</dd>
                             </div>
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
-                              <dt className="text-xs leading-3 text-gray-600">Single IWO</dt>
+                              <dt className="text-xs leading-3 text-black-600">Single IWO</dt>
                               <dd className="text-3xl font-semibold  text-center tracking-tight text-black-900 sm:text-5xl">{Employees_with_Single_IWO}</dd>
                             </div>
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
-                              <dt className="text-xs leading-3 text-gray-600">Multiple IWO </dt>
+                              <dt className="text-xs leading-3 text-black-600">Multiple IWO </dt>
                               <dd className=" text-3xl font-semibold text-center tracking-tight text-black-900 sm:text-5xl">{Employees_with_Multiple_IWO}</dd>
                             </div>
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
-                              <dt className="text-xs leading-3 text-gray-600">Active Employees</dt>
+                              <dt className="text-xs leading-3 text-black-600">Active Employees</dt>
                               <dd className=" text-3xl font-semibold  text-center tracking-tight text-black-900 sm:text-5xl">{Active_employees}</dd>
                             </div>
               

@@ -58,15 +58,15 @@ function employee() {
               
                <thead>
                  <tr>
-                   <th className="text-center border border-slate-300 text-xs">employee_name</th>
-                   <th className="border border-slate-300 text-xs">employee_id</th>
-                   <th className="border border-slate-300 text-xs">employer_id</th>
-                   <th className="border border-slate-300 text-xs">location</th>
-                   <th className="border border-slate-300 text-xs">department</th>
-                   <th className="border border-slate-300 text-xs">minimun_wages</th>
-                   <th className="border border-slate-300 text-xs">net_pay</th>
-                   <th className="border border-slate-300 text-xs">number_of_garnishment</th>
-                   <th className="border border-slate-300 text-xs">pay_cycle</th>
+                   <th className="text-center border border-slate-300 text-xs">Employee</th>
+                   <th className="border border-slate-300 text-xs">Employee Id</th>
+                   <th className="border border-slate-300 text-xs">Employer Id</th>
+                   <th className="border border-slate-300 text-xs">Location</th>
+                   <th className="border border-slate-300 text-xs">Department</th>
+                   <th className="border border-slate-300 text-xs">Minimum Wages</th>
+                   <th className="border border-slate-300 text-xs">Netpay</th>
+                   <th className="border border-slate-300 text-xs">Number Garnihsment</th>
+                   <th className="border border-slate-300 text-xs">Pay Cycle</th>
                    <th className="border border-slate-300 text-xs">Action</th>
                  </tr>
                </thead>

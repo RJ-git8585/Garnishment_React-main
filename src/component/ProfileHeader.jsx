@@ -35,7 +35,7 @@ function ProfileHeader() {
     </span>
 
     <span className="ml-3 hidden sm:block">
-      <a type="button" className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+      <a type="button" href="/adddepartment" className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
         +
         Depart
       </a>
@@ -45,6 +45,13 @@ function ProfileHeader() {
       <a type="button" href="/addemployee" className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
         +
         Add
+      </a>
+    </span>
+
+    <span className="sm:ml-3">
+      <a type="button" href="/addlocation" className="inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+        +
+        Location
       </a>
     </span>
 
