@@ -2,6 +2,9 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../component/sidebar'
+// eslint-disable-next-line no-unused-vars
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Headertop from '../component/Headertop'
 import ProfileHeader from '../component/ProfileHeader';
@@ -27,6 +30,8 @@ function dashboard() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(()=>{
     fetchData(); // Call the function
+    // alert('Welcome to Dashboard')
+    toast.success('Welcome To Dashboard !!');
   },[])
     // eslint-disable-next-line no-unused-vars
     const { Active_employees,Employees_with_Multiple_IWO,Total_IWO,Employees_with_Single_IWO } = jsonData;
@@ -68,6 +73,7 @@ function dashboard() {
         </div>  
    
       </div>
+      <ToastContainer />
       </div>
     
   )

@@ -20,6 +20,7 @@ import Garnishment from './pages/Garnishment';
 import PrivateRoute from './component/PrivateRoute';
 import Employee from './pages/employee';
 import Notfound from './pages/Notfound';
+import AddEmployee from './component/AddEmployee';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/garnishment" element={<PrivateRoute><Garnishment /></PrivateRoute>} />
         {/* <Route path="/privacy" element={<Privacy />} /> */}
         <Route path="/employee" element={<PrivateRoute><Employee /></PrivateRoute>} />
+        <Route path="/addemployee" element={<PrivateRoute><AddEmployee /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
      
       

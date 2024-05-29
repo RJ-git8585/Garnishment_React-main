@@ -1,3 +1,7 @@
+
+body{
+  font-size: 12px;
+}
 nav.navbar.navbar-expand-lg.bg-body-tertiary {
   background: rgb(14, 15, 15)  !important;
 }
@@ -9,6 +13,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
   --tw-text-opacity: 1;
   color: rgb(255 255 255) !important;
 }
+
 .dark\:bg-slate-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(25, 26, 28) !important;
