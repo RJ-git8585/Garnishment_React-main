@@ -2,6 +2,7 @@
     import React from 'react'   
     import Sidebar from '../component/sidebar'  
     import Headertop from '../component/Headertop'
+    import { FaTools } from "react-icons/fa";
 
     function Setting() {
     return (
@@ -13,7 +14,7 @@
         <div className='sidebar'><Sidebar/></div>
         <div className="contant content ml-auto">
         <Headertop />
-                      <h1 className='edit-profile'>Settings</h1>
+                      <h1 className='edit-profile mt-6 inline-block'> <FaTools />Settings</h1>
                     <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
                     
                     <div className=''> 

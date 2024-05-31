@@ -5,6 +5,7 @@ import Sidebar from '../component/sidebar'
 // eslint-disable-next-line no-unused-vars
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { DiJqueryLogo } from "react-icons/di";
 
 import Headertop from '../component/Headertop'
 import ProfileHeader from '../component/ProfileHeader';
@@ -31,7 +32,10 @@ function dashboard() {
     useEffect(()=>{
     fetchData(); // Call the function
     // alert('Welcome to Dashboard')
-    toast.success('Welcome To Dashboard !!');
+    toast.success('Welcome to Dashboard!', {
+      position: 'bottom-left', // Set the position here
+    });
+  
   },[])
     // eslint-disable-next-line no-unused-vars
     const { Active_employees,Employees_with_Multiple_IWO,Total_IWO,Employees_with_Single_IWO } = jsonData;
@@ -40,7 +44,7 @@ function dashboard() {
   return (
     
    
-      <div className="min-h-full">
+      <div className="min-h-full">  
        
         <div className="container main">
         <div className='sidebar'><Sidebar/></div>
@@ -48,7 +52,7 @@ function dashboard() {
         <div className=' contant content ml-auto '>
         <Headertop />
             <ProfileHeader/>
-            <hr />
+            
      
   
             <div className="grid grid-cols-4 gap-4 mt-8 custom_tab">
@@ -70,6 +74,32 @@ function dashboard() {
                             </div>
               
             </div>
+<hr className="mt-6"></hr>
+
+<div className="grid grid-flow-row-dense grid-cols-2 mt-2">
+  <div className=" border-single pb-2 rounded-xl border-2">
+    <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Activity</h5> 
+    <ul className="list-inside ...">
+       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo /> 5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2   ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2   ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+
+      </ul>
+    </div>
+    <div className=" border-single border-2 rounded-xl ml-2">
+    <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Logs</h5> 
+    <ul className="list-inside ...">
+       <li className="mt-2 ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2 ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2   ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
+
+      </ul>
+    </div>
+</div>
+
           
         </div>  
    
