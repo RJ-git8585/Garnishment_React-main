@@ -39,7 +39,10 @@ function Form() {
         localStorage.setItem('id', response.data.user_data.employer_id); 
         localStorage.setItem('name', response.data.user_data.name);// Store the access token
         navigate('/dashboard');
-        toast.success("You have successfully logged in!");
+        toast('Login successful!', {
+          autoClose: 3000, // Delay in milliseconds
+          position: 'top-right',
+        }); 
       } else {
         // toast.success("Please Check Credentials!");
         setErrorMessage(response.data.message);

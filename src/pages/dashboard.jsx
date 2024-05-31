@@ -82,10 +82,10 @@ function dashboard() {
     <ul className="list-inside ...">
        <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo /> 5 cups chopped Porcini mushrooms</li>
        <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2   ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
        <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
        <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2   ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
 
       </ul>
     </div>
