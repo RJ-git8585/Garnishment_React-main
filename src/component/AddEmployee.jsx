@@ -61,9 +61,9 @@ function AddEmployee() {
               if (response.ok) {
                 // Handle successful submission
                 console.log('Data submitted successfully!');
-                navigate('/employee', { replace: true });
-                toast('Data submitted successfully !!');
                 
+                toast('Data submitted successfully !!');
+                navigate('/employee', { replace: true });
                 handleReset();
 
                 // Clear the form
