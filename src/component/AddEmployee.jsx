@@ -86,10 +86,10 @@ function AddEmployee() {
 
 <div className="min-h-full">
        
-        <div className="container main ml-auto mt-6">
+        <div className="container main ml-auto">
         <div className='sidebar'><Sidebar/></div>
         
-        <div className=' contant content ml-auto mt-6 '>
+        <div className=' contant content ml-auto '>
         <Headertop />
             <h2 className='font-bold Ctext-base mb-6'>Add Employee</h2>
             <hr />

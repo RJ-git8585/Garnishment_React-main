@@ -86,10 +86,10 @@ function AddLocation() {
 
 <div className="min-h-full">
        
-        <div className="container main ml-auto mt-6">
+        <div className="container main">
         <div className='sidebar'><Sidebar/></div>
         
-        <div className=' contant content ml-auto mt-6 '>
+        <div className=' contant content ml-auto'>
         <Headertop />
             <h2 className='font-bold Ctext-base mb-6'>Add Location</h2>
             

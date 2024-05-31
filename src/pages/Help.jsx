@@ -11,9 +11,9 @@ function Help() {
     <>
     <div className="min-h-full">
        
-       <div className="container main ml-auto mt-6">
+       <div className="container main ml-auto ">
        <div className='sidebar'><Sidebar/></div>
-       <div className="contant content ml-auto mt-6">
+       <div className="contant content ml-auto ">
        <Headertop />
       
   <h1>Garnishment Support Center</h1>
