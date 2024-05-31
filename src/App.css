@@ -52,7 +52,7 @@ margin-right:4px ;
   width: 260px;
   position: fixed;
   z-index: 1;
-  top:115px;
+  top:0;
   left: 0;
   background-color: #111;
   overflow-x: hidden;

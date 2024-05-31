@@ -8,10 +8,11 @@
     
           <div className="min-h-full">
        
-       <Headertop />
+     
        <div className="container main ml-auto mt-6">
         <div className='sidebar'><Sidebar/></div>
         <div className="contant content ml-auto mt-6">
+        <Headertop />
                       <h1 className='edit-profile'>Settings</h1>
                     <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
                     

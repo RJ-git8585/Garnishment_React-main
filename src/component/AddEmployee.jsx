@@ -85,11 +85,12 @@ function AddEmployee() {
     <div>
 
 <div className="min-h-full">
-        <Headertop />
+       
         <div className="container main ml-auto mt-6">
         <div className='sidebar'><Sidebar/></div>
         
         <div className=' contant content ml-auto mt-6 '>
+        <Headertop />
             <h2 className='font-bold Ctext-base mb-6'>Add Employee</h2>
             <hr />
             <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">

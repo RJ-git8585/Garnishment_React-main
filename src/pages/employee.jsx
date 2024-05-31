@@ -46,11 +46,12 @@ function employee() {
 
 
 <div className="min-h-full">
-        <Headertop />
+      
         <div className="container main ml-auto mt-6">
         <div className='sidebar'><Sidebar/></div>
         
         <div className=' contant content ml-auto mt-6 '>
+             <Headertop />
             <ProfileHeader/>
             
             <hr />
@@ -82,7 +83,7 @@ function employee() {
                    <tr>
                    
                   <td className="border border-slate-300 text-xs">{item.employee_name}</td><td className="border border-slate-300 text-xs">{item.employee_id}</td><td className="border border-slate-300 text-xs">{item.employer_id}</td><td className="border border-slate-300 text-xs">{item.location}</td><td className="border border-slate-300 text-xs">{item.department}</td><td className="border border-slate-300 text-xs">{item.minimun_wages}</td><td className="border border-slate-300 text-xs">{item.net_pay}</td><td className="border border-slate-300 text-xs">{item.number_of_garnishment}</td><td className="border border-slate-300 text-xs">{item.pay_cycle} </td>
-                  <td><button className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75">Edit</button></td>
+                  <td><button className="py-2 px-3 text-sm bg-green-300 text-white font-semibold  shadow-md hover:bg-green-800 focus:outline-none focus:ring focus:ring-green-800 focus:ring-opacity-75">Edit</button></td>
                   <td><button className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75">Delete</button></td>
                 
                   </tr>

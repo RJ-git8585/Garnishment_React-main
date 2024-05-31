@@ -10,10 +10,11 @@ function Help() {
   return (
     <>
     <div className="min-h-full">
-       <Headertop />
+       
        <div className="container main ml-auto mt-6">
        <div className='sidebar'><Sidebar/></div>
        <div className="contant content ml-auto mt-6">
+       <Headertop />
       
   <h1>Garnishment Support Center</h1>
   <h2>Frequently Asked Questions (FAQs)</h2>

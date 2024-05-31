@@ -8,10 +8,11 @@ function Tax() {
   return (
     <>
     <div className="min-h-full">
-       <Headertop />
+       
        <div className="container main ml-auto mt-6">
        <div className='sidebar'><Sidebar/></div>
        <div className="contant content ml-auto mt-6">
+       <Headertop />
               <div>Taxes</div>
     </div>
     </div>
