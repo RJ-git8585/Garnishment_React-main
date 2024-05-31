@@ -15,7 +15,7 @@ function AddDepartment() {
         <div className=' contant content ml-auto mt-6 '>
             <ProfileHeader/>
             <hr />
-           Depart
+         Add Department
             </div>  
        
        </div>

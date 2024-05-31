@@ -4,9 +4,12 @@ import Headertop from '../component/Headertop'
 import Sidebar from '../component/sidebar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// eslint-disable-next-line no-unused-vars
+import { useNavigate } from 'react-router-dom';
 
 
 function AddEmployee() {
+  const navigate = useNavigate();
     // eslint-disable-next-line no-undef
     const [employee_name, setName] = useState('');
    // eslint-disable-next-line no-undef
@@ -58,8 +61,11 @@ function AddEmployee() {
               if (response.ok) {
                 // Handle successful submission
                 console.log('Data submitted successfully!');
+                navigate('/employee', { replace: true });
                 toast('Data submitted successfully !!');
-                navigator('/employee');
+                
+                handleReset();
+
                 // Clear the form
                 setName('');
                 setDepart('');
