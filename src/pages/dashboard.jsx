@@ -77,27 +77,27 @@ function dashboard() {
 <hr className="mt-6"></hr>
 
 <div className="grid grid-flow-row-dense grid-cols-2 mt-2">
-  <div className=" border-single pb-2 rounded-xl border-2">
-    <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Activity</h5> 
-    <ul className="list-inside ...">
-       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo /> 5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+            <div className=" border-single pb-2 rounded-xl border-2">
+              <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Activity</h5> 
+              <ul className="list-inside ...">
+                <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo /> 5 cups chopped Porcini mushrooms</li>
+                <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+                <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+                <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+                <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
+                <li className="mt-2 ml-5 text-sm" ><DiJqueryLogo />5 cups chopped Porcini mushrooms</li>
 
-      </ul>
-    </div>
-    <div className=" border-single border-2 rounded-xl ml-2">
-    <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Logs</h5> 
-    <ul className="list-inside ...">
-       <li className="mt-2 ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2 ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
-       <li className="mt-2   ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
+                </ul>
+              </div>
+              <div className=" border-single border-2 rounded-xl ml-2">
+              <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Logs</h5> 
+              <ul className="list-inside ...">
+                <li className="mt-2 ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
+                <li className="mt-2 ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
+                <li className="mt-2   ml-5 text-sm" >5 cups chopped Porcini mushrooms</li>
 
-      </ul>
-    </div>
+                </ul>
+              </div>
 </div>
 
           

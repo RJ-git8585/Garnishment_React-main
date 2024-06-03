@@ -93,11 +93,14 @@ h1.edit-profile.mt-6.inline-block svg {
 .content {
   width: 100%;
   position: relative;
-  margin-left: 190px !important; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
+  margin-left: 120px !important;
+  font-size: 28px;
   padding: 0px 10px;
 }
-
+.container {
+  /* max-width: 1280px; */
+  margin-right: inherit;
+}
 .border-gray-50{
   border: 1px solid #ffffff4a !important; 
     background: rgb(255 255 255 / 10%);
@@ -106,6 +109,10 @@ h1.edit-profile.mt-6.inline-block svg {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
    
+}
+.suctom_login_side {
+  padding-right: 45px;
+  margin-right: 20px !important;
 }
 .bg-gray-800 {
   --tw-bg-opacity: 1;
