@@ -24,6 +24,9 @@ import Notfound from './pages/Notfound';
 import AddEmployee from './component/AddEmployee';
 import AddDepartment from './component/AddDepartment';
 import AddLocation from './component/AddLocation';
+import Department from './pages/department';
+import Location from './pages/location';
+import Iwo from './pages/iwo';
 
 function App() {
   return (
@@ -49,6 +52,9 @@ function App() {
         <Route path="/addemployee" element={<PrivateRoute><AddEmployee /></PrivateRoute>} />
         <Route path="/adddepartment" element={<PrivateRoute><AddDepartment /></PrivateRoute>} />
         <Route path="/addlocation" element={<PrivateRoute><AddLocation /></PrivateRoute>} />
+        <Route path="/department" element={<PrivateRoute><Department /></PrivateRoute>} />
+        <Route path="/location" element={<PrivateRoute><Location /></PrivateRoute>} />
+        <Route path="/iwo" element={<PrivateRoute><Iwo /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
      
       

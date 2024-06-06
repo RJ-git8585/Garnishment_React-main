@@ -90,7 +90,7 @@ function AddDepartment() {
         <div className="container main ml-auto mt-6">
         <div className='sidebar'><Sidebar/></div>
         
-        <div className=' contant content ml-auto mt-6 '>
+        <div className=' contant content ml-auto '>
         <Headertop />
             <h2 className='font-bold Ctext-base mb-6'>Add Department</h2>
             

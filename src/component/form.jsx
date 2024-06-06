@@ -128,14 +128,16 @@ function Form() {
                       </div>
                   <div className="text-left mt-20  ml-10 sm:mx-auto sm:w-full sm:max-w-lg">
                                 <div className='text-white  text-2xl'>Sign in easily using your existing account from <b className="text-amber-500" >Social Accounts</b>. No need to create a new password or remember multiple login credentials.</div>
-                                <div className='text-white  border-b-[0.5px] border-orange-50 pb-5 text-2xl'>Keep the text clear, concise, and easy to understand.
-          Security: If applicable, you can mention that the SSO login process is secure and user credentials are not stored locally.  </div>
+                                  <div className='text-white  border-b-[0.5px] border-orange-50 pb-5 text-2xl'>
+                                    Keep the text clear, concise, and easy to understand.
+                         Security: If applicable, you can mention that the SSO login process is secure and user credentials are not stored locally.  </div>
                   <div className="custom_page  mt-8 pb-16">
                           <h1 className='text-white text-2xl font-bold'>Login with SSO</h1>
                           <a href="https://dev-ntapzgi6ocsiwjal.us.auth0.com/samlp/PxYyuHmOIVRrsEHkWFpnOeJL0UpBAXD9">
-                            <h4 className='text-white mt-6'>We encountered an issue while signing you in with SSO.</h4>
+                            <h4 className='text-white mt-2'>We encountered an issue while signing you in with SSO.</h4>
+                            <p className='text-white text-xs mt-2'>SSO login process is secure and user credentials are not stored locally.</p>
                           <FcGoogle className='text-3xl text-white mt-10' />
-                          </a>
+                          </a>  
                     </div>
 
                       </div>

@@ -1,8 +1,25 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import {react,useState,useEffect} from 'react'
+// import { Link } from 'react-router-dom';
+// import {ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// import axios from 'axios';
 
-function ProfileHeader() {
-    const name = localStorage.getItem("name");
+
+
+
+function ProfileHeader(  ) {
+  // eslint-disable-next-line no-unused-vars
+  const [data, setData] = useState(null);
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(false);
+  const name = localStorage.getItem("name");
+ 
+  // eslint-disable-next-line no-unused-vars
+  // const [showButton, setShowButton] = useState(true);
+
+
   return (
     <div>
         
@@ -28,29 +45,25 @@ function ProfileHeader() {
   </div>
   <div className="mt-5 flex lg:ml-4 lg:mt-0">
     <span className="hidden sm:block">
-    <a type="button" className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-       
-        Edit
-        </a>
+   
+    
+
     </span>
 
     <span className="ml-3 hidden sm:block">
-      <a type="button" href="/adddepartment" className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-        +
+      <a type="button" href="/department" className="inline-flex items-center rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-black-900 text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-300">
         Depart
       </a>
     </span>
 
     <span className="sm:ml-3">
       <a type="button" href="/addemployee" className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-        +
         Add
       </a>
     </span>
 
     <span className="sm:ml-3">
-      <a type="button" href="/addlocation" className="inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-        +
+      <a type="button" href="/location" className="inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
         Location
       </a>
     </span>
@@ -72,7 +85,7 @@ function ProfileHeader() {
     </div>
   </div>
 </div>
-
+{/* <ToastContainer /> */}
     </div>
   )
 }
