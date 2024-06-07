@@ -8,7 +8,8 @@ import logo from '/src/Logo (1).png';
 import { FcGoogle } from "react-icons/fc";
 import "react-toastify/dist/ReactToastify.css";
 import { RiFacebookFill } from "react-icons/ri";
-
+import {  ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -35,6 +36,7 @@ function Form() {
       }
     } catch (error) {
       console.error(error.response.data);
+      toast.warning(error.response.data)
       alert(error.response.data.error);
     }
   };
@@ -155,6 +157,7 @@ function Form() {
                     
                     </div>
               </div>
+              <ToastContainer />
     </div>
   );
 }

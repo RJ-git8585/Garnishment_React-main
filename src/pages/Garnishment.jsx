@@ -12,7 +12,11 @@ function Garnishment() {
        <div className='sidebar'><Sidebar/></div>
        <div className="contant content ml-auto ">
        <Headertop />
-              <div>Garnishment</div>
+              <div>
+                
+                <h1>Garnishment calcu</h1>
+                
+                </div>
     </div>
     </div>
     </div>
