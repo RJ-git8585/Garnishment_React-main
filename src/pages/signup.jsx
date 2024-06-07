@@ -36,6 +36,7 @@ function Form() {
       }
     } catch (error) {
       console.error(error.response.data);
+      console.log(error.response.data);
       toast.warning(error.response.data)
       alert(error.response.data.error);
     }
