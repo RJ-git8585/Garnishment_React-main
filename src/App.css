@@ -79,7 +79,11 @@ h1.edit-profile.mt-6.inline-block svg {
   margin-right: 6px;
   font-size: 16px;
 }
-.cus_svg svg {
+.inline-block_cus a
+{
+  display: inline-block;
+  margin:2px;
+}.cus_svg svg {
   display: inline-flex;
   vertical-align: middle;
   font-size: 18px;

@@ -6,7 +6,7 @@ import axios from 'axios';
 import {  ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FcGoogle } from "react-icons/fc";
-
+import { RiFacebookFill } from "react-icons/ri";
 
 
 function Form() {
@@ -131,15 +131,22 @@ function Form() {
                                   <div className='text-white  border-b-[0.5px] border-orange-50 pb-5 text-2xl'>
                                     Keep the text clear, concise, and easy to understand.
                          Security: If applicable, you can mention that the SSO login process is secure and user credentials are not stored locally.  </div>
-                  <div className="custom_page  mt-8 pb-16">
-                          <h1 className='text-white text-2xl font-bold'>Login with SSO</h1>
-                          <a href="https://dev-ntapzgi6ocsiwjal.us.auth0.com/samlp/PxYyuHmOIVRrsEHkWFpnOeJL0UpBAXD9">
-                            <h4 className='text-white mt-2'>We encountered an issue while signing you in with SSO.</h4>
-                            <p className='text-white text-xs mt-2'>SSO login process is secure and user credentials are not stored locally.</p>
-                          <FcGoogle className='text-3xl text-white mt-10' />
-                          </a>  
-                    </div>
-
+                         <div className="custom_page  mt-8 pb-16">
+                   
+                   <h1 className='text-white text-2xl font-bold'>Login with SSO</h1>
+                   
+                  
+                     <h4 className='text-white mt-2'>We encountered an issue while signing you in with SSO.</h4>
+                     <p className='text-white text-xs mt-2'>SSO login process is secure and user credentials are not stored locally.</p>
+                   <div className='inline-block_cus'>
+                   <a href="https://dev-ntapzgi6ocsiwjal.us.auth0.com/samlp/PxYyuHmOIVRrsEHkWFpnOeJL0UpBAXD9">
+                   <FcGoogle className='text-3xl text-white mt-10' />
+                   </a>  
+                   <a href="https://www.facebook.com">
+                   <RiFacebookFill className='text-blue-500 text-3xl mt-10'  />
+                   </a>
+                   </div>
+</div>
                       </div>
              <ToastContainer />
         </div>
