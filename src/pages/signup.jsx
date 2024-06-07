@@ -32,6 +32,7 @@ function Form() {
       const response = await axios.post('https://garnishment-backend.onrender.com/User/register', formData);
       if (response.data.message) {
         alert('Registration successful');
+        toast.success('Registration successful')
         navigate('/');
       }
     } catch (error) {
