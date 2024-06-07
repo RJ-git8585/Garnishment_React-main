@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
@@ -11,6 +12,8 @@ function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
 
   const handleDelete = async () => {
     // setIsLoading(true);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const navigate = useNavigate();
 
     try {
       const response = await axios.delete(`https://garnishment-backend.onrender.com/User/EmployeeDeleteAPIView/${id}`);
@@ -18,7 +21,9 @@ function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
       if (response.status === 200 || response.status === 204) { // Handle successful deletion
         // console.log('Item deleted successfully!');
         toast.danger('Item deleted successfully!!!');
-        onDeleteSuccess && onDeleteSuccess(id); // Optional callback for success
+        onDeleteSuccess && onDeleteSuccess(id); 
+        navigate('/employee');
+       // Optional callback for success
       } else {
         throw new Error('Unexpected API response status'); // Handle unexpected errors
       }

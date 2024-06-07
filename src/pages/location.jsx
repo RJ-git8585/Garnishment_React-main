@@ -69,8 +69,9 @@ function Location() {
                  <tr>
                  <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th>
                    <th className="border p-2 border-slate-300 uppercase text-xs">Employer Id</th>
-                   <th className="border border-slate-300 p-2 uppercase  text-xs">Department Id</th>
-                   <th className="text-center border border-slate-300  p-2 uppercase text-xs">Department</th>
+                   <th className="border border-slate-300 p-2 uppercase  text-xs">Location Id</th>
+                   <th className="text-center border border-slate-300  p-2 uppercase text-xs">State</th>
+                   <th className="text-center border border-slate-300  p-2 uppercase text-xs">City</th>
                    
                    <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
                    <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
@@ -86,7 +87,7 @@ function Location() {
                
                    <tr key="1">
                    <td className="border border-slate-300 text-xs">{index + 1}</td>
-                  <td className="border border-slate-300 text-xs">{item.employer_id}</td><td className="border border-slate-300 text-xs">{item.department_name}</td><td className="border border-slate-300 text-xs">{item.department_id}</td><button className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75" id={item.employee_id}>Edit</button><td><button id={item.employee_id} className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75">Delete</button></td>
+                  <td className="border border-slate-300 text-xs">{item.employer_id}</td><td className="border border-slate-300 text-xs">{item.location_id}</td><td className="border border-slate-300 text-xs">{item.state}</td><td className="border border-slate-300 text-xs">{item.city}</td><button className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75" id={item.employee_id}>Edit</button><td><button id={item.employee_id} className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75">Delete</button></td>
                 
                   </tr>
                 
