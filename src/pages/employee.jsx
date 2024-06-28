@@ -74,7 +74,7 @@ function employee(onDeleteSuccess) {
               
                <thead>
                  <tr>
-                 <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th>
+                 {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
                    <th className="text-center border border-slate-300  p-2 uppercase text-xs">Employee</th>
                    <th className="border p-2 border-slate-300 uppercase text-xs">Employee Id</th>
                    <th className="border border-slate-300 p-2 uppercase  text-xs">Employer Id</th>
