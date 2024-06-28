@@ -76,16 +76,16 @@ function employee(onDeleteSuccess) {
                  <tr>
                  {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
                    <th className="text-center border border-slate-300  p-2 uppercase text-xs">Employee</th>
-                   <th className="border p-2 border-slate-300 uppercase text-xs">Employee Id</th>
-                   <th className="border border-slate-300 p-2 uppercase  text-xs">Employer Id</th>
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Location</th>
-                   <th className="border border-slate-300p-2 uppercase text-xs">Department</th>
-                   <th className="border border-slate-300 p-2  uppercase text-xs">Minimum Wages</th>
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Netpay</th>
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Number Garnihsment</th>
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Pay Cycle</th>
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
+                   <th className="text-center border p-2 border-slate-300 uppercase text-xs">Employee Id</th>
+                   <th className="text-center border border-slate-300 p-2 uppercase  text-xs">Employer Id</th>
+                   <th className="text-center border border-slate-300 p-2 uppercase text-xs">Location</th>
+                   <th className="text-center border border-slate-300p-2 uppercase text-xs">Department</th>
+                   <th className="text-center border border-slate-300 p-2  uppercase text-xs">Minimum Wages</th>
+                   <th className="text-center border border-slate-300 p-2 uppercase text-xs">Netpay</th>
+                   <th className="text-center border border-slate-300 p-2 uppercase text-xs">Number Garnihsment</th>
+                   <th className="text-center border border-slate-300 p-2 uppercase text-xs">Pay Cycle</th>
+                   <th className="text-center border border-slate-300 p-2 uppercase text-xs">Action</th>
+                   <th className="text-center border border-slate-300 p-2 uppercase text-xs">Action</th>
                  </tr>
                </thead>
                
@@ -93,11 +93,11 @@ function employee(onDeleteSuccess) {
               
                  <tbody> 
                 
-                {data.map((item,index) => (
+                {data.map((item) => (
                 
                
                    <tr key={item.employer_id}>
-                   <td className="border border-slate-300 text-xs">{index + 1}</td>
+                   {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
                   <td className="border border-slate-300 text-xs">{item.employee_name}</td><td className="border border-slate-300 text-xs">{item.employee_id}</td><td className="border border-slate-300 text-xs">{item.employer_id}</td><td className="border border-slate-300 text-xs">{item.location}</td><td className="border border-slate-300 text-xs">{item.department}</td><td className="border border-slate-300 text-xs">{item.minimun_wages}</td><td className="border border-slate-300 text-xs">{item.net_pay}</td><td className="border border-slate-300 text-xs">{item.number_of_garnishment}</td><td className="border border-slate-300 text-xs">{item.pay_cycle} </td><button className="py-2 px-3 text-sm bg-green-300 text-white font-semibold  shadow-md hover:bg-green-800 focus:outline-none focus:ring focus:ring-green-800 focus:ring-opacity-75" id={item.employee_id}>Edit</button><td>
                   <DeleteItemComponent
             id={item.employee_id} // Pass the record ID
