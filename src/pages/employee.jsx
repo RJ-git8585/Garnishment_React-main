@@ -9,6 +9,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import DeleteItemComponent from '../component/DeleteItemComponent';
 import { CgImport } from "react-icons/cg";
 import { TiExport } from "react-icons/ti";
+import Garnishment from './Garnishment';
+
 
 
 function employee(onDeleteSuccess) {
@@ -18,7 +20,7 @@ function employee(onDeleteSuccess) {
   const id = localStorage.getItem("id");
   const Link = `https://garnishment-backend.onrender.com/User/ExportEmployees/${id}/`;
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   
   useEffect(()=>{
   // const name = localStorage.getItem("name");
@@ -115,7 +117,7 @@ function employee(onDeleteSuccess) {
   
   </table>
         </div>  
-       
+        {data && <Garnishment data={data} />}
       </div>
       </div>
     

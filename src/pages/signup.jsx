@@ -1,15 +1,16 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import logo from '/src/Logo (1).png';
 // eslint-disable-next-line no-unused-vars
 // import {  toast } from "react-toastify";
 import { FcGoogle } from "react-icons/fc";
-import "react-toastify/dist/ReactToastify.css";
-import { RiFacebookFill } from "react-icons/ri";
 import {  ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { RiFacebookFill } from "react-icons/ri";
+
+
 
 function Form() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function Form() {
     password2: ''
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();s
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,12 +29,16 @@ function Form() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert('Registration successful1');
     try {
       const response = await axios.post('https://garnishment-backend.onrender.com/User/register', formData);
+      alert('Registration successful2');
       if (response.data.message) {
+        alert(response.data);
         alert('Registration successful');
-        toast.success('Registration successful')
-        navigate('/');
+        toast.success('Registration successful');
+        console.log(response.data)
+        // navigate('/');
       }
     } catch (error) {
       console.error(error.response.data);

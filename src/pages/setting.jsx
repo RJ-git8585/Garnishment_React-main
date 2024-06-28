@@ -15,149 +15,30 @@
         <div className="contant content ml-auto">
         <Headertop />
                       <h1 className='edit-profile mt-6 inline-block'> <FaTools />Settings</h1>
-                    <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
+                    <form className=" grid grid-cols-2 gap-4 rounded-md space-y-6 p-6 " action="#" method="POST">
                     
-                    <div className=''> 
-                        <label htmlFor="name" className="block text-slate-500 text-sm font-medium leading-6">
-                          UserName 
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            id="username"
-                            name="username"
-                            // value={data.username}
-                            type="username"
-                            autoComplete="username"
-                            // onChange={(e) => setEmail(e.target.value)}
-                            
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          />
-                        </div>
-                      </div>
-                      <div className=''>
-                        <label htmlFor="name" className="block text-slate-500 text-sm font-medium leading-6">
-                          Name 
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            id="name"
-                            name="name"
-                            // value={data.name}
-                            type="name"
-                            autoComplete="name"
-                            // onChange={(e) => setEmail(e.target.value)}
-                            
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          />
-                        </div>
-                      </div>
+                   
 
-                      <div className=''>
-                        <label htmlFor="email" className="text-slate-500 block  text-sm font-medium leading-6 ">
-                          Email 
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            id="email"
-                            name="email"
-                            // value={data.email}
-                            type="email"
-                            autoComplete="email"
-                            // onChange={(e) => setEmail(e.target.value)}
-                            
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          />
-                        </div>
-                      </div>
+                    <label className="inline-flex items-center mb-5 cursor-pointer">
+  <input type="checkbox" value="" className="sr-only peer"/>
+  <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span className="ms-3 text-sm font-medium  dark:text-gray-600">Dark More</span>
+</label>
+<label className="inline-flex items-center mb-5 cursor-pointer">
+  <input type="checkbox" value="" className="sr-only peer"/>
+  <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+  <span className="ms-3 text-sm font-medium  dark:text-gray-600">Active Profile for Others</span>
+</label>
 
-                      <div>
-                        <label htmlFor="email" className="text-slate-500 block  text-sm font-medium leading-6 ">
-                          Company 
-                        </label>
-                        <div className="mt-2">
-                          <input
-                            id="email"
-                            name="email"
-                            // value={data.company ? data.company.name : 'Loading...'}
-                            type="email"
-                            autoComplete="email"
-                            // onChange={(e) => setEmail(e.target.value)}
-                            
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          />
-                        </div>
-                      </div>
 
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <label htmlFor="password" className="text-slate-500 block  text-sm font-medium leading-6 ">
-                            Phone 
-                          </label>
-                        </div>
-                        <div className="mt-2">
-                          <input 
-                            id="phone"
-                            name="phone"
-                            type="phone"
-                            // value={data.phone}
-                            // onChange={(e) => setPassword(e.target.value)}
-                            autoComplete="current-password"
-                            
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          />
 
-                        </div>
-                        
-                      
-          </div>
-          <div>
-                        <div className="flex items-center justify-between">
-                          <label htmlFor="password" className="text-slate-500 block  text-sm font-medium leading-6 ">
-                            City 
-                          </label>
-                        </div>
-                        <div className="mt-2">
-                          <input 
-                            id="phone"
-                            name="phone"
-                            type="phone"
-                            // value={data.address ? data.address.city : 'Loading...'}
-                            // onChange={(e) => setPassword(e.target.value)}    
-                            autoComplete="current-password"
-                            
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                          />
 
-                        </div>
-                        
-                      
-          </div>
-          <div >
-          {/* <Link to="/dashabord"> */}
-            <button
-              type="submit"
-            //    onClick={handleSubmit}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 custom-btn"
-            >
-              UPDATE
-            </button>
-            </div>
-            <div >
-            <button
-              type="reset"
-            //    onClick={handleSubmit}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
-            >
-              CANCEL
-            </button>
-            
-            {/* {errorMessage && <p className="error">{errorMessage}</p>} */}
-            
-            
 
-            {/* </Link> */}
-          </div>
-          
+
+
+
+
+
         </form>
        </div>
         </div>
