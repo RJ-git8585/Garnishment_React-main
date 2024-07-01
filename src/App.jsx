@@ -27,6 +27,7 @@ import AddLocation from './component/AddLocation';
 import Department from './pages/department';
 import Location from './pages/location';
 import Iwo from './pages/iwo';
+import Apis from './component/Apis';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/location" element={<PrivateRoute><Location /></PrivateRoute>} />
         <Route path="/iwo" element={<PrivateRoute><Iwo /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
+        <Route path="apis" element={<Apis />} />
      
       
       </Routes>
