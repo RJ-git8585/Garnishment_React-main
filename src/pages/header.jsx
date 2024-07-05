@@ -27,8 +27,8 @@ const callsToAction = [
   { name: 'Contact sales', href: '#', icon: PhoneIcon },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classNamees) {
+  return classNamees.filter(Boolean).join(' ')
 }
 
 

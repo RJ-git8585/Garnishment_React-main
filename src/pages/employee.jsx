@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import DeleteItemComponent from '../component/DeleteItemComponent';
 import { CgImport } from "react-icons/cg";
 import { TiExport } from "react-icons/ti";
-import Garnishment from './Garnishment';
+// import Garnishment from './Garnishment';
 
 
 
@@ -117,7 +117,7 @@ function employee(onDeleteSuccess) {
   
   </table>
         </div>  
-        {data && <Garnishment data={data} />}
+        {/* {data && <Garnishment data={data} />} */}
       </div>
       </div>
     

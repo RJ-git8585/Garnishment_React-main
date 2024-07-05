@@ -239,6 +239,7 @@ function AddEmployee() {
                           <input 
                             id="location"
                             name="location"
+                            
                             type="text"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}    

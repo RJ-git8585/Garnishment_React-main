@@ -25,8 +25,8 @@ const user = {
     { name: 'Sign out', href: '#' },
   ]
   
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+  function classNames(...classNamees) {
+    return classNamees.filter(Boolean).join(' ')
   }
 
 function Headertop() {
