@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // eslint-disable-next-line no-unused-vars
 import { useNavigate } from 'react-router-dom';
+// import { FaUserEdit } from "react-icons/fa";
 
 
 function AddEmployee() {
@@ -15,9 +16,9 @@ function AddEmployee() {
    // eslint-disable-next-line no-undef
     const [department, setDepart] = useState('');
      // eslint-disable-next-line no-undef
-     const [net_pay, setNet] = useState('');
-      // eslint-disable-next-line no-undef
-    const [minimun_wages, setMinWages] = useState('');
+    //  const [net_pay, setNet] = useState('');
+    //   // eslint-disable-next-line no-undef
+    // const [minimun_wages, setMinWages] = useState('');
      // eslint-disable-next-line no-undef
      const [pay_cycle, setPayCycle] = useState('');
       // eslint-disable-next-line no-undef
@@ -29,8 +30,8 @@ function AddEmployee() {
       const handleReset = () => {
                  setName('');
                 setDepart('');
-                setNet('');
-                setMinWages('');
+                // setNet('');
+                // setMinWages('');
                 setPayCycle('');
                 setNumberGarnihsment('');
                 setLocation('');
@@ -43,8 +44,8 @@ function AddEmployee() {
             employer_id,
             employee_name,
             department,
-            net_pay,
-            minimun_wages,
+            // net_pay,
+            // minimun_wages,
             pay_cycle,
             number_of_garnishment,
             location
@@ -69,8 +70,8 @@ function AddEmployee() {
                 // Clear the form
                 setName('');
                 setDepart('');
-                setNet('');
-                setMinWages('');
+                // setNet('');
+                // setMinWages('');
                 setPayCycle('');
                 setNumberGarnihsment('');
                 setLocation('');
@@ -89,11 +90,11 @@ function AddEmployee() {
         <div className="container main ml-auto">
         <div className='sidebar'><Sidebar/></div>
         
-        <div className=' contant content ml-auto '>
+        <div className=' contant content ml-auto mb-4'>
         <Headertop />
-            <h2 className='font-bold Ctext-base mb-6'>Add Employee</h2>
-            <hr />
-            <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
+            <h2 className='font-bold Ctext-base inline '>Add Employee</h2>
+           
+            <form className=" grid grid-cols-2 gap-4 mt-8 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
                     
             <div className='hidden'> 
                         
@@ -137,7 +138,7 @@ function AddEmployee() {
                             name="department"
                             value={department}
                             type="text"
-                            step="0.01"
+                            step="1"
                             autoComplete="name"
                             onChange={(e) => setDepart(e.target.value)}
                             
@@ -146,7 +147,7 @@ function AddEmployee() {
                         </div>
                       </div>
 
-                      <div className=''>
+                      {/* <div className=''>
                         <label htmlFor="email" className="text-slate-500 block  text-sm font-medium leading-6 ">
                         Net Pay 
                         </label>
@@ -163,9 +164,9 @@ function AddEmployee() {
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                         </div>
-                      </div>
+                      </div> */}
 
-                      <div>
+                      {/* <div>
                         <label htmlFor="email" className="text-slate-500 block  text-sm font-medium leading-6 ">
                         Minimun Wages 
                         </label>
@@ -182,7 +183,7 @@ function AddEmployee() {
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                         </div>
-                      </div>
+                      </div> */}
 
                       <div>
                         <div className="flex items-center justify-between">
@@ -194,8 +195,9 @@ function AddEmployee() {
                           <input 
                             id="pay_cycle"
                             name="pay_cycle"
-                            type="number"
-                            step="0.01"
+                            type="text"
+                            
+
                             value={pay_cycle}
                             onChange={(e) => setPayCycle(e.target.value)}
                             // autoComplete="current-password"
@@ -207,6 +209,7 @@ function AddEmployee() {
                         
                       
           </div>
+          
           <div>
                         <div className="flex items-center justify-between">
                           <label htmlFor="password" className="text-slate-500 block  text-sm font-medium leading-6 ">
@@ -218,6 +221,8 @@ function AddEmployee() {
                             id="number_of_garnishment"
                             name="number_of_garnishment"
                             type="number"
+                            step="1"
+                            min="1" max="5"
                             value={number_of_garnishment}
                             onChange={(e) => setNumberGarnihsment(e.target.value)}    
                             // autoComplete="current-password"
@@ -252,13 +257,13 @@ function AddEmployee() {
                         
                       
           </div>
-
+          <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
           <div >
       
             <button
               type="submit"
              onClick={handleSubmit}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 custom-btn"
+              className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 custom-btn"
             >
               ADD
             </button>
@@ -267,14 +272,14 @@ function AddEmployee() {
             <button
               type="reset"
               onClick={handleReset}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
             >
               CANCEL
             </button>
             
            
           </div>
-          
+          </div>
         </form>
 
 

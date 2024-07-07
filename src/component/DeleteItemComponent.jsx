@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
 //   const [isLoading, setIsLoading] = useState(false);
 //   const [error, setError] = useState(null);
-
+// confirm('this is deleted')
   const handleDelete = async () => {
   
     try {
@@ -34,7 +34,7 @@ function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
   return (
     <div>
       
-        <button onClick={handleDelete} className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75">Delete</button>
+        <button onClick={handleDelete} className="py-2 button-cls text-sm  text-blue font-semibold  ">Delete</button>
       <ToastContainer/>
     </div>
   );

@@ -67,30 +67,30 @@ function Department() {
        Add
        </a>
        </div>
-            <table className="border-separate border-spacing-2 border border-slate-500 ...">
+            <table className="min-w-full divide-y divide-gray-200 mt-6">
               
                <thead>
                  <tr>
-                 <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th>
-                   <th className="border p-2 border-slate-300 uppercase text-xs">Employer Id</th>
-                   <th className="border border-slate-300 p-2 uppercase  text-xs">Department Id</th>
-                   <th className="text-center border border-slate-300  p-2 uppercase text-xs">Department</th>
+                 {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employer Id</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Department </th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Department Id</th>
                    
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
-                   <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
                  </tr>
                </thead>
                
             {data && (
               
-                 <tbody> 
+                 <tbody className='divide-y divide-gray-200'> 
                 
-                {data.map((item,index) => (
+                {data.map((item) => (
                   <>
                
                    <tr key="1">
-                   <td className="border border-slate-300 text-xs">{index + 1}</td>
-                  <td className="border border-slate-300 text-xs">{item.employer_id}</td><td className="border border-slate-300 text-xs">{item.department_name}</td><td className="border border-slate-300 text-xs">{item.department_id}</td><button className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75"id={item.employee_id} >Edit</button><td><button id={item.employee_id} className="py-2 px-3 text-sm bg-red-300 text-white font-semibold  shadow-md hover:bg-red-800 focus:outline-none focus:ring focus:ring-red-800 focus:ring-opacity-75">Delete</button></td>
+                   {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
+                  <td className=" text-xs">{item.employer_id}</td><td className=" text-xs">{item.department_name}</td><td className=" text-xs">{item.department_id}</td><button className="button-cls text-sm  text-blue font-semibold "id={item.employee_id} >Edit</button><td><button id={item.employee_id} className="button-cls text-sm  text-blue font-semibold ">Delete</button></td>
                 
                   </tr>
                 
