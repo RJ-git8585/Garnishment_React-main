@@ -169,4 +169,8 @@ h1.edit-profile.mt-6.inline-block svg {
 .colr-text{
   color:#F77171;
 }
-
+.custom-cls-pagei {
+  border: 0.5px solid #000 !important;
+  margin-left: 5px;
+  padding: 7px !important;
+}

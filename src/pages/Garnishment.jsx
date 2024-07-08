@@ -36,14 +36,15 @@ function Garnishment( ) {
   const [fit, setFit] = useState('');
   const [medicare, setMedicare] = useState('');
   // const [state, setState] = useState('');
-
-
-  // const handleChange = (event) => {
-  //   setSelectedValue(event.target.value);
-  // };
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [isChecked, setIsChecked] = useState(false); // Initialize checkbox state as unchecked
   // const [selectedValue, setSelectedValue] = useState(null);
+
+
+  // eslint-disable-next-line no-unused-vars
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked); // Update state based on checkbox click
+  };
+ 
   const handleReset = () => {
     setEmpID('');
     setEmpName('');
@@ -73,6 +74,10 @@ function Garnishment( ) {
       fit,
       medicare
     });
+
+   
+
+  
   };
 
   return (
@@ -186,7 +191,7 @@ function Garnishment( ) {
                   </div>
                   <div>
                     <label htmlFor="totalAmount" className="block text-gray-700 text-sm font-bold mb-2">
-                      Total Amount:
+                      Amount To Withhold:
                     </label>
                     <input
                       type="number"
@@ -200,14 +205,26 @@ function Garnishment( ) {
                   
                     <span className="text-sm mb-4 text-2xl font-bold  text-gray-700">Taxes Details </span>  
 
-                    <div className="flex items-center mt-4 mb-4">
+                <div className="flex items-center mt-4 mb-4">
                     <input id="default-checkbox" type="checkbox" onChange={(e) => setTaxes(e.target.value)} value={taxes} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                     <label  className="ms-2 text-sm font-medium  dark:text-gray-800">Support Second Family</label>
                 </div>
                 <div className="flex items-center mb-6">
-                    <input  id="checked-checkbox" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <input  id="showFieldCheckbox" checked={isChecked} onChange={handleCheckboxChange} type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                     <label  className="ms-2 text-sm font-medium  dark:text-gray-800">Garnishment Arrears more than 12 months</label>
                 </div>
+                
+                
+                      {isChecked && ( // Conditionally render the field based on checkbox state
+                      <>
+                            <div className=" shadow appearance-none border max-w-96
+ p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outlineflex items-center  mb-6">
+                              <label className="block  text-gray-700 text-sm mt-2  ml-2 font-bold mb-2"> Arrears: </label>
+                              <input type="number"  className="shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter amount in $" />
+                            </div>
+                      </>
+                        )}
+               
 
                   <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-2">
                           <div>

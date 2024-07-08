@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 // eslint-disable-next-line no-unused-vars
-import { React, useState,useEffect } from 'react'
+import { React, useState, useEffect } from 'react'
 import Headertop from '../component/Headertop'
 import ProfileHeader from '../component/ProfileHeader'
 import Sidebar from '../component/sidebar'
@@ -18,7 +18,7 @@ function employee(onDeleteSuccess) {
 
  
   const id = localStorage.getItem("id");
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
   const Link = `https://garnishment-backend.onrender.com/User/ExportEmployees/${id}/`;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [data, setData] = useState(null);
@@ -31,11 +31,7 @@ function employee(onDeleteSuccess) {
         const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployeedetails/${id}/`); // Replace with your API URL
         const jsonData = await response.json();
         setData(jsonData.data);
-        // const len = data.length;
         
-        // const length = jsonData.length;s
-        // console.log(jsonData)    
-        // console.log(data.length)
       } catch (error) {
         console.error('Error fetching data:', error);
         // Handle errors appropriately (display error message, etc.)
@@ -48,10 +44,7 @@ function employee(onDeleteSuccess) {
     toast.success('All Employee Data !!');
   },[])
     // eslint-disable-next-line no-unused-vars
-   
-    
     const selectPageHandler = (seletedPage) =>{
-      
       setPage(seletedPage);
     }
 
@@ -137,14 +130,18 @@ function employee(onDeleteSuccess) {
       
   
   </table>
-  {data && <div className="pagination">
-        {/* { const l = data.length;} */}
+ 
+  {data?.length  > 0 &&  <div className="pagination">
+    
         <span className="text-sm p-2 mt-4 text-blue colr font-semibold">Pages : </span>
-        {[...Array(data.length / 10)].map((_,i) => {
+       
+        {[...Array(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))].map((_,i) => {
           // <span>1</span>
-          
+           console.log(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))
             // eslint-disable-next-line react/jsx-key
-            return <span className="text-sm p-2 mt-4 text-blue font-semibold" onClick={()=>selectPageHandler(i + 1)} key={i}>{i + 1}</span>
+            return <span className={`text-sm p-2 mt-4 custom-cls-pagei text-blue font-semibold ${
+              i === 0 ? 'active' : ''
+            }`} onClick={()=>selectPageHandler(i + 1)} key={i}>{i + 1}</span>
             
 
           })}
