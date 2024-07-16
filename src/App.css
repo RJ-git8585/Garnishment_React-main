@@ -174,3 +174,46 @@ h1.edit-profile.mt-6.inline-block svg {
   margin-left: 5px;
   padding: 7px !important;
 }
+
+.box {
+  margin: 70px auto;
+  padding: 20px;
+  /* background: #fff; */
+  border-radius: 5px;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  transition: all 5s ease-in-out;
+  left: 35%;
+}
+.box .popupform{
+  background: #fff !important;
+}
+
+span.close-icon {
+  position: relative;
+  top: 50px;
+  z-index: 9999;
+  left: -10px;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+} 
+/* .overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+visibility: visible;
+opacity: 1;
+} */

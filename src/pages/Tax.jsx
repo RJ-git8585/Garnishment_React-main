@@ -47,20 +47,23 @@ function Tax(onDeleteSuccess) {
        <Headertop />
        <ProfileHeader/>
        <hr />
-       <table className="border-separate border-spacing-2 border border-slate-500 ...">
+       <div className="flex flex-col mt-6">
+  <div className="-m-1.5 overflow-x-auto">
+    <div className="p-1.5 min-w-full inline-block align-middle">
+      <div className="overflow-hidden">
+      <table className="min-w-full divide-y divide-gray-200">
               
               <thead>
                 <tr>
-                <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th>
-                  <th className="text-center border border-slate-300  p-2 uppercase text-xs">Tax Id </th>
-                  <th className="border p-2 border-slate-300 uppercase text-xs">Employer Id</th>
-                  <th className="border border-slate-300 p-2 uppercase  text-xs">Fedral Income Tax</th>
-                  <th className="border border-slate-300 p-2 uppercase text-xs">Social Security</th>
-                  <th className="border border-slate-300 p-2 uppercase  text-xs">Medicare Tax</th>
-                  <th className="border border-slate-300 p-2 uppercase text-xs">State Taxes</th>
-
-                  <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
-                  <th className="border border-slate-300 p-2 uppercase text-xs">Action</th>
+                {/* <th className="text-center  border-slate-300 p-2 uppercase text-xs">Sr</th> */}
+                  <th className="pb-4 border-slate-300   uppercase text-xs">Tax Id </th>
+                  <th className=" pb-4 border-slate-300 uppercase text-xs">Employer Id</th>
+                  <th className=" pb-4 border-slate-300  uppercase  text-xs">Fedral Income Tax</th>
+                  <th className=" pb-4 border-slate-300 uppercase text-xs">Social Security</th>
+                  <th className=" pb-4 border-slate-300 uppercase  text-xs">Medicare Tax</th>
+                  <th className=" pb-4 border-slate-300 uppercase text-xs">State Taxes</th>
+                  <th className="pb-4  border-slate-300 uppercase text-xs">Action</th>
+                  <th className=" pb-4 border-slate-300 uppercase text-xs">Action</th>
                 </tr>
               </thead>
               
@@ -68,12 +71,12 @@ function Tax(onDeleteSuccess) {
              
                 <tbody> 
                
-               {data.map((item,index) => (
+               {data.map((item) => (
                
               
                   <tr key={item.employer_id}>
-                  <td className="border border-slate-300 text-xs">{index + 1}</td>
-                 <td className="border border-slate-300 text-xs">{item.tax_id}</td><td className="border border-slate-300 text-xs">{item.employer_id}</td><td className="border border-slate-300 text-xs">{item.fedral_income_tax}</td><td className="border border-slate-300 text-xs">{item.social_and_security}</td><td className="border border-slate-300 text-xs">{item.medicare_tax} </td><td className="border border-slate-300 text-xs">{item.state_taxes} </td><button className="py-2 px-3 text-sm bg-green-300 text-white font-semibold  shadow-md hover:bg-green-800 focus:outline-none focus:ring focus:ring-green-800 focus:ring-opacity-75" id={item.employee_id}>Edit</button><td>
+                  {/* <td className=" border-slate-300 text-xs">{index + 1}</td> */}
+                 <td className=" border-slate-300 text-xs">{item.tax_id}</td><td className=" border-slate-300 text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.fedral_income_tax}</td><td className=" border-slate-300 text-xs">{item.social_and_security}</td><td className=" border-slate-300 text-xs">{item.medicare_tax} </td><td className=" border-slate-300 text-xs">{item.state_taxes} </td><button className="py-2 button-cls text-sm  text-blue font-semibold" id={item.employee_id}>Edit</button><td>
                  <DeleteItemComponent
            id={item.employee_id} // Pass the record ID
            onDeleteSuccess={onDeleteSuccess} // Optional callback for successful deletion
@@ -91,6 +94,10 @@ function Tax(onDeleteSuccess) {
      )}
  
  </table>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
     </div>
     </div>

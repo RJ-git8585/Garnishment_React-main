@@ -1,27 +1,16 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Headertop from '../component/Headertop';
 import Sidebar from '../component/sidebar';
-// import MultiStep from 'react-multistep'
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-// eslint-disable-next-line react/prop-types
 function Garnishment( ) {
-  // console.log({data})sa
-  // // const [data, setData] = useState(null);
-  // if (!data) return null;
 
-  // // eslint-disable-next-line react/prop-types
-  // const options = data.map(item => ({ value: item.id, label: item.name }));
-
- 
-  // eslint-disable-next-line react-hooks/rules-of-hooks, no-unused-vars
-  const [empID, setEmpID] = useState(''); 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [empName, setEmpName] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [earning, setEarning] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [taxes, setTaxes] = useState();
+  
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [garnishmentFees, setGarnishmentFees] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -35,36 +24,77 @@ function Garnishment( ) {
   const [social, setSocial] = useState('');
   const [fit, setFit] = useState('');
   const [medicare, setMedicare] = useState('');
+  const [arrears, setArrears] = useState('');
+  const [statetax, setStateTax] = useState('');
   // const [state, setState] = useState('');
-  const [isChecked, setIsChecked] = useState(false); // Initialize checkbox state as unchecked
+  const [isChecked, setIsChecked] = useState(false);
+  const [isCheckedFamily, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
   // const [selectedValue, setSelectedValue] = useState(null);
+  const [options, setOptions] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
+  // const [data, setData] = useState(null);
+   
+  const employer_id = localStorage.getItem("id");
+  // const [empID, setEmpID] = useState(options[0].value);
 
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   // eslint-disable-next-line no-unused-vars
   const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked); // Update state based on checkbox click
+    setIsChecked(event.target.checked); 
+    
   };
- 
+  const handleCheckboxChange1 = (event) => {
+    setIsCheckedFamily(event.target.checked); // Update s
+  }
+
+
+  useEffect(() => {
+   // const name = localStorage.getItem("name");
+   const fetchData = async () => {
+    try {
+      const id = localStorage.getItem("id");
+      const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployeedetails/${id}/`); // Replace with your API URL
+      const jsonData = await response.json(options);
+      setOptions(jsonData.data);
+      console.log(jsonData.data)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      // Handle errors appropriately (display error message, etc.)
+    }
+  };
+
+  fetchData(); // Call the function
+  toast.success('All Employee Data !!');
+},[])
+
   const handleReset = () => {
-    setEmpID('');
+    setSelectedOption('');
     setEmpName('');
     setEarning('');
-    setTaxes('');
+    // setTaxes('');
     setGarnishmentFees('');
     setOrderID('');
     setState('');
     setSocial('');
     setFit('');
     setMedicare('');
+    setIsChecked('');
+    setIsCheckedFamily('');
+    setStateTax('');
+    setArrears('');
 };
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
-    console.log('Form submitted:', {
-      empID,
+    const data = {
+      employer_id,
+      selectedOption,
       empName,
       earning,
-      taxes,
+      // taxes,
       garnishmentFees,
       orderID,
       state,
@@ -72,11 +102,51 @@ function Garnishment( ) {
       totalAmount,
       social,
       fit,
-      medicare
-    });
+      medicare,
+      isChecked,
+      isCheckedFamily,
+      statetax,
+      arrears,
+    };
+    console.log(data)
+    fetch('https://garnishment-backend.onrender.com/User/CalculationDataView', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Handle successful submission
+          console.log('Data submitted successfully!');
+          
+          toast.success('Employee Added Successfully !!');
+          // navigate('/employee', { replace: true });
+          handleReset();
 
+          setSelectedOption('');
+          setEmpName('');
+          setEarning('');
+          // setTaxes('');
+          setGarnishmentFees('');
+          setSelectedOption('');
+          setOrderID('');
+          setState('');
+          setSocial('');
+          setFit('');
+          setMedicare('');
+          setIsChecked('');
+          setIsCheckedFamily('');
+          setStateTax('');
+          setArrears('');
+        } else {
+          // Handle submission errors
+          console.error('Error submitting data:', response.statusText);
+        }
+      });
    
-
+      console.log(options)
   
   };
 
@@ -93,28 +163,36 @@ function Garnishment( ) {
               <h2 className="text-2xl font-bold mb-2">Garnishment Form</h2>
               <form onSubmit={handleSubmit}>
               {/* <MultiStep activeStep={2} > */}
+                       
+            <div className='hidden'> 
+                        
+                        <div className="mt-2 hidden">
+                          <input
+                            id="employer_id"
+                            name="employer_id"
+                             value={employer_id}
+                            type="hidden"
+                            // autoComplete="employee_name"
+                            // onChange={(e) => setEid(e.target.value)}
+                            
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                          />
+                        </div>
+                      </div>
                 <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   <div>
                     <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
                       Employee ID:
                     </label>
-                    <select id="countries" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500" required>
-                      <option selected>Choose a Employee</option>
-                      <option value="0001">0001</option>
-                      <option value="0002">0002</option>
-                      <option value="0003">0003</option>
-                      <option value="0004">0004</option>
-                      <option value="0005">0005</option>
-                      <option value="0006">0006</option>
-                      <option value="0007">0007</option>
-                      <option value="0008">0008</option>
-                      <option value="0003">0009</option>
-                      <option value="0004">0010</option>
-                      <option value="0005">0011</option>
-                      <option value="0006">0012</option>
-                      <option value="0007">0013</option>
-                      <option value="0008">0014</option>
-                    </select>
+               
+                    <select value={selectedOption} onChange={handleChange} id="countries" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500" required>
+                        <option value="">Select an option</option>
+                        {options.map((option) => (
+                          <option key={option.employee_id} value={option.employee_id}>
+                            {option.employee_name}_{option.employee_id} 
+                          </option>
+                        ))}
+                      </select>
                   </div>
                   <div>
                     <label htmlFor="empName" className="block text-gray-700 text-sm font-bold mb-2">
@@ -206,7 +284,7 @@ function Garnishment( ) {
                     <span className="text-sm mb-4 text-2xl font-bold  text-gray-700">Taxes Details </span>  
 
                 <div className="flex items-center mt-4 mb-4">
-                    <input id="default-checkbox" type="checkbox" onChange={(e) => setTaxes(e.target.value)} value={taxes} className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <input id="showFieldCheckboxFamily" checked={isCheckedFamily} onChange={handleCheckboxChange1} type="checkbox"  value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                     <label  className="ms-2 text-sm font-medium  dark:text-gray-800">Support Second Family</label>
                 </div>
                 <div className="flex items-center mb-6">
@@ -220,7 +298,8 @@ function Garnishment( ) {
                             <div className=" shadow appearance-none border max-w-96
  p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outlineflex items-center  mb-6">
                               <label className="block  text-gray-700 text-sm mt-2  ml-2 font-bold mb-2"> Arrears: </label>
-                              <input type="number"  className="shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter amount in $" />
+                              <input type="number"  value={arrears}
+                      onChange={(e) => setArrears(e.target.value)} className="shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter amount in $" />
                             </div>
                       </>
                         )}
@@ -232,7 +311,7 @@ function Garnishment( ) {
                                     Federal Income Tax:
                                   </label>
                                   <input
-                                    type="text"
+                                    type="number"
                                     id="fit"
                                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     value={fit}
@@ -244,7 +323,7 @@ function Garnishment( ) {
                                     Social Security Tax:
                                   </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     id="social"
                                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     value={social}
@@ -256,7 +335,7 @@ function Garnishment( ) {
                                     Medicare Tax:
                                   </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     id="medicare"
                                     className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     value={medicare}
@@ -268,11 +347,11 @@ function Garnishment( ) {
                                     State Tax:
                                   </label>
                                 <input
-                                    type="text"
+                                    type="number"
                                     id="state"
                                     className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={state}
-                                    onChange={(e) => setState(e.target.value)}
+                                    value={statetax}
+                                    onChange={(e) => setStateTax(e.target.value)}
                                   />
                             </div>
                  

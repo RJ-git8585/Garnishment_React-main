@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
+
 // eslint-disable-next-line no-unused-vars
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,6 +29,7 @@ import Department from './pages/department';
 import Location from './pages/location';
 import Iwo from './pages/iwo';
 import Apis from './component/Apis';
+import PasswordResetConfirm from './pages/PasswordResetConfirm';
 
 function App() {
   return (
@@ -58,7 +60,7 @@ function App() {
         <Route path="/iwo" element={<PrivateRoute><Iwo /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
         <Route path="apis" element={<Apis />} />
-     
+        <Route path="/reset-password/:token" element={<PasswordResetConfirm />} />
       
       </Routes>
     </BrowserRouter>

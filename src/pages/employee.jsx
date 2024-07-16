@@ -7,13 +7,14 @@ import Sidebar from '../component/sidebar'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DeleteItemComponent from '../component/DeleteItemComponent';
+import EditItemComponent from '../component/editItemComponent';
 import { CgImport } from "react-icons/cg";
 import { TiExport } from "react-icons/ti";
 // import Garnishment from './Garnishment';
 
 
 
-function employee(onDeleteSuccess) {
+function employee(onDeleteSuccess,onEditSuccess) {
 
 
  
@@ -38,8 +39,6 @@ function employee(onDeleteSuccess) {
       }
     };
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks, no-undef
-    
     fetchData(); // Call the function
     toast.success('All Employee Data !!');
   },[])
@@ -106,7 +105,12 @@ function employee(onDeleteSuccess) {
                 
                    <tr key={item.employer_id}>
                    {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                  <td className="  text-xs">{item.employee_name}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.location}</td><td className=" border-slate-300 text-xs">{item.department}</td><td className=" border-slate-300 text-xs">{item.number_of_garnishment}</td><td className=" border-slate-300 text-xs">{item.pay_cycle} </td><button className=" button-cls text-sm  text-blue font-semibold " id={item.employee_id}>Edit</button><td>
+                  <td className="  text-xs">{item.employee_name}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.location}</td><td className=" border-slate-300 text-xs">{item.department}</td><td className=" border-slate-300 text-xs">{item.number_of_garnishment}</td><td className=" border-slate-300 text-xs">{item.pay_cycle} </td><td>
+                  <EditItemComponent
+            id={item.employee_id} // Pass the record ID
+            onEditSuccess={onEditSuccess} // Optional callback for successful deletion
+          />
+                  </td><td>
                   <DeleteItemComponent
             id={item.employee_id} // Pass the record ID
             onDeleteSuccess={onDeleteSuccess} // Optional callback for successful deletion
@@ -135,14 +139,16 @@ function employee(onDeleteSuccess) {
     
         <span className="text-sm p-2 mt-4 text-blue colr font-semibold">Pages : </span>
        
-        {[...Array(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))].map((_,i) => {
-          // <span>1</span>
-           console.log(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))
-            // eslint-disable-next-line react/jsx-key
-            return <span className={`text-sm p-2 mt-4 custom-cls-pagei text-blue font-semibold ${
-              i === 0 ? 'active' : ''
-            }`} onClick={()=>selectPageHandler(i + 1)} key={i}>{i + 1}</span>
-            
+          {[...Array(Math.ceil(data.length / 10 ))].map((_,i) => {
+            // <span>1</span>
+            // console.log(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))
+            // console.log(Math.trunc(data.length / 10));
+            // console.log(Math.ceil(data.length / 10 ));
+              // eslint-disable-next-line react/jsx-key
+              return <span className={`text-sm p-2 mt-4 custom-cls-pagei text-blue font-semibold ${
+                i === 0 ? 'active' : ''
+              }`} onClick={()=>selectPageHandler(i + 1)} key={i}>{i + 1}</span>
+              
 
           })}
         {/* <span>2</span>
