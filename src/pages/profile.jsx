@@ -1,16 +1,57 @@
 // import React from 'react'
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 // import axios from 'axios'
 // import { Link } from 'react-router-dom'
 import Sidebar from '../component/sidebar'
+import {  toast } from 'react-toastify';
 import Headertop from '../component/Headertop'
-import ProfileHeader from '../component/ProfileHeader'
-// import { FaTools } from "react-icons/fa";
+// import ProfileHeader from '../component/ProfileHeader'
+// import { Field, Label, Switch } from '@headlessui/react'
+// import { ChevronDownIcon } from '@heroicons/react/20/solid'
+// import { FaTools } from "  /fa";
+import { FaUserCheck } from "react-icons/fa";
 
 
 function Profile() {
+  // const INITIAL_STATE = {
+  //   id: 0,
+  //   name: "",
+  //   email: ""
+  // };
+  // eslint-disable-next-line no-unused-vars
+  // const [Empname, setEmpname] = useState();
+  const [data, setData] = useState([]);
+  // const [user, setUser] = useState(INITIAL_STATE); 
+  // eslint-disable-next-line no-unused-vars
+  // const [userData, setUserData] = useState({}); 
+  // const [jsonData, setData] = useState([]);
 
+  useEffect(()=>{
+ 
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://garnishment-backend.onrender.com/User/getemployerdetails/11'); // Replace with your API URL
+        const jsonData = await response.json();
+        setData(jsonData.data) ;
+       console.log(jsonData)  
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle errors appropriately (display error message, etc.)
+      }
+    };
+    fetchData();
+    // Call the function
+     // alert('Welcome to Dashboard')
+     toast.success('Welcome to Dashboard!', {
+       position: 'bottom-left', // Set the position here
+     });
+ 
+   },[])
 
+  //  const handleInput = (e) => {
+  //   console.log(e.target.name, " : ", e.target.value);
+  //   setUser({ ...user, [e.target.name]: e.target.value });
+  // };
   return (
     <div>
          <header className="bg-white bg-gray-800 shadow">
@@ -22,37 +63,240 @@ function Profile() {
         <div className='sidebar'><Sidebar/></div>
         <div className="contant content ml-auto ">
         <Headertop />
-        <ProfileHeader/>
-          <hr />
-
-
+        <h1 className='edit-profile mt-6 inline-block'><FaUserCheck /> Profile</h1>
+        {/* <ProfileHeader/> */}
           
-                    <form className=" grid grid-cols-2 gap-4 rounded-md space-y-6 p-6 " action="#" method="POST">
-                    
-                   
 
-                    <label className="inline-flex items-center mb-5 cursor-pointer">
-  <input type="checkbox" value="" className="sr-only peer"/>
-  <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-  <span className="ms-3 text-sm font-medium  dark:text-gray-600">Dark More</span>
-</label>
-<label className="inline-flex items-center mb-5 cursor-pointer">
-  <input type="checkbox" value="" className="sr-only peer"/>
-  <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-  <span className="ms-3 text-sm font-medium  dark:text-gray-600">Active Profile for Others</span>
-</label>
+          <div className="isolate bg-white px-6 sm:py-2 lg:px-8">
 
-
-
-
-
-
-
-
-
-
-        </form>
-
+      <div className="max-w-2xl ">
+        {/* <h2 className="text-3xl font-bold tracking-tight text-black-900 sm:text-4xl">Profile</h2> */}
+        
+      </div>
+      {data?.length > 0 && (
+  data.map((item) => (<>
+      <form action="#" method="POST" className=" mt-4  sm:mt-0">
+        <div className="grid grid-cols-4 gap-x-8 gap-y-6 sm:grid-cols-3">
+          <div>
+            <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-black-900">
+            Employer Name
+            </label>
+            <div className="mt-2.5">
+              {/* <h6 className="text-sm border-1 rounded-lg p-2 block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{item.employer_name}</h6> */}
+              <input
+                id="first-name"
+                name="first-name"
+                type="text"
+                value={item.employer_name}
+                // onChange={e => sethandleInput}
+                autoComplete="given-name"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="username" className="block text-sm font-semibold leading-6 text-black-900">
+            Username
+            </label>
+            <div className="mt-2.5">
+            {/* <h4 className="text-sm border-1 rounded-lg p-2 block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{item.username}</h4> */}
+              <input
+                id="username"
+                name="username"
+                type="text"
+                value={item.username}
+                autoComplete="family-name"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-black-900">
+            Department
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="last-name"
+                name="last-name"
+                type="text"
+                value={item.department ? item.department:'NA'}
+                autoComplete="family-name"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="company" className="block text-sm font-semibold leading-6 text-black-900">
+            Location
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="company"
+                name="company"
+                type="text"
+                value={item.location ? item.location:'NA'}
+                autoComplete="organization"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-2">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+              Email
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={item.email ? item.email:'NA'}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            City
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={item.city ? item.city:'NA'}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            State
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={item.state ? item.state:'NA'}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            Number of Employees
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={item.number_of_employees ? item.number_of_employees:'NA'}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="sm:col-span-2">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            Country
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={item.country ? item.country:'NA'}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            Zipcode
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                // value={item.zipcode}
+                value={item.zipcode ? item.zipcode:'NA'}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            Street Name
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                // value={item.street_name}
+                value={item.street_name ? item.street_name:'NA'}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            Federal Employer Identification Number
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                value={item.federal_employer_identification_number ? item.federal_employer_identification_number:'NA'}
+                // value={item.federal_employer_identification_number}
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-black-900">
+            Employer Id
+            </label>
+            <div className="mt-2.5">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={item.employer_id}
+                autoComplete="email"
+                className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              disabled/>
+            </div>
+          </div>
+         <div></div>
+          <div className="mt-6 flex items-center justify-end gap-x-6">
+        <button type="button" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          Cancel
+        </button>
+        <button
+          type="submit"
+          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Save
+        </button>
+      </div>
+         
+        </div>
+      </form>
+      </>
+                    ))
+                  )}
+    </div>
                       
     </div>
     </div>

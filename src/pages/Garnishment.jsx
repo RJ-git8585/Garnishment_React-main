@@ -4,6 +4,7 @@ import Headertop from '../component/Headertop';
 import Sidebar from '../component/sidebar';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaBalanceScaleRight } from "react-icons/fa";
 
 function Garnishment( ) {
 
@@ -159,8 +160,9 @@ function Garnishment( ) {
           </div>
           <div className="contant content ml-auto">
             <Headertop />
-            <div className="p-4">
-              <h2 className="text-2xl font-bold mb-2">Garnishment Form</h2>
+            <div className="p-0">
+              {/* <h1 className="uppercase font-bold mb-4 inline-block"><FaBalanceScaleRight/>Garnishment Calcultor</h1> */}
+              <h1 className='edit-profile mt-6 mb-4 inline-block'><FaBalanceScaleRight/>Garnishment Calculator</h1>
               <form onSubmit={handleSubmit}>
               {/* <MultiStep activeStep={2} > */}
                        

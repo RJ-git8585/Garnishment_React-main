@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import {react,useState,useEffect} from 'react'
+import {react,useState,useEffect,useLocation} from 'react'
 // import { Link } from 'react-router-dom';
 // import {ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
@@ -8,13 +8,16 @@ import {react,useState,useEffect} from 'react'
 
 
 
-function ProfileHeader(  ) {
+function ProfileHeader( ) {
+  // eslint-disable-next-line no-unused-vars
+  // const location = useLocation();
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
   // const [isLoading, setIsLoading] = useState(false);
-  const name = localStorage.getItem("name");
+  // const name = localStorage.getItem("name");
+  // const [showResults, setShowResults] = React.useState(false)  
  
   // eslint-disable-next-line no-unused-vars
   // const [showButton, setShowButton] = useState(true);
@@ -22,10 +25,9 @@ function ProfileHeader(  ) {
 
   return (
     <div>
-        
         <div className="lg:flex lg:items-center lg:justify-between mb-8">
   <div className="min-w-0 flex-1">
-    <h2 className="text-2xl font-bold leading-7 text-black-900 sm:truncate sm:text-3xl sm:tracking-tight">Welcome <span className="text-red-400">{name}</span></h2>
+    <h2 className="text-2xl font-bold leading-7 text-black-900 sm:truncate sm:text-3xl sm:tracking-tight">Welcome To Garnishment</h2>
     <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
       <div className="mt-2 flex items-center text-sm text-gray-500">
         <svg className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -51,9 +53,11 @@ function ProfileHeader(  ) {
     </span>
 
     <span className="ml-3 hidden sm:block">
+    {/* {location.pathname !== '/profile' && ( */}
       <a type="button" href="/department" className="inline-flex items-center rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-black-900 text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-300">
         Depart
       </a>
+      {/* // )} */}
     </span>
 
     <span className="sm:ml-3">

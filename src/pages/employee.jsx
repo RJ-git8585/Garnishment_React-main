@@ -20,6 +20,7 @@ function employee(onDeleteSuccess,onEditSuccess) {
  
   const id = localStorage.getItem("id");
   const [page, setPage] = useState(1);
+  // const [isLoading, setIsLoading] = useState(true);
   const Link = `https://garnishment-backend.onrender.com/User/ExportEmployees/${id}/`;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [data, setData] = useState(null);
@@ -37,6 +38,7 @@ function employee(onDeleteSuccess,onEditSuccess) {
         console.error('Error fetching data:', error);
         // Handle errors appropriately (display error message, etc.)
       }
+      
     };
 
     fetchData(); // Call the function
@@ -90,11 +92,13 @@ function employee(onDeleteSuccess,onEditSuccess) {
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Minimum Wages</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Netpay</th> */}
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">N0. of Garnihsment</th>
+                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Calculation</th> */}
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Pay Cycle</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
                  </tr>
                </thead>
+               
                
             {data?.length  > 0  && (
               
@@ -102,13 +106,13 @@ function employee(onDeleteSuccess,onEditSuccess) {
                 
                 {data.slice(page * 10 - 10,page * 10).map((item) => (
                 
-                
                    <tr key={item.employer_id}>
                    {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                  <td className="  text-xs">{item.employee_name}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.location}</td><td className=" border-slate-300 text-xs">{item.department}</td><td className=" border-slate-300 text-xs">{item.number_of_garnishment}</td><td className=" border-slate-300 text-xs">{item.pay_cycle} </td><td>
-                  <EditItemComponent
-            id={item.employee_id} // Pass the record ID
-            onEditSuccess={onEditSuccess} // Optional callback for successful deletion
+                  <td className="  text-xs">{item.employee_name}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.location}</td><td className=" border-slate-300 text-xs">{item.department}</td><td className=" border-slate-300 custom-cls_td col-span-full text-xs">{item.number_of_garnishment}</td>
+                  {/* <td>NA</td> */}
+                  <td className=" border-slate-300 text-xs">{item.pay_cycle} </td><td>
+                  <EditItemComponent id={item.employee_id} // Pass the record ID
+ onEditSuccess={onEditSuccess} // Optional callback for successful deletion
           />
                   </td><td>
                   <DeleteItemComponent
@@ -116,22 +120,18 @@ function employee(onDeleteSuccess,onEditSuccess) {
             onDeleteSuccess={onDeleteSuccess} // Optional callback for successful deletion
           />
                   </td>
-
-
-                  {/* <td className=" border-slate-300 text-xs">{item.minimun_wages}</td><td className=" border-slate-300 text-xs">{item.net_pay}</td> */}
-                
                   </tr>
-                
-              
-  
-                ))}
+                )) }
+
              </tbody>
              
             
                
-      )}
+      )
       
+      }
       
+     
   
   </table>
  
@@ -139,8 +139,7 @@ function employee(onDeleteSuccess,onEditSuccess) {
     
         <span className="text-sm p-2 mt-4 text-blue colr font-semibold">Pages : </span>
        
-          {[...Array(Math.ceil(data.length / 10 ))].map((_,i) => {
-            // <span>1</span>
+          {[...Array(Math.ceil(data.length / 10 ))].map((_,i) => {    // <span>1</span>
             // console.log(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))
             // console.log(Math.trunc(data.length / 10));
             // console.log(Math.ceil(data.length / 10 ));

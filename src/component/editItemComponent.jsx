@@ -9,50 +9,45 @@ import 'react-toastify/dist/ReactToastify.css';
 function editItemComponent({id,onDeleteSuccess, onDeleteError}) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [data, setData] = useState([]);
+  // const [jsonData, setjson] = useState([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [isOpen, setIsOpen] = useState(false);
 
   const togglePopup = (id) => {
-       console.log(`this is {{id}}`)
-      //  const iden = console.log(id)
+
        fetchData(id);
-    setIsOpen(!isOpen); 
+       setIsOpen(!isOpen); 
 
   }
     const fetchData = async (id) => {
+      // alert(id)
       try {
         const response = await fetch(`https://garnishment-backend.onrender.com/User/GetSingleEmployee/11/${id}/`); // Replace with your API URL
-        const jsonData = await response.json(data);
-        setData(jsonData.data) ;
+        const jsonData = await response.json();
+        setData(jsonData.data);
         console.log(jsonData)  
       } catch (error) {
         console.error('Error fetching data:', error);
         // Handle errors appropriately (display error message, etc.)
       }
     };
-   
-
- 
-
   return (
     <div>
 
-<button onClick={togglePopup} key={id} id={id} className="py-2 button-cls text-sm  text-blue font-semibold">Edit</button>
+<button  onClick={() => togglePopup(id)} key={id} id={id} className="py-2 button-cls text-sm  text-blue font-semibold">Edit</button>
 {isOpen && <Popup
       content={<>
+      {data?.length > 0 && (
+  data.map((item) => (<>
 <form className="popupform grid grid-cols-2 gap-2 mt-8 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
 
-                      <div className='hidden'> 
-                                  
+                      <div className='hidden'>  
                                   <div className="mt-2 hidden">
                                     <input
                                       id="employer_id"
                                       name="employer_id"
-                                      value=""
+                                      value={item.employer_id}
                                       type="hidden"
-                                      // autoComplete="employee_name"
-                                      //  onChange={(e) => setEid(e.target.id)}
-                                      
                                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     />
                                   </div>
@@ -65,7 +60,7 @@ function editItemComponent({id,onDeleteSuccess, onDeleteError}) {
                                     <input
                                       id="employee_name"
                                       name="employee_name"
-                                      value=""
+                                      value={item.employee_name}
                                       type="text"
                                       autoComplete="employee_name"
                                       // onChange={(e) => setName(e.target.value)}
@@ -82,7 +77,7 @@ function editItemComponent({id,onDeleteSuccess, onDeleteError}) {
                                     <input
                                       id="department"
                                       name="department"
-                                      value=""
+                                      value={item.department}
                                       type="text"
                                       step="1"
                                       autoComplete="name"
@@ -191,6 +186,9 @@ function editItemComponent({id,onDeleteSuccess, onDeleteError}) {
           </div>
  
                     </form>
+                    </>
+                    ))
+                  )}
                     </>}
       handleClose={togglePopup}
     />}

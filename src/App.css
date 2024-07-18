@@ -202,6 +202,10 @@ span.close-icon {
   border-radius: 50%;
   cursor: pointer;
 } 
+td.border-slate-300.custom-cls_td.col-span-full.text-xs {
+  padding-right: 80px;
+  text-align: right;
+}
 /* .overlay {
   position: fixed;
   top: 0;

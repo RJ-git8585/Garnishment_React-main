@@ -13,7 +13,7 @@ import ProfileHeader from '../component/ProfileHeader';
 
 
 
-function dashboard() {
+function dashboard(  ) {
   
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [jsonData, setData] = useState([]);
@@ -63,10 +63,6 @@ useEffect(()=>{
       position: 'bottom-left', // Set the position here
     });
 
-    
-
-
-  
   },[])
     // eslint-disable-next-line no-unused-vars
     const { Active_employees,Employees_with_Multiple_IWO,Total_IWO,Employees_with_Single_IWO } = jsonData;
@@ -82,7 +78,9 @@ useEffect(()=>{
         <div className='sidebar'><Sidebar/></div>
         
         <div className=' contant content ml-auto '>
+        {/* {isHidden ? null : (  */}
         <Headertop />
+      {/* )} */}
             <ProfileHeader/>
             
      
@@ -120,7 +118,7 @@ useEffect(()=>{
         ))}
       </ul>
     ) : (
-      <p>Loading Activity...</p>
+      <p className="text-sm">Loading Activity...</p>
     )}
               </div>
               <div className=" border-single border-2 rounded-xl ml-2">
@@ -134,7 +132,7 @@ useEffect(()=>{
         ))}
       </ul>
     ) : (
-      <p>Loading Logs...</p>
+      <p className="text-sm">Loading Logs...</p>
     )}
               </div>
 </div>
