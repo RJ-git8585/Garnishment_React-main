@@ -10,18 +10,9 @@ import {react,useState,useEffect,useLocation} from 'react'
 
 function ProfileHeader( ) {
   // eslint-disable-next-line no-unused-vars
-  // const location = useLocation();
-  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const name = localStorage.getItem("name");
-  // const [showResults, setShowResults] = React.useState(false)  
- 
-  // eslint-disable-next-line no-unused-vars
-  // const [showButton, setShowButton] = useState(true);
-
 
   return (
     <div>
@@ -89,6 +80,7 @@ function ProfileHeader( ) {
     </div>
   </div>
 </div>
+<hr></hr>
 {/* <ToastContainer /> */}
     </div>
   )

@@ -206,6 +206,13 @@ td.border-slate-300.custom-cls_td.col-span-full.text-xs {
   padding-right: 80px;
   text-align: right;
 }
+
+.nodatacls{
+font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: gray;
+}
 /* .overlay {
   position: fixed;
   top: 0;
@@ -221,3 +228,14 @@ td.border-slate-300.custom-cls_td.col-span-full.text-xs {
 visibility: visible;
 opacity: 1;
 } */
+
+.custom-select {
+  appearance: none; 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  background-image: url('/src/arrow.png');
+  background-position: right center;
+  background-size: 20px 20px;
+  padding-right: 30px;
+  background-repeat:no-repeat ;
+}

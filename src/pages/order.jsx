@@ -7,19 +7,19 @@ import Sidebar from '../component/sidebar'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DeleteItemComponent from '../component/DeleteItemComponent';
-import EditItemComponent from '../component/editItemComponent';
+// import EditItemComponent from '../component/editItemComponent';
 import { CgImport } from "react-icons/cg";
 import { TiExport } from "react-icons/ti";
 // import Garnishment from './Garnishment';
-import load  from '../bouncing-circles.svg';
 
 
 
-function employee(onDeleteSuccess,onEditSuccess) {
-  // this is for the pagination
+function order(onDeleteSuccess) {
+
+
+ 
   const id = localStorage.getItem("id");
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
   // const [Loading, setIsLoading] = useState(true);
   const Link = `https://garnishment-backend.onrender.com/User/ExportEmployees/${id}/`;
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -28,17 +28,14 @@ function employee(onDeleteSuccess,onEditSuccess) {
   useEffect(()=>{
   // const name = localStorage.getItem("name");
     const fetchData = async () => {
-      setLoading(true);
       try {
         const id = localStorage.getItem("id");
-        const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployeedetails/${id}/`); // Replace with your API URL
+        const response = await fetch(`https://garnishment-backend.onrender.com/User/GetResultDetails/${id}/`); // Replace with your API URL
         const jsonData = await response.json();
         setData(jsonData.data);
-        setLoading(false);
         
       } catch (error) {
         console.error('Error fetching data:', error);
-        setLoading(false);
         // Handle errors appropriately (display error message, etc.)
       }
       
@@ -82,75 +79,69 @@ function employee(onDeleteSuccess,onEditSuccess) {
   <div className="-m-1.5 overflow-x-auto">
     <div className="p-1.5 min-w-full inline-block align-middle">
       <div className="overflow-hidden">
-     
             <table className="min-w-full divide-y divide-gray-200">
-          
+              
                <thead>
                  <tr>
                  {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employee Name</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">ID</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employee Id</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employer Id</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Location</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Department</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">NetPay</th>
+                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Department</th> */}
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Minimum Wages</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Netpay</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">N0. of Garnihsment</th>
+                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">N0. of Garnihsment</th> */}
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Calculation</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Pay Cycle</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">TimeStamp</th>
+                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th> */}
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
                  </tr>
                </thead>
               
                
-                {loading ? (
-          <div className="text-sm w-full  text-center m-0"><div className="text-sm w-full  text-center m-0"><img
-          className="mx-auto h-10 logo-inner w-auto custom_logo_side"
-          src={load}
-          alt="Your Company"
-        /></div></div>
-        ) : data ? (
+            {data?.length  > 0  && (
               
                  <tbody className='divide-y divide-gray-200'> 
                 
-                {data.slice(page * 10 - 10,page * 10).map((item) => (
+                {data.slice(page * 5 - 5,page * 5).map((item) => (
                 
-                   <tr key={item.employer_id}>
+                   <tr key={item.id}>
                    {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                  <td className="  text-xs">{item.employee_name}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.location}</td><td className=" border-slate-300 text-xs">{item.department}</td><td className=" border-slate-300 custom-cls_td col-span-full text-xs">{item.number_of_garnishment}</td>
+                  <td className="  text-xs">{item.id}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.result}</td><td className=" border-slate-300 text-xs">{item.timestamp}</td>
                   {/* <td>NA</td> */}
-                  <td className=" border-slate-300 text-xs">{item.pay_cycle} </td><td>
+                  {/* <td>
                   <EditItemComponent id={item.employee_id} // Pass the record ID
  onEditSuccess={onEditSuccess} // Optional callback for successful deletion
           />
-                  </td><td>
+                  </td>*/}
+                  <td> 
                   <DeleteItemComponent
             id={item.employee_id} // Pass the record ID
             onDeleteSuccess={onDeleteSuccess} // Optional callback for successful deletion
           />
                   </td>
                   </tr>
-                )) } 
+                )) }
+              
              </tbody>
              
             
                
-          
+      )
       
-            ) : <div className="text-center text-sm nodatacls">No data found</div>}
+      }
+      
+     
   
   </table>
-  
+ 
   {data?.length  > 0 &&  <div className="pagination">
     
         <span className="text-sm p-2 mt-4 text-blue colr font-semibold">Pages : </span>
        
-          {[...Array(Math.ceil(data.length / 10 ))].map((_,i) => {    // <span>1</span>
-            // console.log(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))
-            // console.log(Math.trunc(data.length / 10));
-            // console.log(Math.ceil(data.length / 10 ));
-              // eslint-disable-next-line react/jsx-key
+          {[...Array(Math.ceil(data.length / 5 ))].map((_,i) => {    // <span>1</span>
+       
               return <span className={`text-sm p-2 mt-4 custom-cls-pagei text-blue font-semibold ${
                 i === 0 ? 'active' : ''
               }`} onClick={()=>selectPageHandler(i + 1)} key={i}>{i + 1}</span>
@@ -179,4 +170,4 @@ function employee(onDeleteSuccess,onEditSuccess) {
   )
 }
 
-export default employee
+export default order

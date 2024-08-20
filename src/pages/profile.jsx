@@ -10,7 +10,7 @@ import Headertop from '../component/Headertop'
 // import { ChevronDownIcon } from '@heroicons/react/20/solid'
 // import { FaTools } from "  /fa";
 import { FaUserCheck } from "react-icons/fa";
-
+import load  from '../bouncing-circles.svg';
 
 function Profile() {
   // const INITIAL_STATE = {
@@ -20,22 +20,29 @@ function Profile() {
   // };
   // eslint-disable-next-line no-unused-vars
   // const [Empname, setEmpname] = useState();
+  const [loading, setLoading] = useState(false);
+  const employer_id = (parseInt(localStorage.getItem("id")));
   const [data, setData] = useState([]);
   // const [user, setUser] = useState(INITIAL_STATE); 
   // eslint-disable-next-line no-unused-vars
   // const [userData, setUserData] = useState({}); 
   // const [jsonData, setData] = useState([]);
 
+
   useEffect(()=>{
  
     const fetchData = async () => {
+      setLoading(true);
       try {
-        const response = await fetch('https://garnishment-backend.onrender.com/User/getemployerdetails/11'); // Replace with your API URL
+        const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployerdetails/${employer_id}`);
+         // Replace with your API URL
         const jsonData = await response.json();
         setData(jsonData.data) ;
-       console.log(jsonData)  
+       console.log(jsonData);
+       setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false);
         // Handle errors appropriately (display error message, etc.)
       }
     };
@@ -73,8 +80,16 @@ function Profile() {
         {/* <h2 className="text-3xl font-bold tracking-tight text-black-900 sm:text-4xl">Profile</h2> */}
         
       </div>
-      {data?.length > 0 && (
-  data.map((item) => (<>
+      {loading ? (
+          <div className="text-sm w-full  text-center m-0"><img
+          className="mx-auto h-10 logo-inner w-auto custom_logo_side"
+          src={load}
+          alt="Your Company"
+        /></div>
+        ) : data ? (
+      (data.map((item) => (
+  
+  <>
       <form action="#" method="POST" className=" mt-4  sm:mt-0">
         <div className="grid grid-cols-4 gap-x-8 gap-y-6 sm:grid-cols-3">
           <div>
@@ -163,7 +178,7 @@ function Profile() {
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 value={item.city ? item.city:'NA'}
                 autoComplete="email"
                 className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -178,7 +193,7 @@ function Profile() {
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 value={item.state ? item.state:'NA'}
                 autoComplete="email"
                 className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -193,8 +208,8 @@ function Profile() {
               <input
                 id="email"
                 name="email"
-                type="email"
-                value={item.number_of_employees ? item.number_of_employees:'NA'}
+                type="number"
+                value={item.number_of_employees ? item.number_of_employees:'0'}
                 autoComplete="email"
                 className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -208,7 +223,7 @@ function Profile() {
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 value={item.country ? item.country:'NA'}
                 autoComplete="email"
                 className="block w-full rounded-md border-1 px-3.5 py-2 text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -223,7 +238,7 @@ function Profile() {
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 // value={item.zipcode}
                 value={item.zipcode ? item.zipcode:'NA'}
                 autoComplete="email"
@@ -239,7 +254,7 @@ function Profile() {
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 // value={item.street_name}
                 value={item.street_name ? item.street_name:'NA'}
                 autoComplete="email"
@@ -255,7 +270,7 @@ function Profile() {
               <input
                 id="email"
                 name="email"
-                type="email"
+                type="text"
                 autoComplete="email"
                 value={item.federal_employer_identification_number ? item.federal_employer_identification_number:'NA'}
                 // value={item.federal_employer_identification_number}
@@ -279,7 +294,7 @@ function Profile() {
             </div>
           </div>
          <div></div>
-          <div className="mt-6 flex items-center justify-end gap-x-6">
+          <div className="mt-6 flex items-center justify gap-x-6">
         <button type="button" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
           Cancel
         </button>
@@ -287,15 +302,26 @@ function Profile() {
           type="submit"
           className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Save
+          Update
+        </button>
+        <button
+          type="submit"
+          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Edit
         </button>
       </div>
          
         </div>
       </form>
-      </>
-                    ))
-                  )}
+      </> 
+                    
+                    
+                  )) ))
+
+             
+                 : <div className="text-center text-sm nodatacls">No data found</div>}
+                  
     </div>
                       
     </div>

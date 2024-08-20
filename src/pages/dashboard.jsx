@@ -9,7 +9,7 @@ import { DiJqueryLogo } from "react-icons/di";
 
 import Headertop from '../component/Headertop'
 import ProfileHeader from '../component/ProfileHeader';
-
+import load  from '../bouncing-circles.svg';
 
 
 
@@ -21,6 +21,7 @@ function dashboard(  ) {
   const [jsonDatalog, setDatalog] = useState([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [data, setData1] = useState([]);
+  
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useEffect(()=>{
  
@@ -51,14 +52,8 @@ useEffect(()=>{
         // Handle errors appropriately (display error message, etc.)
       }
     };
-    // const data1 =;
-    // console.log(da)
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    
       logsData();
       fetchData();
-   // Call the function
-    // alert('Welcome to Dashboard')
     toast.success('Welcome to Dashboard!', {
       position: 'bottom-left', // Set the position here
     });
@@ -118,7 +113,11 @@ useEffect(()=>{
         ))}
       </ul>
     ) : (
-      <p className="text-sm">Loading Activity...</p>
+      <p className="text-sm"><div className="text-sm w-full  text-center m-0"><div className="text-sm w-full  text-center m-0"><img
+      className="mx-auto h-10 logo-inner w-auto custom_logo_side"
+      src={load}
+      alt="Your Company"
+    /></div></div></p>
     )}
               </div>
               <div className=" border-single border-2 rounded-xl ml-2">
@@ -132,7 +131,11 @@ useEffect(()=>{
         ))}
       </ul>
     ) : (
-      <p className="text-sm">Loading Logs...</p>
+      <p className="text-sm"><div className="text-sm w-full  text-center m-0"><div className="text-sm w-full  text-center m-0"><img
+      className="mx-auto h-10 logo-inner w-auto custom_logo_side"
+      src={load}
+      alt="Your Company"
+    /></div></div></p>
     )}
               </div>
 </div>

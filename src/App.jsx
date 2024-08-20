@@ -30,6 +30,7 @@ import Location from './pages/location';
 import Iwo from './pages/iwo';
 import Apis from './component/Apis';
 import PasswordResetConfirm from './pages/PasswordResetConfirm';
+import Order from './pages/order';
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path="/garnishment" element={<PrivateRoute><Garnishment /></PrivateRoute>} />
         {/* <Route path="/privacy" element={<Privacy />} /> */}
         <Route path="/employee" element={<PrivateRoute><Employee /></PrivateRoute>} />
+        <Route path="/order" element={<PrivateRoute><Order /></PrivateRoute>} />
         <Route path="/addemployee" element={<PrivateRoute><AddEmployee /></PrivateRoute>} />
         <Route path="/adddepartment" element={<PrivateRoute><AddDepartment /></PrivateRoute>} />
         <Route path="/addlocation" element={<PrivateRoute><AddLocation /></PrivateRoute>} />
