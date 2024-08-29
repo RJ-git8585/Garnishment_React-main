@@ -6,7 +6,7 @@ import Sidebar from '../component/sidebar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { DiJqueryLogo } from "react-icons/di";
-
+import { BASE_URL } from '../Config';
 import Headertop from '../component/Headertop'
 import ProfileHeader from '../component/ProfileHeader';
 import load  from '../bouncing-circles.svg';
@@ -24,13 +24,13 @@ function dashboard(  ) {
   
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useEffect(()=>{
- 
+
     const fetchData = async () => {
       try {
-        const response = await fetch('https://garnishment-backend.onrender.com/User/DashboardData'); // Replace with your API URL
+        const response = await fetch(`${BASE_URL}/User/DashboardData`); // Replace with your API URL
         const jsonData = await response.json();
         setData(jsonData.data) ;
-        // console.log(jsonData)  
+       console.log(BASE_URL)  
       } catch (error) {
         console.error('Error fetching data:', error);
         // Handle errors appropriately (display error message, etc.)
@@ -40,12 +40,9 @@ useEffect(()=>{
     
     const logsData = async () => {
       try {
-        const datalog = await fetch('https://garnishment-backend.onrender.com/User/logdata'); // Replace with your API URL
+        const datalog = await fetch(`${BASE_URL}/User/logdata`); // Replace with your API URL
         const jsonDatalog = await datalog.json();
         setData1(jsonDatalog.data) ;
-        // console.log(jsonDatalog)
-        // console.log(jsonDatalog)
-        console.log(jsonDatalog.data)
         
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -61,25 +58,16 @@ useEffect(()=>{
   },[])
     // eslint-disable-next-line no-unused-vars
     const { Active_employees,Employees_with_Multiple_IWO,Total_IWO,Employees_with_Single_IWO } = jsonData;
-    // const { data } = jsonDatalog;
-    
 
   return (
-    
-   
-      <div className="min-h-full">  
-       
+      <div className="min-h-full"> 
         <div className="container main">
         <div className='sidebar'><Sidebar/></div>
         
         <div className=' contant content ml-auto '>
         {/* {isHidden ? null : (  */}
         <Headertop />
-      {/* )} */}
-            <ProfileHeader/>
-            
-     
-  
+       <ProfileHeader/>
             <div className="grid grid-cols-4 gap-4 mt-8 custom_tab">
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
                               <dt className="text-xs leading-3 text-black-600">Total IWO</dt>
@@ -91,11 +79,11 @@ useEffect(()=>{
                             </div>
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
                               <dt className="text-xs leading-3 text-black-600">Multiple IWO </dt>
-                              <dd className=" text-3xl font-semibold text-center tracking-tight text-black-900 sm:text-5xl">{Employees_with_Multiple_IWO}</dd>
+                            <dd className=" text-3xl font-semibold text-center tracking-tight text-black-900 sm:text-5xl">{Employees_with_Multiple_IWO}</dd>
                             </div>
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
                               <dt className="text-xs leading-3 text-black-600">Active Employees</dt>
-                              <dd className=" text-3xl font-semibold  text-center tracking-tight text-black-900 sm:text-5xl">{Active_employees}</dd>
+                            <dd className=" text-3xl font-semibold  text-center tracking-tight text-black-900 sm:text-5xl">{Active_employees}</dd>
                             </div>
               
             </div>
@@ -138,9 +126,7 @@ useEffect(()=>{
     /></div></div></p>
     )}
               </div>
-</div>
-
-          
+</div>    
         </div>  
    
       </div>

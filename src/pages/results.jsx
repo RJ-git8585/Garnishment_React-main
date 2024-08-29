@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import { React, useState, useEffect } from 'react'
 import Headertop from '../component/Headertop'
-import ProfileHeader from '../component/ProfileHeader'
+// import ProfileHeader from '../component/ProfileHeader'
 import Sidebar from '../component/sidebar'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +15,7 @@ import load  from '../bouncing-circles.svg';
 import { BASE_URL } from '../Config';
 
 
-function employee(onDeleteSuccess,onEditSuccess) {
+function results(onDeleteSuccess,onEditSuccess) {
   // this is for the pagination
   const id = localStorage.getItem("id");
   const [page, setPage] = useState(1);
@@ -31,7 +31,7 @@ function employee(onDeleteSuccess,onEditSuccess) {
       setLoading(true);
       try {
         const id = localStorage.getItem("id");
-        const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`); // Replace with your API URL
+        const response = await fetch(`${BASE_URL}/User/GetResultDetails/${id}/`); // Replace with your API URL
         const jsonData = await response.json();
         setData(jsonData.data);
         setLoading(false);
@@ -65,7 +65,7 @@ function employee(onDeleteSuccess,onEditSuccess) {
         
         <div className=' contant content ml-auto flex flex-col'>
             <Headertop />
-            <ProfileHeader/>
+            {/* <ProfileHeader/> */}
             
             <hr />
             
@@ -88,16 +88,10 @@ function employee(onDeleteSuccess,onEditSuccess) {
                <thead>
                  <tr>
                  {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employee Name</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Result Amount</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employee Id</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employer Id</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Location</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Department</th>
-                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Minimum Wages</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Netpay</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">N0. of Garnihsment</th>
-                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Calculation</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Pay Cycle</th>
+                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">TimeStamp</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
                  </tr>
@@ -118,9 +112,8 @@ function employee(onDeleteSuccess,onEditSuccess) {
                 
                    <tr key={item.employer_id}>
                    {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                  <td className="  text-xs">{item.employee_name}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.location}</td><td className=" border-slate-300 text-xs">{item.department}</td><td className=" border-slate-300 custom-cls_td col-span-full text-xs">{item.number_of_garnishment}</td>
-                  {/* <td>NA</td> */}
-                  <td className=" border-slate-300 text-xs">{item.pay_cycle} </td><td>
+                  <td className="  text-xs">{item.result}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.timestamp}</td>
+              <td>
                   <EditItemComponent id={item.employee_id} // Pass the record ID
  onEditSuccess={onEditSuccess} // Optional callback for successful deletion
           />
@@ -179,4 +172,4 @@ function employee(onDeleteSuccess,onEditSuccess) {
   )
 }
 
-export default employee
+export default results

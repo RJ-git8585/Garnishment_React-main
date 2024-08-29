@@ -1,21 +1,14 @@
 /* eslint-disable react/no-unknown-property */
 // eslint-disable-next-line no-unused-vars
 import React, { useState,useEffect } from 'react';
-import Headertop from '../component/Headertop';
-import Sidebar from '../component/sidebar';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FaBalanceScaleRight } from "react-icons/fa";
-// eslint-disable-next-line no-unused-vars
-import SingleChild from '../forms /SingleChild';
-import MultipleChild from '../forms /MultipleChild';
-import StudentLoan from '../forms /StudentLoan';
 import { BASE_URL } from '../Config';
-import MultipleStudentLoan from '../forms /MultipleStudentLoan';
-import FederalTax from '../forms /FederalTax';
 
-function Garnishment( ) {
-  // /Users/sourabhkosti/Desktop/code/Ritik/Garnishment_React-main/src/pages/forms 
+
+
+function SingleChild( ) {
+
 
   const [employee_name, setEmpName] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -29,21 +22,16 @@ function Garnishment( ) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   // const [minimum_wages, setMinimumWages] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [amount_to_withhold, setTotalAmount] = useState('');
-  // const [social, setSocial] = useState('');
-  // const [fit, setFit] = useState('');
+  const [amount_to_withhold, setTotalAmount] = useState('');
+  const [social, setSocial] = useState('');
+  const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('SingleChild');
-  // const [medicare, setMedicare] = useState('');
+  const [medicare, setMedicare] = useState('');
   const [arrears_amt, setArrears] = useState('');
-  // const [statetax, setStateTax] = useState('');
+  const [statetax, setStateTax] = useState('');
 
-  // const [showNewField, setShowNewField] = useState(false);
-  // const [hideNewField, setHideNewField] = useState(false);
-  // const [ShowStudentNewField, setShowStudentNewField] = useState(false);
-  // const [hideStudentNewField, setHideStudentNewField] = useState(false);
-  // // const [ShowFederalNewField, setShowFederalNewField] = useState(false);
-  // const [hideFederalNewField, setHideFederalNewField] = useState(false);
+
 
 
 
@@ -59,11 +47,11 @@ function Garnishment( ) {
   const employer_id = (parseInt(localStorage.getItem("id")));
   // const [empID, setEmpID] = useState(options[0].value);
 
-  // const handleChange = (event) => {
-  //   setSelectedOption((parseInt(event.target.value,10)));
+  const handleChange = (event) => {
+    setSelectedOption((parseInt(event.target.value,10)));
     
     
-  // };
+  };
 
   // const [inputs, setInputs] = useState([{ id: 1 }]);
 
@@ -73,7 +61,7 @@ function Garnishment( ) {
   //   console.log(newInput);
   // };
 
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
+  const [Arrearinputs] = useState([{ id: 1 }]);
 
   // const  handleAddArrearInput= () => {
   //   const newInputArrear = { idArrear: Arrearinputs.length + 1 };
@@ -89,32 +77,16 @@ function Garnishment( ) {
 //   };
 
 
-  const handleChangeType = (event) => {
-    const selectedOption = event.target.value;
-    setSelectedType(selectedOption);
-    // setShowNewField(event.target.value === 'MultipleChild');
-    // setHideNewField(event.target.value === 'MultipleChild'); 
-
-    // setShowStudentNewField(event.target.value === 'StudentLoan');
-    // setHideStudentNewField(event.target.value === 'StudentLoan'); 
-
-    // // setShowFederalNewField(event.target.value === 'FederalTax');
-    // setHideFederalNewField(event.target.value === 'FederalTax'); 
-
-    console.log('Selected value:', selectedOption);
-    
  
-    
-  };
 
   // eslint-disable-next-line no-unused-vars
   const handleCheckboxChange = (event) => {
     setIsChecked(event.target.checked); 
     
   };
-  // const handleCheckboxChange1 = (event) => {
-  //   setIsCheckedFamily(event.target.checked); // Update s
-  // }
+  const handleCheckboxChange1 = (event) => {
+    setIsCheckedFamily(event.target.checked); // Update s
+  }
 
   
 
@@ -201,12 +173,12 @@ function Garnishment( ) {
           setSelectedOption('');
           setOrderID('');
           setState('');
-          // setSocial('');
-          // setFit('');
-          // setMedicare('');
+          setSocial('');
+          setFit('');
+          setMedicare('');
           setIsChecked('');
           setIsCheckedFamily('');
-          // setStateTax('');
+          setStateTax('');
           setArrears('');
         } else {
           // Handle submission errors
@@ -219,15 +191,9 @@ function Garnishment( ) {
   return (
     <>
       <div className="min-h-full">
-        <div className="container main ml-auto">
-          <div className="sidebar">
-            <Sidebar />
-          </div>
-          <div className="contant content ml-auto">
-            <Headertop />
+        <div className="container">
+          <div className="contant ">
             <div className="p-0">
-              {/* <h1 className="uppercase font-bold mb-4 inline-block"><FaBalanceScaleRight/>Garnishment Calcultor</h1> */}
-              <h1 className='edit-profile mt-6 mb-4 inline-block'><FaBalanceScaleRight/>Garnishment Calculator</h1>
               <form onSubmit={handleSubmit}>
               {/* <MultiStep activeStep={2} > */}    
             <div className='hidden'> 
@@ -245,77 +211,11 @@ function Garnishment( ) {
                         </div>
                       </div>
 
-                      <div>
-              <label htmlFor="empID" className="block italic text-red-700 text-sm font-semibold mb-3">
-                      Please Select Garnishment Type:
-                    </label>
-              <select className="custom-select mb-10 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm bg-black rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-white dark:focus:ring-white-500 dark:focus:border-white-500" value={selectedType} onChange={handleChangeType} required>
-                  {/* <option value="SingleChild">Select Your Prefer Type</option>  */}
-                <option  value="SingleChild">Single Child</option>
-                <option value="MultipleChild">Multiple Child</option>
-                <option value="StudentLoan">Student loan</option>
-                <option value="MultiStudentLoan">Multiple Student loan</option>
-                <option value="FederalTax">Federal Tax</option>
-                <option value="StateTax">State Tax</option>
-                <option value="Creditor">Creditor</option>
-                <option value="Bankruptcy">Bankruptcy</option>
-              </select>  
-          </div>
+                      
          
-                  {selectedType === 'MultipleChild' && (
-                      <div>
-                    
-                        <MultipleChild></MultipleChild>
-                        {/* Content for Section 1 */}
-                      </div>
-                    )}
-
-                    {selectedType === 'SingleChild' && (
-                      <div>
-                        <SingleChild></SingleChild>
-                 
-                      </div>
-                    )}
-                    {selectedType === 'StudentLoan' && (
-                      <div>
-                        <StudentLoan></StudentLoan>
-                      </div>
-                    )}
-                     {selectedType === 'MultiStudentLoan' && (
-                      <div>
-                     <MultipleStudentLoan></MultipleStudentLoan>
-                      </div>
-                    )}
-                     {selectedType === 'FederalTax' && (
-                      <div>
-                        <FederalTax></FederalTax>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}
-                    {selectedType === 'StateTax' && (
-                      <div>
-                       <h1>StateTax Calculation Coming Soon</h1>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}
-                    {selectedType === 'Creditor' && (
-                      <div>
-                      <h1>Creditor Calculation Coming Soon</h1>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}  
-                    
-
-                    {selectedType === 'Bankruptcy' && (
-                      <div>
-                        <h1>Bankruptcy Calculation Coming Soon</h1>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}
-             
                
    
-                {/* <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+               <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   <div>
                     <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
                       Employee ID:
@@ -391,43 +291,13 @@ function Garnishment( ) {
                       onChange={(e) => setState(e.target.value)}
                     />
                   </div>
-                    
-                  {hideFederalNewField == false &&  (
-                    <>
-                  <div>
-                    <label htmlFor="minimumWages" className="block text-gray-700 text-sm font-bold mb-2">
-                      Minimum Wages:
-                    </label>
-                    <input
-                      type="number"
-                      id="minimumWages"
-                      className="shadow appearance-none border rounded w-full py-2 text-sm px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={minimum_wages}
-                      onChange={(e) => setMinimumWages(parseInt(e.target.value))}
-                    />
-                  </div>
-                  {ShowStudentNewField &&  (
-                  <>
-                  <div>
-                    <label htmlFor="totalAmount" className="block text-gray-700 text-sm font-bold mb-2">
-                     Number Of Student Loan Order:
-                    </label>
-                    <input
-                      type="number"
-                      id="totalAmount"
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-sm text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={amount_to_withhold}
-                      onChange={(e) => setTotalAmount(parseInt(e.target.value))}
-                    />
-                  </div>
-                  </>
-                  )}
+                  
+                
+                 
+                
                 
 
-                  {hideStudentNewField == false &&  (
-                    <>
-                  {hideNewField == false &&  (
-                    <>
+                
                   <div>
                     <label htmlFor="totalAmount" className="block text-gray-700 text-sm font-bold mb-2">
                       Amount To Withhold:
@@ -440,26 +310,15 @@ function Garnishment( ) {
                       onChange={(e) => setTotalAmount(parseInt(e.target.value))}
                     />
                   </div>
-                  </>
-                  )}
-                   </>
-                  )}
-                    </>
-                  )}
+                 
              </div>
 
-                  {hideFederalNewField == false &&  (
-                    <>
-                    <span className="text-sm mb-4 text-2xl font-bold  text-gray-700">Taxes Details </span>  
-
-                    {hideStudentNewField == false &&  (
-                    <>
+                  
                 <div className="flex items-center mt-4 mb-4">
                     <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox"  value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                     <label  className="ms-2 text-sm font-medium  dark:text-gray-800">Support Second Family</label>
                 </div>
-                </>
-                  )}
+               
               
                 <div className="flex items-center mt-4 mb-6">
                 
@@ -472,11 +331,10 @@ function Garnishment( ) {
                 
                       {arrears_greater_than_12_weeks && ( // Conditionally render the field based on checkbox state
                       <>
-                       {showNewField &&  (
-                            <>
-                      <button className="rounded-md bg-indigo-600 px-3.5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleAddArrearInput}>Add Arrears Amount</button>
-                      </>
-                                  )}
+                      
+                      {/* <button className="rounded-md bg-indigo-600 px-3.5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleAddArrearInput}>Add Arrears Amount</button> */}
+                     
+                                 
                                   
                             <div className="shadow  appearance-none border p-2 pb-4 mb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-4">
                              {Arrearinputs.map((input) => (
@@ -498,39 +356,16 @@ function Garnishment( ) {
                       </>
                         )}
 
-                      {showNewField &&  (
-                            <>
-                            <button className="rounded-md bg-indigo-600 px-3.5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleAddInput}>Add Child Hold Amount</button>
+                     
+                            {/* <button className="rounded-md bg-indigo-600 px-3.5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleAddInput}>Add Child Hold Amount</button> */}
                           
-                             
-                            <div className='shadow appearance-none border mb-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-4'>
-                                  {inputs.map((input, index) => (
-                                    <>
-                          <div
-                          key={input.id} >
-                            <label className="block  text-gray-700 text-sm mt-2  ml-2  mb-2"> Amount To Withhold Child <b>{input.id} </b>: </label>
-                                    <input
-                                    className=" shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline"
-                                      type="text"
-                                      value={input.index || ''}
-                                      onChange={(event) => handleInputChange(event, index)}
-                                      placeholder= "Amount"
-                                    />
-                                  </div>
-
-        </>
-                                  ))}
-                                
-                                </div>
-                            
-                      </>
-                       )}
-               
+                      
+                   
 
                   <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-2">
                           <div>
                                   <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Federal Income Tax (%):
+                                    Federal Income Tax :
                                   </label>
                                   <input
                                     type="number"
@@ -542,7 +377,7 @@ function Garnishment( ) {
                             </div>
                             <div>
                                 <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Social Security Tax (%):
+                                    Social Security Tax :
                                   </label>
                                 <input
                                     type="number"
@@ -554,7 +389,7 @@ function Garnishment( ) {
                             </div>
                             <div>
                                 <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Medicare Tax (%):
+                                    Medicare Tax :
                                   </label>
                                 <input
                                     type="number"
@@ -566,7 +401,7 @@ function Garnishment( ) {
                             </div>
                             <div>
                                 <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    State Tax (%):
+                                    State Tax:
                                   </label>
                                 <input
                                     type="number"
@@ -578,8 +413,7 @@ function Garnishment( ) {
                             </div>
                  
                 </div>
-                </>
-                  )}
+              
                 <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button
                     type="submit"
@@ -606,4 +440,4 @@ function Garnishment( ) {
   );
 }
 
-export default Garnishment;
+export default SingleChild;

@@ -6,16 +6,8 @@ import Sidebar from '../component/sidebar';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaBalanceScaleRight } from "react-icons/fa";
-// eslint-disable-next-line no-unused-vars
-import SingleChild from '../forms /SingleChild';
-import MultipleChild from '../forms /MultipleChild';
-import StudentLoan from '../forms /StudentLoan';
-import { BASE_URL } from '../Config';
-import MultipleStudentLoan from '../forms /MultipleStudentLoan';
-import FederalTax from '../forms /FederalTax';
 
 function Garnishment( ) {
-  // /Users/sourabhkosti/Desktop/code/Ritik/Garnishment_React-main/src/pages/forms 
 
   const [employee_name, setEmpName] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -27,23 +19,23 @@ function Garnishment( ) {
   // eslint-disable-next-line react-hooks/rules-of-hooks  
   const [state, setState] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [minimum_wages, setMinimumWages] = useState('');
+  const [minimum_wages, setMinimumWages] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [amount_to_withhold, setTotalAmount] = useState('');
-  // const [social, setSocial] = useState('');
-  // const [fit, setFit] = useState('');
+  const [amount_to_withhold, setTotalAmount] = useState('');
+  const [social, setSocial] = useState('');
+  const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
-  const [selectedType, setSelectedType] = useState('SingleChild');
-  // const [medicare, setMedicare] = useState('');
+  const [selectedType, setSelectedType] = useState('');
+  const [medicare, setMedicare] = useState('');
   const [arrears_amt, setArrears] = useState('');
-  // const [statetax, setStateTax] = useState('');
+  const [statetax, setStateTax] = useState('');
 
-  // const [showNewField, setShowNewField] = useState(false);
-  // const [hideNewField, setHideNewField] = useState(false);
-  // const [ShowStudentNewField, setShowStudentNewField] = useState(false);
-  // const [hideStudentNewField, setHideStudentNewField] = useState(false);
-  // // const [ShowFederalNewField, setShowFederalNewField] = useState(false);
-  // const [hideFederalNewField, setHideFederalNewField] = useState(false);
+  const [showNewField, setShowNewField] = useState(false);
+  const [hideNewField, setHideNewField] = useState(false);
+  const [ShowStudentNewField, setShowStudentNewField] = useState(false);
+  const [hideStudentNewField, setHideStudentNewField] = useState(false);
+  // const [ShowFederalNewField, setShowFederalNewField] = useState(false);
+  const [hideFederalNewField, setHideFederalNewField] = useState(false);
 
 
 
@@ -59,50 +51,50 @@ function Garnishment( ) {
   const employer_id = (parseInt(localStorage.getItem("id")));
   // const [empID, setEmpID] = useState(options[0].value);
 
-  // const handleChange = (event) => {
-  //   setSelectedOption((parseInt(event.target.value,10)));
+  const handleChange = (event) => {
+    setSelectedOption((parseInt(event.target.value,10)));
     
     
-  // };
+  };
 
-  // const [inputs, setInputs] = useState([{ id: 1 }]);
+  const [inputs, setInputs] = useState([{ id: 1 }]);
 
-  // const handleAddInput = () => {
-  //   const newInput = { id: inputs.length + 1 };
-  //   setInputs([...inputs, newInput]);
-  //   console.log(newInput);
-  // };
+  const handleAddInput = () => {
+    const newInput = { id: inputs.length + 1 };
+    setInputs([...inputs, newInput]);
+    console.log(newInput);
+  };
 
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
+  const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
 
-  // const  handleAddArrearInput= () => {
-  //   const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-  //   setArrearInputs([...Arrearinputs, newInputArrear]);
-  //   console.log(newInputArrear);
-  // };
+  const  handleAddArrearInput= () => {
+    const newInputArrear = { idArrear: Arrearinputs.length + 1 };
+    setArrearInputs([...Arrearinputs, newInputArrear]);
+    console.log(newInputArrear);
+  };
 
-//   const handleInputChange
-//  = (event, index) => {
-//     const newInputs = [...inputs];
-//     newInputs[index].value = event.target.value;
-//     setInputs(newInputs);
-//   };
+  const handleInputChange
+ = (event, index) => {
+    const newInputs = [...inputs];
+    newInputs[index].value = event.target.value;
+    setInputs(newInputs);
+  };
 
 
   const handleChangeType = (event) => {
     const selectedOption = event.target.value;
     setSelectedType(selectedOption);
-    // setShowNewField(event.target.value === 'MultipleChild');
-    // setHideNewField(event.target.value === 'MultipleChild'); 
+    setShowNewField(event.target.value === 'MultipleChild');
+    setHideNewField(event.target.value === 'MultipleChild'); 
 
-    // setShowStudentNewField(event.target.value === 'StudentLoan');
-    // setHideStudentNewField(event.target.value === 'StudentLoan'); 
-
-    // // setShowFederalNewField(event.target.value === 'FederalTax');
-    // setHideFederalNewField(event.target.value === 'FederalTax'); 
+    setShowStudentNewField(event.target.value === 'StudentLoan');
+    setHideStudentNewField(event.target.value === 'StudentLoan'); 
+// setShowFederalNewField(event.target.value === 'FederalTax');
+    setHideFederalNewField(event.target.value === 'FederalTax'); 
 
     console.log('Selected value:', selectedOption);
-    
+    console.log('Selected value:', hideNewField);
+    console.log('Selected value:', showNewField);
  
     
   };
@@ -112,9 +104,9 @@ function Garnishment( ) {
     setIsChecked(event.target.checked); 
     
   };
-  // const handleCheckboxChange1 = (event) => {
-  //   setIsCheckedFamily(event.target.checked); // Update s
-  // }
+  const handleCheckboxChange1 = (event) => {
+    setIsCheckedFamily(event.target.checked); // Update s
+  }
 
   
 
@@ -123,11 +115,11 @@ function Garnishment( ) {
    const fetchData = async () => {
     try {
       const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
+      const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployeedetails/${id}/`);
       // Replace with your API URL
       const jsonData = await response.json(options);
       setOptions(jsonData.data);
-      console.log(jsonData.data)
+      // console.log(jsonData.data)
     } catch (error) {
       console.error('Error fetching data:', error);
       // Handle errors appropriately (display error message, etc.)
@@ -146,12 +138,12 @@ function Garnishment( ) {
     setGarnishmentFees('');
     setOrderID('');
     setState('');
-    // setSocial('');
-    // setFit('');
-    // setMedicare('');
-    // setIsChecked('');
-    // setIsCheckedFamily('');
-    // setStateTax('');
+    setSocial('');
+    setFit('');
+    setMedicare('');
+    setIsChecked('');
+    setIsCheckedFamily('');
+    setStateTax('');
     setArrears('');
 };
   const handleSubmit = (event) => {
@@ -166,8 +158,8 @@ function Garnishment( ) {
       garnishment_fees,
       order_id,
       state,
-      // minimum_wages,
-      // amount_to_withhold,
+      minimum_wages,
+      amount_to_withhold,
       // social,
       // fit,
       // medicare,
@@ -177,7 +169,7 @@ function Garnishment( ) {
       arrears_amt,
     };
     console.log(data)
-    fetch(`${BASE_URL}/User/CalculationDataView`, {
+    fetch('https://garnishment-backend.onrender.com/User/CalculationDataView', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -259,63 +251,12 @@ function Garnishment( ) {
                 <option value="StateTax">State Tax</option>
                 <option value="Creditor">Creditor</option>
                 <option value="Bankruptcy">Bankruptcy</option>
-              </select>  
-          </div>
-         
-                  {selectedType === 'MultipleChild' && (
-                      <div>
-                    
-                        <MultipleChild></MultipleChild>
-                        {/* Content for Section 1 */}
-                      </div>
-                    )}
+              </select>
 
-                    {selectedType === 'SingleChild' && (
-                      <div>
-                        <SingleChild></SingleChild>
-                 
-                      </div>
-                    )}
-                    {selectedType === 'StudentLoan' && (
-                      <div>
-                        <StudentLoan></StudentLoan>
-                      </div>
-                    )}
-                     {selectedType === 'MultiStudentLoan' && (
-                      <div>
-                     <MultipleStudentLoan></MultipleStudentLoan>
-                      </div>
-                    )}
-                     {selectedType === 'FederalTax' && (
-                      <div>
-                        <FederalTax></FederalTax>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}
-                    {selectedType === 'StateTax' && (
-                      <div>
-                       <h1>StateTax Calculation Coming Soon</h1>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}
-                    {selectedType === 'Creditor' && (
-                      <div>
-                      <h1>Creditor Calculation Coming Soon</h1>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}  
-                    
-
-                    {selectedType === 'Bankruptcy' && (
-                      <div>
-                        <h1>Bankruptcy Calculation Coming Soon</h1>
-                        {/* Content for Section 3 */}
-                      </div>
-                    )}
-             
-               
+              
+    </div>
    
-                {/* <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+                <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   <div>
                     <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
                       Employee ID:
@@ -600,7 +541,7 @@ function Garnishment( ) {
               
             </div>
           </div>
-        </div> 
+        </div>
       </div>
     </>
   );

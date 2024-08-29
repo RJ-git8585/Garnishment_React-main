@@ -7,7 +7,7 @@ import {  ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FcGoogle } from "react-icons/fc";
 import { RiFacebookFill } from "react-icons/ri";
-
+import { BASE_URL } from '../Config';
 
 function Form() {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ function Form() {
     const loginCredentials = { email, password };
 
     try {
-      const response = await axios.post('https://garnishment-backend.onrender.com/User/login', loginCredentials,);
+      const response = await axios.post(`${BASE_URL}/User/login`, loginCredentials,);
       if (response.data.success) {
         localStorage.setItem('token', response.data.access);
         localStorage.setItem('id', response.data.user_data.employer_id); 

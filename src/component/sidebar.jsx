@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logout from '../pages/Logout';
 import logo_b  from '../Logo_black.png';
-import { FaDashcube,FaUserEdit,FaSignOutAlt,FaRocketchat,FaTools,FaBalanceScaleRight,FaMoneyBill } from "react-icons/fa";
+import { FaDashcube,FaHornbill,FaUserEdit,FaSignOutAlt,FaRocketchat,FaTools,FaBalanceScaleRight,FaMoneyBill } from "react-icons/fa";
 
 const Sidebar = () => {
   return (
@@ -58,11 +58,18 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2 ">
+          <Link to="/results" className="sidebar-link">
+          <FaHornbill />
+           Results
+          </Link>
+        </li>
+        <li className="sidebar-item border-b-[3px] py-2 ">
           <Link to="/help" className="sidebar-link">
           <FaRocketchat />
             Help !
           </Link>
         </li>
+        
         <li className="sidebar-item border-b-[3px] py-2 cus_svg">
         <FaSignOutAlt />
           <Logout />

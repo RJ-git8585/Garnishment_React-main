@@ -17,7 +17,9 @@ import Forgot from './pages/forgot';
 import Setting from './pages/setting';
 import Help from './pages/Help';
 import Tax from './pages/Tax';
+import SingleChild from './forms /SingleChild';
 import Garnishment from './pages/Garnishment';
+
 // import Privacy from './pages/privacy';
 import PrivateRoute from './component/PrivateRoute';
 import Employee from './pages/employee';
@@ -31,6 +33,7 @@ import Iwo from './pages/iwo';
 import Apis from './component/Apis';
 import PasswordResetConfirm from './pages/PasswordResetConfirm';
 import Order from './pages/order';
+import Results from './pages/results';
 
 function App() {
   return (
@@ -60,8 +63,11 @@ function App() {
         <Route path="/department" element={<PrivateRoute><Department /></PrivateRoute>} />
         <Route path="/location" element={<PrivateRoute><Location /></PrivateRoute>} />
         <Route path="/iwo" element={<PrivateRoute><Iwo /></PrivateRoute>} />
+        <Route path="/results" element={<PrivateRoute><Results /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
+        <Route path="/SingleChild" element={<SingleChild />} /> 
         <Route path="apis" element={<Apis />} />
+       
         <Route path="/reset-password/:token" element={<PasswordResetConfirm />} />
       
       </Routes>
