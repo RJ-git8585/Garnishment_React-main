@@ -11,6 +11,8 @@ import Headertop from '../component/Headertop'
 // import { FaTools } from "  /fa";
 import { FaUserCheck } from "react-icons/fa";
 import load  from '../bouncing-circles.svg';
+import { BASE_URL } from '../Config';
+
 
 function Profile() {
   // const INITIAL_STATE = {
@@ -34,7 +36,7 @@ function Profile() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployerdetails/${employer_id}`);
+        const response = await fetch(`${BASE_URL}/User/getemployerdetails/${employer_id}`);
          // Replace with your API URL
         const jsonData = await response.json();
         setData(jsonData.data) ;
