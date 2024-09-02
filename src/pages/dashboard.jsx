@@ -14,6 +14,12 @@ import load  from '../bouncing-circles.svg';
 
 
 function dashboard(  ) {
+
+    // eslint-disable-next-line no-unused-vars, react-hooks/rules-of-hooks
+    const [isChecked, setIsChecked] = useState();
+    // eslint-disable-next-line no-unused-vars, react-hooks/rules-of-hooks
+    const [isActiveChecked, setIsActiveChecked] = useState();
+    // eslint-disable-next-line no-unused-vars
   
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [jsonData, setData] = useState([]);
@@ -21,7 +27,7 @@ function dashboard(  ) {
   const [jsonDatalog, setDatalog] = useState([]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [data, setData1] = useState([]);
-  
+ 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useEffect(()=>{
 
@@ -37,6 +43,21 @@ useEffect(()=>{
       }
     };
 
+    const Setting = async () => {   
+      try {
+            const id = localStorage.getItem("id");
+            const datalog = await fetch(`${BASE_URL}/User/setting/${id}/`); // Replace with your API URL
+            const jsonDatalog = await datalog.json();
+            console.log(jsonDatalog.data.modes);
+            localStorage.setItem('Mode', jsonDatalog.data.modes);
+            localStorage.setItem('Mode', jsonDatalog.data.modes);
+           
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            // Handle errors appropriately (display error message, etc.)
+          }
+        };
+
     
     const logsData = async () => {
       try {
@@ -51,17 +72,19 @@ useEffect(()=>{
     };
       logsData();
       fetchData();
-    toast.success('Welcome to Dashboard!', {
+      Setting();
+      toast.success('Welcome to Dashboard!', {
       position: 'bottom-left', // Set the position here
     });
 
   },[])
-    // eslint-disable-next-line no-unused-vars
+  
+ 
     const { Active_employees,Employees_with_Multiple_IWO,Total_IWO,Employees_with_Single_IWO } = jsonData;
 
   return (
       <div className="min-h-full"> 
-        <div className="container main">
+         <div  className={isChecked ?  'light-mode container main' : 'dark-mode container main' } >
         <div className='sidebar'><Sidebar/></div>
         
         <div className=' contant content ml-auto '>

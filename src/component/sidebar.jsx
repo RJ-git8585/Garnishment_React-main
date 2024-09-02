@@ -5,9 +5,11 @@ import { Link } from 'react-router-dom';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logout from '../pages/Logout';
 import logo_b  from '../Logo_black.png';
+
 import { FaDashcube,FaHornbill,FaUserEdit,FaSignOutAlt,FaRocketchat,FaTools,FaBalanceScaleRight,FaMoneyBill } from "react-icons/fa";
 
 const Sidebar = () => {
+
   return (
    <>
       <div className="sidebar-header">

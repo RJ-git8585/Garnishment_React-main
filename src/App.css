@@ -162,6 +162,19 @@ h1.edit-profile.mt-6.inline-block svg {
   font-weight: 700;
   text-transform: uppercase;
 }
+.dark-mode{ 
+background: #000;
+color:#fff;
+}
+.dark-mode >.sidebar{
+  background: #000 !important;
+  color:#fff;
+  border-right: 0.5px solid #ffffff52;
+  }
+.light-mode{
+  background: #fff;
+  color:#000;
+  }
 
 .button-cls {
   color: blue;

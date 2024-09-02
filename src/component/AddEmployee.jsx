@@ -4,6 +4,7 @@ import Headertop from '../component/Headertop'
 import Sidebar from '../component/sidebar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from '../Config';
 // eslint-disable-next-line no-unused-vars
 import { useNavigate } from 'react-router-dom';
 // import { FaUserEdit } from "react-icons/fa";
@@ -38,7 +39,7 @@ function AddEmployee() {
             location
           };
 
-          fetch('https://garnishment-backend.onrender.com/User/employee_details/', {
+          fetch(`${BASE_URL}/User/employee_details/`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
