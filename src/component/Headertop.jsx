@@ -3,7 +3,7 @@ import React from 'react'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import myImage from '/girl.png'
+import myImage from '/girl.png' 
 
 
 const user = {
@@ -22,14 +22,17 @@ const user = {
   const userNavigation = [
     { name: 'Your Profile', href: '/profile' },
     { name: 'Settings', href: '/setting' },
-    { name: 'Sign out', href: '#' },
+
   ]
   
   function classNames(...classNamees) {
     return classNamees.filter(Boolean).join(' ')
   }
+  
+  
 
 function Headertop() {
+
 
     return (
        <>
@@ -135,6 +138,7 @@ function Headertop() {
      <Disclosure.Panel className="md:hidden">
        <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
          {navigation.map((item) => (
+          
            <Disclosure.Button
              key={item.name}
              as="a"
@@ -147,7 +151,9 @@ function Headertop() {
            >
              {item.name}
            </Disclosure.Button>
+          
          ))}
+         
        </div>
        <div className="border-t border-gray-700 pb-3 pt-4">
          <div className="flex items-center px-5">

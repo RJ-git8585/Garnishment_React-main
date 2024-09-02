@@ -48,7 +48,7 @@
     return (
     
           <div className="min-h-full">
-       <div  className={isChecked === 'true ' ?  'light-mode container main' : 'dark-mode container main' } >
+       <div  className={isChecked === 'true ' ?  'dark-mode container main' : 'light-mode container main'  } >
        <div className='sidebar'><Sidebar/></div>
         <div className="contant content ml-auto">
         <Headertop />
