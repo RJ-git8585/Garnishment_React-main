@@ -17,8 +17,8 @@
             const datalog = await fetch(`${BASE_URL}/User/setting/${id}/`); // Replace with your API URL
             const jsonDatalog = await datalog.json();
             setIsChecked(jsonDatalog.data.mode) ;
-            localStorage.setItem('Mode', jsonDatalog.data.mode);
-            localStorage.setItem('Mode', jsonDatalog.data.mode);
+            // localStorage.setItem('Mode', jsonDatalog.data.mode);
+            // localStorage.setItem('Mode', jsonDatalog.data.mode);s  
             setIsActiveChecked(jsonDatalog.data.visibility) ;
             console.log(jsonDatalog.data.mode) ;
 
@@ -34,8 +34,8 @@
 
 
 
-      const [isChecked, setIsChecked] = useState(false);
-      const [isActiveChecked, setIsActiveChecked] = useState(false);
+      const [isChecked, setIsChecked] = useState();
+      const [isActiveChecked, setIsActiveChecked] = useState();
        // Initial checkbox state
 
       const handleCheckboxChange = (event) => {
@@ -48,8 +48,8 @@
     return (
     
           <div className="min-h-full">
-       <div  className={isChecked ? 'dark-mode container main' : 'light-mode container main'} >
-        <div className='sidebar'><Sidebar/></div>
+       <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } >
+       <div className='sidebar'><Sidebar/></div>
         <div className="contant content ml-auto">
         <Headertop />
         {/* <Color /> */}

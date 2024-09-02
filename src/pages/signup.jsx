@@ -9,7 +9,7 @@ import { FcGoogle } from "react-icons/fc";
 import {  ToastContainer,toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RiFacebookFill } from "react-icons/ri";
-
+import { BASE_URL } from '../Config';
 
 
 function Form() {
@@ -31,11 +31,11 @@ function Form() {
     e.preventDefault();
     alert('Registration successful1');
     try {
-      const response = await axios.post('https://garnishment-backend.onrender.com/User/register', formData);
+      const response = await axios.post(`${BASE_URL}/User/register`, formData);
       alert('Registration successful2');
       if (response.data.message) {
-        alert(response.data);
-        alert('Registration successful');
+        // alert(response.data);
+        // alert('Registration successful');
         toast.success('Registration successful');
         console.log(response.data)
         // navigate('/');

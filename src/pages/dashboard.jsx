@@ -49,8 +49,8 @@ useEffect(()=>{
             const datalog = await fetch(`${BASE_URL}/User/setting/${id}/`); // Replace with your API URL
             const jsonDatalog = await datalog.json();
             console.log(jsonDatalog.data.modes);
-            localStorage.setItem('Mode', jsonDatalog.data.modes);
-            localStorage.setItem('Mode', jsonDatalog.data.modes);
+            // localStorage.setItem('Mode', jsonDatalog.data.modes);
+            // localStorage.setItem('Mode', jsonDatalog.data.modes);
            
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -84,7 +84,7 @@ useEffect(()=>{
 
   return (
       <div className="min-h-full"> 
-         <div  className={isChecked ?  'light-mode container main' : 'dark-mode container main' } >
+         <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } >
         <div className='sidebar'><Sidebar/></div>
         
         <div className=' contant content ml-auto '>
