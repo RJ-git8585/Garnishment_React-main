@@ -100,7 +100,7 @@ function MultipleChild() {
       <div className="min-h-full">
         <div className="container">
           <div className="content">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} method="POST">
               <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                 <div>
                   <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
