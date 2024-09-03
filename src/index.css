@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.space-y-6 input{
+  padding-left: 10px;
+  padding-right: 10px ;
+  color: #000 !important;
+}
+.body{
+background: red;
+}
+.h-10 {
+  height: 5.5rem;
+}
+.text-2xl {
+  font-size: 1.1rem;
+  line-height: 2rem;
+}
+
+.h-screen {
+  height: 100vh !important;
+}
+.error {
+  color: red !important;
+  text-align: left !important;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  margin-top: 5px !important;
+}

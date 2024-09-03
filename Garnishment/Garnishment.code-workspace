@@ -1,0 +1,18 @@
+{
+    "folders": [
+        {
+            "name": "choreo-project-root",
+            "path": "."
+        },
+        {
+            "name": "garnishement",
+            "path": "repos/Sourabhkostiodt/react-p"
+        }
+    ],
+    "metadata": {
+        "choreo": {
+            "projectID": "2e238c0b-6182-442d-837a-894f79f22bf0",
+            "orgId": "41042"
+        }
+    }
+}
