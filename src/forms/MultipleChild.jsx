@@ -87,25 +87,26 @@ function MultipleChild( ) {
   
 
   useEffect(() => {
-   // const name = localStorage.getItem("name");
-   const fetchData = async () => {
-    try {
-      const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-      // Replace with your API URL
-      const jsonData = await response.json(options);
-      setOptions(jsonData.data);
-      console.log(jsonData.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      // Handle errors appropriately (display error message, etc.)
-    }
-  };
-
-  fetchData(); // Call the function
-  toast.success('All Employee Data !!');
-},)
-
+    // const name = localStorage.getItem("name");
+    const fetchData = async () => {
+     try {
+       const id = localStorage.getItem("id");
+       const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
+       // Replace with your API URL
+       const jsonData = await response.json(options);
+       setOptions(jsonData.data);
+       console.log(jsonData.data)
+     } catch (error) {
+       console.error('Error fetching data:', error);
+       // Handle errors appropriately (display error message, etc.)
+     }
+   };
+ 
+   fetchData(); // Call the function
+   toast.success('All Employee Data !!');
+ },)
+ 
+ 
   const handleReset = () => {
     setSelectedOption('');
     setEmpName('');
@@ -130,24 +131,22 @@ function MultipleChild( ) {
       employee_id,
       employee_name,
       earnings,
-      // taxes,
       garnishment_fees,
       order_id,
       state,
-      // minimum_wages,
-      // amount_to_withhold,
-      // social,
-      // fit,
-      // medicare,
+      minimum_wages,
+      amount_to_withhold_child1,
+      social,
+      fit,
+      medicare,
       arrears_greater_than_12_weeks,
       support_second_family,
-      // statetax,
-      arrears_amt,
+      arrears_amt_child1,
     };
     console.log(data)
     fetch(`${BASE_URL}/User/CalculationDataView`, {
       method: 'POST',
-      headers: {
+      headers: { 
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
