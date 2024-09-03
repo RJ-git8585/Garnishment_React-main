@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
@@ -11,6 +11,7 @@ function MultipleChild() {
   const [state, setState] = useState('');
   const [number_of_arrears, setNumberOfArrears] = useState('');
   const [minimum_wages, setMinimumWages] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('MultipleChild');
   const [arrears_amt_child1, setArrearschild] = useState('');
   const [amount_to_withhold_child1, setAmountToWithholdChild1] = useState('');
