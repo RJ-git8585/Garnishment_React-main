@@ -1,4 +1,5 @@
-import  { useState, useEffect } from 'react';
+/* eslint-disable react/no-unknown-property */
+import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
@@ -9,111 +10,142 @@ function MultipleChild() {
   const [garnishment_fees, setGarnishmentFees] = useState('');
   const [order_id, setOrderID] = useState('');
   const [state, setState] = useState('');
-  const [number_of_arrears, setNumberOfArrears] = useState('');
-  const [minimum_wages, setMinimumWages] = useState('');
-  // eslint-disable-next-line no-unused-vars
+  const [number_of_arrears, setnumber_of_arrears] = useState('');
+  const [minimum_wages, setminimum_wages] = useState('');
   const [selectedType, setSelectedType] = useState('MultipleChild');
-  const [arrears_amt_child1, setArrearschild] = useState('');
-  const [amount_to_withhold_child1, setAmountToWithholdChild1] = useState('');
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false);
-  const [employee_id, setSelectedOption] = useState(null);
-  const [options, setOptions] = useState([]);
-  
+  const [employee_id, setEmployerId] = useState(2);
+  const [inputs, setInputs] = useState([{ id: 1, value: '' }]);
+  const [arrearInputs, setArrearInputs] = useState([{ id: 1, value: '' }]);
   const employer_id = parseInt(localStorage.getItem("id"));
 
-  const handleChange = (event) => {
-    setSelectedOption(parseInt(event.target.value, 10));
+  const handleAddInput = () => {
+    const newInput = { id: inputs.length + 1, value: '' };
+    setInputs([...inputs, newInput]);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const id = localStorage.getItem("id");
-        const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-        const jsonData = await response.json();
-        setOptions(jsonData.data);
-        toast.success('All Employee Data Loaded!');
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+  const handleAddArrearInput = () => {
+    const newInputArrear = { id: arrearInputs.length + 1, value: '' };
+    setArrearInputs([...arrearInputs, newInputArrear]);
+  };
 
-    fetchData();
-  }, []);
+  const handleInputChange = (event, index) => {
+    const newInputs = [...inputs];
+    newInputs[index].value = event.target.value;
+    setInputs(newInputs);
+  };
+
+  const handleArrearInputChange = (event, index) => {
+    const newArrearInputs = [...arrearInputs];
+    newArrearInputs[index].value = event.target.value;
+    setArrearInputs(newArrearInputs);
+  };
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+
+  const handleCheckboxChange1 = (event) => {
+    setIsCheckedFamily(event.target.checked);
+  };
 
   const handleReset = () => {
-    setSelectedOption('');
     setEmpName('');
     setEarnings('');
-    setAmountToWithholdChild1('');
     setGarnishmentFees('');
     setOrderID('');
     setState('');
-    setNumberOfArrears('');
-    setMinimumWages('');
+    setEmployerId(2);
+    setnumber_of_arrears('');
+    setminimum_wages('');
     setIsChecked(false);
     setIsCheckedFamily(false);
-    setArrearschild('');
+    setInputs([{ id: 1, value: '' }]);
+    setArrearInputs([{ id: 1, value: '' }]);
   };
 
   const handleSubmit = (event) => {
-    alert('Data Successfully Submitted')
-    console
     event.preventDefault();
-    const data = {
-      employer_id,
-      employee_id,
-      employee_name,
-      earnings,
-      garnishment_fees,
-      order_id,
-      state,
-      minimum_wages,
-      number_of_arrears,
-      amount_to_withhold_child1,
-      arrears_greater_than_12_weeks,
-      support_second_family,
-      arrears_amt_child1,
-    };
-    console.log(data)
-    fetch(`${BASE_URL}/User/CalculationDataView`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          toast.success('Calculation Added Successfully!');
-          handleReset();
-        } else {
-          console.error('Error submitting data:', response.statusText);
-        }
-      });
-  };
 
-  
-  return (
-    <>
-      <div className="min-h-full">
-        <div className="container">
-          <div className="content">
+    const filledInputs = [...inputs];
+    const filledArrears = [...arrearInputs];
+
+    // Fill remaining inputs with 0 if fewer than 5 entries
+    while (filledInputs.length < 5) {
+      filledInputs.push({ id: filledInputs.length + 1, value: '0' });
+    }
+    
+    while (filledArrears.length < 5) {
+      filledArrears.push({ id: filledArrears.length + 1, value: '0' });
+    }
+
+    const data = {
+        employer_id,
+        employee_id,
+        employee_name,
+        earnings,
+        garnishment_fees,
+        order_id,
+        state,
+        minimum_wages,
+        number_of_arrears,
+        amount_to_withhold_child1: filledInputs[0].value,
+        amount_to_withhold_child2: filledInputs[1].value,
+        amount_to_withhold_child3: filledInputs[2].value,
+        amount_to_withhold_child4: filledInputs[3].value,
+        amount_to_withhold_child5: filledInputs[4].value,
+        arrears_greater_than_12_weeks,
+        support_second_family,
+        // arrears_amt_Child1: filledArrears[0].value,
+        // arrears_amt_child2: filledArrears[1].value,
+        // arrears_amt_child3: filledArrears[2].value,
+        // arrears_amt_child4: filledArrears[3].value,
+        // arrears_amt_child5: filledArrears[4].value,
+    };
+
+    fetch(`${BASE_URL}/User/CalculationDataView`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+        if (responseData.error) {
+            console.error('Error submitting data:', responseData.error);
+            toast.error(`Failed to submit data: ${responseData.error}`);
+        } else {
+            console.log('Data submitted successfully!');
+            toast.success('Calculation Added Successfully !!');
+            handleReset();
+        }
+    })
+    .catch((error) => {
+        console.error('Network or server error:', error);
+        toast.error('Network or server error!');
+    });
+};
+return (
+  <>
+    <div className="min-h-full">
+      <div className="container">
+        <div className="content">
+          <div className="p-0">
             <form onSubmit={handleSubmit}>
               <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                 <div>
                   <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
                     Employee ID:
                   </label>
-                  <select value={employee_id} onChange={handleChange} id="countries" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500" required>
-                    <option value="">Select Employee</option>
-                    {options.map((option) => (
-                      <option key={option.employee_id} value={parseInt(option.employee_id, 10)}>
-                        {option.employee_name}_{option.employee_id}
-                      </option>
-                    ))}
-                  </select>
+                  <input
+                    type="number"
+                    id="empID"
+                    value={employee_id}
+                    onChange={(e) => setEmployerId(e.target.value)}
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 />
                 </div>
                 <div>
                   <label htmlFor="empName" className="block text-gray-700 text-sm font-bold mb-2">
@@ -177,81 +209,103 @@ function MultipleChild() {
                 </div>
                 <div>
                   <label htmlFor="number_of_arrears" className="block text-gray-700 text-sm font-bold mb-2">
-                    Number of Arrears (%):
+                    Number of Arrears:
                   </label>
                   <input
                     type="number"
-                    id="NumberOfArrers"
+                    id="number_of_arrears"
                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     value={number_of_arrears}
-                    onChange={(e) => setNumberOfArrears(parseInt(e.target.value, 10))}
+                    onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="orderID" className="block text-gray-700 text-sm font-bold mb-2">
+                    Minimum Wedge:
+                  </label>
+                  <input
+                    type="number"
+                    id="Minimum Wedge"
+                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={order_id}
+                    onChange={(e) => setminimum_wages(parseInt(e.target.value))}
                   />
                 </div>
               </div>
 
               <div className="flex items-center mt-4 mb-4">
-                <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={(e) => setIsCheckedFamily(e.target.checked)} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                <label className="ms-2 text-sm font-medium dark:text-gray-800">Support Second Family</label>
+                <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox" className="mr-2" />
+                <label htmlFor="showFieldCheckboxFamily" className="block text-gray-700 text-sm font-bold mb-2">
+                  Support Second Family
+                </label>
+              </div>
+              <div className="flex items-center mb-4">
+                <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" className="mr-2" />
+                <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
+                  Arrears Greater Than 12 Weeks
+                </label>
               </div>
 
-              <div className="flex items-center mt-4 mb-6">
-                <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={(e) => setIsChecked(e.target.checked)} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                <label className="ms-2 text-sm font-medium dark:text-gray-800">Arrears Greater Than 12 Weeks</label>
-              </div>
+              {arrears_greater_than_12_weeks && (
+                <>
+                  <button
+                    type="button"
+                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    onClick={handleAddArrearInput}
+                  >
+                    Add Arrears Amount
+                  </button>
+                  {arrearInputs.map((input, index) => (
+                    <div key={input.id} className="mt-4">
+                      <label className="block text-gray-700 text-sm font-bold mb-2">Arrears Amount {index + 1}:</label>
+                      <input
+                        type="number"
+                        value={input.value}
+                        onChange={(event) => handleArrearInputChange(event, index)}
+                        className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      />
+                    </div>
+                  ))}
+                </>
+              )}
 
-              <div className="mb-4 grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4">
-                <div>
-                  <label htmlFor="minimumWages" className="block text-gray-700 text-sm font-bold mb-2">
-                    Minimum Wages (%):
-                  </label>
-                  <input
-                    type="number"
-                    id="minimumWages"
-                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={minimum_wages}
-                    onChange={(e) => setMinimumWages(parseInt(e.target.value, 10))}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="arrears_amt_child1" className="block text-gray-700 text-sm font-bold mb-2">
-                    Arrears Amount (Child 1):
-                  </label>
-                  <input
-                    type="number"
-                    id="arrears_amt_child1"
-                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={arrears_amt_child1}
-                    onChange={(e) => setArrearschild(parseInt(e.target.value, 10))}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="amount_to_withhold_child1" className="block text-gray-700 text-sm font-bold mb-2">
-                    Amount to Withhold (Child 1):
-                  </label>
-                  <input
-                    type="number"
-                    id="amount_to_withhold_child1"
-                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={amount_to_withhold_child1}
-                    onChange={(e) => setAmountToWithholdChild1(parseInt(e.target.value, 10))}
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-4 md:grid-cols-4 sm:mx-auto sm:w-full gap-4">
-                <button type="submit" onClick={handleSubmit} className="inline-block px-6 py-2 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-gray-900 hover:bg-gray-800 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-900 active:shadow-lg transition duration-150 ease-in-out">
-                  Calculate
+              <div className="flex items-center mt-4 mb-4">
+                <button
+                  type="button"
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  onClick={handleAddInput}
+                >
+                  Add Child Withhold Amount
                 </button>
-                <button type="reset" className="inline-block px-6 py-2 text-white font-medium text-xs leading-tight uppercase rounded shadow-md bg-red-900 hover:bg-red-800 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" onClick={handleReset}>
-                  Clear
+              </div>
+              {inputs.map((input, index) => (
+                <div key={input.id} className="mb-4">
+                  <label className="block text-gray-700 text-sm font-bold mb-2">Withhold Amount {index + 1}:</label>
+                  <input
+                    type="number"
+                    value={input.value}
+                    onChange={(event) => handleInputChange(event, index)}
+                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                </div>
+              ))}
+
+              <div className="flex items-center justify-center">
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Submit
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 }
 
 export default MultipleChild;

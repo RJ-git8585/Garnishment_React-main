@@ -118,25 +118,25 @@ function Garnishment( ) {
 
   
 
-  useEffect(() => {
-   // const name = localStorage.getItem("name");
-   const fetchData = async () => {
-    try {
-      const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-      // Replace with your API URL
-      const jsonData = await response.json(options);
-      setOptions(jsonData.data);
-      console.log(jsonData.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      // Handle errors appropriately (display error message, etc.)
-    }
-  };
+//   useEffect(() => {
+//    // const name = localStorage.getItem("name");
+//    const fetchData = async () => {
+//     try {
+//       const id = localStorage.getItem("id");
+//       const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
+//       // Replace with your API URL
+//       const jsonData = await response.json(options);
+//       setOptions(jsonData.data);
+//       console.log(jsonData.data)
+//     } catch (error) {
+//       console.error('Error fetching data:', error);
+//       // Handle errors appropriately (display error message, etc.)
+//     }
+//   };
 
-  fetchData(); // Call the function
-  toast.success('All Employee Data !!');
-},)
+//   fetchData(); // Call the function
+//   toast.success('All Employee Data !!');
+// },)
 
   const handleReset = () => {
     setSelectedOption('');
