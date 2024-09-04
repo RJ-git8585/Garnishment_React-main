@@ -18,14 +18,14 @@ function FederalTax( ) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [order_id, setOrderID] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks  
-  const [state, setState] = useState('');
-  const [social, setSocial] = useState('');
-  const [fit, setFit] = useState('');
+  // const [state, setState] = useState('');
+  // const [social, setSocial] = useState('');
+  // const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('SingleChild');
-  const [medicare, setMedicare] = useState('');
-  const [arrears_amt, setArrears] = useState('');
-  const [statetax, setStateTax] = useState('');
+  // const [medicare, setMedicare] = useState('');
+  const [pay_period, setPay] = useState('Weekly');
+  // const [statetax, setStateTax] = useState('');
 
 
 
@@ -33,9 +33,9 @@ function FederalTax( ) {
 
 
   // const [state, setState] = useState('');
-  const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
-  const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
-  // const [selectedValue, setSelectedValue] = useState(null);
+  // const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
+  const [no_of_exception, setExceptions] = useState(false); // Initialize checkbox state as unchecked
+  const [filing_status, setSelectedOptionstatus] = useState('single filing status');
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
@@ -46,81 +46,69 @@ function FederalTax( ) {
   const handleChange = (event) => {
     setSelectedOption((parseInt(event.target.value,10)));
     
+  };
+
+  const handleChangeStatus = (event) => {
+    setSelectedOptionstatus(event.target.value); 
+  };
+  const handleChangePay= (event) => {
+    
+    setPay(event.target.value);
+    
     
   };
 
-  const [inputs, setInputs] = useState([{ id: 1 }]);
+  // const [inputs, setInputs] = useState([{ id: 1 }]);
 
-  const handleAddInput = () => {
-    const newInput = { id: inputs.length + 1 };
-    setInputs([...inputs, newInput]);
-    console.log(newInput);
-  };
+  // const handleAddInput = () => {
+  //   const newInput = { id: inputs.length + 1 };
+  //   setInputs([...inputs, newInput]);
+  //   console.log(newInput);
+  // };
 
-  const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
+  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
 
-  const  handleAddArrearInput= () => {
-    const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-    setArrearInputs([...Arrearinputs, newInputArrear]);
-    console.log(newInputArrear);
-  };
+//   const  handleAddArrearInput= () => {
+//     const newInputArrear = { idArrear: Arrearinputs.length + 1 };
+//     setArrearInputs([...Arrearinputs, newInputArrear]);
+//     console.log(newInputArrear);
+//   };
 
-  const handleInputChange
- = (event, index) => {
-    const newInputs = [...inputs];
-    newInputs[index].value = event.target.value;
-    setInputs(newInputs);
-  };
+//   const handleInputChange
+//  = (event, index) => {
+//     const newInputs = [...inputs];
+//     newInputs[index].value = event.target.value;
+//     setInputs(newInputs);
+//   };
 
 
  
 
   // eslint-disable-next-line no-unused-vars
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked); 
-    
-  };
-  const handleCheckboxChange1 = (event) => {
-    setIsCheckedFamily(event.target.checked); // Update s
-  }
 
   
 
-  useEffect(() => {
-   // const name = localStorage.getItem("name");
-   const fetchData = async () => {
-    try {
-      const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-      // Replace with your API URL
-      const jsonData = await response.json(options);
-      setOptions(jsonData.data);
-      console.log(jsonData.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      // Handle errors appropriately (display error message, etc.)
-    }
-  };
+  
 
-  fetchData(); // Call the function
-  toast.success('All Employee Data !!');
-},)
 
+  
+  
   const handleReset = () => {
     setSelectedOption('');
     setEmpName('');
     setEarnings('');
-    // setTaxes('');
+     setExceptions('');
     setGarnishmentFees('');
     setOrderID('');
-    setState('');
+    // setState('');x=
+    setSelectedOptionstatus('');
     // setSocial('');
     // setFit('');
     // setMedicare('');
     // setIsChecked('');
     // setIsCheckedFamily('');
     // setStateTax('');
-    setArrears('');
+    setPay('');
 };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -133,19 +121,20 @@ function FederalTax( ) {
       // taxes,
       garnishment_fees,
       order_id,
-      state,
+      // state,
       // minimum_wages,
       // amount_to_withhold,
       // social,
       // fit,
       // medicare,
-      arrears_greater_than_12_weeks,
-      support_second_family,
+      filing_status,
+      // arrears_greater_than_12_weeks,
+      no_of_exception,
       // statetax,
-      arrears_amt,
+      pay_period,
     };
     console.log(data)
-    fetch(`${BASE_URL}/User/CalculationDataView`, {
+    fetch(`${BASE_URL}/User/FederalCaseData/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -168,14 +157,14 @@ function FederalTax( ) {
           setGarnishmentFees('');
           setSelectedOption('');
           setOrderID('');
-          setState('');
-          setSocial('');
-          setFit('');
-          setMedicare('');
-          setIsChecked('');
-          setIsCheckedFamily('');
-          setStateTax('');
-          setArrears('');
+          // setState('');
+          // setSocial('');
+          // setFit('');
+          // setMedicare('');
+          // setIsChecked('');
+          setExceptions('');
+          // setStateTax('');
+          setPay('');
         } else {
           // Handle submission errors
           console.error('Error submitting data:', response.statusText);
@@ -276,152 +265,62 @@ function FederalTax( ) {
                     />
                   </div>
                   <div>
-                    <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
-                      State:
+                    <label htmlFor="orderID" className="block text-gray-700 text-sm font-bold mb-2">
+                      Pay Period:
+                    </label>
+                    <select id="options" value={pay_period} onChange={handleChangePay} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      name="options">
+                      <option value="Weekly"> Weekly</option>
+                      <option value="SemiMonthly">SemiMonthly</option>
+                      <option value="ByWeekly">ByWeekly
+                      </option>
+                      <option value="Monthly">Monthly</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="orderID" className="block text-gray-700 text-sm font-bold mb-2">
+                    No Of Exception:
                     </label>
                     <input
-                      type="text"
-                      id="state"
+                      type="number"
+                      id="Exception"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={state}
-                      onChange={(e) => setState(e.target.value)}
+                      value={no_of_exception}
+                      onChange={(e) => setExceptions(parseInt(e.target.value))}
                     />
                   </div>
+                  <div>
+                  <label htmlFor="options" className="block text-gray-700 text-sm font-bold mb-2">Choose an option:</label>
+                    <select id="options" value={filing_status} onChange={handleChangeStatus} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      name="options">
+                      <option value="single filing status"> single filing status</option>
+                      <option value="married filing sepearte return">married filing sepearte return</option>
+                      <option value="married filing joint return">married filing joint return
+                      </option>
+                      <option value="head of household">head of household</option>
+                    </select>
+                  </div>
                   
-                
-                 
-                 
                   
-                
-
-                
-                 
+  
                  
              </div>
 
                   
-                <div className="flex items-center mt-4 mb-4">
-                    <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox"  value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                    <label  className="ms-2 text-sm font-medium  dark:text-gray-800">Support Second Family</label>
-                </div>
                
-              
-                <div className="flex items-center mt-4 mb-6">
-                
-                    <input  id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600  dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-                    <label  className="ms-2 text-sm font-medium  dark:text-gray-800">Garnishment Arrears more than 12 months</label>
-                 
-                
-                </div>
             
                 
-                      {arrears_greater_than_12_weeks && ( // Conditionally render the field based on checkbox state
-                      <>
-                      
-                      <button className="rounded-md bg-indigo-600 px-3.5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleAddArrearInput}>Add Arrears Amount</button>
-                     
-                                 
-                                  
-                            <div className="shadow  appearance-none border p-2 pb-4 mb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-4">
-                             {Arrearinputs.map((input) => (
-                                    <>
-                                    <div
-                          key={input.idArrear} >
-                              <label className="block  text-gray-700 text-sm mt-2  ml-2 font-bold mb-2"> Arrears: {input.idArrear} </label>
-                              <input type="number"  
-                              
-                              value={arrears_amt}
-
-                      onChange={(e) => setArrears(parseInt(e.target.value))} className="shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter amount in $" />
-                      </div>
-                       </>
-                                  ))} 
-                            </div>
-                           
-                           
-                      </>
-                        )}
+                    
+                    
 
                      
-                            <button className="rounded-md bg-indigo-600 px-3.5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onClick={handleAddInput}>Add Child Hold Amount</button>
-                          
-                             
-                            <div className='shadow appearance-none border mb-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-4'>
-                                  {inputs.map((input, index) => (
-                                    <>
-                          <div
-                          key={input.id} >
-                            <label className="block  text-gray-700 text-sm mt-2  ml-2  mb-2"> Amount To Withhold Child <b>{input.id} </b>: </label>
-                                    <input
-                                    className=" shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline"
-                                      type="text"
-                                      value={input.index || ''}
-                                      onChange={(event) => handleInputChange(event, index)}
-                                      placeholder= "Amount"
-                                    />
-                                  </div>
-
-        </>
-                                  ))}
-                                
-                                </div>
-                   
-
-                  <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-2">
-                          <div>
-                                  <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Federal Income Tax (%):
-                                  </label>
-                                  <input
-                                    type="number"
-                                    id="fit"
-                                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={fit}
-                                    onChange={(e) => setFit(parseInt(e.target.value))}
-                                  />
-                            </div>
-                            <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Social Security Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="social"
-                                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={social}
-                                    onChange={(e) => setSocial(parseInt(e.target.value))}
-                                  />
-                            </div>
-                            <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Medicare Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="medicare"
-                                    className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={medicare}
-                                    onChange={(e) => setMedicare(parseInt(e.target.value))}
-                                  />
-                            </div>
-                            <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    State Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="state"
-                                    className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={statetax}
-                                    onChange={(e) => setStateTax(parseInt(e.target.value))}
-                                  />
-                            </div>
-                 
-                </div>
+                           
+                  
               
                 <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button
                     type="submit"
+                    onClick={handleSubmit}
                     className="bg-blue-500 m-2 sm:mx-auto sm:w-full text-sm text-sm hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   >
                     Calculate

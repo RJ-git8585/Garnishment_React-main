@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 // eslint-disable-next-line no-unused-vars
 import React, { useState,useEffect } from 'react';
-import {  toast } from 'react-toastify';
+import {  ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 
@@ -90,7 +90,7 @@ function SingleChild( ) {
 
   
 
-  useEffect(() => {
+ 
    // const name = localStorage.getItem("name");
    const fetchData = async () => {
     try {
@@ -105,10 +105,10 @@ function SingleChild( ) {
       // Handle errors appropriately (display error message, etc.)
     }
   };
-
+  useEffect(() => {
   fetchData(); // Call the function
   toast.success('All Employee Data !!');
-},)
+},[])
 
   const handleReset = () => {
     setSelectedOption('');
@@ -435,7 +435,9 @@ function SingleChild( ) {
             </div>
           </div>
         </div> 
+       
       </div>
+      <ToastContainer />
     </>
   );
 }
