@@ -52,12 +52,13 @@ function Garnishment( ) {
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
   // const [selectedValue, setSelectedValue] = useState(null);
-  const [options, setOptions] = useState([]);
+  // const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
    
   const employer_id = (parseInt(localStorage.getItem("id")));
   // const [empID, setEmpID] = useState(options[0].value);
+
 
   // const handleChange = (event) => {
   //   setSelectedOption((parseInt(event.target.value,10)));
@@ -94,17 +95,11 @@ function Garnishment( ) {
     setSelectedType(selectedOption);
     // setShowNewField(event.target.value === 'MultipleChild');
     // setHideNewField(event.target.value === 'MultipleChild'); 
-
     // setShowStudentNewField(event.target.value === 'StudentLoan');
     // setHideStudentNewField(event.target.value === 'StudentLoan'); 
-
     // // setShowFederalNewField(event.target.value === 'FederalTax');
     // setHideFederalNewField(event.target.value === 'FederalTax'); 
-
     console.log('Selected value:', selectedOption);
-    
- 
-    
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -115,28 +110,23 @@ function Garnishment( ) {
   // const handleCheckboxChange1 = (event) => {
   //   setIsCheckedFamily(event.target.checked); // Update s
   // }
-
-  
-
-  useEffect(() => {
    // const name = localStorage.getItem("name");
-   const fetchData = async () => {
-    try {
-      const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-      // Replace with your API URL
-      const jsonData = await response.json(options);
-      setOptions(jsonData.data);
-      console.log(jsonData.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      // Handle errors appropriately (display error message, etc.)
-    }
-  };
-
-  fetchData(); // Call the function
-  toast.success('All Employee Data !!');
-},)
+  //  const fetchData = async () => {
+  //   try {
+  //     const id = localStorage.getItem("id");
+  //     const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
+  //     // Replace with your API URL
+  //     const jsonData = await response.json();
+  //     setOptions(jsonData.data);
+  //     console.log(jsonData.data)
+  //   } catch (error) {
+  //     console.error('Error fetching data:', error);
+  //     }
+  // };
+  // useEffect(() => {
+  //   fetchData();
+  // }, []); 
+ 
 
   const handleReset = () => {
     setSelectedOption('');
@@ -213,8 +203,10 @@ function Garnishment( ) {
           console.error('Error submitting data:', response.statusText);
         }
       });
-      console.log(options)
+      // console.log(options)
   };
+ 
+
 
   return (
     <>

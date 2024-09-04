@@ -29,7 +29,7 @@ function dashboard(  ) {
   const [data, setData1] = useState([]);
  
 // eslint-disable-next-line react-hooks/rules-of-hooks
-useEffect(()=>{
+
 
     const fetchData = async () => {
       try {
@@ -64,20 +64,20 @@ useEffect(()=>{
         const datalog = await fetch(`${BASE_URL}/User/logdata`); // Replace with your API URL
         const jsonDatalog = await datalog.json();
         setData1(jsonDatalog.data) ;
-        
       } catch (error) {
         console.error('Error fetching data:', error);
         // Handle errors appropriately (display error message, etc.)
       }
     };
-      logsData();
-      fetchData();
-      Setting();
-      toast.success('Welcome to Dashboard!', {
-      position: 'bottom-left', // Set the position here
-    });
+      
+      
 
-  },[])
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(()=>{
+      logsData();
+        fetchData();
+        Setting();
+  },[]);
   
  
     const { Active_employees,Employees_with_Multiple_IWO,Total_IWO,Employees_with_Single_IWO } = jsonData;
