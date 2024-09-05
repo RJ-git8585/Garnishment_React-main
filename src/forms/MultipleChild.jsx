@@ -23,7 +23,7 @@ function MultipleChild() {
   const [arrearInputs, setArrearInputs] = useState([{ id: 1, value: '' }]);
   const employer_id = parseInt(localStorage.getItem("id"));
   const [options, setOptions] = useState([]);
-  const style = { color: "red", fontSize: "1.2em" }
+  const style = { color: "#b90707", fontSize: "1.2em" }
 
   const StateList = [
     { id: 1, label: 'Alabama' },
@@ -111,8 +111,21 @@ function MultipleChild() {
   }; // Closing brace added here
 
   const handleAddArrearInput = () => {
-    const newInputArrear = { id: arrearInputs.length + 1, value: '' };
-    setArrearInputs([...arrearInputs, newInputArrear]);
+    if (arrearInputs.length < 5) {  // Limit to 5 inputs
+      const newInputArrear = { id: arrearInputs.length + 1, value: '' };
+      setArrearInputs([...arrearInputs, newInputArrear]);
+    } else {
+      alert('You can only add up to 5 inputs.');
+    }
+  };
+
+  const handleRemoveArrearInput = (id) => {
+    if (arrearInputs.length > 1) {  // Ensure at least one input remains
+      const updatedInputs = arrearInputs.filter(input => input.id !== id);
+      setArrearInputs(updatedInputs);
+    } else {
+      alert('At least one input is required.');
+    }
   };
 
   const handleInputChange = (event, index) => {
@@ -249,7 +262,7 @@ function MultipleChild() {
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500"
                       required
                     >
-                      <option value="">Select Employee</option>
+                      <option value="">Choose Employee</option>
                       {options.map((option) => (
                         <option key={option.employee_id} value={parseInt(option.employee_id, 10)}>
                           {option.employee_name}_{option.employee_id}
@@ -264,6 +277,7 @@ function MultipleChild() {
                     <input
                       type="text"
                       id="empName"
+                      placeholder='Enter Employee Name'
                       className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={employee_name}
                       onChange={(e) => setEmpName(e.target.value)}
@@ -276,6 +290,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="earning"
+                      placeholder='Enter Earning'
                       className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={earnings}
                       onChange={(e) => setEarnings(parseInt(e.target.value, 10))}
@@ -288,6 +303,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="garnishmentFees"
+                      placeholder='Enter Fees'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={garnishment_fees}
                       onChange={(e) => setGarnishmentFees(parseInt(e.target.value, 10))}
@@ -300,6 +316,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="orderID"
+                       placeholder='Enter Order Id'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={order_id}
                       onChange={(e) => setOrderID(parseInt(e.target.value, 10))}
@@ -340,6 +357,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="minimum_wages"
+                       placeholder='Enter Minimum Wagesd'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={minimum_wages}
                       onChange={(e) => setminimum_wages(parseInt(e.target.value, 10))}
@@ -377,13 +395,19 @@ function MultipleChild() {
                   <button
                     type="button"
                     className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={handleAddArrearInput}
-                  >
+                    onClick={handleAddArrearInput} >
                     Add Arrears Amount
                   </button>
+                  <div className="shadow appearance-none border mt-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   {arrearInputs.map((input, index) => (
+                   
                     <div key={input.id} className="mt-4">
+                       <div className='flex items-center'>
                       <label className="block text-gray-700 text-sm font-bold mb-2">Arrears Amount {index + 1}:</label>
+                      <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveArrearInput(input.id)}>
+                  <FaTrashAlt style={style} />
+               </button>
+</div>
                       <input
                         type="number"
                         value={input.value}
@@ -392,9 +416,10 @@ function MultipleChild() {
                       />
                     </div>
                   ))}
+                  </div>
                 </>
               )}
-
+              
               <div className="flex items-center mt-4 mb-4">
                 <button
                   type="button"
