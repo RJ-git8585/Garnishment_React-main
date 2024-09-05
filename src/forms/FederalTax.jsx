@@ -44,7 +44,7 @@ function FederalTax( ) {
     
   };
 
-<<<<<<< HEAD
+
   // const [inputs, setInputs] = useState([{ id: 1 }]);
 
   // const handleAddInput = () => {
@@ -75,9 +75,7 @@ function FederalTax( ) {
 
   
 
-  
 
-=======
   useEffect(() => {
    // const name = localStorage.getItem("name");
    const fetchData = async () => {
@@ -97,7 +95,6 @@ function FederalTax( ) {
   fetchData(); // Call the function
   toast.success('All Employee Data !!');
 },[])
->>>>>>> 28a61b6 (test file chages)
 
   
   
