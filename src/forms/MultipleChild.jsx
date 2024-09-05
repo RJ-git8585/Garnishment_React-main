@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
+import { FaTrashAlt } from "react-icons/fa";
+
 
 function MultipleChild() {
   const [employee_name, setEmpName] = useState('');
@@ -21,19 +24,110 @@ function MultipleChild() {
   const [arrearInputs, setArrearInputs] = useState([{ id: 1, value: '' }]);
   const employer_id = parseInt(localStorage.getItem("id"));
   const [options, setOptions] = useState([]);
+  const style = { color: "#b90707", fontSize: "1.2em" }
 
-  const handleAddInput = () => {
-    const newInput = { id: inputs.length + 1, value: '' };
-    setInputs([...inputs, newInput]);
+  const StateList = [
+    { id: 1, label: 'Alabama' },
+    { id: 2, label: 'Arizona' },
+    { id: 3, label: 'California' },
+    { id: 4, label: 'Colorado' },
+    { id: 5, label: 'Connecticut' },
+    { id: 6, label: 'Florida' },
+    { id: 7, label: 'Georgia' },
+    { id: 8, label: 'Idaho' },
+    { id: 9, label: 'Illinois' },
+    { id: 10, label: 'Indiana' },
+    { id: 11, label: 'Iowa' },
+    { id: 12, label: 'Kansas' },
+    { id: 13, label: 'Kentucky' },
+    { id: 14, label: 'Louisiana' },
+    { id: 14, label: 'Maine' },
+    { id: 15, label: 'Maryland' },
+    { id: 16, label: 'Massachusetts' },
+    { id: 17, label: 'Michigan' },
+    { id: 18, label: 'Minnesota' },
+    { id: 19, label: 'Mississippi' },
+    { id: 20, label: 'Missouri' },
+    { id: 21, label: 'Montana' },
+    { id: 22, label: 'Nebraska' },
+    { id: 23, label: 'Nevada' },
+    { id: 24, label: 'New Hampshire' },
+    { id: 25, label: 'New Jersey' },
+    { id: 26, label: 'New Mexico' },
+    { id: 27, label: 'North Carolina' },
+    { id: 28, label: 'North Dakota' },
+    { id: 29, label: 'Ohio' },
+    { id: 30, label: 'Oklahoma' },
+    { id: 31, label: 'Oregon' },
+    { id: 32, label: 'Pennsylvania' },
+    { id: 33, label: 'Rhode Island' },
+    { id: 34, label: 'South Carolina' },
+    { id: 35, label: 'South Dakota' },
+    { id: 36, label: 'Tennessee' },
+    { id: 37, label: 'Texas' },
+    { id: 38, label: 'Utah' },
+    { id: 39, label: 'Vermont' },
+    { id: 40, label: 'Virginia' },
+    { id: 41, label: 'Washington' },
+    { id: 42, label: 'West Virginia' },
+    { id: 43, label: 'Wisconsin' },
+    { id: 44, label: 'Wyoming' },
+    { id: 45, label: 'Alaska' },
+    { id: 46, label: 'Arkansas' },
+    { id: 47, label: 'Delaware' },
+    { id: 48, label: 'Hawaii' },
+    { id: 49, label: 'Montana' },
+    { id: 50, label: 'New York' },
+    // { id: 51, label: 'Option 1' },
+    // { id: 52, label: 'Option 2' },
+    // { id: 53, label: 'Option 3' },
+    // { id: 54, label: 'Option 4' },
+    // { id: 55, label: 'Option 4' },
+  ];
+
+  const handleState = (event) => {
+    setState(event.target.value);
   };
 
+
+  const handleAddInput = () => {
+    if (inputs.length < 5) { // Limit to 5 inputs
+      const newInput = { id: inputs.length + 1, value: '' };
+      setInputs([...inputs, newInput]);
+    } else {
+      alert('You can only add up to 5 inputs.');
+    }
+  };
+
+  const handleRemoveInput = (id) => {
+    if (inputs.length > 1) { // Ensure at least one input is always available
+      const updatedInputs = inputs.filter(input => input.id !== id);
+      setInputs(updatedInputs);
+    } else {
+      alert('At least one input is required.');
+    }
+  };
   const handleChange = (event) => {
     setSelectedOption(parseInt(event.target.value, 10));
   }; // Closing brace added here
 
   const handleAddArrearInput = () => {
-    const newInputArrear = { id: arrearInputs.length + 1, value: '' };
-    setArrearInputs([...arrearInputs, newInputArrear]);
+    if (arrearInputs.length < 5) {  // Limit to 5 inputs
+      const newInputArrear = { id: arrearInputs.length + 1, value: '' };
+      setArrearInputs([...arrearInputs, newInputArrear]);
+    } else {
+      alert('You can only add up to 5 inputs.');
+    }
+  };
+
+  const handleRemoveArrearInput = (id) => {
+    if (arrearInputs.length > 1) {  // Ensure at least one input remains
+      const updatedInputs = arrearInputs.filter(input => input.id !== id);
+      setArrearInputs(updatedInputs);
+    } else {
+      // alert('At least one input is required.');
+      toast.danger('At least one input is required.');
+    }
   };
 
   const handleInputChange = (event, index) => {
@@ -170,7 +264,7 @@ function MultipleChild() {
                       className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500"
                       required
                     >
-                      <option value="">Select Employee</option>
+                      <option value="">Choose Employee</option>
                       {options.map((option) => (
                         <option key={option.employee_id} value={parseInt(option.employee_id, 10)}>
                           {option.employee_name}_{option.employee_id}
@@ -185,6 +279,7 @@ function MultipleChild() {
                     <input
                       type="text"
                       id="empName"
+                      placeholder='Enter Employee Name'
                       className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={employee_name}
                       onChange={(e) => setEmpName(e.target.value)}
@@ -197,6 +292,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="earning"
+                      placeholder='Enter Earning'
                       className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={earnings}
                       onChange={(e) => setEarnings(parseInt(e.target.value, 10))}
@@ -209,6 +305,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="garnishmentFees"
+                      placeholder='Enter Fees'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={garnishment_fees}
                       onChange={(e) => setGarnishmentFees(parseInt(e.target.value, 10))}
@@ -221,11 +318,13 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="orderID"
+                       placeholder='Enter Order Id'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={order_id}
                       onChange={(e) => setOrderID(parseInt(e.target.value, 10))}
                     />
                   </div>
+{/* 
                   <div>
                     <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
                       State:
@@ -237,7 +336,22 @@ function MultipleChild() {
                       value={state}
                       onChange={(e) => setState(e.target.value)}
                     />
+                  </div> */}
+
+                  <div>
+                    <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
+                      State:
+                    </label>
+                    <select className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500" id="selectField" value={state} onChange={handleState}>
+                        <option value="" >Choose an State </option>
+                        {StateList.map((option) => (
+                          <option key={option.id} value={option.label}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
                   </div>
+
                   <div>
                     <label htmlFor="minimum_wages" className="block text-gray-700 text-sm font-bold mb-2">
                       Minimum Wages:
@@ -245,6 +359,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="minimum_wages"
+                       placeholder='Enter Minimum Wagesd'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={minimum_wages}
                       onChange={(e) => setminimum_wages(parseInt(e.target.value, 10))}
@@ -262,31 +377,39 @@ function MultipleChild() {
                       onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
                     />
                   </div>
-              <div className="flex items-center mt-4 mb-4">
+                  </div>
+              <div className="row-span-3 w-full flex items-center mt-4 mb-4">
                       <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox" className="mr-2" />
                       <label htmlFor="showFieldCheckboxFamily" className="block text-gray-700 text-sm font-bold mb-2">
                         Support Second Family
                       </label>
               </div>
-              <div className="flex items-center mb-4">
+            
+              <div className="w-full flex items-center mb-4">
                       <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" className="mr-2" />
                       <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
                         Arrears Greater Than 12 Weeks
                       </label>
               </div>
-
+             
               {arrears_greater_than_12_weeks && (
                 <>
                   <button
                     type="button"
                     className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={handleAddArrearInput}
-                  >
+                    onClick={handleAddArrearInput} >
                     Add Arrears Amount
                   </button>
+                  <div className="shadow appearance-none border mt-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   {arrearInputs.map((input, index) => (
+                   
                     <div key={input.id} className="mt-4">
+                       <div className='flex items-center'>
                       <label className="block text-gray-700 text-sm font-bold mb-2">Arrears Amount {index + 1}:</label>
+                      <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveArrearInput(input.id)}>
+                  <FaTrashAlt style={style} />
+               </button>
+</div>
                       <input
                         type="number"
                         value={input.value}
@@ -295,9 +418,10 @@ function MultipleChild() {
                       />
                     </div>
                   ))}
+                  </div>
                 </>
               )}
-
+              
               <div className="flex items-center mt-4 mb-4">
                 <button
                   type="button"
@@ -307,20 +431,28 @@ function MultipleChild() {
                   Add Child Withhold Amount
                 </button>
               </div>
+              <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
               {inputs.map((input, index) => (
-                <div key={input.id} className="mb-4">
+                <div key={input.id} className="mb-4 ">
+                  <div className='flex items-center'>
                   <label className="block text-gray-700 text-sm font-bold mb-2">Withhold Amount {index + 1}:</label>
+                  <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveInput(input.id)}>
+                  <FaTrashAlt style={style} />
+               </button>
+               </div>
                   <input
                     type="number"
+                    placeholder='Enter amount'
                     value={input.value}
                     onChange={(event) => handleInputChange(event, index)}
                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
+                  
                 </div>
               ))}
 
-                </div>
-               
+                
+               </div>
                 <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button
                     type="submit"
@@ -339,6 +471,9 @@ function MultipleChild() {
                 </div> 
               </form>
             </div>
+<hr className="mt-6"></hr>
+
+<ToastContainer />
           </div>
         </div>
       </div>

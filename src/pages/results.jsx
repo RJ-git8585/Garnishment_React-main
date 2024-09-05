@@ -68,10 +68,29 @@ function results(onDeleteSuccess,onEditSuccess) {
             {/* <ProfileHeader/> */}
             
             <hr />
-            
-            <div className='items-right text-right mt-4 mb-4 customexport'>
-            
-            <a href={Link} className=" border inline-flex items-right rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"><TiExport />
+           
+         
+           
+            <div className='items-left'>
+   
+            <div>
+                    <label htmlFor="empID" className="mt-6 block italic text-red-700 text-sm font-semibold mb-3">
+                            Please Select Garnishment Type:
+                          </label>
+                    <select className="custom-select mb-10 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm bg-black rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-white dark:focus:ring-white-500 dark:focus:border-white-500" required>
+                      <option value="MultipleChild">Child Support</option>
+                      <option value="StudentLoan">Student loan</option>
+                      <option value="MultiStudentLoan">Multiple Student loan</option>
+                      <option value="FederalTax">Federal Tax</option>
+                      <option value="StateTax">State Tax</option>
+                      <option value="Creditor">Creditor</option>
+                      <option value="Bankruptcy">Bankruptcy</option>
+                    </select>  
+              </div>
+              </div>
+
+              <div className='items-right text-right mt-4 mb-4 customexport'>
+       <a href={Link} className=" border inline-flex items-right rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"><TiExport />
         Export
         </a>
         <a href="#" className=" border inline-flex ml-2 items-right rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"><CgImport />
