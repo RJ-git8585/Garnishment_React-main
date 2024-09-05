@@ -108,7 +108,7 @@ function StudentLoan( ) {
 
   fetchData(); // Call the function
   toast.success('All Employee Data !!');
-},)
+},[])
 
   const handleReset = () => {
     setSelectedOption('');

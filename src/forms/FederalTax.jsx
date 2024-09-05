@@ -22,7 +22,7 @@ function FederalTax( ) {
   // const [medicare, setMedicare] = useState('');
   const [pay_period, setPay] = useState('daily');
   const [no_of_exception, setExceptions] = useState(false); // Initialize checkbox state as unchecked
-  const [filing_status, setSelectedOptionstatus] = useState('single filing status');
+  const [filing_status, setSelectedOptionstatus] = useState('');
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
@@ -247,8 +247,8 @@ function FederalTax( ) {
                     </label>
                     <select id="options" value={pay_period} onChange={handleChangePay} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       name="options">
-                      <option value="daily"> Daily</option>
                       <option value="Weekly">Weekly</option>
+                      <option value="Daily"> Daily</option>
                       <option value="Biweekly">Biweekly
                       </option>
                       <option value="Semimonthly">Semimonthly</option>
@@ -271,10 +271,11 @@ function FederalTax( ) {
                   <label htmlFor="options" className="block text-gray-700 text-sm font-bold mb-2">Filling Status:</label>
                     <select id="options" value={filing_status} onChange={handleChangeStatus} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       name="options">
-                      <option value="single filing status"> Single filing status</option>
+                      
                       <option value="married filing sepearte return">Married filing sepearte return</option>
                       <option value="married filing joint return">Married filing joint return
                       </option>
+                      <option value="single filing status"> Single filing status</option>
                       <option value="head of household">Head of household</option>
                     </select>
                   </div>

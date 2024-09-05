@@ -136,21 +136,7 @@ function Garnishment( ) {
 // },)
 
    // const name = localStorage.getItem("name");
-   const fetchData = async () => {
-    try {
-      const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-      // Replace with your API URL
-      const jsonData = await response.json();
-      setOptions(jsonData.data);
-      console.log(jsonData.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []); 
+
  
 
 
