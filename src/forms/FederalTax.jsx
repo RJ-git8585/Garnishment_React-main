@@ -20,7 +20,7 @@ function FederalTax( ) {
   // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('SingleChild');
   // const [medicare, setMedicare] = useState('');
-  const [pay_period, setPay] = useState('Weekly');
+  const [pay_period, setPay] = useState('daily');
   const [no_of_exception, setExceptions] = useState(false); // Initialize checkbox state as unchecked
   const [filing_status, setSelectedOptionstatus] = useState('single filing status');
   const [options, setOptions] = useState([]);
@@ -44,7 +44,7 @@ function FederalTax( ) {
     
   };
 
-<<<<<<< HEAD
+
   // const [inputs, setInputs] = useState([{ id: 1 }]);
 
   // const handleAddInput = () => {
@@ -77,7 +77,7 @@ function FederalTax( ) {
 
   
 
-=======
+
   useEffect(() => {
    // const name = localStorage.getItem("name");
    const fetchData = async () => {
@@ -97,10 +97,7 @@ function FederalTax( ) {
   fetchData(); // Call the function
   toast.success('All Employee Data !!');
 },[])
->>>>>>> 28a61b6 (test file chages)
 
-  
-  
   const handleReset = () => {
     setSelectedOption('');
     setEmpName('');
@@ -255,16 +252,17 @@ function FederalTax( ) {
                     </label>
                     <select id="options" value={pay_period} onChange={handleChangePay} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       name="options">
-                      <option value="Weekly"> Weekly</option>
-                      <option value="SemiMonthly">SemiMonthly</option>
-                      <option value="ByWeekly">ByWeekly
+                      <option value="Daily"> Daily</option>
+                      <option value="Weekly">Weekly</option>
+                      <option value="Biweekly">Biweekly
                       </option>
+                      <option value="Semimonthly">Semimonthly</option>
                       <option value="Monthly">Monthly</option>
                     </select>
                   </div>
                   <div>
                     <label htmlFor="orderID" className="block text-gray-700 text-sm font-bold mb-2">
-                    No Of Exception:
+                    No Of Exemptions:
                     </label>
                     <input
                       type="number"
@@ -275,14 +273,14 @@ function FederalTax( ) {
                     />
                   </div>
                   <div>
-                  <label htmlFor="options" className="block text-gray-700 text-sm font-bold mb-2">Choose an option:</label>
+                  <label htmlFor="options" className="block text-gray-700 text-sm font-bold mb-2">Filling Status:</label>
                     <select id="options" value={filing_status} onChange={handleChangeStatus} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       name="options">
-                      <option value="single filing status"> single filing status</option>
-                      <option value="married filing sepearte return">married filing sepearte return</option>
-                      <option value="married filing joint return">married filing joint return
+                      <option value="single filing status"> Single filing status</option>
+                      <option value="married filing sepearte return">Married filing sepearte return</option>
+                      <option value="married filing joint return">Married filing joint return
                       </option>
-                      <option value="head of household">head of household</option>
+                      <option value="head of household">Head of household</option>
                     </select>
                   </div>
              

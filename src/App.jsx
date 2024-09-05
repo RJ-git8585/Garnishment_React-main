@@ -17,7 +17,7 @@ import Forgot from './pages/forgot';
 import Setting from './pages/setting';
 import Help from './pages/Help';
 import Tax from './pages/Tax';
-import SingleChild from './forms/SingleChild';
+// import SingleChild from './forms/SingleChild';
 import Garnishment from './pages/Garnishment';
 
 // import Privacy from './pages/privacy';
@@ -67,7 +67,7 @@ function App() {
         <Route path="/iwo" element={<PrivateRoute><Iwo /></PrivateRoute>} />
         <Route path="/results" element={<PrivateRoute><Results /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
-        <Route path="/SingleChild" element={<SingleChild />} /> 
+        {/* <Route path="/SingleChild" element={<SingleChild />} />  */}
         <Route path="apis" element={<Apis />} />
         <Route path="test" element={<Test />} />
        

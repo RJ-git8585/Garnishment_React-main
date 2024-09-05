@@ -7,7 +7,7 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaBalanceScaleRight } from "react-icons/fa";
 // eslint-disable-next-line no-unused-vars
-import SingleChild from '../forms/SingleChild';
+
 import MultipleChild from '../forms/MultipleChild';
 import StudentLoan from '../forms/StudentLoan';
 import { BASE_URL } from '../Config';
@@ -33,7 +33,7 @@ function Garnishment( ) {
   // const [social, setSocial] = useState('');
   // const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
-  const [selectedType, setSelectedType] = useState('SingleChild');
+  const [selectedType, setSelectedType] = useState('MultipleChild');
   // const [medicare, setMedicare] = useState('');
   const [arrears_amt, setArrears] = useState('');
   // const [statetax, setStateTax] = useState('');
@@ -51,7 +51,8 @@ function Garnishment( ) {
   // const [state, setState] = useState('');
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
-  const [selectedValue, setSelectedValue] = useState(null);
+  // const [selectedValue, setSelectedValue] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
@@ -268,8 +269,8 @@ function Garnishment( ) {
                     </label>
               <select className="custom-select mb-10 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm bg-black rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-white dark:focus:ring-white-500 dark:focus:border-white-500" value={selectedType} onChange={handleChangeType} required>
                   {/* <option value="SingleChild">Select Your Prefer Type</option>  */}
-                <option  value="SingleChild">Single Child</option>
-                <option value="MultipleChild">Multiple Child</option>
+                {/* <option  value="SingleChild">Single Child</option> */}
+                <option value="MultipleChild">Child Support</option>
                 <option value="StudentLoan">Student loan</option>
                 <option value="MultiStudentLoan">Multiple Student loan</option>
                 <option value="FederalTax">Federal Tax</option>
@@ -287,12 +288,7 @@ function Garnishment( ) {
                       </div>
                     )}
 
-                    {selectedType === 'SingleChild' && (
-                      <div>
-                        <SingleChild></SingleChild>
-                 
-                      </div>
-                    )}
+                   
                     {selectedType === 'StudentLoan' && (
                       <div>
                         <StudentLoan></StudentLoan>
