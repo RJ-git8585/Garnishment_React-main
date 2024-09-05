@@ -17,29 +17,15 @@ function FederalTax( ) {
   const [garnishment_fees, setGarnishmentFees] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [order_id, setOrderID] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks  
-  // const [state, setState] = useState('');
-  // const [social, setSocial] = useState('');
-  // const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('SingleChild');
   // const [medicare, setMedicare] = useState('');
   const [pay_period, setPay] = useState('Weekly');
-  // const [statetax, setStateTax] = useState('');
-
-
-
-
-
-
-  // const [state, setState] = useState('');
-  // const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [no_of_exception, setExceptions] = useState(false); // Initialize checkbox state as unchecked
   const [filing_status, setSelectedOptionstatus] = useState('single filing status');
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
-   
   const employer_id = (parseInt(localStorage.getItem("id")));
   // const [empID, setEmpID] = useState(options[0].value);
 
@@ -58,6 +44,7 @@ function FederalTax( ) {
     
   };
 
+<<<<<<< HEAD
   // const [inputs, setInputs] = useState([{ id: 1 }]);
 
   // const handleAddInput = () => {
@@ -90,6 +77,27 @@ function FederalTax( ) {
 
   
 
+=======
+  useEffect(() => {
+   // const name = localStorage.getItem("name");
+   const fetchData = async () => {
+    try {
+      const id = localStorage.getItem("id");
+      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
+      // Replace with your API URL
+      const jsonData = await response.json(options);
+      setOptions(jsonData.data);
+      console.log(jsonData.data)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      // Handle errors appropriately (display error message, etc.)
+    }
+  };
+
+  fetchData(); // Call the function
+  toast.success('All Employee Data !!');
+},[])
+>>>>>>> 28a61b6 (test file chages)
 
   
   
@@ -100,14 +108,7 @@ function FederalTax( ) {
      setExceptions('');
     setGarnishmentFees('');
     setOrderID('');
-    // setState('');x=
     setSelectedOptionstatus('');
-    // setSocial('');
-    // setFit('');
-    // setMedicare('');
-    // setIsChecked('');
-    // setIsCheckedFamily('');
-    // setStateTax('');
     setPay('');
 };
   const handleSubmit = (event) => {
@@ -121,12 +122,6 @@ function FederalTax( ) {
       // taxes,
       garnishment_fees,
       order_id,
-      // state,
-      // minimum_wages,
-      // amount_to_withhold,
-      // social,
-      // fit,
-      // medicare,
       filing_status,
       // arrears_greater_than_12_weeks,
       no_of_exception,
@@ -153,20 +148,12 @@ function FederalTax( ) {
           setSelectedOption('');
           setEmpName('');
           setEarnings('');
-          // setTaxes('');
           setGarnishmentFees('');
           setSelectedOption('');
           setOrderID('');
-          // setState('');
-          // setSocial('');
-          // setFit('');
-          // setMedicare('');
-          // setIsChecked('');
           setExceptions('');
-          // setStateTax('');
           setPay('');
         } else {
-          // Handle submission errors
           console.error('Error submitting data:', response.statusText);
         }
       });
@@ -189,8 +176,6 @@ function FederalTax( ) {
                             name="employer_id"
                              value={employer_id}
                             type="hidden"
-                            // autoComplete="employee_name"
-                            // onChange={(e) => setEid(e.target.value)}
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                         </div>
@@ -300,22 +285,9 @@ function FederalTax( ) {
                       <option value="head of household">head of household</option>
                     </select>
                   </div>
-                  
-                  
-  
-                 
+             
              </div>
 
-                  
-               
-            
-                
-                    
-                    
-
-                     
-                           
-                  
               
                 <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button

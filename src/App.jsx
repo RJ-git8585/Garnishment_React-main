@@ -34,6 +34,8 @@ import Apis from './component/Apis';
 import PasswordResetConfirm from './pages/PasswordResetConfirm';
 import Order from './pages/order';
 import Results from './pages/results';
+// eslint-disable-next-line no-unused-vars
+import Test from './component/test';
 
 function App() {
   return (
@@ -67,6 +69,7 @@ function App() {
         <Route path="*" element={<Notfound />} />
         <Route path="/SingleChild" element={<SingleChild />} /> 
         <Route path="apis" element={<Apis />} />
+        <Route path="test" element={<Test />} />
        
         <Route path="/reset-password/:token" element={<PasswordResetConfirm />} />
       

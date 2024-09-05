@@ -17,14 +17,14 @@ function MultipleStudentLoan( ) {
   const [garnishment_fees, setGarnishmentFees] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [order_id, setOrderID] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks  
-  const [state, setState] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [minimum_wages, setMinimumWages] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [amount_to_withhold, setTotalAmount] = useState('');
-  const [social, setSocial] = useState('');
-  const [fit, setFit] = useState('');
+  // // eslint-disable-next-line react-hooks/rules-of-hooks  
+  // const [state, setState] = useState('');
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // const [minimum_wages, setMinimumWages] = useState('');
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // const [amount_to_withhold, setTotalAmount] = useState('');
+  // const [social, setSocial] = useState('');
+  // const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('SingleChild');
   // const [medicare, setMedicare] = useState('');
@@ -37,8 +37,8 @@ function MultipleStudentLoan( ) {
 
 
   // const [state, setState] = useState('');
-  const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
-  const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
+  // const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
+  // const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
   // const [selectedValue, setSelectedValue] = useState(null);
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
@@ -53,7 +53,7 @@ function MultipleStudentLoan( ) {
     
   };
 
-  const [inputs, setInputs] = useState([{ id: 1 }]);
+  // const [inputs, setInputs] = useState([{ id: 1 }]);
 
   // const handleAddInput = () => {
   //   const newInput = { id: inputs.length + 1 };
@@ -69,24 +69,24 @@ function MultipleStudentLoan( ) {
   //   console.log(newInputArrear);
   // };
 
-  const handleInputChange
- = (event, index) => {
-    const newInputs = [...inputs];
-    newInputs[index].value = event.target.value;
-    setInputs(newInputs);
-  };
+//   const handleInputChange
+//  = (event, index) => {
+//     const newInputs = [...inputs];
+//     newInputs[index].value = event.target.value;
+//     setInputs(newInputs);
+//   };
 
 
  
 
   // eslint-disable-next-line no-unused-vars
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked); 
+  // const handleCheckboxChange = (event) => {
+  //   setIsChecked(event.target.checked); 
     
-  };
-  const handleCheckboxChange1 = (event) => {
-    setIsCheckedFamily(event.target.checked); // Update s
-  }
+  // };
+  // const handleCheckboxChange1 = (event) => {
+  //   setIsCheckedFamily(event.target.checked); // Update s
+  // }
 
   
 
@@ -108,7 +108,7 @@ function MultipleStudentLoan( ) {
 
   fetchData(); // Call the function
   toast.success('All Employee Data !!');
-},)
+},[])
 
   const handleReset = () => {
     setSelectedOption('');
