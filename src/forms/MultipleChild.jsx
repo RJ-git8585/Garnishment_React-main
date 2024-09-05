@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 import { FaTrashAlt } from "react-icons/fa";
@@ -124,7 +125,8 @@ function MultipleChild() {
       const updatedInputs = arrearInputs.filter(input => input.id !== id);
       setArrearInputs(updatedInputs);
     } else {
-      alert('At least one input is required.');
+      // alert('At least one input is required.');
+      toast.danger('At least one input is required.');
     }
   };
 
@@ -471,7 +473,7 @@ function MultipleChild() {
             </div>
 <hr className="mt-6"></hr>
 
-
+<ToastContainer />
           </div>
         </div>
       </div>
