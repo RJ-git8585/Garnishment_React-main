@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
@@ -6,13 +7,13 @@ import { BASE_URL } from '../Config';
 
 function MultipleChild() {
   const [employee_name, setEmpName] = useState('');
-  const [earnings, setEarnings] = useState('');
+  const [earnings, setEarnings] = useState(''); 
   const [garnishment_fees, setGarnishmentFees] = useState('');
   const [order_id, setOrderID] = useState('');
   const [state, setState] = useState('');
   const [number_of_arrears, setnumber_of_arrears] = useState('');
   const [minimum_wages, setminimum_wages] = useState('');
-  const [selectedType, setSelectedType] = useState('MultipleChild');
+  // const [selectedType, setSelectedType] = useState('MultipleChild');
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false);
   const [employee_id, setSelectedOption] = useState(null);
@@ -153,7 +154,7 @@ function MultipleChild() {
     <>
       <div className="min-h-full">
         <div className="container">
-          <div className="content">
+          <div className="">
             <div className="p-0">
               <form onSubmit={handleSubmit}>
                 <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
@@ -261,17 +262,17 @@ function MultipleChild() {
                       onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
                     />
                   </div>
-                  <div className="flex items-center mt-4 mb-4">
-                <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox" className="mr-2" />
-                <label htmlFor="showFieldCheckboxFamily" className="block text-gray-700 text-sm font-bold mb-2">
-                  Support Second Family
-                </label>
+              <div className="flex items-center mt-4 mb-4">
+                      <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox" className="mr-2" />
+                      <label htmlFor="showFieldCheckboxFamily" className="block text-gray-700 text-sm font-bold mb-2">
+                        Support Second Family
+                      </label>
               </div>
               <div className="flex items-center mb-4">
-                <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" className="mr-2" />
-                <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
-                  Arrears Greater Than 12 Weeks
-                </label>
+                      <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" className="mr-2" />
+                      <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
+                        Arrears Greater Than 12 Weeks
+                      </label>
               </div>
 
               {arrears_greater_than_12_weeks && (
@@ -319,15 +320,23 @@ function MultipleChild() {
               ))}
 
                 </div>
-                <div className="mt-4">
+               
+                <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button
                     type="submit"
                     onClick={handleSubmit}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-blue-500 m-2 sm:mx-auto sm:w-full text-sm text-sm hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   >
-                    Submit
+                    Calculate
                   </button>
-                </div>
+                  <button
+                    type="reset"
+                    onClick={handleReset}
+                    className="bg-blue-500 m-2 sm:mx-auto sm:w-full text-sm text-sm hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  >
+                    Reset
+                  </button>
+                </div> 
               </form>
             </div>
           </div>
