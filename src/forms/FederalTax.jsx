@@ -48,31 +48,6 @@ function FederalTax( ) {
     
   };
 
-
-  // const [inputs, setInputs] = useState([{ id: 1 }]);
-
-  // const handleAddInput = () => {
-  //   const newInput = { id: inputs.length + 1 };
-  //   setInputs([...inputs, newInput]);
-  //   console.log(newInput);
-  // };
-
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
-
-//   const  handleAddArrearInput= () => {
-//     const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-//     setArrearInputs([...Arrearinputs, newInputArrear]);
-//     console.log(newInputArrear);
-//   };
-
-//   const handleInputChange
-//  = (event, index) => {
-//     const newInputs = [...inputs];
-//     newInputs[index].value = event.target.value;
-//     setInputs(newInputs);
-//   };
-
-
  
 
   // eslint-disable-next-line no-unused-vars
@@ -140,7 +115,6 @@ function FederalTax( ) {
           toast.success('Calculation Added Successfully !!');
           // navigate('/employee', { replace: true });
           handleReset();
-
           setSelectedOption('');
           setEmpName('');
           setEarnings('');

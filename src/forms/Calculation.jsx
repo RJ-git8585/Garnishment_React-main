@@ -6,6 +6,7 @@ import Sidebar from '../component/sidebar';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaBalanceScaleRight } from "react-icons/fa";
+import { BASE_URL } from '../Config';
 
 function Garnishment( ) {
 
@@ -80,12 +81,10 @@ function Garnishment( ) {
     setSelectedType(selectedOption);
     setShowNewField(event.target.value === 'MultipleChild');
     setHideNewField(event.target.value === 'MultipleChild'); 
-
     setShowStudentNewField(event.target.value === 'StudentLoan');
     setHideStudentNewField(event.target.value === 'StudentLoan'); 
 // setShowFederalNewField(event.target.value === 'FederalTax');
-    setHideFederalNewField(event.target.value === 'FederalTax'); 
-
+    setHideFederalNewField(event.target.value === 'FederalTax');
     console.log('Selected value:', selectedOption);
     console.log('Selected value:', hideNewField);
     console.log('Selected value:', showNewField);
@@ -101,15 +100,12 @@ function Garnishment( ) {
   const handleCheckboxChange1 = (event) => {
     setIsCheckedFamily(event.target.checked); // Update s
   }
-
-  
-
   useEffect(() => {
    // const name = localStorage.getItem("name");
    const fetchData = async () => {
     try {
       const id = localStorage.getItem("id");
-      const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployeedetails/${id}/`);
+      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
       // Replace with your API URL
       const jsonData = await response.json(options);
       setOptions(jsonData.data);
