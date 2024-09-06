@@ -22,11 +22,11 @@ function FederalTax( ) {
   // const [medicare, setMedicare] = useState('');
   const [pay_period, setPay] = useState('daily');
   const [no_of_exception, setExceptions] = useState(false); // Initialize checkbox state as unchecked
-<<<<<<< HEAD
-  const [filing_status, setSelectedOptionstatus] = useState('');
-=======
+
+  // const [filing_status, setSelectedOptionstatus] = useState('');
+
   const [filing_status, setSelectedOptionstatus] = useState('Choose Pay Period');
->>>>>>> 2599865 (New chnages done)
+
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
@@ -255,13 +255,13 @@ function FederalTax( ) {
                     </label>
                     <select id="options" value={pay_period} onChange={handleChangePay} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       name="options">
-<<<<<<< HEAD
-=======
+
+
                       <option disbale> Choose Pay Period</option>
                       <option value="Daily"> Daily</option>
->>>>>>> 2599865 (New chnages done)
+
                       <option value="Weekly">Weekly</option>
-                      <option value="Daily"> Daily</option>
+                      {/* <option value="Daily"> Daily</option> */}
                       <option value="Biweekly">Biweekly
                       </option>
                       <option value="Semimonthly">Semimonthly</option>
@@ -285,16 +285,16 @@ function FederalTax( ) {
                   <label htmlFor="options" className="block text-gray-700 text-sm font-bold mb-2">Filling Status:</label>
                     <select id="options" value={filing_status} onChange={handleChangeStatus} className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       name="options">
-<<<<<<< HEAD
+
                       
-=======
+
                         <option disbale> Choose Pay Period</option>
                       <option value="single filing status"> Single filing status</option>
->>>>>>> 2599865 (New chnages done)
+
                       <option value="married filing sepearte return">Married filing sepearte return</option>
                       <option value="married filing joint return">Married filing joint return
                       </option>
-                      <option value="single filing status"> Single filing status</option>
+                      {/* <option value="single filing status"> Single filing status</option> */}
                       <option value="head of household">Head of household</option>
                     </select>
                   </div>

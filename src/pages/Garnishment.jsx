@@ -292,13 +292,13 @@ function Garnishment( ) {
                     )}
                     {selectedType === 'StateTax' && (
                       <div>
-                       <h1>StateTax Calculation Coming Soon</h1>
+                       <h1>StateTax Calculation Coming Soon......</h1>
                         {/* Content for Section 3 */}
                       </div>
                     )}
                     {selectedType === 'Creditor' && (
                       <div>
-                      <h1>Creditor Calculation Coming Soon</h1>
+                      <h1>Creditor Calculation Coming Soon......</h1>
                         {/* Content for Section 3 */}
                       </div>
                     )}  
@@ -306,7 +306,7 @@ function Garnishment( ) {
 
                     {selectedType === 'Bankruptcy' && (
                       <div>
-                        <h1>Bankruptcy Calculation Coming Soon</h1>
+                        <h1>Bankruptcy Calculation Coming Soon.....</h1>
                         {/* Content for Section 3 */}
                       </div>
                     )}
