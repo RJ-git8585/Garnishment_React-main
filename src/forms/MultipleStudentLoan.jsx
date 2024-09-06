@@ -5,11 +5,7 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 
-
-
 function MultipleStudentLoan( ) {
-
-
   const [employee_name, setEmpName] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [earnings, setEarnings] = useState('');
@@ -17,29 +13,8 @@ function MultipleStudentLoan( ) {
   const [garnishment_fees, setGarnishmentFees] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [order_id, setOrderID] = useState('');
-  // // eslint-disable-next-line react-hooks/rules-of-hooks  
-  // const [state, setState] = useState('');
-  // // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [minimum_wages, setMinimumWages] = useState('');
-  // // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [amount_to_withhold, setTotalAmount] = useState('');
-  // const [social, setSocial] = useState('');
-  // const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('SingleChild');
-  // const [medicare, setMedicare] = useState('');
-  // const [arrears_amt, setArrears] = useState('');
-  // const [statetax, setStateTax] = useState('');
-
-
-
-
-
-
-  // const [state, setState] = useState('');
-  // const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
-  // const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
-  // const [selectedValue, setSelectedValue] = useState(null);
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
@@ -49,47 +24,7 @@ function MultipleStudentLoan( ) {
 
   const handleChange = (event) => {
     setSelectedOption((parseInt(event.target.value,10)));
-    
-    
   };
-
-  // const [inputs, setInputs] = useState([{ id: 1 }]);
-
-  // const handleAddInput = () => {
-  //   const newInput = { id: inputs.length + 1 };
-  //   setInputs([...inputs, newInput]);
-  //   console.log(newInput);
-  // };
-
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
-
-  // const  handleAddArrearInput= () => {
-  //   const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-  //   setArrearInputs([...Arrearinputs, newInputArrear]);
-  //   console.log(newInputArrear);
-  // };
-
-//   const handleInputChange
-//  = (event, index) => {
-//     const newInputs = [...inputs];
-//     newInputs[index].value = event.target.value;
-//     setInputs(newInputs);
-//   };
-
-
- 
-
-  // eslint-disable-next-line no-unused-vars
-  // const handleCheckboxChange = (event) => {
-  //   setIsChecked(event.target.checked); 
-    
-  // };
-  // const handleCheckboxChange1 = (event) => {
-  //   setIsCheckedFamily(event.target.checked); // Update s
-  // }
-
-  
-
   useEffect(() => {
    // const name = localStorage.getItem("name");
    const fetchData = async () => {
@@ -117,14 +52,6 @@ function MultipleStudentLoan( ) {
     // setTaxes('');
     setGarnishmentFees('');
     setOrderID('');
-    // setState('');
-    // setSocial('');
-    // setFit('');
-    // setMedicare('');
-    // setIsChecked('');
-    // setIsCheckedFamily('');
-    // setStateTax('');
-    // setArrears('');
 };
   const handleSubmit = (event) => {
     alert('Data Successfully Submitted')
@@ -138,16 +65,6 @@ function MultipleStudentLoan( ) {
       // taxes,
       garnishment_fees,
       order_id,
-      // state,
-      // minimum_wages,
-      // amount_to_withhold,
-      // social,
-      // fit,
-      // medicare,
-      // arrears_greater_than_12_weeks,
-      // support_second_family,
-      // // statetax,
-      // arrears_amt,
     };
     console.log(data)
     fetch(`${BASE_URL}/User/MiltipleStudentLoanCalculationData/`, {
@@ -161,11 +78,9 @@ function MultipleStudentLoan( ) {
         if (response.ok) {
           // Handle successful submission
           console.log('Data submitted successfully!');
-          
           toast.success('Calculation Added Successfully !!');
           // navigate('/employee', { replace: true });
           handleReset();
-
           setSelectedOption('');
           setEmpName('');
           setEarnings('');
@@ -173,14 +88,6 @@ function MultipleStudentLoan( ) {
           setGarnishmentFees('');
           setSelectedOption('');
           setOrderID('');
-          // setState('');
-          // setSocial('');
-          // setFit('');
-          // setMedicare('');
-          // setIsChecked('');
-          // setIsCheckedFamily('');
-          // setStateTax('');
-          // setArrears('');
         } else {
           // Handle submission errors
           console.error('Error submitting data:', response.statusText);
@@ -205,17 +112,10 @@ function MultipleStudentLoan( ) {
                             name="employer_id"
                              value={employer_id}
                             type="hidden"
-                            // autoComplete="employee_name"
-                            // onChange={(e) => setEid(e.target.value)}
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                         </div>
                       </div>
-
-                      
-         
-               
-   
                <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   <div>
                     <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
@@ -286,78 +186,6 @@ function MultipleStudentLoan( ) {
                   </div>
 
              </div>
-               
-  
-                          {/* <div
-                          key={input.id} >
-                            <label className="block  text-gray-700 text-sm mt-2  ml-2  mb-2"> Amount To Withhold Child <b>{input.id} </b>: </label>
-                                    <input
-                                    className=" shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline"
-                                      type="text"
-                                      value={input.index || ''}
-                                      onChange={(event) => handleInputChange(event, index)}
-                                      placeholder= "Amount"
-                                    />
-                                  </div> */}
-
-
-                                  
-                                
-                                {/* </div> */}
-                   
-
-                  {/* <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-2">
-                          <div>
-                                  <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Federal Income Tax (%):
-                                  </label>
-                                  <input
-                                    type="number"
-                                    id="fit"
-                                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={fit}
-                                    onChange={(e) => setFit(parseInt(e.target.value))}
-                                  />
-                            </div> */}
-                            {/* <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Social Security Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="social"
-                                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={social}
-                                    onChange={(e) => setSocial(parseInt(e.target.value))}
-                                  />
-                            </div>
-                            <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Medicare Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="medicare"
-                                    className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={medicare}
-                                    onChange={(e) => setMedicare(parseInt(e.target.value))}
-                                  />
-                            </div> */}
-                            {/* <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    State Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="state"
-                                    className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={statetax}
-                                    onChange={(e) => setStateTax(parseInt(e.target.value))}
-                                  />
-                            </div>
-                 
-                </div> */}
-              
                 <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button
                     type="submit"
