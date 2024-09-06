@@ -88,8 +88,6 @@ function Garnishment( ) {
     console.log('Selected value:', selectedOption);
     console.log('Selected value:', hideNewField);
     console.log('Selected value:', showNewField);
- 
-    
   };
 
   // eslint-disable-next-line no-unused-vars

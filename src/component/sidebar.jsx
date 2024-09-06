@@ -1,85 +1,96 @@
-
 // eslint-disable-next-line no-unused-vars
-import { React } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import logo_b from '../Logo_black.png';
+import { FaDashcube, FaHornbill, FaUserEdit, FaSignOutAlt, FaRocketchat, FaTools, FaBalanceScaleRight, FaMoneyBill, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Logout from '../pages/Logout';
-import logo_b  from '../Logo_black.png';
-
-import { FaDashcube,FaHornbill,FaUserEdit,FaSignOutAlt,FaRocketchat,FaTools,FaBalanceScaleRight,FaMoneyBill } from "react-icons/fa";
 
 const Sidebar = () => {
+  const [isSubmenuOpen, setSubmenuOpen] = useState(false);
+  const toggleSubmenu = () => {
+    setSubmenuOpen(!isSubmenuOpen);
+  };
 
   return (
-   <>
+    <>
       <div className="sidebar-header">
+        {/* You can include header content here if needed */}
       </div>
       <ul className="sidebar-nav">
-      <li className="sidebar-item">
+        <li className="sidebar-item">
           <Link to="/dashboard" className="sidebar-link">
-          <img
-       className="mx-auto h-10 logo-inner w-auto custom_logo_side"
-       src={logo_b}
-       alt="Your Company"
-     />
-       
-        
+            <img
+              className="h-6 logo-inner mb-6 ml-4 w-auto custom_logo_side"
+              src={logo_b}
+              alt="Garnishment"
+            />
           </Link>
-        
         </li>
-
-        <li className="sidebar-item border-b-[3px] py-2 ">
+        <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/dashboard" className="sidebar-link">
-          <FaDashcube/>
-            {/* <FontAwesomeIcon className="fas fa-tachometer-alt"></FontAwesomeIcon> */}
+            <FaDashcube />
             Dashboard
           </Link>
         </li>
-        <li className="sidebar-item border-b-[3px] py-2 ">
-          <Link to="/profile" className="sidebar-link ">
-          <FaUserEdit/>
+        <li className="sidebar-item border-b-[3px] py-2">
+          <Link to="/profile" className="sidebar-link" onClick={toggleSubmenu}>
+            <FaUserEdit />
             Profile
+            {isSubmenuOpen ? <FaChevronUp className="ml-2 "  /> : <FaChevronDown className="ml-2" />}
           </Link>
+          {isSubmenuOpen && (
+            <ul className="submenu">
+              <li className="submenu-item">
+                <Link to="/addlocation" className="sidebar-link">
+                  Add Location
+                </Link>
+              </li>
+              <li className="submenu-item">
+                <Link to="/adddepartment" className="sidebar-link">
+                 Add Departmant
+                </Link>
+              </li>
+              {/* Add more submenu items here */}
+            </ul>
+          )}
         </li>
-        <li className="sidebar-item border-b-[3px] py-2 ">
-          <Link to="/tax" className="sidebar-link ">
-          <FaMoneyBill />
+        <li className="sidebar-item border-b-[3px] py-2">
+          <Link to="/tax" className="sidebar-link">
+            <FaMoneyBill />
             Tax
           </Link>
         </li>
-        <li className="sidebar-item border-b-[3px] py-2 ">
-          <Link to="/setting" className="sidebar-link">
-          <FaTools />
+        <li className="sidebar-item border-b-[3px] py-2">
+          <Link to="/setting" className="sidebar-link" >
+            <FaTools />
             Settings
           </Link>
+          
         </li>
-        <li className="sidebar-item border-b-[3px] py-2 ">
+        <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/garnishment" className="sidebar-link">
-          <FaBalanceScaleRight />
-            Garnish   Calculator
+            <FaBalanceScaleRight />
+            Garnishment Calculator
           </Link>
         </li>
-        <li className="sidebar-item border-b-[3px] py-2 ">
+        <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/results" className="sidebar-link">
-          <FaHornbill />
-           Results
+            <FaHornbill />
+            Results
           </Link>
         </li>
-        <li className="sidebar-item border-b-[3px] py-2 ">
+        <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/help" className="sidebar-link">
-          <FaRocketchat />
+            <FaRocketchat />
             Help !
           </Link>
         </li>
-        
         <li className="sidebar-item border-b-[3px] py-2 cus_svg">
-        <FaSignOutAlt />
+          <FaSignOutAlt />
           <Logout />
-          
         </li>
       </ul>
-    
-      </>
+    </>
   );
 };
 

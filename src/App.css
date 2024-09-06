@@ -262,3 +262,21 @@ opacity: 1;
   font-weight: 600;
   font-style: italic;
 }
+
+
+.submenu {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.submenu-item {
+  padding: 5px 0;
+}
+
+.submenu-item .sidebar-link {
+  color: #555;
+}
+
+.submenu-item .sidebar-link:hover {
+  color: #000;
+}

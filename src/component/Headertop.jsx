@@ -17,7 +17,6 @@ const user = {
     // { name: 'Orders', href: '/order', current: false },
     { name: 'Employee', href: '/employee', current: false },
     { name: 'IWO', href: '/iwo', current: false },
-    // { name: 'Garnishment', href: '#', current: false },
   ]
   const userNavigation = [
     { name: 'Your Profile', href: '/profile' },
@@ -43,11 +42,6 @@ function Headertop() {
              <div className="flex h-16 items-center justify-between">
                <div className="flex items-center">
                  <div className="flex-shrink-0">
-                 {/* <img
-       className="mx-auto h-10 logo-inner w-auto"
-       src={myImage}
-       alt="Your Company"
-     /> */}
            </div>
            <div className="hidden md:block">
              <div className="ml-2 flex  items-baseline space-x-4">

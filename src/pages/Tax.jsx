@@ -2,10 +2,11 @@
 import {React ,useState,useEffect} from 'react'
 import Headertop from '../component/Headertop'
 import Sidebar from '../component/sidebar'
-import ProfileHeader from '../component/ProfileHeader';
+// import ProfileHeader from '../component/ProfileHeader';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DeleteItemComponent from '../component/DeleteItemComponent';
+import { BASE_URL } from '../Config';
 
 function Tax(onDeleteSuccess) {
 
@@ -13,25 +14,17 @@ function Tax(onDeleteSuccess) {
   const [data, setData] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
   useEffect(()=>{
-    // setIsLoading(true);
-  // const name = localStorage.getItem("name");
+
     const fetchData = async () => {
       try {
         const id = localStorage.getItem("id");
-        const response = await fetch(`https://garnishment-backend.onrender.com/User/GetTaxDetails/${id}/`); // Replace with your API URL
+        const response = await fetch(`${BASE_URL}/User/GetTaxDetails/${id}/`); // Replace with your API URL
         const jsonData = await response.json();
         setData(jsonData.data) ;
-      
-        // console.log(jsonData)    
-        // console.log(Data)
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle errors appropriately (display error message, etc.)
       }
     };
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks, no-undef
-    
     fetchData(); // Call the function
     toast.success('All Employee Data !!');
   },[])
@@ -46,7 +39,7 @@ function Tax(onDeleteSuccess) {
        <div className='sidebar'><Sidebar/></div>
        <div className="contant content ml-auto ">
        <Headertop />
-       <ProfileHeader/>
+       {/* <ProfileHeader/> */}
        <hr />
        <div className="flex flex-col mt-6">
   <div className="-m-1.5 overflow-x-auto">
@@ -85,9 +78,7 @@ function Tax(onDeleteSuccess) {
                  </td>
                
                  </tr>
-               
-             
- 
+
                ))}
             </tbody>
            

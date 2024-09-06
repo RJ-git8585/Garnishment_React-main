@@ -2,7 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import { React, useState, useEffect } from 'react'
 import Headertop from '../component/Headertop'
-import ProfileHeader from '../component/ProfileHeader'
+// import ProfileHeader from '../component/ProfileHeader'
 import Sidebar from '../component/sidebar'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,6 +10,7 @@ import DeleteItemComponent from '../component/DeleteItemComponent';
 import EditItemComponent from '../component/editItemComponent';
 import { CgImport } from "react-icons/cg";
 import { TiExport } from "react-icons/ti";
+import { FaPlus } from "react-icons/fa";
 // import Garnishment from './Garnishment';
 import load  from '../bouncing-circles.svg';
 import { BASE_URL } from '../Config';
@@ -65,7 +66,7 @@ function employee(onDeleteSuccess,onEditSuccess) {
         
         <div className=' contant content ml-auto flex flex-col'>
             <Headertop />
-            <ProfileHeader/>
+            {/* <ProfileHeader/> */}
             
             <hr />
             
@@ -77,6 +78,11 @@ function employee(onDeleteSuccess,onEditSuccess) {
         <a href="#" className=" border inline-flex ml-2 items-right rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"><CgImport />
        Import
        </a>
+
+      <a type="button" href="/addemployee" className="border inline-flex ml-2 items-right rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"><FaPlus />
+        Add
+      </a>
+    
        </div>
        <div className="flex flex-col mt-6">
   <div className="-m-1.5 overflow-x-auto">
@@ -93,8 +99,6 @@ function employee(onDeleteSuccess,onEditSuccess) {
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employer Id</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Location</th>
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Department</th>
-                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Minimum Wages</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Netpay</th> */}
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">N0. of Garnihsment</th>
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Calculation</th> */}
                    <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Pay Cycle</th>
@@ -147,10 +151,6 @@ function employee(onDeleteSuccess,onEditSuccess) {
         <span className="text-sm p-2 mt-4 text-blue colr font-semibold">Pages : </span>
        
           {[...Array(Math.ceil(data.length / 10 ))].map((_,i) => {    // <span>1</span>
-            // console.log(Math.trunc(data.length / 10 + (data.length > 0 ? 1 : -1)))
-            // console.log(Math.trunc(data.length / 10));
-            // console.log(Math.ceil(data.length / 10 ));
-              // eslint-disable-next-line react/jsx-key
               return <span className={`text-sm p-2 mt-4 custom-cls-pagei text-blue font-semibold ${
                 i === 0 ? 'active' : ''
               }`} onClick={()=>selectPageHandler(i + 1)} key={i}>{i + 1}</span>
@@ -166,12 +166,6 @@ function employee(onDeleteSuccess,onEditSuccess) {
 </div>
 
         </div>  
-        {/* {data && <Garnishment data={data} />} */}
-
-
-
-    
-      
       </div>
 
       </div>
