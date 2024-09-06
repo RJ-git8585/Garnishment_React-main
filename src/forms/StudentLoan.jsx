@@ -18,13 +18,13 @@ function StudentLoan( ) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [order_id, setOrderID] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks  
-  const [state, setState] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [minimum_wages, setMinimumWages] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [amount_to_withhold, setTotalAmount] = useState('');
-  const [social, setSocial] = useState('');
-  const [fit, setFit] = useState('');
+  // const [state, setState] = useState('');
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // const [minimum_wages, setMinimumWages] = useState('');
+  // // eslint-disable-next-line react-hooks/rules-of-hooks
+  // const [amount_to_withhold, setTotalAmount] = useState('');
+  // const [social, setSocial] = useState('');
+  // const [fit, setFit] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('SingleChild');
   // const [medicare, setMedicare] = useState('');
@@ -37,8 +37,8 @@ function StudentLoan( ) {
 
 
   // const [state, setState] = useState('');
-  const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
-  const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
+  // const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
+  // const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
   // const [selectedValue, setSelectedValue] = useState(null);
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
@@ -53,42 +53,7 @@ function StudentLoan( ) {
     
   };
 
-  const [inputs, setInputs] = useState([{ id: 1 }]);
-
-  // const handleAddInput = () => {
-  //   const newInput = { id: inputs.length + 1 };
-  //   setInputs([...inputs, newInput]);
-  //   console.log(newInput);
-  // };
-
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
-
-  // const  handleAddArrearInput= () => {
-  //   const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-  //   setArrearInputs([...Arrearinputs, newInputArrear]);
-  //   console.log(newInputArrear);
-  // };
-
-  const handleInputChange
- = (event, index) => {
-    const newInputs = [...inputs];
-    newInputs[index].value = event.target.value;
-    setInputs(newInputs);
-  };
-
-
  
-
-  // eslint-disable-next-line no-unused-vars
-  const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked); 
-    
-  };
-  const handleCheckboxChange1 = (event) => {
-    setIsCheckedFamily(event.target.checked); // Update s
-  }
-
-  
 
   useEffect(() => {
    // const name = localStorage.getItem("name");
@@ -238,6 +203,7 @@ function StudentLoan( ) {
                     <input
                       type="text"
                       id="empName"
+                      placeholder='Enter Employee Name'
                       className="shadow appearance-none border  text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={employee_name}
                       onChange={(e) => setEmpName(e.target.value)}
@@ -250,6 +216,7 @@ function StudentLoan( ) {
                     <input
                       type="number"
                       id="earning"
+                         placeholder='Enter Earnings'
                       className="shadow appearance-none border text-sm text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={earnings}
                       onChange={(e) => setEarnings(parseInt(e.target.value,10))}
@@ -263,6 +230,7 @@ function StudentLoan( ) {
                     <input
                       type="number"
                       id="garnishmentFees"
+                       placeholder='Enter Garnishment'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={garnishment_fees}
                       onChange={(e) => setGarnishmentFees(parseInt(e.target.value))}
@@ -275,6 +243,7 @@ function StudentLoan( ) {
                     <input
                       type="number"
                       id="orderID"
+                      placeholder='Enter OrderID'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={order_id}
                       onChange={(e) => setOrderID(parseInt(e.target.value))}

@@ -238,6 +238,7 @@ function MultipleStudentLoan( ) {
                     <input
                       type="text"
                       id="empName"
+                        placeholder='Enter Employee Name'
                       className="shadow appearance-none border  text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={employee_name}
                       onChange={(e) => setEmpName(e.target.value)}
@@ -250,6 +251,7 @@ function MultipleStudentLoan( ) {
                     <input
                       type="number"
                       id="earning"
+                      placeholder='Enter Earnings'
                       className="shadow appearance-none border text-sm text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={earnings}
                       onChange={(e) => setEarnings(parseInt(e.target.value,10))}
@@ -263,6 +265,7 @@ function MultipleStudentLoan( ) {
                     <input
                       type="number"
                       id="garnishmentFees"
+                       placeholder='Enter Garnishment'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={garnishment_fees}
                       onChange={(e) => setGarnishmentFees(parseInt(e.target.value))}
@@ -274,6 +277,7 @@ function MultipleStudentLoan( ) {
                     </label>
                     <input
                       type="number"
+                        placeholder='Enter OrderID'
                       id="orderID"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={order_id}

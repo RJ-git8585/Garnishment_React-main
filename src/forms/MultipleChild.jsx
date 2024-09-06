@@ -372,6 +372,7 @@ function MultipleChild() {
                     <input
                       type="number"
                       id="number_of_arrears"
+                       placeholder='Enter Number of Arrears'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={number_of_arrears}
                       onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
