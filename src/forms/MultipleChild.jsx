@@ -344,81 +344,10 @@ return (
                     <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
                       Arrears Greater Than 12 Weeks
                     </label>
-<<<<<<< HEAD
             </div>
            
             {arrears_greater_than_12_weeks && (
               <>
-=======
-                    <input
-                      type="number"
-                      id="minimum_wages"
-                       placeholder='Enter Minimum Wagesd'
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={minimum_wages}
-                      onChange={(e) => setminimum_wages(parseInt(e.target.value, 10))}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="number_of_arrears" className="block text-gray-700 text-sm font-bold mb-2">
-                      Number of Arrears:
-                    </label>
-                    <input
-                      type="number"
-                      id="number_of_arrears"
-                       placeholder='Enter Number of Arrears'
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={number_of_arrears}
-                      onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
-                    />
-                  </div>
-                  </div>
-              <div className="row-span-3 w-full flex items-center mt-4 mb-4">
-                      <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox" className="mr-2" />
-                      <label htmlFor="showFieldCheckboxFamily" className="block text-gray-700 text-sm font-bold mb-2">
-                        Support Second Family
-                      </label>
-              </div>
-            
-              <div className="w-full flex items-center mb-4">
-                      <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" className="mr-2" />
-                      <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
-                        Arrears Greater Than 12 Weeks
-                      </label>
-              </div>
-             
-              {arrears_greater_than_12_weeks && (
-                <>
-                  <button
-                    type="button"
-                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={handleAddArrearInput} >
-                    Add Arrears Amount
-                  </button>
-                  <div className="shadow appearance-none border mt-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
-                  {arrearInputs.map((input, index) => (
-                   
-                    <div key={input.id} className="mt-4">
-                       <div className='flex items-center'>
-                      <label className="block text-gray-700 text-sm font-bold mb-2">Arrears Amount {index + 1}:</label>
-                      <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveArrearInput(input.id)}>
-                  <FaTrashAlt style={style} />
-               </button>
-</div>
-                      <input
-                        type="number"
-                        value={input.value}
-                        onChange={(event) => handleArrearInputChange(event, index)}
-                        className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                  ))}
-                  </div>
-                </>
-              )}
-              
-              <div className="flex items-center mt-4 mb-4">
->>>>>>> 62a0f001f10b8443c82280375d91ebdbe3226549
                 <button
                   type="button"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
