@@ -3,15 +3,41 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 
+<<<<<<< HEAD
 function StudentLoan() {
+=======
+
+
+function StudentLoan( ) {
+  // /Users/sourabhkosti/Desktop/code/Ritik/Garnishment_React-main/src/pages/forms 
+>>>>>>> 62a0f001f10b8443c82280375d91ebdbe3226549
   const [employee_name, setEmpName] = useState('');
   const [earnings, setEarnings] = useState('');
   const [garnishment_fees, setGarnishmentFees] = useState('');
   const [order_id, setOrderID] = useState('');
+<<<<<<< HEAD
   const [employee_id, setEmployeeId] = useState(null);
   const [calculationResult, setCalculationResult] = useState(null);
   const [options, setOptions] = useState([]);
   const employer_id = parseInt(localStorage.getItem("id"));
+=======
+  // eslint-disable-next-line no-unused-vars
+  const [selectedType, setSelectedType] = useState('SingleChild');
+  const [options, setOptions] = useState([]);
+  const [employee_id, setSelectedOption] = useState(null);
+  // const [data, setData] = useState(null);
+   
+  const employer_id = (parseInt(localStorage.getItem("id")));
+  // const [empID, setEmpID] = useState(options[0].value);
+
+  const handleChange = (event) => {
+    setSelectedOption((parseInt(event.target.value,10)));
+    
+    
+  };
+
+ 
+>>>>>>> 62a0f001f10b8443c82280375d91ebdbe3226549
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +59,20 @@ function StudentLoan() {
     fetchData();
   }, []);
 
+<<<<<<< HEAD
   const handleSubmit = async (event) => {
+=======
+  const handleReset = () => {
+    setSelectedOption('');
+    setEmpName('');
+    setEarnings('');
+    // setTaxes('');
+    setGarnishmentFees('');
+    setOrderID('');
+};
+  const handleSubmit = (event) => {
+    alert('Data Successfully Submitted')
+>>>>>>> 62a0f001f10b8443c82280375d91ebdbe3226549
     event.preventDefault();
 
     const postData = {
@@ -42,14 +81,31 @@ function StudentLoan() {
       employee_name,
       earnings,
       garnishment_fees,
+<<<<<<< HEAD
       order_id
+=======
+      order_id,
+>>>>>>> 62a0f001f10b8443c82280375d91ebdbe3226549
     };
 
+<<<<<<< HEAD
     try {
       const response = await fetch(`${BASE_URL}/User/StudentLoanCalculationData/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(postData),
+=======
+          setSelectedOption('');
+          setEmpName('');
+          setEarnings('');
+          setGarnishmentFees('');
+          setSelectedOption('');
+          setOrderID('');
+        } else {
+          // Handle submission errors
+          console.error('Error submitting data:', response.statusText);
+        }
+>>>>>>> 62a0f001f10b8443c82280375d91ebdbe3226549
       });
 
       if (!response.ok) throw new Error('Failed to submit data');
@@ -101,18 +157,11 @@ function StudentLoan() {
                             id="employer_id"
                             name="employer_id"
                              value={employer_id}
-                            type="hidden"
-                            // autoComplete="employee_name"
-                            // onChange={(e) => setEid(e.target.value)}
+                            type="hidden"s
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                         </div>
                       </div>
-
-                      
-         
-               
-   
                <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   <div>
                     <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
@@ -135,6 +184,7 @@ function StudentLoan() {
                     <input
                       type="text"
                       id="empName"
+                      placeholder='Enter Employee Name'
                       className="shadow appearance-none border  text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={employee_name}
                       onChange={(e) => setEmpName(e.target.value)}
@@ -147,6 +197,7 @@ function StudentLoan() {
                     <input
                       type="number"
                       id="earning"
+                         placeholder='Enter Earnings'
                       className="shadow appearance-none border text-sm text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={earnings}
                       onChange={(e) => setEarnings(parseInt(e.target.value,10))}
@@ -160,6 +211,7 @@ function StudentLoan() {
                     <input
                       type="number"
                       id="garnishmentFees"
+                       placeholder='Enter Garnishment'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={garnishment_fees}
                       onChange={(e) => setGarnishmentFees(parseInt(e.target.value))}
@@ -172,6 +224,7 @@ function StudentLoan() {
                     <input
                       type="number"
                       id="orderID"
+                      placeholder='Enter OrderID'
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={order_id}
                       onChange={(e) => setOrderID(parseInt(e.target.value))}
@@ -179,78 +232,6 @@ function StudentLoan() {
                   </div>
 
              </div>
-               
-  
-                          {/* <div
-                          key={input.id} >
-                            <label className="block  text-gray-700 text-sm mt-2  ml-2  mb-2"> Amount To Withhold Child <b>{input.id} </b>: </label>
-                                    <input
-                                    className=" shadow appearance-none border rounded  text-sm py-2 px-3 text-gray-700   leading-tight focus:outline-none focus:shadow-outline"
-                                      type="text"
-                                      value={input.index || ''}
-                                      onChange={(event) => handleInputChange(event, index)}
-                                      placeholder= "Amount"
-                                    />
-                                  </div> */}
-
-
-                                  
-                                
-                                {/* </div> */}
-                   
-
-                  {/* <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mt-2">
-                          <div>
-                                  <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Federal Income Tax (%):
-                                  </label>
-                                  <input
-                                    type="number"
-                                    id="fit"
-                                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={fit}
-                                    onChange={(e) => setFit(parseInt(e.target.value))}
-                                  />
-                            </div> */}
-                            {/* <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Social Security Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="social"
-                                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={social}
-                                    onChange={(e) => setSocial(parseInt(e.target.value))}
-                                  />
-                            </div>
-                            <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    Medicare Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="medicare"
-                                    className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={medicare}
-                                    onChange={(e) => setMedicare(parseInt(e.target.value))}
-                                  />
-                            </div> */}
-                            {/* <div>
-                                <label htmlFor="taxes" className="block text-gray-700 text-sm font-bold mb-2">
-                                    State Tax (%):
-                                  </label>
-                                <input
-                                    type="number"
-                                    id="state"
-                                    className="shadow appearance-none border rounded text-sm w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    value={statetax}
-                                    onChange={(e) => setStateTax(parseInt(e.target.value))}
-                                  />
-                            </div>
-                 
-                </div> */}
-              
                 <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button
                     type="submit"

@@ -6,6 +6,7 @@ import Sidebar from '../component/sidebar';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaBalanceScaleRight } from "react-icons/fa";
+import { BASE_URL } from '../Config';
 
 function Garnishment( ) {
 
@@ -29,17 +30,12 @@ function Garnishment( ) {
   const [medicare, setMedicare] = useState('');
   const [arrears_amt, setArrears] = useState('');
   const [statetax, setStateTax] = useState('');
-
   const [showNewField, setShowNewField] = useState(false);
   const [hideNewField, setHideNewField] = useState(false);
   const [ShowStudentNewField, setShowStudentNewField] = useState(false);
   const [hideStudentNewField, setHideStudentNewField] = useState(false);
   // const [ShowFederalNewField, setShowFederalNewField] = useState(false);
   const [hideFederalNewField, setHideFederalNewField] = useState(false);
-
-
-
-
   // const [state, setState] = useState('');
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
@@ -47,7 +43,6 @@ function Garnishment( ) {
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
-   
   const employer_id = (parseInt(localStorage.getItem("id")));
   // const [empID, setEmpID] = useState(options[0].value);
 
@@ -86,17 +81,13 @@ function Garnishment( ) {
     setSelectedType(selectedOption);
     setShowNewField(event.target.value === 'MultipleChild');
     setHideNewField(event.target.value === 'MultipleChild'); 
-
     setShowStudentNewField(event.target.value === 'StudentLoan');
     setHideStudentNewField(event.target.value === 'StudentLoan'); 
 // setShowFederalNewField(event.target.value === 'FederalTax');
-    setHideFederalNewField(event.target.value === 'FederalTax'); 
-
+    setHideFederalNewField(event.target.value === 'FederalTax');
     console.log('Selected value:', selectedOption);
     console.log('Selected value:', hideNewField);
     console.log('Selected value:', showNewField);
- 
-    
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -107,15 +98,12 @@ function Garnishment( ) {
   const handleCheckboxChange1 = (event) => {
     setIsCheckedFamily(event.target.checked); // Update s
   }
-
-  
-
   useEffect(() => {
    // const name = localStorage.getItem("name");
    const fetchData = async () => {
     try {
       const id = localStorage.getItem("id");
-      const response = await fetch(`https://garnishment-backend.onrender.com/User/getemployeedetails/${id}/`);
+      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
       // Replace with your API URL
       const jsonData = await response.json(options);
       setOptions(jsonData.data);
@@ -134,7 +122,6 @@ function Garnishment( ) {
     setSelectedOption('');
     setEmpName('');
     setEarnings('');
-    // setTaxes('');
     setGarnishmentFees('');
     setOrderID('');
     setState('');
@@ -160,9 +147,6 @@ function Garnishment( ) {
       state,
       minimum_wages,
       amount_to_withhold,
-      // social,
-      // fit,
-      // medicare,
       arrears_greater_than_12_weeks,
       support_second_family,
       // statetax,
@@ -193,9 +177,6 @@ function Garnishment( ) {
           setSelectedOption('');
           setOrderID('');
           setState('');
-          // setSocial('');
-          // setFit('');
-          // setMedicare('');
           setIsChecked('');
           setIsCheckedFamily('');
           // setStateTax('');
@@ -230,8 +211,6 @@ function Garnishment( ) {
                             name="employer_id"
                              value={employer_id}
                             type="hidden"
-                            // autoComplete="employee_name"
-                            // onChange={(e) => setEid(e.target.value)}
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                           />
                         </div>
@@ -253,7 +232,7 @@ function Garnishment( ) {
                 <option value="Bankruptcy">Bankruptcy</option>
               </select>
 
-              
+  
     </div>
    
                 <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">

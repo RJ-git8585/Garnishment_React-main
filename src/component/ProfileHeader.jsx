@@ -1,13 +1,5 @@
 // eslint-disable-next-line no-unused-vars
 import {react,useState,useEffect,useLocation} from 'react'
-// import { Link } from 'react-router-dom';
-// import {ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import axios from 'axios';
-
-
-
-
 function ProfileHeader( ) {
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(null);
@@ -44,7 +36,6 @@ function ProfileHeader( ) {
     </span>
 
     <span className="ml-3 hidden sm:block">
-    {/* {location.pathname !== '/profile' && ( */}
       <a type="button" href="/department" className="inline-flex items-center rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-black-900 text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-300">
         Depart
       </a>

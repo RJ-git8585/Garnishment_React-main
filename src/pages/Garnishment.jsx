@@ -16,7 +16,6 @@ import FederalTax from '../forms/FederalTax';
 
 function Garnishment( ) {
   // /Users/sourabhkosti/Desktop/code/Ritik/Garnishment_React-main/src/pages/forms 
-
   const [employee_name, setEmpName] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [earnings, setEarnings] = useState('');
@@ -26,80 +25,20 @@ function Garnishment( ) {
   const [order_id, setOrderID] = useState('');
   // eslint-disable-next-line react-hooks/rules-of-hooks  
   const [state, setState] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [minimum_wages, setMinimumWages] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [amount_to_withhold, setTotalAmount] = useState('');
-  // const [social, setSocial] = useState('');
-  // const [fit, setFit] = useState('');
-  // eslint-disable-next-line no-unused-vars
   const [selectedType, setSelectedType] = useState('MultipleChild');
   // const [medicare, setMedicare] = useState('');
   const [arrears_amt, setArrears] = useState('');
-  // const [statetax, setStateTax] = useState('');
-
-  // const [showNewField, setShowNewField] = useState(false);
-  // const [hideNewField, setHideNewField] = useState(false);
-  // const [ShowStudentNewField, setShowStudentNewField] = useState(false);
-  // const [hideStudentNewField, setHideStudentNewField] = useState(false);
-  // // const [ShowFederalNewField, setShowFederalNewField] = useState(false);
-  // const [hideFederalNewField, setHideFederalNewField] = useState(false);
-
-
-
-
-  // const [state, setState] = useState('');
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
-  // const [selectedValue, setSelectedValue] = useState(null);
   // eslint-disable-next-line no-unused-vars
   const [options, setOptions] = useState([]);
   const [employee_id, setSelectedOption] = useState(null);
   // const [data, setData] = useState(null);
    
   const employer_id = (parseInt(localStorage.getItem("id")));
-  // const [empID, setEmpID] = useState(options[0].value);
-
-
-  // const handleChange = (event) => {
-  //   setSelectedOption((parseInt(event.target.value,10)));
-    
-    
-  // };
-
-  // const [inputs, setInputs] = useState([{ id: 1 }]);
-
-  // const handleAddInput = () => {
-  //   const newInput = { id: inputs.length + 1 };
-  //   setInputs([...inputs, newInput]);
-  //   console.log(newInput);
-  // };
-
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
-
-  // const  handleAddArrearInput= () => {
-  //   const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-  //   setArrearInputs([...Arrearinputs, newInputArrear]);
-  //   console.log(newInputArrear);
-  // };
-
-//   const handleInputChange
-//  = (event, index) => {
-//     const newInputs = [...inputs];
-//     newInputs[index].value = event.target.value;
-//     setInputs(newInputs);
-//   };
-
-
   const handleChangeType = (event) => {
     const selectedOption = event.target.value;
     setSelectedType(selectedOption);
-    // setShowNewField(event.target.value === 'MultipleChild');
-    // setHideNewField(event.target.value === 'MultipleChild'); 
-    // setShowStudentNewField(event.target.value === 'StudentLoan');
-    // setHideStudentNewField(event.target.value === 'StudentLoan'); 
-    // // setShowFederalNewField(event.target.value === 'FederalTax');
-    // setHideFederalNewField(event.target.value === 'FederalTax'); 
     console.log('Selected value:', selectedOption);
   };
 
@@ -108,34 +47,11 @@ function Garnishment( ) {
     setIsChecked(event.target.checked); 
     
   };
-  // const handleCheckboxChange1 = (event) => {
-  //   setIsCheckedFamily(event.target.checked); // Update s
-  // }
+ 
 
 
   
 
-//   useEffect(() => {
-//    // const name = localStorage.getItem("name");
-//    const fetchData = async () => {
-//     try {
-//       const id = localStorage.getItem("id");
-//       const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-//       // Replace with your API URL
-//       const jsonData = await response.json(options);
-//       setOptions(jsonData.data);
-//       console.log(jsonData.data)
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//       // Handle errors appropriately (display error message, etc.)
-//     }
-//   };
-
-//   fetchData(); // Call the function
-//   toast.success('All Employee Data !!');
-// },)
-
-   // const name = localStorage.getItem("name");
 
  
 
@@ -144,38 +60,23 @@ function Garnishment( ) {
     setSelectedOption('');
     setEmpName('');
     setEarnings('');
-    // setTaxes('');
     setGarnishmentFees('');
     setOrderID('');
     setState('');
-    // setSocial('');
-    // setFit('');
-    // setMedicare('');
-    // setIsChecked('');
-    // setIsCheckedFamily('');
-    // setStateTax('');
     setArrears('');
 };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
     const data = {
       employer_id,
       employee_id,
       employee_name,
       earnings,
-      // taxes,
       garnishment_fees,
       order_id,
       state,
-      // minimum_wages,
-      // amount_to_withhold,
-      // social,
-      // fit,
-      // medicare,
       arrears_greater_than_12_weeks,
       support_second_family,
-      // statetax,
       arrears_amt,
     };
     console.log(data)
@@ -188,33 +89,23 @@ function Garnishment( ) {
     })
       .then((response) => {
         if (response.ok) {
-          // Handle successful submission
           console.log('Data submitted successfully!');
-          
           toast.success('Calculation Added Successfully !!');
-          // navigate('/employee', { replace: true });
           handleReset();
           setSelectedOption('');
           setEmpName('');
           setEarnings('');
-          // setTaxes('');
           setGarnishmentFees('');
           setSelectedOption('');
           setOrderID('');
           setState('');
-          // setSocial('');
-          // setFit('');
-          // setMedicare('');
           setIsChecked('');
           setIsCheckedFamily('');
-          // setStateTax('');
           setArrears('');
         } else {
-          // Handle submission errors
           console.error('Error submitting data:', response.statusText);
         }
       });
-      // console.log(options)
   };
  
 
@@ -292,13 +183,13 @@ function Garnishment( ) {
                     )}
                     {selectedType === 'StateTax' && (
                       <div>
-                       <h1>StateTax Calculation Coming Soon</h1>
+                       <h1>StateTax Calculation Coming Soon......</h1>
                         {/* Content for Section 3 */}
                       </div>
                     )}
                     {selectedType === 'Creditor' && (
                       <div>
-                      <h1>Creditor Calculation Coming Soon</h1>
+                      <h1>Creditor Calculation Coming Soon......</h1>
                         {/* Content for Section 3 */}
                       </div>
                     )}  
@@ -306,7 +197,7 @@ function Garnishment( ) {
 
                     {selectedType === 'Bankruptcy' && (
                       <div>
-                        <h1>Bankruptcy Calculation Coming Soon</h1>
+                        <h1>Bankruptcy Calculation Coming Soon.....</h1>
                         {/* Content for Section 3 */}
                       </div>
                     )}
