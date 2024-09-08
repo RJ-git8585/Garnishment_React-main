@@ -1,192 +1,89 @@
-/* eslint-disable react/no-unknown-property */
-// eslint-disable-next-line no-unused-vars
-import React, { useState,useEffect } from 'react';
-import {  toast } from 'react-toastify';
+import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 
-
-
-function MultipleStudentLoan( ) {
-
-
+function MultipleStudentLoan() {
   const [employee_name, setEmpName] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [earnings, setEarnings] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [garnishment_fees, setGarnishmentFees] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [order_id, setOrderID] = useState('');
-  // // eslint-disable-next-line react-hooks/rules-of-hooks  
-  // const [state, setState] = useState('');
-  // // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [minimum_wages, setMinimumWages] = useState('');
-  // // eslint-disable-next-line react-hooks/rules-of-hooks
-  // const [amount_to_withhold, setTotalAmount] = useState('');
-  // const [social, setSocial] = useState('');
-  // const [fit, setFit] = useState('');
-  // eslint-disable-next-line no-unused-vars
-  const [selectedType, setSelectedType] = useState('SingleChild');
-  // const [medicare, setMedicare] = useState('');
-  // const [arrears_amt, setArrears] = useState('');
-  // const [statetax, setStateTax] = useState('');
-
-
-
-
-
-
-  // const [state, setState] = useState('');
-  // const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
-  // const [support_second_family, setIsCheckedFamily] = useState(false); // Initialize checkbox state as unchecked
-  // const [selectedValue, setSelectedValue] = useState(null);
   const [options, setOptions] = useState([]);
-  const [employee_id, setSelectedOption] = useState(null);
-  // const [data, setData] = useState(null);
-   
-  const employer_id = (parseInt(localStorage.getItem("id")));
-  // const [empID, setEmpID] = useState(options[0].value);
-
-  const handleChange = (event) => {
-    setSelectedOption((parseInt(event.target.value,10)));
-    
-    
-  };
-
-  // const [inputs, setInputs] = useState([{ id: 1 }]);
-
-  // const handleAddInput = () => {
-  //   const newInput = { id: inputs.length + 1 };
-  //   setInputs([...inputs, newInput]);
-  //   console.log(newInput);
-  // };
-
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
-
-  // const  handleAddArrearInput= () => {
-  //   const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-  //   setArrearInputs([...Arrearinputs, newInputArrear]);
-  //   console.log(newInputArrear);
-  // };
-
-//   const handleInputChange
-//  = (event, index) => {
-//     const newInputs = [...inputs];
-//     newInputs[index].value = event.target.value;
-//     setInputs(newInputs);
-//   };
-
-
- 
-
-  // eslint-disable-next-line no-unused-vars
-  // const handleCheckboxChange = (event) => {
-  //   setIsChecked(event.target.checked); 
-    
-  // };
-  // const handleCheckboxChange1 = (event) => {
-  //   setIsCheckedFamily(event.target.checked); // Update s
-  // }
-
-  
+  const [employee_id, setEmployeeId] = useState(null);
+  const [calculationResult, setCalculationResult] = useState(null);
+  const employer_id = parseInt(localStorage.getItem("id"));
 
   useEffect(() => {
-   // const name = localStorage.getItem("name");
-   const fetchData = async () => {
-    try {
-      const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-      // Replace with your API URL
-      const jsonData = await response.json(options);
-      setOptions(jsonData.data);
-      console.log(jsonData.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      // Handle errors appropriately (display error message, etc.)
-    }
-  };
+    const fetchData = async () => {
+      try {
+        const id = localStorage.getItem("id");
+        const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
+        const jsonData = await response.json();
+        if (jsonData.data) {
+          setOptions(jsonData.data);
+          setEmployeeId(jsonData.data[0].employee_id); // Assuming first entry is the default
+          setEmpName(jsonData.data[0].employee_name);
+        }
+      } catch (error) {
+        console.error('Error fetching employee data:', error);
+        toast.error('Failed to fetch employee data.');
+      }
+    };
 
-  fetchData(); // Call the function
-  toast.success('All Employee Data !!');
-},[])
+    fetchData();
+  }, []);
 
-  const handleReset = () => {
-    setSelectedOption('');
-    setEmpName('');
-    setEarnings('');
-    // setTaxes('');
-    setGarnishmentFees('');
-    setOrderID('');
-    // setState('');
-    // setSocial('');
-    // setFit('');
-    // setMedicare('');
-    // setIsChecked('');
-    // setIsCheckedFamily('');
-    // setStateTax('');
-    // setArrears('');
-};
-  const handleSubmit = (event) => {
-    alert('Data Successfully Submitted')
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission logic here
-    const data = {
+
+    const postData = {
       employer_id,
       employee_id,
       employee_name,
       earnings,
-      // taxes,
       garnishment_fees,
-      order_id,
-      // state,
-      // minimum_wages,
-      // amount_to_withhold,
-      // social,
-      // fit,
-      // medicare,
-      // arrears_greater_than_12_weeks,
-      // support_second_family,
-      // // statetax,
-      // arrears_amt,
+      order_id
     };
-    console.log(data)
-    fetch(`${BASE_URL}/User/MiltipleStudentLoanCalculationData/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Handle successful submission
-          console.log('Data submitted successfully!');
-          
-          toast.success('Calculation Added Successfully !!');
-          // navigate('/employee', { replace: true });
-          handleReset();
 
-          setSelectedOption('');
-          setEmpName('');
-          setEarnings('');
-          // setTaxes('');
-          setGarnishmentFees('');
-          setSelectedOption('');
-          setOrderID('');
-          // setState('');
-          // setSocial('');
-          // setFit('');
-          // setMedicare('');
-          // setIsChecked('');
-          // setIsCheckedFamily('');
-          // setStateTax('');
-          // setArrears('');
-        } else {
-          // Handle submission errors
-          console.error('Error submitting data:', response.statusText);
-        }
+    try {
+      const response = await fetch(`${BASE_URL}/User/MiltipleStudentLoanCalculationData/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData),
       });
-      console.log(options)
+
+      if (!response.ok) throw new Error('Failed to submit data');
+
+      toast.success('Data submitted successfully! Fetching results...');
+
+      // Fetch results after successful data submission
+      const resultResponse = await fetch(`${BASE_URL}/User/GetMultipleStudentLoanResult/${employer_id}/${employee_id}/`);
+      const resultData = await resultResponse.json();
+      if (!resultResponse.ok) throw new Error('Failed to fetch results');
+
+      setCalculationResult(resultData.data[0]);
+      toast.success(`Result: ${resultData.data[0].garnishment_amount}`);
+    } catch (error) {
+      console.error('Submission Error:', error);
+      toast.error(`Error: ${error.message}`);
+    }
+  };
+
+  const handleReset = () => {
+    setEmpName('');
+    setEarnings('');
+    setGarnishmentFees('');
+    setOrderID('');
+    setCalculationResult(null);
+  };
+
+  const handleChange = (e) => {
+    const selectedEmployeeId = e.target.value;
+    const selectedEmployee = options.find(option => option.employee_id === parseInt(selectedEmployeeId, 10));
+    if (selectedEmployee) {
+      setEmployeeId(selectedEmployee.employee_id);
+      setEmpName(selectedEmployee.employee_name);
+    }
   };
 
   return (
@@ -372,7 +269,12 @@ function MultipleStudentLoan( ) {
                 </div>  
                 {/* </MultiStep> */}
               </form>
-              
+              {calculationResult && (
+                <div className="result-section">
+                  <h3>Calculation Result:</h3>
+                  <p>Result: {calculationResult.garnishment_amount}</p>
+                </div>
+              )}
             </div>
           </div>
         </div> 

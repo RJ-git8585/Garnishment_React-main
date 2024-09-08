@@ -1,157 +1,103 @@
 /* eslint-disable react/no-unknown-property */
 // eslint-disable-next-line no-unused-vars
-import React, { useState,useEffect } from 'react';
-import {  toast } from 'react-toastify';
+import React, { useState, useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 
-
-
-function FederalTax( ) {
-
-
+function FederalTax() {
   const [employee_name, setEmpName] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [earnings, setEarnings] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [garnishment_fees, setGarnishmentFees] = useState('');
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [order_id, setOrderID] = useState('');
-  // eslint-disable-next-line no-unused-vars
-  const [selectedType, setSelectedType] = useState('SingleChild');
-  // const [medicare, setMedicare] = useState('');
   const [pay_period, setPay] = useState('daily');
-  const [no_of_exception, setExceptions] = useState(false); // Initialize checkbox state as unchecked
-  const [filing_status, setSelectedOptionstatus] = useState('');
+  const [no_of_exception, setExceptions] = useState(0);
+  const [filing_status, setFilingStatus] = useState('');
+  const [employee_id, setEmployeeId] = useState(null);
+  const [calculationResult, setCalculationResult] = useState(null);
   const [options, setOptions] = useState([]);
-  const [employee_id, setSelectedOption] = useState(null);
-  // const [data, setData] = useState(null);
-  const employer_id = (parseInt(localStorage.getItem("id")));
-  // const [empID, setEmpID] = useState(options[0].value);
-
-  const handleChange = (event) => {
-    setSelectedOption((parseInt(event.target.value,10)));
-    
-  };
-
-  const handleChangeStatus = (event) => {
-    setSelectedOptionstatus(event.target.value); 
-  };
-  const handleChangePay= (event) => {
-    
-    setPay(event.target.value);
-    
-    
-  };
-
-
-  // const [inputs, setInputs] = useState([{ id: 1 }]);
-
-  // const handleAddInput = () => {
-  //   const newInput = { id: inputs.length + 1 };
-  //   setInputs([...inputs, newInput]);
-  //   console.log(newInput);
-  // };
-
-  // const [Arrearinputs, setArrearInputs] = useState([{ id: 1 }]);
-
-//   const  handleAddArrearInput= () => {
-//     const newInputArrear = { idArrear: Arrearinputs.length + 1 };
-//     setArrearInputs([...Arrearinputs, newInputArrear]);
-//     console.log(newInputArrear);
-//   };
-
-//   const handleInputChange
-//  = (event, index) => {
-//     const newInputs = [...inputs];
-//     newInputs[index].value = event.target.value;
-//     setInputs(newInputs);
-//   };
-
-
- 
-
-  // eslint-disable-next-line no-unused-vars
+  const employer_id = parseInt(localStorage.getItem("id"));
 
   useEffect(() => {
-   // const name = localStorage.getItem("name");
-   const fetchData = async () => {
-    try {
-      const id = localStorage.getItem("id");
-      const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
-      // Replace with your API URL
-      const jsonData = await response.json(options);
-      setOptions(jsonData.data);
-      console.log(jsonData.data)
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      // Handle errors appropriately (display error message, etc.)
-    }
-  };
+    const fetchData = async () => {
+      try {
+        const id = localStorage.getItem("id");
+        const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
+        const jsonData = await response.json();
+        if (jsonData.data) {
+          setEmployeeId(jsonData.data[0].employee_id);
+          setEmpName(jsonData.data[0].employee_name);
+          setOptions(jsonData.data); // Store the employee options
+        }
+      } catch (error) {
+        console.error('Error fetching employee data:', error);
+        toast.error('Failed to fetch employee data.');
+      }
+    };
 
-  fetchData(); // Call the function
-  toast.success('All Employee Data !!');
-},[])
+    fetchData();
+  }, []);
 
-  const handleReset = () => {
-    setSelectedOption('');
-    setEmpName('');
-    setEarnings('');
-     setExceptions('');
-    setGarnishmentFees('');
-    setOrderID('');
-    setSelectedOptionstatus('');
-    setPay('');
-};
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission logic here
-    const data = {
+
+    const postData = {
       employer_id,
       employee_id,
       employee_name,
       earnings,
-      // taxes,
       garnishment_fees,
       order_id,
-      filing_status,
-      // arrears_greater_than_12_weeks,
-      no_of_exception,
-      // statetax,
       pay_period,
+      no_of_exception,
+      filing_status,
     };
-    console.log(data)
-    fetch(`${BASE_URL}/User/FederalCaseData/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Handle successful submission
-          console.log('Data submitted successfully!');
-          
-          toast.success('Calculation Added Successfully !!');
-          // navigate('/employee', { replace: true });
-          handleReset();
 
-          setSelectedOption('');
-          setEmpName('');
-          setEarnings('');
-          setGarnishmentFees('');
-          setSelectedOption('');
-          setOrderID('');
-          setExceptions('');
-          setPay('');
-        } else {
-          console.error('Error submitting data:', response.statusText);
-        }
+    try {
+      const response = await fetch(`${BASE_URL}/User/FederalCaseData/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData),
       });
-      console.log(options)
+
+      if (!response.ok) throw new Error('Failed to submit data');
+
+      toast.success('Data submitted successfully! Fetching results...');
+
+      const resultResponse = await fetch(`${BASE_URL}/User/FederalCaseResult/${employer_id}/${employee_id}/`);
+      const resultData = await resultResponse.json();
+      if (!resultResponse.ok) throw new Error('Failed to fetch results');
+
+      setCalculationResult(resultData.data[0]);
+      toast.success(`Result: ${resultData.data[0].result.toLocaleString()}`);
+    } catch (error) {
+      console.error('Submission Error:', error);
+      toast.error(`Error: ${error.message}`);
+    }
   };
 
+  const handleReset = () => {
+    setEmpName('');
+    setEarnings('');
+    setGarnishmentFees('');
+    setOrderID('');
+    setPay('daily');
+    setExceptions(0);
+    setFilingStatus('');
+    setCalculationResult(null);
+  };
+
+  const handleChange = (e) => {
+    setEmployeeId(e.target.value);
+  };
+
+  const handleChangePay = (e) => {
+    setPay(e.target.value);
+  };
+
+  const handleChangeStatus = (e) => {
+    setFilingStatus(e.target.value);
+  };
   return (
     <>
       <div className="min-h-full">
@@ -301,7 +247,12 @@ function FederalTax( ) {
                 </div>  
                 {/* </MultiStep> */}
               </form>
-              
+              {calculationResult && (
+              <div className="result-section mt-4">
+                <h2>Calculation Result:</h2>
+                <p>{calculationResult.result}</p>
+              </div>
+            )}
             </div>
           </div>
         </div> 

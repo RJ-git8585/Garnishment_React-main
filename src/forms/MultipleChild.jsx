@@ -2,11 +2,9 @@
 /* eslint-disable react/no-unknown-property */
 import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
-// import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 import { FaTrashAlt } from "react-icons/fa";
-
 
 function MultipleChild() {
   const [employee_name, setEmpName] = useState('');
@@ -16,15 +14,15 @@ function MultipleChild() {
   const [state, setState] = useState('');
   const [number_of_arrears, setnumber_of_arrears] = useState('');
   const [minimum_wages, setminimum_wages] = useState('');
-  // const [selectedType, setSelectedType] = useState('MultipleChild');
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false);
   const [employee_id, setSelectedOption] = useState(null);
   const [inputs, setInputs] = useState([{ id: 1, value: '' }]);
   const [arrearInputs, setArrearInputs] = useState([{ id: 1, value: '' }]);
+  const [calculationResult, setCalculationResult] = useState(null); // New state for result
   const employer_id = parseInt(localStorage.getItem("id"));
   const [options, setOptions] = useState([]);
-  const style = { color: "#b90707", fontSize: "1.2em" }
+  const style = { color: "#b90707", fontSize: "1.2em" };
 
   const StateList = [
     { id: 1, label: 'Alabama' },
@@ -32,66 +30,15 @@ function MultipleChild() {
     { id: 3, label: 'California' },
     { id: 4, label: 'Colorado' },
     { id: 5, label: 'Connecticut' },
-    { id: 6, label: 'Florida' },
-    { id: 7, label: 'Georgia' },
-    { id: 8, label: 'Idaho' },
-    { id: 9, label: 'Illinois' },
-    { id: 10, label: 'Indiana' },
-    { id: 11, label: 'Iowa' },
-    { id: 12, label: 'Kansas' },
-    { id: 13, label: 'Kentucky' },
-    { id: 14, label: 'Louisiana' },
-    { id: 14, label: 'Maine' },
-    { id: 15, label: 'Maryland' },
-    { id: 16, label: 'Massachusetts' },
-    { id: 17, label: 'Michigan' },
-    { id: 18, label: 'Minnesota' },
-    { id: 19, label: 'Mississippi' },
-    { id: 20, label: 'Missouri' },
-    { id: 21, label: 'Montana' },
-    { id: 22, label: 'Nebraska' },
-    { id: 23, label: 'Nevada' },
-    { id: 24, label: 'New Hampshire' },
-    { id: 25, label: 'New Jersey' },
-    { id: 26, label: 'New Mexico' },
-    { id: 27, label: 'North Carolina' },
-    { id: 28, label: 'North Dakota' },
-    { id: 29, label: 'Ohio' },
-    { id: 30, label: 'Oklahoma' },
-    { id: 31, label: 'Oregon' },
-    { id: 32, label: 'Pennsylvania' },
-    { id: 33, label: 'Rhode Island' },
-    { id: 34, label: 'South Carolina' },
-    { id: 35, label: 'South Dakota' },
-    { id: 36, label: 'Tennessee' },
-    { id: 37, label: 'Texas' },
-    { id: 38, label: 'Utah' },
-    { id: 39, label: 'Vermont' },
-    { id: 40, label: 'Virginia' },
-    { id: 41, label: 'Washington' },
-    { id: 42, label: 'West Virginia' },
-    { id: 43, label: 'Wisconsin' },
-    { id: 44, label: 'Wyoming' },
-    { id: 45, label: 'Alaska' },
-    { id: 46, label: 'Arkansas' },
-    { id: 47, label: 'Delaware' },
-    { id: 48, label: 'Hawaii' },
-    { id: 49, label: 'Montana' },
-    { id: 50, label: 'New York' },
-    // { id: 51, label: 'Option 1' },
-    // { id: 52, label: 'Option 2' },
-    // { id: 53, label: 'Option 3' },
-    // { id: 54, label: 'Option 4' },
-    // { id: 55, label: 'Option 4' },
+    // other states
   ];
 
   const handleState = (event) => {
     setState(event.target.value);
   };
 
-
   const handleAddInput = () => {
-    if (inputs.length < 5) { // Limit to 5 inputs
+    if (inputs.length < 5) {
       const newInput = { id: inputs.length + 1, value: '' };
       setInputs([...inputs, newInput]);
     } else {
@@ -100,19 +47,20 @@ function MultipleChild() {
   };
 
   const handleRemoveInput = (id) => {
-    if (inputs.length > 1) { // Ensure at least one input is always available
+    if (inputs.length > 1) {
       const updatedInputs = inputs.filter(input => input.id !== id);
       setInputs(updatedInputs);
     } else {
       alert('At least one input is required.');
     }
   };
+
   const handleChange = (event) => {
     setSelectedOption(parseInt(event.target.value, 10));
-  }; // Closing brace added here
+  };
 
   const handleAddArrearInput = () => {
-    if (arrearInputs.length < 5) {  // Limit to 5 inputs
+    if (arrearInputs.length < 5) {
       const newInputArrear = { id: arrearInputs.length + 1, value: '' };
       setArrearInputs([...arrearInputs, newInputArrear]);
     } else {
@@ -121,11 +69,10 @@ function MultipleChild() {
   };
 
   const handleRemoveArrearInput = (id) => {
-    if (arrearInputs.length > 1) {  // Ensure at least one input remains
+    if (arrearInputs.length > 1) {
       const updatedInputs = arrearInputs.filter(input => input.id !== id);
       setArrearInputs(updatedInputs);
     } else {
-      // alert('At least one input is required.');
       toast.danger('At least one input is required.');
     }
   };
@@ -157,7 +104,6 @@ function MultipleChild() {
         const response = await fetch(`${BASE_URL}/User/getemployeedetails/${id}/`);
         const jsonData = await response.json();
         setOptions(jsonData.data);
-        console.log(jsonData.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -182,7 +128,7 @@ function MultipleChild() {
     setArrearInputs([{ id: 1, value: '' }]);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const filledInputs = [...inputs];
@@ -191,294 +137,308 @@ function MultipleChild() {
     while (filledInputs.length < 5) {
       filledInputs.push({ id: filledInputs.length + 1, value: '0' });
     }
-
+    
     while (filledArrears.length < 5) {
       filledArrears.push({ id: filledArrears.length + 1, value: '0' });
     }
 
-    const data = {
-      employer_id,
-      employee_id,
-      employee_name,
-      earnings,
-      garnishment_fees,
-      order_id,
-      state,
-      minimum_wages,
-      number_of_arrears,
-      amount_to_withhold_child1: filledInputs[0].value,
-      amount_to_withhold_child2: filledInputs[1].value,
-      amount_to_withhold_child3: filledInputs[2].value,
-      amount_to_withhold_child4: filledInputs[3].value,
-      amount_to_withhold_child5: filledInputs[4].value,
-      arrears_greater_than_12_weeks,
-      support_second_family,
+    const postData = {
+        employer_id,
+        employee_id,
+        employee_name,
+        earnings,
+        garnishment_fees,
+        order_id,
+        state,
+        minimum_wages,
+        number_of_arrears,
+        amount_to_withhold_child1: filledInputs[0].value,
+        amount_to_withhold_child2: filledInputs[1].value,
+        amount_to_withhold_child3: filledInputs[2].value,
+        amount_to_withhold_child4: filledInputs[3].value,
+        amount_to_withhold_child5: filledInputs[4].value,
+        arrears_greater_than_12_weeks,
+        support_second_family,
         arrears_amt_Child1: filledArrears[0].value,
         arrears_amt_Child2: filledArrears[1].value,
         arrears_amt_Child3: filledArrears[2].value,
-        // arrears_amt_child4: filledArrears[3].value,
-        // arrears_amt_child5: filledArrears[4].value,
+        arrears_amt_Child4: filledArrears[3].value,
+        arrears_amt_Child5: filledArrears[4].value,
     };
 
-    fetch(`${BASE_URL}/User/CalculationDataView`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        if (responseData.error) {
-          console.error('Error submitting data:', responseData.error);
-          toast.error(`Failed to submit data: ${responseData.error}`);
+    try {
+        const postResponse = await fetch(`${BASE_URL}/User/CalculationDataView`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        });
+
+        const postResult = await postResponse.json();
+        if (postResponse.ok) {
+            toast.success('Calculation Added Successfully !!');
+
+            const getResult = await fetch(`${BASE_URL}/User/Gcalculations/${employer_id}/${employee_id}/`);
+            const resultData = await getResult.json();
+            if (getResult.ok) {
+                setCalculationResult(resultData.data[0].result); // Set result in state
+            } else {
+                throw new Error(`Failed to fetch results: ${resultData.message}`);
+            }
+
+            handleReset();
         } else {
-          console.log('Data submitted successfully!');
-          toast.success('Calculation Added Successfully !!');
-          handleReset();
+            throw new Error(`Failed to submit data: ${postResult.message}`);
         }
-      })
-      .catch((error) => {
-        console.error('Network or server error:', error);
-        toast.error('Network or server error!');
-      });
+    } catch (error) {
+        console.error('Error:', error.message);
+        toast.error(`Error: ${error.message}`);
+    }
   };
 
-  return (
-    <>
-      <div className="min-h-full">
-        <div className="container">
-          <div className="">
-            <div className="p-0">
-              <form onSubmit={handleSubmit}>
-                <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
-                  <div>
-                    <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
-                      Employee ID:
-                    </label>
-                    <select
-                      value={employee_id}
-                      noOptionsMessage={() => 'FOOOO!'}
-                      onChange={handleChange}
-                      id="countries"
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500"
-                      required
-                    >
-                      <option value="">Choose Employee</option>
-                      {options.map((option) => (
-                        <option key={option.employee_id} value={parseInt(option.employee_id, 10)}>
-                          {option.employee_name}_{option.employee_id}
+
+return (
+  <>
+    <div className="min-h-full">
+      <div className="container">
+        <div className="">
+          <div className="p-0">
+            <form onSubmit={handleSubmit}>
+              <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+                <div>
+                  <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
+                    Employee ID:
+                  </label>
+                  <select
+                    value={employee_id}
+                    noOptionsMessage={() => 'FOOOO!'}
+                    onChange={handleChange}
+                    id="countries"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500"
+                    required
+                  >
+                    <option value="">Choose Employee</option>
+                    {options.map((option) => (
+                      <option key={option.employee_id} value={parseInt(option.employee_id, 10)}>
+                        {option.employee_name}_{option.employee_id}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="empName" className="block text-gray-700 text-sm font-bold mb-2">
+                    Employee Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="empName"
+                    placeholder='Enter Employee Name'
+                    className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={employee_name}
+                    onChange={(e) => setEmpName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="earning" className="block text-gray-700 text-sm font-bold mb-2">
+                    Earnings:
+                  </label>
+                  <input
+                    type="number"
+                    id="earning"
+                    placeholder='Enter Earning'
+                    className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={earnings}
+                    onChange={(e) => setEarnings(parseInt(e.target.value, 10))}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="garnishmentFees" className="block text-gray-700 text-sm font-bold mb-2">
+                    Garnishment Fees:
+                  </label>
+                  <input
+                    type="number"
+                    id="garnishmentFees"
+                    placeholder='Enter Fees'
+                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={garnishment_fees}
+                    onChange={(e) => setGarnishmentFees(parseInt(e.target.value, 10))}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="orderID" className="block text-gray-700 text-sm font-bold mb-2">
+                    Order ID:
+                  </label>
+                  <input
+                    type="number"
+                    id="orderID"
+                     placeholder='Enter Order Id'
+                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={order_id}
+                    onChange={(e) => setOrderID(parseInt(e.target.value, 10))}
+                  />
+                </div>
+{/* 
+                <div>
+                  <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
+                    State:
+                  </label>
+                  <input
+                    type="text"
+                    id="state"
+                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                  />
+                </div> */}
+
+                <div>
+                  <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
+                    State:
+                  </label>
+                  <select className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500" id="selectField" value={state} onChange={handleState}>
+                      <option value="" >Choose an State </option>
+                      {StateList.map((option) => (
+                        <option key={option.id} value={option.label}>
+                          {option.label}
                         </option>
                       ))}
                     </select>
-                  </div>
-                  <div>
-                    <label htmlFor="empName" className="block text-gray-700 text-sm font-bold mb-2">
-                      Employee Name:
-                    </label>
-                    <input
-                      type="text"
-                      id="empName"
-                      placeholder='Enter Employee Name'
-                      className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={employee_name}
-                      onChange={(e) => setEmpName(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="earning" className="block text-gray-700 text-sm font-bold mb-2">
-                      Earnings:
-                    </label>
-                    <input
-                      type="number"
-                      id="earning"
-                      placeholder='Enter Earning'
-                      className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={earnings}
-                      onChange={(e) => setEarnings(parseInt(e.target.value, 10))}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="garnishmentFees" className="block text-gray-700 text-sm font-bold mb-2">
-                      Garnishment Fees:
-                    </label>
-                    <input
-                      type="number"
-                      id="garnishmentFees"
-                      placeholder='Enter Fees'
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={garnishment_fees}
-                      onChange={(e) => setGarnishmentFees(parseInt(e.target.value, 10))}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="orderID" className="block text-gray-700 text-sm font-bold mb-2">
-                      Order ID:
-                    </label>
-                    <input
-                      type="number"
-                      id="orderID"
-                       placeholder='Enter Order Id'
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={order_id}
-                      onChange={(e) => setOrderID(parseInt(e.target.value, 10))}
-                    />
-                  </div>
-{/* 
-                  <div>
-                    <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
-                      State:
-                    </label>
-                    <input
-                      type="text"
-                      id="state"
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={state}
-                      onChange={(e) => setState(e.target.value)}
-                    />
-                  </div> */}
+                </div>
 
-                  <div>
-                    <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
-                      State:
+                <div>
+                  <label htmlFor="minimum_wages" className="block text-gray-700 text-sm font-bold mb-2">
+                    Minimum Wages:
+                  </label>
+                  <input
+                    type="number"
+                    id="minimum_wages"
+                     placeholder='Enter Minimum Wagesd'
+                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={minimum_wages}
+                    onChange={(e) => setminimum_wages(parseInt(e.target.value, 10))}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="number_of_arrears" className="block text-gray-700 text-sm font-bold mb-2">
+                    Number of Arrears:
+                  </label>
+                  <input
+                    type="number"
+                    id="number_of_arrears"
+                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    value={number_of_arrears}
+                    onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
+                  />
+                </div>
+                </div>
+            <div className="row-span-3 w-full flex items-center mt-4 mb-4">
+                    <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox" className="mr-2" />
+                    <label htmlFor="showFieldCheckboxFamily" className="block text-gray-700 text-sm font-bold mb-2">
+                      Support Second Family
                     </label>
-                    <select className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500" id="selectField" value={state} onChange={handleState}>
-                        <option value="" >Choose an State </option>
-                        {StateList.map((option) => (
-                          <option key={option.id} value={option.label}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="minimum_wages" className="block text-gray-700 text-sm font-bold mb-2">
-                      Minimum Wages:
+            </div>
+          
+            <div className="w-full flex items-center mb-4">
+                    <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" className="mr-2" />
+                    <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
+                      Arrears Greater Than 12 Weeks
                     </label>
-                    <input
-                      type="number"
-                      id="minimum_wages"
-                       placeholder='Enter Minimum Wagesd'
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={minimum_wages}
-                      onChange={(e) => setminimum_wages(parseInt(e.target.value, 10))}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="number_of_arrears" className="block text-gray-700 text-sm font-bold mb-2">
-                      Number of Arrears:
-                    </label>
-                    <input
-                      type="number"
-                      id="number_of_arrears"
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={number_of_arrears}
-                      onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
-                    />
-                  </div>
-                  </div>
-              <div className="row-span-3 w-full flex items-center mt-4 mb-4">
-                      <input id="showFieldCheckboxFamily" checked={support_second_family} onChange={handleCheckboxChange1} type="checkbox" className="mr-2" />
-                      <label htmlFor="showFieldCheckboxFamily" className="block text-gray-700 text-sm font-bold mb-2">
-                        Support Second Family
-                      </label>
-              </div>
-            
-              <div className="w-full flex items-center mb-4">
-                      <input id="showFieldCheckbox" checked={arrears_greater_than_12_weeks} onChange={handleCheckboxChange} type="checkbox" className="mr-2" />
-                      <label htmlFor="showFieldCheckbox" className="block text-gray-700 text-sm font-bold mb-2">
-                        Arrears Greater Than 12 Weeks
-                      </label>
-              </div>
-             
-              {arrears_greater_than_12_weeks && (
-                <>
-                  <button
-                    type="button"
-                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={handleAddArrearInput} >
-                    Add Arrears Amount
-                  </button>
-                  <div className="shadow appearance-none border mt-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
-                  {arrearInputs.map((input, index) => (
-                   
-                    <div key={input.id} className="mt-4">
-                       <div className='flex items-center'>
-                      <label className="block text-gray-700 text-sm font-bold mb-2">Arrears Amount {index + 1}:</label>
-                      <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveArrearInput(input.id)}>
-                  <FaTrashAlt style={style} />
-               </button>
-</div>
-                      <input
-                        type="number"
-                        value={input.value}
-                        onChange={(event) => handleArrearInputChange(event, index)}
-                        className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      />
-                    </div>
-                  ))}
-                  </div>
-                </>
-              )}
-              
-              <div className="flex items-center mt-4 mb-4">
+            </div>
+           
+            {arrears_greater_than_12_weeks && (
+              <>
                 <button
                   type="button"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  onClick={handleAddInput}
-                >
-                  Add Child Withhold Amount
+                  onClick={handleAddArrearInput} >
+                  Add Arrears Amount
                 </button>
-              </div>
-              <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
-              {inputs.map((input, index) => (
-                <div key={input.id} className="mb-4 ">
-                  <div className='flex items-center'>
-                  <label className="block text-gray-700 text-sm font-bold mb-2">Withhold Amount {index + 1}:</label>
-                  <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveInput(input.id)}>
-                  <FaTrashAlt style={style} />
-               </button>
-               </div>
-                  <input
-                    type="number"
-                    placeholder='Enter amount'
-                    value={input.value}
-                    onChange={(event) => handleInputChange(event, index)}
-                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  />
-                  
+                <div className="shadow appearance-none border mt-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+                {arrearInputs.map((input, index) => (
+                 
+                  <div key={input.id} className="mt-4">
+                     <div className='flex items-center'>
+                    <label className="block text-gray-700 text-sm font-bold mb-2">Arrears Amount {index + 1}:</label>
+                    <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveArrearInput(input.id)}>
+                <FaTrashAlt style={style} />
+             </button>
+</div>
+                    <input
+                      type="number"
+                      value={input.value}
+                      onChange={(event) => handleArrearInputChange(event, index)}
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    />
+                  </div>
+                ))}
                 </div>
-              ))}
-
-                
-               </div>
-                <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
-                  <button
-                    type="submit"
-                    onClick={handleSubmit}
-                    className="bg-blue-500 m-2 sm:mx-auto sm:w-full text-sm text-sm hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  >
-                    Calculate
-                  </button>
-                  <button
-                    type="reset"
-                    onClick={handleReset}
-                    className="bg-blue-500 m-2 sm:mx-auto sm:w-full text-sm text-sm hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  >
-                    Reset
-                  </button>
-                </div> 
-              </form>
+              </>
+            )}
+            
+            <div className="flex items-center mt-4 mb-4">
+              <button
+                type="button"
+                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                onClick={handleAddInput}
+              >
+                Add Child Withhold Amount
+              </button>
             </div>
+            <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+            {inputs.map((input, index) => (
+              <div key={input.id} className="mb-4 ">
+                <div className='flex items-center'>
+                <label className="block text-gray-700 text-sm font-bold mb-2">Withhold Amount {index + 1}:</label>
+                <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveInput(input.id)}>
+                <FaTrashAlt style={style} />
+             </button>
+             </div>
+                <input
+                  type="number"
+                  placeholder='Enter amount'
+                  value={input.value}
+                  onChange={(event) => handleInputChange(event, index)}
+                  className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                
+              </div>
+            ))}
+
+              
+             </div>
+              <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  className="bg-blue-500 m-2 sm:mx-auto sm:w-full text-sm text-sm hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Calculate
+                </button>
+                <button
+                  type="reset"
+                  onClick={handleReset}
+                  className="bg-blue-500 m-2 sm:mx-auto sm:w-full text-sm text-sm hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                  Reset
+                </button>
+              </div> 
+            </form>
+            {calculationResult && (
+                <div className="result-section mt-4">
+                  <h2>Calculation Result:</h2>
+                  <p>{calculationResult}</p>
+                </div>
+              )}
+          </div>
 <hr className="mt-6"></hr>
 
 <ToastContainer />
-          </div>
         </div>
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 }
 
 export default MultipleChild;
