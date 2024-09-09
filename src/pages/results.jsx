@@ -108,11 +108,11 @@ import { BASE_URL } from '../Config';
                <thead>
                  <tr>
                  {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
-                 <th className="pb-4 text-center text-xs  text-gray-500 uppercase">TimeStamp</th>
+                 <th className="pb-4 text-left text-xs  text-gray-500 uppercase">TimeStamp</th>
                   
-                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Employee Id</th>
-                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Employer Id</th>
-                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Result Amount</th>
+                   <th className="pb-4 text-left text-xs  text-gray-500 uppercase">Employee Id</th>
+                   <th className="pb-4 text-left text-xs  text-gray-500 uppercase">Employer Id</th>
+                   <th className="pb-4 text-left text-xs  text-gray-500 uppercase">Result Amount</th>
                   
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th> */}
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>  */}
