@@ -61,13 +61,13 @@ function Form() {
   return (
     <>
       <div className="flex h-screen   dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="grid grid-flow-row-dense md:max-lg:flex  mt-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  <div className=" sm:mx-auto left_side_login  suctom_login_side md:border-r-[0.5px]  border-orange-50 sm:w-full sm:max-w-md">
+        <div className="grid grid-flow-row-dense md:max-lg:flex lg:p-6 lg:mr-4 mt-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 items-center place-items-center">
+                  <div className=" sm:mx-auto left_side_login   md:border-r-[0.5px]  border-orange-50 sm:w-full sm:max-w-md">
                                   <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />
                         <h2 className=" text-center dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">
                           Sign in to your account
                         </h2>
-                                <form onSubmit={handleSubmit} className=" mt-10 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50">
+                                <form onSubmit={handleSubmit} className="lg:mr-4 mt-10 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50">
                                   <div>
                                     <label htmlFor="username" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">
                                       Email

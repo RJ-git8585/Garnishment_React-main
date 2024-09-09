@@ -49,13 +49,13 @@ function Form() {
   };
   return (
     <div className="flex h-screen dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-2 lg:px-8">
-      <div className="grid grid-flow-row-dense  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-2">
-            <div className="sm:mx-auto suctom_login_side  sm:w-full sm:max-w-md md:border-r-[0.5px]">
+      <div className="grid grid-flow-row-dense items-center place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-2">
+            <div className="sm:mx-auto   sm:w-full sm:max-w-md md:border-r-[0.5px]">
             <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />
                       <h2 className=" mb-10 text-center dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">
                         Sign up to your account
                       </h2>
-                      <form className= "grid grid-cols-2 gap-4 space-y-6 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" onSubmit={handleSubmit}>
+                      <form className= "grid grid-cols-2 lg:mr-4 gap-4 space-y-6 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" onSubmit={handleSubmit}>
                         <div className="mt-4">
                           <label htmlFor="name" className="block dark:text-white text-sm font-medium leading-6 text-gray-900">Employer Name</label>
                           <div className="mt-2">
