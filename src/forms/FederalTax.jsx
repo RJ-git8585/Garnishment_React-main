@@ -270,7 +270,7 @@ function FederalTax() {
              
                   <div>
                     <label htmlFor="workers_compensation" className="block text-gray-700 text-sm font-bold mb-2">
-                    workers_compensation:
+                    Workers Compensation:
                     </label>
                     <input
                       type="number"
@@ -342,7 +342,7 @@ function FederalTax() {
                   </div>
                   <div>
                     <label htmlFor="state_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                    setStateTax:
+                    State Tax:
                     </label>
                     <input
                       type="number"

@@ -7,7 +7,6 @@ import { BASE_URL } from '../Config';
 
 // import { useNavigate } from 'react-router-dom';
 
-import { BASE_URL } from '../Config';
 // eslint-disable-next-line react/prop-types
 function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
 //   const [isLoading, setIsLoading] = useState(false);
