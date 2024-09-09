@@ -226,27 +226,24 @@ font-size: 14px;
     font-weight: 800;
     color: gray;
 }
-/* .overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
+@media only screen and (max-width: 1020px) {
 
-  
-  opacity: 0;
+.sidebar-item p{
+  display:none;
 }
-.overlay:target {
-visibility: visible;
-opacity: 1;
-} */
+
+}
 
 .remove-btns .addfrmbtn {
   display: none;
   padding: 20px;
+}
+a.sidebar-link {
+  display: flex;
+}
+
+button.sidebar-link {
+  display: flex;
 }
 
 .custom-select {

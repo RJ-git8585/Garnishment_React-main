@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo_b from '../Logo_black.png';
-import { FaDashcube, FaHornbill, FaUserEdit,FaBezierCurve, FaSignOutAlt, FaRocketchat, FaTools, FaBalanceScaleRight, FaMoneyBill, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaDashcube, FaHornbill, FaUserEdit,FaBezierCurve, FaRocketchat, FaTools, FaBalanceScaleRight, FaMoneyBill, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Logout from '../pages/Logout';
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -30,13 +30,13 @@ const Sidebar = () => {
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/dashboard" className="sidebar-link">
             <FaDashcube />
-            Dashboard
+            <p>   Dashboard</p>
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/profile" className="sidebar-link submen_cls" onClick={toggleSubmenu}>
             <FaUserEdit />
-            Profile
+            <p> Profile</p>
             {isSubmenuOpen ? <FaChevronUp className="ml-2 submen_cls_iocn"  /> : <FaChevronDown className="ml-2 submen_cls_iocn" />}
           </Link>
           {isSubmenuOpen && (
@@ -44,13 +44,13 @@ const Sidebar = () => {
               <li className="submenu-item">
                 <Link to="/addlocation" className="sidebar-link">
                 <FaLocationDot />
-                   Location
+                <p>Location</p>
                 </Link>
               </li>
               <li className="submenu-item">
                 <Link to="/adddepartment" className="sidebar-link">
                 <FaBezierCurve />
-                  Departmant
+                  <p>Departmant</p>
                 </Link>
               </li>
               {/* Add more submenu items here */}
@@ -60,37 +60,37 @@ const Sidebar = () => {
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/tax" className="sidebar-link">
             <FaMoneyBill />
-            Tax
+            <p>Tax</p>
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/setting" className="sidebar-link" >
             <FaTools />
-            Settings
+            <p> Settings</p>
           </Link>
           
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/garnishment" className="sidebar-link">
             <FaBalanceScaleRight />
-            Garnishment Calculator
+            <p>Garnishment Calculator</p>
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/results" className="sidebar-link">
             <FaHornbill />
-            Results
+            <p> Results</p>
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/help" className="sidebar-link">
             <FaRocketchat />
-            Help !
+            <p> Help !</p>
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2 cus_svg">
-          <FaSignOutAlt />
-          <Logout />
+          
+          <p><Logout /></p>
         </li>
       </ul>
     </>

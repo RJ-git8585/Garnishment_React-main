@@ -2,6 +2,7 @@
 // eslint-disable-next-line no-unused-vars
 import {React,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
+import {  FaSignOutAlt } from 'react-icons/fa';
 
 
 const Logout = () => {
@@ -17,7 +18,7 @@ const Logout = () => {
     // handleLogout();
 },[])
   return (
-    <button onClick={handleLogout}>LOGOUT</button>
+    <button className="sidebar-link" onClick={handleLogout}><FaSignOutAlt /><p>LOGOUT</p></button>
   );
 };
 
