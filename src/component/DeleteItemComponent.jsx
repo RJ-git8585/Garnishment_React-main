@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from '../Config';
+
 // import { useNavigate } from 'react-router-dom';
 
 
@@ -18,7 +20,7 @@ function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
 
     confirm('Are you sure you want to edit this item?');
     try {
-      const response = await axios.delete(`https://garnishment-backend.onrender.com/User/EmployeeDelete/${id}/${employerid}`);
+      const response = await axios.delete(`${BASE_URL}/User/EmployeeDelete/${id}/${employerid}`);
 
       if (response.status === 200 || response.status === 204) { // Handle successful deletion
         console.log('Item deleted successfully!');

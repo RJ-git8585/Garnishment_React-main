@@ -15,6 +15,15 @@ function FederalTax() {
   const [filing_status, setFilingStatus] = useState('');
   const [employee_id, setEmployeeId] = useState(null);
   const [calculationResult, setCalculationResult] = useState(null);
+  const [mexico_tax, setmexico_tax] = useState(null);
+  const [workers_compensation, setworkers_compensation] = useState(null);
+  const [medical_insurance, setmedical_insurance] = useState(null);
+  const [contribution, setcontribution] = useState(null);
+  const [united_way_contribution, setUnitedWayContribution] = useState(null);
+  const [social_and_security, setSocialandSecurity] = useState(null);
+  const [medicare_tax, setMedicareTax] = useState(null);
+  const [state_tax, setStateTax] = useState(null);
+  const [federal_income_tax, setFederalIncomeTaxRate] = useState(null);
   const [options, setOptions] = useState([]);
   const employer_id = parseInt(localStorage.getItem("id"));
 
@@ -51,6 +60,15 @@ function FederalTax() {
       pay_period,
       no_of_exception,
       filing_status,
+      mexico_tax,
+      workers_compensation,
+      medical_insurance,
+      contribution,
+      united_way_contribution,
+      social_and_security,
+      medicare_tax,
+      state_tax,
+      federal_income_tax
     };
 
     try {
@@ -85,6 +103,17 @@ function FederalTax() {
     setExceptions(0);
     setFilingStatus('');
     setCalculationResult(null);
+    setmexico_tax('');
+    setworkers_compensation('');
+    setmedical_insurance('');
+    setGarnishmentFees('');
+    setcontribution('');
+    setUnitedWayContribution('');
+    setSocialandSecurity('');
+    setmedical_insurance('');
+    setMedicareTax('');
+    setStateTax('');
+    setFederalIncomeTaxRate('');
   };
 
   const handleChange = (e) => {
@@ -224,10 +253,122 @@ function FederalTax() {
                       <option value="single filing status"> Single filing status</option>
                       <option value="head of household">Head of household</option>
                     </select>
+
+                  </div>
+                  <div>
+                    <label htmlFor="mexico_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    Mexico Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="mexico_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={mexico_tax}
+                      onChange={(e) => setmexico_tax(parseInt(e.target.value))}
+                    />
                   </div>
              
-             </div>
+                  <div>
+                    <label htmlFor="workers_compensation" className="block text-gray-700 text-sm font-bold mb-2">
+                    workers_compensation:
+                    </label>
+                    <input
+                      type="number"
+                      id="workers_compensation"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={workers_compensation}
+                      onChange={(e) => setworkers_compensation(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="medical_insurance" className="block text-gray-700 text-sm font-bold mb-2">
+                    Medical Insurance:
+                    </label>
+                    <input
+                      type="number"
+                      id="medical_insurance"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={medical_insurance}
+                      onChange={(e) => setmedical_insurance(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="contribution" className="block text-gray-700 text-sm font-bold mb-2">
+                    Contribution
+                    </label>
+                    <input
+                      type="number"
+                      id="contribution"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={contribution}
+                      onChange={(e) => setcontribution(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="united_way_contribution" className="block text-gray-700 text-sm font-bold mb-2">
+                    United Way Contribution:
+                    </label>
+                    <input
+                      type="number"
+                      id="united_way_contribution"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={united_way_contribution}
+                      onChange={(e) => setworkers_compensation(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="social_and_security" className="block text-gray-700 text-sm font-bold mb-2">
+                    Social and Security Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="social_and_security"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={social_and_security}
+                      onChange={(e) => setSocialandSecurity(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="medicare_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    Medicare Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="medicare_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={medicare_tax}
+                      onChange={(e) => setMedicareTax(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="state_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    setStateTax:
+                    </label>
+                    <input
+                      type="number"
+                      id="state_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={state_tax}
+                      onChange={(e) => setStateTax(parseInt(e.target.value))}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="federal_income_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    Federal Income Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="federal_income_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={federal_income_tax}
+                      onChange={(e) => setFederalIncomeTaxRate(parseInt(e.target.value))}
+                    />
+                  </div>
 
+             
+             
+             </div>
+                
               
                 <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                   <button
