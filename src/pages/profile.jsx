@@ -93,7 +93,7 @@ function Profile() {
     <div>
          <header className="bg-white bg-gray-800 shadow">
         </header>
-        <div className="container main">
+        <div className="container">
         <div className='sidebar'><Sidebar/></div>
         <div className="contant content ml-auto ">
         <Headertop />
