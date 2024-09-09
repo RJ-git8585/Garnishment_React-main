@@ -108,10 +108,12 @@ import { BASE_URL } from '../Config';
                <thead>
                  <tr>
                  {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
-                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Result Amount</th>
+                 <th className="pb-4 text-center text-xs  text-gray-500 uppercase">TimeStamp</th>
+                  
                    <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Employee Id</th>
                    <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Employer Id</th>
-                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">TimeStamp</th>
+                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Result Amount</th>
+                  
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th> */}
                    {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>  */}
                  </tr>
@@ -132,7 +134,7 @@ import { BASE_URL } from '../Config';
                 
                    <tr key={item.employer_id}>
                    {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                  <td className=" text-left text-xs">{item.result}</td><td className="p-2 text-left text-xs">{item.employee_id}</td><td className="text-left p-2 text-xs">{item.employer_id}</td><td className=" text-left p-2 border-slate-300 text-xs">{item.timestamp}</td>
+                   <td className=" text-left p-2 border-slate-300 text-xs">{item.timestamp}</td><td className="p-2 text-left text-xs">{item.employee_id}</td><td className="text-left p-2 text-xs">{item.employer_id}</td><td className=" text-left text-xs">{item.result}</td>
               {/* <td>
                   <EditItemComponent id={item.employee_id} // Pass the record ID
  onEditSuccess={onEditSuccess} // Optional callback for successful deletion

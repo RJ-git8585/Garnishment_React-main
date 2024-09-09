@@ -284,6 +284,16 @@ opacity: 1;
 .logs_cls svg {
   margin: 5px;
 }
+.submen_cls svg:nth-child(2) {
+  color: #000000;
+  font-size: 12px;
+  margin-left: 26px;
+  margin-top: 6px;
+}
+.submen_cls svg:nth-child(2) {
+  /* your styles */
+  color:red;
+}
 
 .submenu-item .sidebar-link {
   color: #000;
