@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 import { useNavigate } from 'react-router-dom';
+import {  FaMoneyBill } from 'react-icons/fa';
 
 
 function AddTax() {
@@ -92,7 +93,7 @@ function AddTax() {
         
         <div className=' contant content ml-auto '>
         <Headertop />
-            <h2 className='font-bold Ctext-base mb-6'>Add Tax</h2>
+            <h2 className='font-bold Ctext-base mb-6'> <FaMoneyBill /> Add Tax</h2>
             
             <hr />
             <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
