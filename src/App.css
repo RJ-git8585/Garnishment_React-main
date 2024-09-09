@@ -244,6 +244,11 @@ visibility: visible;
 opacity: 1;
 } */
 
+.remove-btns .addfrmbtn {
+  display: none;
+  padding: 20px;
+}
+
 .custom-select {
   appearance: none; 
   -webkit-appearance: none; 
@@ -266,11 +271,12 @@ opacity: 1;
 
 .submenu {
   list-style-type: none;
-  padding-left: 37px;
+  /* padding-left: 37px; */
 }
 
 .submenu-item {
   padding: 10px 0;
+  margin-top: 20px;
 }
 
 .submenu-item .sidebar-link {

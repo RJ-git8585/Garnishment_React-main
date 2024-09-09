@@ -6,8 +6,8 @@ import Headertop from '../component/Headertop'
 import Sidebar from '../component/sidebar'
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import DeleteItemComponent from '../component/DeleteItemComponent';
-import EditItemComponent from '../component/editItemComponent';
+// import DeleteItemComponent from '../component/DeleteItemComponent';
+// import EditItemComponent from '../component/editItemComponent';
 import { CgImport } from "react-icons/cg";
 import { TiExport } from "react-icons/ti";
 // import Garnishment from './Garnishment';
@@ -15,7 +15,8 @@ import load  from '../bouncing-circles.svg';
 import { BASE_URL } from '../Config';
 
 
-function results(onDeleteSuccess,onEditSuccess) {
+// function results(onDeleteSuccess,onEditSuccess) {
+  function results() {
   // this is for the pagination
   const id = localStorage.getItem("id");
   const [page, setPage] = useState(1);
@@ -107,18 +108,18 @@ function results(onDeleteSuccess,onEditSuccess) {
                <thead>
                  <tr>
                  {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Result Amount</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employee Id</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employer Id</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">TimeStamp</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
+                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Result Amount</th>
+                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Employee Id</th>
+                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">Employer Id</th>
+                   <th className="pb-4 text-center text-xs  text-gray-500 uppercase">TimeStamp</th>
+                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th> */}
+                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>  */}
                  </tr>
                </thead>
               
                
                 {loading ? (
-          <div className="text-sm w-full  text-center m-0"><div className="text-sm w-full  text-center m-0"><img
+          <div className="text-sm w-full  text-left m-0"><div className="text-sm w-full  text-left m-0"><img
           className="mx-auto h-10 logo-inner w-auto custom_logo_side"
           src={load}
           alt="Your Company"
@@ -131,17 +132,20 @@ function results(onDeleteSuccess,onEditSuccess) {
                 
                    <tr key={item.employer_id}>
                    {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                  <td className="  text-xs">{item.result}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.timestamp}</td>
-              <td>
+                  <td className=" text-left text-xs">{item.result}</td><td className="p-2 text-left text-xs">{item.employee_id}</td><td className="text-left p-2 text-xs">{item.employer_id}</td><td className=" text-left p-2 border-slate-300 text-xs">{item.timestamp}</td>
+              {/* <td>
                   <EditItemComponent id={item.employee_id} // Pass the record ID
  onEditSuccess={onEditSuccess} // Optional callback for successful deletion
-          />
-                  </td><td>
+          />s
+                  </td> */}
+                  
+                  {/* <td>
                   <DeleteItemComponent
             id={item.employee_id} // Pass the record ID
             onDeleteSuccess={onDeleteSuccess} // Optional callback for successful deletion
           />
-                  </td>
+                  </td> */}
+
                   </tr>
                 )) } 
              </tbody>

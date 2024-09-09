@@ -87,7 +87,7 @@ function dashboard(  ) {
          <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } >
         <div className='sidebar'><Sidebar/></div>
         
-        <div className=' contant content ml-auto '>
+        <div className='contant content ml-auto remove-btns'>
         {/* {isHidden ? null : (  */}
         <Headertop />
        <ProfileHeader/>

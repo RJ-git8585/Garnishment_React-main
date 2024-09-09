@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo_b from '../Logo_black.png';
-import { FaDashcube, FaHornbill, FaUserEdit, FaSignOutAlt, FaRocketchat, FaTools, FaBalanceScaleRight, FaMoneyBill, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaDashcube, FaHornbill, FaUserEdit,FaBezierCurve, FaSignOutAlt, FaRocketchat, FaTools, FaBalanceScaleRight, FaMoneyBill, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Logout from '../pages/Logout';
+import { FaLocationDot } from "react-icons/fa6";
 
 const Sidebar = () => {
   const [isSubmenuOpen, setSubmenuOpen] = useState(false);
@@ -42,12 +43,14 @@ const Sidebar = () => {
             <ul className="submenu">
               <li className="submenu-item">
                 <Link to="/addlocation" className="sidebar-link">
-                  Add Location
+                <FaLocationDot />
+                   Location
                 </Link>
               </li>
               <li className="submenu-item">
                 <Link to="/adddepartment" className="sidebar-link">
-                 Add Departmant
+                <FaBezierCurve />
+                  Departmant
                 </Link>
               </li>
               {/* Add more submenu items here */}
