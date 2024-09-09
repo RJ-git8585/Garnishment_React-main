@@ -48,7 +48,7 @@ function Form() {
     }
   };
   return (
-    <div className="flex h-screen dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-2 lg:px-8">
+    <div className="flex lg:h-screen dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-2 lg:px-8">
       <div className="grid grid-flow-row-dense items-center place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mt-2">
             <div className="sm:mx-auto   sm:w-full sm:max-w-md md:border-r-[0.5px]">
             <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />

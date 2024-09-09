@@ -116,7 +116,7 @@ function Profile() {
   
   <>
       <form action="#" method="POST" onSubmit={handleSubmit} className=" mt-4  sm:mt-0">
-        <div className="grid grid-cols-4 gap-x-8 gap-y-6 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3 md:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-black-900">
             Employer Name

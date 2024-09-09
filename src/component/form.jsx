@@ -60,7 +60,7 @@ function Form() {
   
   return (
     <>
-      <div className="flex h-screen   dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex lg:h-screen  dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="grid grid-flow-row-dense md:max-lg:flex lg:p-6 lg:mr-4 mt-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 items-center place-items-center">
                   <div className=" sm:mx-auto left_side_login   md:border-r-[0.5px]  border-orange-50 sm:w-full sm:max-w-md">
                                   <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />

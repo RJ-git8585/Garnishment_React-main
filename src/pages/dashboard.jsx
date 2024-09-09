@@ -92,7 +92,7 @@ function dashboard(  ) {
         {/* {isHidden ? null : (  */}
         <Headertop />
        <ProfileHeader/>
-            <div className="grid  gap-4  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-8 custom_tab">
+            <div className="grid  gap-4  grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-8 custom_tab">
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
                               <dt className="text-xs leading-3 text-black-600">Total IWO</dt>
                               <dd className=" text-3xl font-semibold text-center tracking-tight text-black-900 sm:text-5xl">{Total_IWO}</dd>
@@ -114,7 +114,7 @@ function dashboard(  ) {
 <hr className="mt-6"></hr>
 
 <div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2  lg:grid-cols-2 mt-2">
-            <div className=" border-single pb-2 rounded-xl border-2">
+            <div className=" border-single pb-2 rounded-xl mb-4 border-2">
               <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Activity</h5> 
               {data.length > 0 ? (  // Check if data is available
       <ul>

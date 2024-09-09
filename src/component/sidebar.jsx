@@ -11,13 +11,19 @@ const Sidebar = () => {
   const toggleSubmenu = () => {
     setSubmenuOpen(!isSubmenuOpen);
   };
+  
+  // eslint-disable-next-line no-unused-vars
+  const toggleMenuMObile = () => {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+  }
 
   return (
     <>
       <div className="sidebar-header">
         {/* You can include header content here if needed */}
       </div>
-      <ul className="sidebar-nav">
+      <ul className="sidebar-nav hidden md:block">
         <li className="sidebar-item">
           <Link to="/dashboard" className="sidebar-link">
             <img
@@ -93,6 +99,17 @@ const Sidebar = () => {
           <p><Logout /></p>
         </li>
       </ul>
+      <button className="block md:hidden text-black" onClick={toggleMenuMObile}>
+      <span className="absolute -inset-0.5"></span><span className="sr-only">Open main menu</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"  stroke="currentColor" aria-hidden="true" data-slot="icon" className="block h-6 w-6"><path  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path></svg>
+      </button>
+      <div id="mobile-menu" className="hidden md:hidden">
+      <ul className="flex flex-col space-y-4 text-white p-4 bg-gray-800">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
     </>
   );
 };

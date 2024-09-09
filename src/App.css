@@ -295,9 +295,7 @@ button.sidebar-link {
   .sidebar-item p{
     display:none;
   }
-  .sidebar {
-    width: 10%;
-  }
+ 
   .sidebar-link svg {
      margin-right: 0px;
   }
