@@ -33,10 +33,10 @@ const Sidebar = () => {
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
-          <Link to="/profile" className="sidebar-link" onClick={toggleSubmenu}>
+          <Link to="/profile" className="sidebar-link submen_cls" onClick={toggleSubmenu}>
             <FaUserEdit />
             Profile
-            {isSubmenuOpen ? <FaChevronUp className="ml-2 "  /> : <FaChevronDown className="ml-2" />}
+            {isSubmenuOpen ? <FaChevronUp className="ml-2 submen_cls_iocn"  /> : <FaChevronDown className="ml-2 submen_cls_iocn" />}
           </Link>
           {isSubmenuOpen && (
             <ul className="submenu">

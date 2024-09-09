@@ -266,15 +266,15 @@ opacity: 1;
 
 .submenu {
   list-style-type: none;
-  padding-left: 20px;
+  padding-left: 37px;
 }
 
 .submenu-item {
-  padding: 5px 0;
+  padding: 10px 0;
 }
 
 .submenu-item .sidebar-link {
-  color: #555;
+  color: #000;
 }
 
 .submenu-item .sidebar-link:hover {
