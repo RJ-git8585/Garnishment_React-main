@@ -93,7 +93,8 @@ function AddTax() {
         
         <div className=' contant content ml-auto '>
         <Headertop />
-            <h2 className='font-bold Ctext-base mb-6'> <FaMoneyBill /> Add Tax</h2>
+            {/* <h2 className='edit-profile mt-6 mb-4 inline-block'> <FaMoneyBill /> Add Tax</h2> */}
+            <h1 className='edit-profile mt-6 mb-4 inline-block'><FaMoneyBill/>Add Tax</h1>
             
             <hr />
             <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
@@ -255,29 +256,32 @@ function AddTax() {
                       
           </div>
 
-          <div >
+            
+          
+        </form>
+        <div className="flex items-center  gap-4 justify-center mt-4">
+          <div className="max-w-96">
       
             <button
               type="submit"
              onClick={handleSubmit}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 custom-btn"
+              className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 custom-btn"
             >
               ADD
             </button>
             </div>
-            <div >
+            <div className="max-w-96">
             <button
               type="reset"
               onClick={handleReset}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              className="flex w-full justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
             >
               CANCEL
             </button>
             
            
           </div>
-          
-        </form>
+          </div>
 
 
 
