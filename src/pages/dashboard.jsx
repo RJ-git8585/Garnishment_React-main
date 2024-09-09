@@ -84,7 +84,8 @@ function dashboard(  ) {
 
   return (
       <div className="min-h-full"> 
-         <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } >
+       <div  className='container main' >
+         {/* <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } > */}
         <div className='sidebar'><Sidebar/></div>
         
         <div className='contant content ml-auto remove-btns'>
