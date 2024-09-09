@@ -278,6 +278,12 @@ opacity: 1;
   padding: 10px 0;
   margin-top: 20px;
 }
+.logs_cls {
+  font-size: 0.75rem !important;
+}
+.logs_cls svg {
+  margin: 5px;
+}
 
 .submenu-item .sidebar-link {
   color: #000;
