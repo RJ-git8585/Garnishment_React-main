@@ -290,10 +290,6 @@ opacity: 1;
   margin-left: 26px;
   margin-top: 6px;
 }
-.submen_cls svg:nth-child(2) {
-  /* your styles */
-  color:red;
-}
 
 .submenu-item .sidebar-link {
   color: #000;
