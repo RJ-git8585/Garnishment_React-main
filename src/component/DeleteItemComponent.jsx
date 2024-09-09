@@ -5,11 +5,12 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { useNavigate } from 'react-router-dom';
 
-
+import { BASE_URL } from '../Config';
 // eslint-disable-next-line react/prop-types
 function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
 //   const [isLoading, setIsLoading] = useState(false);
 // const navigate = useNavigate();
+
 //   const [error, setError] = useState(null);
 // confirm('this is deleted') 
   const handleDelete = async () => {
@@ -18,7 +19,7 @@ function DeleteItemComponent({id, onDeleteSuccess, onDeleteError }) {
 
     confirm('Are you sure you want to edit this item?');
     try {
-      const response = await axios.delete(`https://garnishment-backend.onrender.com/User/EmployeeDelete/${id}/${employerid}`);
+      const response = await axios.delete(`${BASE_URL}/User/EmployeeDelete/${id}/${employerid}`);
 
       if (response.status === 200 || response.status === 204) { // Handle successful deletion
         console.log('Item deleted successfully!');
