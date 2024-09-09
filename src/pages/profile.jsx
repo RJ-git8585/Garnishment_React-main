@@ -94,7 +94,7 @@ function Profile() {
          <header className="bg-white bg-gray-800 shadow">
         </header>
         <div className="container">
-        <div className='sidebar'><Sidebar/></div>
+        <div className='sidebar hidden md:block'><Sidebar/></div>
         <div className="contant content ml-auto ">
         <Headertop />
         <h1 className='edit-profile mt-6 inline-block'><FaUserCheck /> Profile</h1>

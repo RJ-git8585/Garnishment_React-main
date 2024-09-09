@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
   color: rgb(255 255 255) !important;
 }
 .custom_tab .mx-auto.flex.max-w-xs.flex-col.shadow-lg.px-4.py-4.gap-y-4 {
-  width: 230px;
+  width: 200px;
   text-align: center;
 }
 
