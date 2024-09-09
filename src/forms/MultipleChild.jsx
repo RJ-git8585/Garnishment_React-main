@@ -232,7 +232,7 @@ function MultipleChild() {
 
         const postResult = await postResponse.json();
         if (postResponse.ok) {
-            toast.success('Calculation Added Successfully !!');
+            // toast.success('Calculation Added Successfully !!');
 
             const getResult = await fetch(`${BASE_URL}/User/Gcalculations/${employer_id}/${employee_id}/`);
             const resultData = await getResult.json();
@@ -248,7 +248,7 @@ function MultipleChild() {
         }
     } catch (error) {
         console.error('Error:', error.message);
-        toast.error(`Error: ${error.message}`);
+        // toast.error(`Error: ${error.message}`);
     }
   };
 
