@@ -115,7 +115,7 @@ function Garnishment( ) {
   };
 
   fetchData(); // Call the function
-  toast.success('All Employee Data !!');
+  // toast.success('All Employee Data !!');
 },)
 
   const handleReset = () => {

@@ -74,7 +74,7 @@ import { BASE_URL } from '../Config';
            
             <div className='items-left'>
    
-            <div>
+            {/* <div>
                     <label htmlFor="empID" className="mt-6 block italic text-red-700 text-sm font-semibold mb-3">
                             Please Select Garnishment Type:
                           </label>
@@ -87,7 +87,7 @@ import { BASE_URL } from '../Config';
                       <option value="Creditor">Creditor</option>
                       <option value="Bankruptcy">Bankruptcy</option>
                     </select>  
-              </div>
+              </div> */}
               </div>
 
               <div className='items-right text-right mt-4 mb-4 customexport'>
