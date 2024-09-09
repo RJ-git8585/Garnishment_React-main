@@ -14,7 +14,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary {
   color: rgb(255 255 255) !important;
 }
 .custom_tab .mx-auto.flex.max-w-xs.flex-col.shadow-lg.px-4.py-4.gap-y-4 {
-  width: 230px;
+  width: 200px;
   text-align: center;
 }
 
@@ -49,7 +49,7 @@ margin-right:4px ;
 
 .sidebar {
   height: 100%;
-  width: 22%;
+  width: 20%;
   position: fixed;
   z-index: 1;
   top:0;
@@ -105,7 +105,7 @@ h1.edit-profile.mt-6.inline-block svg {
   margin-bottom: 10px;
 }
 .content {
-  width: 85%;
+  width: 82%;
   position: relative;
   /* margin-left: 211px !important; */
   font-size: 28px;
@@ -226,23 +226,21 @@ font-size: 14px;
     font-weight: 800;
     color: gray;
 }
-/* .overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
 
-  
-  opacity: 0;
+
+
+
+.remove-btns .addfrmbtn {
+  display: none;
+  padding: 20px;
 }
-.overlay:target {
-visibility: visible;
-opacity: 1;
-} */
+a.sidebar-link {
+  display: flex;
+}
+
+button.sidebar-link {
+  display: flex;
+}
 
 .custom-select {
   appearance: none; 
@@ -255,28 +253,65 @@ opacity: 1;
   background-repeat:no-repeat ;
 
 }
-
 .custom-select
 {
   color: #fff !important;
   font-weight: 600;
   font-style: italic;
 }
-
-
 .submenu {
   list-style-type: none;
-  padding-left: 20px;
+  /* padding-left: 37px; */
 }
 
 .submenu-item {
-  padding: 5px 0;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+.logs_cls {
+  font-size: 0.75rem !important;
+}
+.logs_cls svg {
+  margin: 5px;
+}
+.submen_cls svg:nth-child(2) {
+  color: #000000;
+  font-size: 12px;
+  margin-left: 26px;
+  margin-top: 6px;
 }
 
 .submenu-item .sidebar-link {
-  color: #555;
+  color: #000;
 }
 
 .submenu-item .sidebar-link:hover {
   color: #000;
 }
+
+/* media start here from */
+@media only screen and (max-width: 1024px) {
+
+  .sidebar-item p{
+    display:none;
+  }
+ 
+  .sidebar-link svg {
+     margin-right: 0px;
+  }
+  .custom_logo_side{
+    display: none;
+  }
+  .content{
+    width: 98%;
+  }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .right_side_login {
+      display: none;
+  }
+  .left_side_login {
+    width: 100%;
+}
+  }

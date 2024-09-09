@@ -9,6 +9,7 @@ import { FaTrashAlt } from "react-icons/fa";
 function MultipleChild() {
   const [employee_name, setEmpName] = useState('');
   const [earnings, setEarnings] = useState(''); 
+  
   const [garnishment_fees, setGarnishmentFees] = useState('');
   const [order_id, setOrderID] = useState('');
   const [state, setState] = useState('');
@@ -30,7 +31,52 @@ function MultipleChild() {
     { id: 3, label: 'California' },
     { id: 4, label: 'Colorado' },
     { id: 5, label: 'Connecticut' },
-    // other states
+    { id: 6, label: 'Florida' },
+    { id: 7, label: 'Georgia' },
+    { id: 8, label: 'Idaho' },
+    { id: 9, label: 'Illinois' },
+    { id: 10, label: 'Indiana' },
+    { id: 11, label: 'Iowa' },
+    { id: 12, label: 'Kansas' },
+    { id: 13, label: 'Kentucky' },
+    { id: 14, label: 'Louisiana' },
+    { id: 14, label: 'Maine' },
+    { id: 15, label: 'Maryland' },
+    { id: 16, label: 'Massachusetts' },
+    { id: 17, label: 'Michigan' },
+    { id: 18, label: 'Minnesota' },
+    { id: 19, label: 'Mississippi' },
+    { id: 20, label: 'Missouri' },
+    { id: 21, label: 'Montana' },
+    { id: 22, label: 'Nebraska' },
+    { id: 23, label: 'Nevada' },
+    { id: 24, label: 'New Hampshire' },
+    { id: 25, label: 'New Jersey' },
+    { id: 26, label: 'New Mexico' },
+    { id: 27, label: 'North Carolina' },
+    { id: 28, label: 'North Dakota' },
+    { id: 29, label: 'Ohio' },
+    { id: 30, label: 'Oklahoma' },
+    { id: 31, label: 'Oregon' },
+    { id: 32, label: 'Pennsylvania' },
+    { id: 33, label: 'Rhode Island' },
+    { id: 34, label: 'South Carolina' },
+    { id: 35, label: 'South Dakota' },
+    { id: 36, label: 'Tennessee' },
+    { id: 37, label: 'Texas' },
+    { id: 38, label: 'Utah' },
+    { id: 39, label: 'Vermont' },
+    { id: 40, label: 'Virginia' },
+    { id: 41, label: 'Washington' },
+    { id: 42, label: 'West Virginia' },
+    { id: 43, label: 'Wisconsin' },
+    { id: 44, label: 'Wyoming' },
+    { id: 45, label: 'Alaska' },
+    { id: 46, label: 'Arkansas' },
+    { id: 47, label: 'Delaware' },
+    { id: 48, label: 'Hawaii' },
+    { id: 49, label: 'Montana' },
+    { id: 50, label: 'New York' },
   ];
 
   const handleState = (event) => {
@@ -97,6 +143,14 @@ function MultipleChild() {
     setIsCheckedFamily(event.target.checked);
   };
 
+  const handleChangeName = (e) => {
+    setSelectedOption(parseInt(e.target.value, 10));
+    const selectedEmployee = options.find(option => option.employee_id === parseInt(e.target.value, 10));
+    if (selectedEmployee) {
+      setEmpName(selectedEmployee.employee_name);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -110,7 +164,7 @@ function MultipleChild() {
     };
 
     fetchData();
-    toast.success('All Employee Data !!');
+    // toast.success('All Employee Data !!');
   }, []);
 
   const handleReset = () => {
@@ -125,6 +179,7 @@ function MultipleChild() {
     setIsChecked(false);
     setIsCheckedFamily(false);
     setInputs([{ id: 1, value: '' }]);
+    setCalculationResult('');
     setArrearInputs([{ id: 1, value: '' }]);
   };
 
@@ -177,7 +232,7 @@ function MultipleChild() {
 
         const postResult = await postResponse.json();
         if (postResponse.ok) {
-            toast.success('Calculation Added Successfully !!');
+            // toast.success('Calculation Added Successfully !!');
 
             const getResult = await fetch(`${BASE_URL}/User/Gcalculations/${employer_id}/${employee_id}/`);
             const resultData = await getResult.json();
@@ -193,7 +248,7 @@ function MultipleChild() {
         }
     } catch (error) {
         console.error('Error:', error.message);
-        toast.error(`Error: ${error.message}`);
+        // toast.error(`Error: ${error.message}`);
     }
   };
 
@@ -213,7 +268,7 @@ return (
                   <select
                     value={employee_id}
                     noOptionsMessage={() => 'FOOOO!'}
-                    onChange={handleChange}
+                    onChange={handleChangeName}
                     id="countries"
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-white-50 border border-white-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white-700 dark:border-gray-600 dark:placeholder-gray-400 focus:shadow-outline dark:text-black dark:focus:ring-white-500 dark:focus:border-white-500"
                     required
@@ -433,7 +488,7 @@ return (
           </div>
 <hr className="mt-6"></hr>
 
-<ToastContainer />
+{/* <ToastContainer /> */}
         </div>
       </div>
     </div>

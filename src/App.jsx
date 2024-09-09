@@ -26,6 +26,8 @@ import Employee from './pages/employee';
 import Notfound from './pages/Notfound';
 import AddEmployee from './component/AddEmployee';
 import AddDepartment from './component/AddDepartment';
+import AddTax from './component/AddTax';
+
 import AddLocation from './component/AddLocation';
 import Department from './pages/department';
 import Location from './pages/location';
@@ -66,6 +68,7 @@ function App() {
         <Route path="/location" element={<PrivateRoute><Location /></PrivateRoute>} />
         <Route path="/iwo" element={<PrivateRoute><Iwo /></PrivateRoute>} />
         <Route path="/results" element={<PrivateRoute><Results /></PrivateRoute>} />
+        <Route path="/addtax" element={<PrivateRoute><AddTax /></PrivateRoute>} />
         <Route path="*" element={<Notfound />} />
         {/* <Route path="/SingleChild" element={<SingleChild />} />  */}
         <Route path="apis" element={<Apis />} />

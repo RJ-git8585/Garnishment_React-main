@@ -43,20 +43,20 @@ function dashboard(  ) {
       }
     };
 
-    const Setting = async () => {   
-      try {
-            const id = localStorage.getItem("id");
-            const datalog = await fetch(`${BASE_URL}/User/setting/${id}/`); // Replace with your API URL
-            const jsonDatalog = await datalog.json();
-            console.log(jsonDatalog.data.modes);
-            // localStorage.setItem('Mode', jsonDatalog.data.modes);
-            // localStorage.setItem('Mode', jsonDatalog.data.modes);
+    // const Setting = async () => {   
+    //   try {
+    //         const id = localStorage.getItem("id");
+    //         const datalog = await fetch(`${BASE_URL}/User/setting/${id}/`); // Replace with your API URL
+    //         const jsonDatalog = await datalog.json();
+    //         console.log(jsonDatalog.data.modes);
+    //         // localStorage.setItem('Mode', jsonDatalog.data.modes);
+    //         // localStorage.setItem('Mode', jsonDatalog.data.modes);
            
-          } catch (error) {
-            console.error('Error fetching data:', error);
-            // Handle errors appropriately (display error message, etc.)
-          }
-        };
+    //       } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //         // Handle errors appropriately (display error message, etc.)
+    //       }
+    //     };
 
     
     const logsData = async () => {
@@ -76,7 +76,7 @@ function dashboard(  ) {
     useEffect(()=>{
       logsData();
         fetchData();
-        Setting();
+        // Setting();
   },[]);
   
  
@@ -84,14 +84,15 @@ function dashboard(  ) {
 
   return (
       <div className="min-h-full"> 
-         <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } >
-        <div className='sidebar'><Sidebar/></div>
+       <div  className='container' >
+         {/* <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } > */}
+        <div className='sidebar hidden md:block'><Sidebar/></div>
         
-        <div className=' contant content ml-auto '>
+        <div className='contant content ml-auto remove-btns'>
         {/* {isHidden ? null : (  */}
         <Headertop />
        <ProfileHeader/>
-            <div className="grid grid-cols-4 gap-4 mt-8 custom_tab">
+            <div className="grid  gap-4  grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-8 custom_tab">
                             <div className="mx-auto flex max-w-xs flex-col shadow-lg px-4 py-4 gap-y-4">
                               <dt className="text-xs leading-3 text-black-600">Total IWO</dt>
                               <dd className=" text-3xl font-semibold text-center tracking-tight text-black-900 sm:text-5xl">{Total_IWO}</dd>
@@ -112,13 +113,13 @@ function dashboard(  ) {
             </div>
 <hr className="mt-6"></hr>
 
-<div className="grid grid-flow-row-dense grid-cols-2 mt-2">
-            <div className=" border-single pb-2 rounded-xl border-2">
+<div className="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2  lg:grid-cols-2 mt-2">
+            <div className=" border-single pb-2 rounded-xl mb-4 border-2">
               <h5 className="mt-0 py-2  px-2 text-lg bg-cyan-100  font-semibold">Activity</h5> 
               {data.length > 0 ? (  // Check if data is available
       <ul>
         {data.map((item) => (
-          <li className="text-sm mb-2 mt-2 flex"key={item.id}><DiJqueryLogo /> 
+          <li className="text-sm mb-2 mt-2 flex logs_cls"key={item.id}><DiJqueryLogo /> 
             {item.details} 
           </li>
         ))}
@@ -136,7 +137,7 @@ function dashboard(  ) {
               {data.length > 0 ? (  // Check if data is available
       <ul>
         {data.map((item) => (
-          <li className="text-sm mb-2 mt-2 flex"key={item.id}><DiJqueryLogo /> 
+          <li className="text-sm mb-2 mt-2 flex logs_cls"key={item.id}><DiJqueryLogo /> 
             {item.details} 
           </li>
         ))}
@@ -153,7 +154,7 @@ function dashboard(  ) {
         </div>  
    
       </div>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       </div>
     
   )

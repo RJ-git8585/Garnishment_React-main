@@ -93,8 +93,8 @@ function Profile() {
     <div>
          <header className="bg-white bg-gray-800 shadow">
         </header>
-        <div className="container main">
-        <div className='sidebar'><Sidebar/></div>
+        <div className="container">
+        <div className='sidebar hidden md:block'><Sidebar/></div>
         <div className="contant content ml-auto ">
         <Headertop />
         <h1 className='edit-profile mt-6 inline-block'><FaUserCheck /> Profile</h1>
@@ -116,7 +116,7 @@ function Profile() {
   
   <>
       <form action="#" method="POST" onSubmit={handleSubmit} className=" mt-4  sm:mt-0">
-        <div className="grid grid-cols-4 gap-x-8 gap-y-6 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3 md:grid-cols-2">
           <div>
             <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-black-900">
             Employer Name

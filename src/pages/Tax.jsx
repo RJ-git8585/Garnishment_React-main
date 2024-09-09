@@ -7,6 +7,7 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DeleteItemComponent from '../component/DeleteItemComponent';
 import { BASE_URL } from '../Config';
+import { FaPlus } from "react-icons/fa";
 
 function Tax(onDeleteSuccess) {
 
@@ -41,6 +42,12 @@ function Tax(onDeleteSuccess) {
        <Headertop />
        {/* <ProfileHeader/> */}
        <hr />
+
+       <div className='items-right text-right mt-4 mb-4 customexport'>
+       <a type="button" href="/addtax" className="border inline-flex ml-2 items-right rounded-md bg-white px-3 py-2 text-sm font-semibold text-black-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"><FaPlus />
+        Add
+      </a>
+       </div>
        <div className="flex flex-col mt-6">
   <div className="-m-1.5 overflow-x-auto">
     <div className="p-1.5 min-w-full inline-block align-middle">

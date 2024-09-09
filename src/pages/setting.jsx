@@ -5,7 +5,7 @@
     import { FaTools } from "react-icons/fa";
     // import Color from '../component/Color';  
     import { BASE_URL } from '../Config';
-    import {  toast } from 'react-toastify';
+    // import {  toast } from 'react-toastify';
 
     function Setting() {
       // const employer_id = (parseInt(localStorage.getItem("id")));
@@ -28,7 +28,7 @@
           }
         };
          fetchData();
-         toast.success('Getting Setting Details');
+        //  toast.success('Getting Setting Details');
     
       },[])
 

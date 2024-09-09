@@ -9,7 +9,7 @@ function ProfileHeader( ) {
   return (
     <div>
         <div className="lg:flex lg:items-center lg:justify-between mb-8">
-  <div className="min-w-0 flex-1">
+  <div className="min-w-0 p-4 flex-1">
     <h2 className="text-2xl font-bold leading-7 text-black-900 sm:truncate sm:text-3xl sm:tracking-tight">Welcome To Garnishment</h2>
     <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
       <div className="mt-2 flex items-center text-sm text-gray-500">
@@ -35,27 +35,27 @@ function ProfileHeader( ) {
 
     </span>
 
-    <span className="ml-3 hidden sm:block">
+    <span className="ml-3 hidden sm:block addfrmbtn">
       <a type="button" href="/department" className="inline-flex items-center rounded-md bg-red-400 px-3 py-2 text-sm font-semibold text-black-900 text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-red-300">
         Depart
       </a>
       {/* // )} */}
     </span>
 
-    <span className="sm:ml-3">
+    <span className="sm:ml-3 addfrmbtn">
       <a type="button" href="/addemployee" className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
         Add
       </a>
     </span>
 
-    <span className="sm:ml-3">
+    <span className="sm:ml-3 addfrmbtn">
       <a type="button" href="/location" className="inline-flex items-center rounded-md bg-cyan-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
         Location
       </a>
     </span>
 
   
-    <div className="relative ml-3 sm:hidden">
+    <div className="relative ml-3 sm:hidden md:hidden hidden md:block">
       <button type="button" className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400" id="mobile-menu-button" aria-expanded="false" aria-haspopup="true">
         More
         <svg className="-mr-1 ml-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
