@@ -226,13 +226,9 @@ font-size: 14px;
     font-weight: 800;
     color: gray;
 }
-@media only screen and (max-width: 1020px) {
 
-.sidebar-item p{
-  display:none;
-}
 
-}
+
 
 .remove-btns .addfrmbtn {
   display: none;
@@ -257,15 +253,12 @@ button.sidebar-link {
   background-repeat:no-repeat ;
 
 }
-
 .custom-select
 {
   color: #fff !important;
   font-weight: 600;
   font-style: italic;
 }
-
-
 .submenu {
   list-style-type: none;
   /* padding-left: 37px; */
@@ -295,3 +288,23 @@ button.sidebar-link {
 .submenu-item .sidebar-link:hover {
   color: #000;
 }
+
+/* media start here from */
+@media only screen and (max-width: 1024px) {
+
+  .sidebar-item p{
+    display:none;
+  }
+  .sidebar {
+    width: 10%;
+  }
+  .sidebar-link svg {
+     margin-right: 0px;
+  }
+  .custom_logo_side{
+    display: none;
+  }
+  .content{
+    width: 98%;
+  }
+  }
