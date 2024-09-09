@@ -43,20 +43,20 @@ function dashboard(  ) {
       }
     };
 
-    const Setting = async () => {   
-      try {
-            const id = localStorage.getItem("id");
-            const datalog = await fetch(`${BASE_URL}/User/setting/${id}/`); // Replace with your API URL
-            const jsonDatalog = await datalog.json();
-            console.log(jsonDatalog.data.modes);
-            // localStorage.setItem('Mode', jsonDatalog.data.modes);
-            // localStorage.setItem('Mode', jsonDatalog.data.modes);
+    // const Setting = async () => {   
+    //   try {
+    //         const id = localStorage.getItem("id");
+    //         const datalog = await fetch(`${BASE_URL}/User/setting/${id}/`); // Replace with your API URL
+    //         const jsonDatalog = await datalog.json();
+    //         console.log(jsonDatalog.data.modes);
+    //         // localStorage.setItem('Mode', jsonDatalog.data.modes);
+    //         // localStorage.setItem('Mode', jsonDatalog.data.modes);
            
-          } catch (error) {
-            console.error('Error fetching data:', error);
-            // Handle errors appropriately (display error message, etc.)
-          }
-        };
+    //       } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //         // Handle errors appropriately (display error message, etc.)
+    //       }
+    //     };
 
     
     const logsData = async () => {
@@ -76,7 +76,7 @@ function dashboard(  ) {
     useEffect(()=>{
       logsData();
         fetchData();
-        Setting();
+        // Setting();
   },[]);
   
  
