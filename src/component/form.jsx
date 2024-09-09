@@ -61,8 +61,8 @@ function Form() {
   return (
     <>
       <div className="flex h-screen   dark:bg-slate-800 flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="grid grid-flow-row-dense  grid-cols-2 mt-2">
-                  <div className=" sm:mx-auto suctom_login_side border-r-[0.5px]  border-orange-50 sm:w-full sm:max-w-md">
+        <div className="grid grid-flow-row-dense md:max-lg:flex grid-cols-2 mt-2">
+                  <div className=" sm:mx-auto left_side_login  suctom_login_side border-r-[0.5px]  border-orange-50 sm:w-full sm:max-w-md">
                                   <img className="mx-auto h-10 w-auto" src={logo} alt="Your Company" />
                         <h2 className=" text-center dark:text-white text-2xl font-bold leading-9 tracking-tight text-gray-900">
                           Sign in to your account
@@ -126,7 +126,7 @@ function Form() {
                       </a>
                     </p>
                       </div>
-                  <div className="text-left mt-20  ml-10 sm:mx-auto sm:w-full sm:max-w-lg">
+                  <div className="text-left mt-20 right_side_login ml-10 sm:mx-auto sm:w-full sm:max-w-lg">
                                 <div className='text-white  text-2xl'>Sign in easily using your existing account from <b className="text-amber-500" >Social Accounts</b>. No need to create a new password or remember multiple login credentials.</div>
                                   <div className='text-white  border-b-[0.5px] border-orange-50 pb-5 text-2xl'>
                                     Keep the text clear, concise, and easy to understand.

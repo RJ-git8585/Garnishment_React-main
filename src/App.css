@@ -308,3 +308,12 @@ button.sidebar-link {
     width: 98%;
   }
   }
+
+  @media only screen and (max-width: 768px) {
+    .right_side_login {
+      display: none;
+  }
+  .left_side_login {
+    width: 100%;
+}
+  }
