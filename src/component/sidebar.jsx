@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo_b from '../Logo_black.png';
-import { FaDashcube, FaHornbill, FaUserEdit,FaBezierCurve, FaRocketchat, FaTools, FaBalanceScaleRight, FaMoneyBill, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaDashcube, FaHornbill, FaUserEdit,FaWpforms,FaUserTie,FaBezierCurve, FaRocketchat, FaTools, FaBalanceScaleRight, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Logout from '../pages/Logout';
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -64,9 +64,15 @@ const Sidebar = () => {
           )}
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
-          <Link to="/tax" className="sidebar-link">
-            <FaMoneyBill />
-            <p>Tax</p>
+          <Link to="/employee" className="sidebar-link">
+            <FaUserTie />
+            <p>Employee</p>
+          </Link>
+        </li>
+        <li className="sidebar-item border-b-[3px] py-2">
+          <Link to="/iwo" className="sidebar-link">
+            <FaWpforms />
+            <p>IWO</p>
           </Link>
         </li>
         <li className="sidebar-item border-b-[3px] py-2">

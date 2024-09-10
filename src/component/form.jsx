@@ -14,7 +14,15 @@ function Form() {
   const [email, setemail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
+
+
+
+  const togglePasswordVisibility = () => {
+    // alert(showPassword)
+      setShowPassword(!showPassword);
+    };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,6 +32,7 @@ function Form() {
       
       return; // Exit function if email is invalid
     }
+    
 
     // Password validation (adjust validation rules as needed)
     if (password.length < 9 ) {
@@ -55,6 +64,7 @@ function Form() {
       toast.warning("Please Check Credentials!");
     }
   };
+  
 
   
   
@@ -92,12 +102,30 @@ function Form() {
                                       <input
                                         id="password"
                                         name="password"
-                                        type="password"
+                                        type={showPassword ? 'text' : 'password'}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         autoComplete="current-password"
                                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                       />
+                                       <button
+          type="button"
+          onClick={togglePasswordVisibility}
+          className="absolute right-2 custom_position text-gray-500"
+        >
+        {showPassword ? (
+            // Eye SVG (colored) for visible password
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-.722 2.185-2.064 4.065-3.758 5.473M15 12l5.573 5.573M12 15v-3m6 6l-6-6" />
+            </svg>
+          ) : (
+            // Eye-slash SVG (colored) for hidden password
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A9.972 9.972 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.984 9.984 0 012.45-4.596m6.198-1.203a9.969 9.969 0 014.894.555M12 12a3 3 0 103-3m0 0a9.984 9.984 0 013.742 6.242M3 3l18 18" />
+            </svg>
+          )}
+        </button>
                                     </div>
                                     {errorMessage && <p className="error">{errorMessage}</p>}
                                   </div>

@@ -304,6 +304,10 @@ button.sidebar-link {
     width: 98%;
   }
   }
+  button.absolute.right-2.custom_position.text-gray-500 {
+    right: 30px;
+    top: 155px;
+}
 
   @media only screen and (max-width: 768px) {
     .right_side_login {
@@ -311,5 +315,9 @@ button.sidebar-link {
   }
   .left_side_login {
     width: 100%;
+}
+button.absolute.right-2.custom_position.text-gray-500 {
+  right: 30px;
+  top: 148px;
 }
   }
