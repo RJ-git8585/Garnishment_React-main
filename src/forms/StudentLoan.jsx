@@ -14,7 +14,7 @@ function StudentLoan() {
   const [options, setOptions] = useState([]);
   const employer_id = parseInt(localStorage.getItem("id"));
   const [fedral_income_tax, setFederalIncmoeTax] = useState('');
-  const [social_and_security_tax, setSocialAndSecurityTax] = useState('');
+  const [social_and_security, setSocialAndSecurityTax] = useState('');
   const [medicare_tax, setMedicareTax] = useState('');
   const [state_tax, setStateTax] = useState('');
   const [SDI_tax, setSDITax] = useState('');
@@ -50,7 +50,7 @@ function StudentLoan() {
       garnishment_fees,
       order_id,
       fedral_income_tax,
-      social_and_security_tax,
+      social_and_security,
       medicare_tax,
       state_tax,
       SDI_tax
@@ -200,14 +200,14 @@ function StudentLoan() {
                   </div>
                   {/* SOCIAL&SECURITY_TAX */}
                   <div>
-                    <label htmlFor="social_and_security_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    <label htmlFor="social_and_security" className="block text-gray-700 text-sm font-bold mb-2">
                       Social And Security Tax:
                     </label>
                     <input
                       type="number"
-                      id="social_and_security_tax"
+                      id="ssocial_and_security"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={social_and_security_tax}
+                      value={social_and_security}
                       onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
                     />
                   </div>
