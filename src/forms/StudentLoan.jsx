@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 
@@ -341,7 +341,7 @@ function StudentLoan() {
                     Reset
                   </button>
                 </div>  
-            <ToastContainer/>
+            {/* <ToastContainer/> */}
               </form>
               {calculationResult && (
                 <div className="result-section">
