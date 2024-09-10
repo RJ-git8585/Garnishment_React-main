@@ -75,7 +75,7 @@ function StudentLoan() {
       toast.success(`Result: ${resultData.data[0].result}`);
     } catch (error) {
       console.error('Submission Error:', error);
-      toast.error(`Error: ${error.message}`);
+      // toast.error(`Error: ${error.message}`);
     }
   };
 
@@ -119,10 +119,6 @@ function StudentLoan() {
                           />
                         </div>
                       </div>
-
-                      
-         
-               
    
                <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   <div>
