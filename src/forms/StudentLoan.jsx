@@ -17,7 +17,7 @@ function StudentLoan() {
   const [social_and_security_tax, setSocialAndSecurityTax] = useState('');
   const [medicare_tax, setMedicareTax] = useState('');
   const [state_tax, setStateTax] = useState('');
-  const [sdi_tax, setSDITax] = useState('');
+  const [SDI_tax, setSDITax] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +53,7 @@ function StudentLoan() {
       social_and_security_tax,
       medicare_tax,
       state_tax,
-      sdi_tax
+      SDI_tax
     };
 
     try {
@@ -246,7 +246,7 @@ function StudentLoan() {
                       type="number"
                       id="sdi_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={sdi_tax}
+                      value={SDI_tax}
                       onChange={(e) => setSDITax(parseInt(e.target.value))}
                     />
                   </div>
