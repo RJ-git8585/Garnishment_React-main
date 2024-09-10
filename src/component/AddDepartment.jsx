@@ -88,14 +88,14 @@ function AddDepartment() {
 <div className="min-h-full">
        
         <div className="container main ml-auto mt-6">
-        <div className='sidebar'><Sidebar/></div>
+        <div className='sidebar hidden md:block'><Sidebar/></div>
         
         <div className=' contant content ml-auto '>
         <Headertop />
             <h2 className='font-bold Ctext-base mb-6'>Add Department</h2>
             
             <hr />
-            <form className=" grid grid-cols-2 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
+            <form className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 border-gray-50 rounded-md space-y-6 p-6 shadow-lg shadow-blue-500/50" action="#" method="POST">
                     
             <div className='hidden'> 
                         
@@ -253,30 +253,31 @@ function AddDepartment() {
                         
                       
           </div>
-
-          <div >
+          </form>
+         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2  gap-4">
+          <div className="flex justify-center items-center" >
       
             <button
               type="submit"
              onClick={handleSubmit}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 custom-btn"
+              className="flex w-full mt-2  justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 custom-btn"
             >
               ADD
             </button>
             </div>
-            <div >
+            <div className="flex justify-center items-center"  >
             <button
               type="reset"
               onClick={handleReset}
-              className="flex w-full justify-center rounded-md bg-orange-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
+              className="flex w-full mt-2 justify-center rounded-md bg-blue-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500"
             >
               CANCEL
             </button>
             
            
           </div>
-          
-        </form>
+          </div>
+       
 
 
 

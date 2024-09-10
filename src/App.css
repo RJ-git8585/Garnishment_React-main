@@ -113,7 +113,7 @@ h1.edit-profile.mt-6.inline-block svg {
 }
 .container {
   /* max-width: 1280px; */
-  margin-right: inherit;
+  /* margin-right: inherit; */
 }
 .border-gray-50{
   border: 1px solid #ffffff4a !important; 
@@ -292,9 +292,7 @@ button.sidebar-link {
 /* media start here from */
 @media only screen and (max-width: 1024px) {
 
-  .sidebar-item p{
-    display:none;
-  }
+ 
  
   .sidebar-link svg {
      margin-right: 0px;
