@@ -14,7 +14,7 @@ function MultipleStudentLoan() {
   const [calculationResult, setCalculationResult] = useState(null);
   const employer_id = parseInt(localStorage.getItem("id"));
   const [federal_income_tax, setFederalIncmoeTax] = useState('');
-  const [social_and_security_tax, setSocialAndSecurityTax] = useState('');
+  const [social_tax, setSocialTax] = useState('');
   const [medicare_tax, setMedicareTax] = useState('');
   const [state_tax, setStateTax] = useState('');
   const [sdi_tax, setSDITax] = useState('');
@@ -50,7 +50,7 @@ function MultipleStudentLoan() {
       garnishment_fees,
       order_id,
       federal_income_tax,
-      social_and_security_tax,
+      social_tax,
       medicare_tax,
       state_tax,
       sdi_tax
@@ -88,7 +88,7 @@ function MultipleStudentLoan() {
     setOrderID('');
     setCalculationResult(null);
     setFederalIncmoeTax();
-    setSocialAndSecurityTax();
+    setSocialTax();
     setMedicareTax();
     setStateTax();
     setSDITax();
@@ -210,15 +210,15 @@ function MultipleStudentLoan() {
                   </div>
                   {/* SOCIAL&SECURITY_TAX */}
                   <div>
-                    <label htmlFor="social_and_security_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                      Social And Security Tax:
+                    <label htmlFor="social_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                      Social Security Tax:
                     </label>
                     <input
                       type="number"
-                      id="social_and_security_tax"
+                      id="social_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={social_and_security_tax}
-                      onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
+                      value={social_tax}
+                      onChange={(e) => setSocialTax(parseInt(e.target.value))}
                     />
                   </div>
                   {/*  */}
