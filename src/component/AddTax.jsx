@@ -89,8 +89,7 @@ function AddTax() {
 <div className="min-h-full">
        
         <div className="container main ml-auto mt-6">
-        <div className='sidebar'><Sidebar/></div>
-        
+        <div className='sidebar hidden lg:block'><Sidebar/></div>
         <div className=' contant content ml-auto '>
         <Headertop />
             {/* <h2 className='edit-profile mt-6 mb-4 inline-block'> <FaMoneyBill /> Add Tax</h2> */}

@@ -18,7 +18,7 @@ const Logout = () => {
     // handleLogout();
 },[])
   return (
-    <button className="sidebar-link" onClick={handleLogout}><FaSignOutAlt /><p>LOGOUT</p></button>
+    <button className="sidebar-link text-center place-self-center" onClick={handleLogout}><FaSignOutAlt /><p>LOGOUT</p></button>
   );
 };
 

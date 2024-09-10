@@ -13,11 +13,16 @@ function MultipleStudentLoan() {
   const [employee_id, setEmployeeId] = useState(null);
   const [calculationResult, setCalculationResult] = useState(null);
   const employer_id = parseInt(localStorage.getItem("id"));
+<<<<<<< HEAD
   const [federal_income_tax, setFederalIncmoeTax] = useState('');
   const [social_tax, setSocialTax] = useState('');
+=======
+  const [fedral_income_tax, setFederalIncmoeTax] = useState('');
+  const [social_and_security_tax, setSocialAndSecurityTax] = useState('');
+>>>>>>> c7a75c11f1fa9acebc66c723502789cf08a91156
   const [medicare_tax, setMedicareTax] = useState('');
   const [state_tax, setStateTax] = useState('');
-  const [sdi_tax, setSDITax] = useState('');
+  const [SDI_tax, setSDITax] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,11 +54,16 @@ function MultipleStudentLoan() {
       earnings,
       garnishment_fees,
       order_id,
+<<<<<<< HEAD
       federal_income_tax,
       social_tax,
+=======
+      fedral_income_tax,
+      social_and_security_tax,
+>>>>>>> c7a75c11f1fa9acebc66c723502789cf08a91156
       medicare_tax,
       state_tax,
-      sdi_tax
+      SDI_tax
 
     };
 
@@ -130,7 +140,7 @@ function MultipleStudentLoan() {
          
                
    
-               <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+               <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                   <div>
                     <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
                       Employee ID:
@@ -207,8 +217,13 @@ function MultipleStudentLoan() {
                       step="0.01"
                       id="federal_income_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+<<<<<<< HEAD
                       value={federal_income_tax}
                       onChange={(e) => setFederalIncmoeTax(parseFloat(e.target.value))}
+=======
+                      value={fedral_income_tax}
+                      onChange={(e) => setFederalIncmoeTax(parseInt(e.target.value))}
+>>>>>>> c7a75c11f1fa9acebc66c723502789cf08a91156
                     />
                   </div>
                   {/* SOCIAL&SECURITY_TAX */}
@@ -263,8 +278,13 @@ function MultipleStudentLoan() {
                       step="0.01"
                       id="sdi_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+<<<<<<< HEAD
                       value={sdi_tax}
                       onChange={(e) => setSDITax(parseFloat(e.target.value))}
+=======
+                      value={SDI_tax}
+                      onChange={(e) => setSDITax(parseInt(e.target.value))}
+>>>>>>> c7a75c11f1fa9acebc66c723502789cf08a91156
                     />
                   </div> 
 

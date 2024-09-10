@@ -13,10 +13,13 @@ const user = {
       '',
   }
   const navigation = [
-    // { name: 'Dashboard', href: '/form', current: true },
-    // { name: 'Orders', href: '/order', current: false },
-      // { name: 'Employee', href: '/employee', current: false },
-      // { name: 'IWO', href: '/iwo', current: false },
+    { name: 'Dashboard', href: '/dashboard', current: true },
+    { name: 'Calcutalor', href: '/garnishment', current: false },
+    { name: 'Employee', href: '/employee', current: false },
+    { name: 'IWO', href: '/iwo', current: false },
+    { name: 'Results', href: '/results', current: false },
+    { name: 'Setting', href: '/setting', current: false },
+    { name: 'Logout', href: '/logout', current: false },
   ]
   const userNavigation = [
     { name: 'Your Profile', href: '/profile' },
@@ -38,12 +41,12 @@ function Headertop() {
        <Disclosure as="nav" className="border-b-[3px] bg-white-800">
        {({ open }) => (
          <>
-           <div className="mx-auto max-w-7xl px-2 py-2 sm:px-6 lg:px-6">
-             <div className="flex h-16 items-center justify-between">
-               <div className="flex items-center">
+           <div className="mx-auto max-w-7xl px-2 py-2  sm:px-6 lg:px-6">
+             <div className="flex h-16 items-center  justify-between">
+               <div className="flex items-center ">
                  <div className="flex-shrink-0">
            </div>
-           <div className="hidden md:block">
+           <div className="hidden md:block menu-mobile">
              <div className="ml-2 flex  items-baseline space-x-4">
                {navigation.map((item) => (
                  <a
@@ -84,6 +87,7 @@ function Headertop() {
                    <img className="h-8 w-8 rounded-full" src={myImage} alt="" />
                  </Menu.Button>
                </div>
+               
                <Transition
                  as={Fragment}
                  enter="transition ease-out duration-100"
@@ -150,12 +154,12 @@ function Headertop() {
          
        </div>
        <div className="border-t border-gray-700 pb-3 pt-4">
-         <div className="flex items-center px-5">
+         <div className="flex items-center">
            <div className="flex-shrink-0">
-             <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+             <img className="h-7 w-7 rounded-full" src={myImage} alt="" />
            </div>
            <div className="ml-3">
-             <div className="text-base font-medium leading-none text-white">{user.name}</div>
+             <div className="text-sm font-medium leading-none text-gray-400">{user.name}</div>
              <div className="text-sm font-medium leading-none text-gray-400">{user.email}</div>
            </div>
            <button
