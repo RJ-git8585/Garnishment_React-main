@@ -25,7 +25,7 @@ function MultipleChild() {
   const [options, setOptions] = useState([]);
   const style = { color: "#b90707", fontSize: "1.2em" };
   const [federal_income_tax, setFederalIncmoeTax] = useState('');
-  const [social_and_security_tax, setSocialAndSecurityTax] = useState('');
+  const [social_tax, setSocialTax] = useState('');
   const [medicare_tax, setMedicareTax] = useState('');
   const [state_tax, setStateTax] = useState('');
 
@@ -186,7 +186,7 @@ function MultipleChild() {
     setCalculationResult('');
     setArrearInputs([{ id: 1, value: '' }]);
     setFederalIncmoeTax();
-    setSocialAndSecurityTax();
+    setSocialTax();
     setMedicareTax();
     setStateTax();
   };
@@ -228,7 +228,7 @@ function MultipleChild() {
         arrears_amt_Child4: filledArrears[3].value,
         arrears_amt_Child5: filledArrears[4].value,
         federal_income_tax,
-        social_and_security_tax,
+        social_tax,
         medicare_tax,
         state_tax,
     };
@@ -312,11 +312,12 @@ return (
                   </label>
                   <input
                     type="number"
+                    step="0.01"
                     id="earning"
                     placeholder='Enter Earning'
                     className="shadow appearance-none border text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     value={earnings}
-                    onChange={(e) => setEarnings(parseInt(e.target.value, 10))}
+                    onChange={(e) => setEarnings(parseFloat(e.target.value, 10))}
                   />
                 </div>
                 <div>
@@ -325,11 +326,12 @@ return (
                   </label>
                   <input
                     type="number"
+                    step="0.01"
                     id="garnishmentFees"
                     placeholder='Enter Fees'
                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     value={garnishment_fees}
-                    onChange={(e) => setGarnishmentFees(parseInt(e.target.value, 10))}
+                    onChange={(e) => setGarnishmentFees(parseFloat(e.target.value, 10))}
                   />
                 </div>
                 <div>
@@ -380,11 +382,12 @@ return (
                   </label>
                   <input
                     type="number"
+                    step="0.01"
                     id="minimum_wages"
                      placeholder='Enter Minimum Wagesd'
                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     value={minimum_wages}
-                    onChange={(e) => setminimum_wages(parseInt(e.target.value, 10))}
+                    onChange={(e) => setminimum_wages(parseFloat(e.target.value, 10))}
                   />
                 </div>
                 <div>
@@ -482,23 +485,25 @@ return (
                       </label>
                       <input
                         type="number"
+                        step="0.01"
                         id="federal_income_tax"
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={federal_income_tax}
-                        onChange={(e) => setFederalIncmoeTax(parseInt(e.target.value))}
+                        onChange={(e) => setFederalIncmoeTax(parseFloat(e.target.value))}
                       />
                   </div>
                   {/* SOCIAL&SECURITY_TAX */}
                   <div>
-                      <label htmlFor="social_and_security_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                        Social And Security Tax:
+                      <label htmlFor="social_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                        Social Security Tax:
                       </label>
                       <input
                         type="number"
-                        id="social_and_security_tax"
+                        step="0.01"
+                        id="social_tax"
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        value={social_and_security_tax}
-                        onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
+                        value={social_tax}
+                        onChange={(e) => setSocialTax(parseFloat(e.target.value))}
                       />
                   </div>
                  
@@ -508,10 +513,11 @@ return (
                       </label>
                       <input
                         type="number"
+                        step="0.01"
                         id="medicare_tax"
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={medicare_tax}
-                        onChange={(e) => setMedicareTax(parseInt(e.target.value))}
+                        onChange={(e) => setMedicareTax(parseFloat(e.target.value))}
                       />
                   </div>
                     {/*  */}
@@ -521,10 +527,11 @@ return (
                       </label>
                       <input
                         type="number"
+                        step="0.01"
                         id="state_tax"
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={state_tax}
-                        onChange={(e) => setStateTax(parseInt(e.target.value))}
+                        onChange={(e) => setStateTax(parseFloat(e.target.value))}
                       />
                   </div>
                   </div>

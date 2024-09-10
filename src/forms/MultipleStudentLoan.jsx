@@ -163,10 +163,11 @@ function MultipleStudentLoan() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="earning"
                       className="shadow appearance-none border text-sm text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={earnings}
-                      onChange={(e) => setEarnings(parseInt(e.target.value,10))}
+                      onChange={(e) => setEarnings(parseFloat(e.target.value,10))}
                     />
                   </div>
                  
@@ -176,10 +177,11 @@ function MultipleStudentLoan() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="garnishmentFees"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={garnishment_fees}
-                      onChange={(e) => setGarnishmentFees(parseInt(e.target.value))}
+                      onChange={(e) => setGarnishmentFees(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -202,10 +204,11 @@ function MultipleStudentLoan() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="federal_income_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={federal_income_tax}
-                      onChange={(e) => setFederalIncmoeTax(parseInt(e.target.value))}
+                      onChange={(e) => setFederalIncmoeTax(parseFloat(e.target.value))}
                     />
                   </div>
                   {/* SOCIAL&SECURITY_TAX */}
@@ -215,10 +218,11 @@ function MultipleStudentLoan() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="social_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={social_tax}
-                      onChange={(e) => setSocialTax(parseInt(e.target.value))}
+                      onChange={(e) => setSocialTax(parseFloat(e.target.value))}
                     />
                   </div>
                   {/*  */}
@@ -228,10 +232,11 @@ function MultipleStudentLoan() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="medicare_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={medicare_tax}
-                      onChange={(e) => setMedicareTax(parseInt(e.target.value))}
+                      onChange={(e) => setMedicareTax(parseFloat(e.target.value))}
                     />
                   </div>
                     {/*  */}
@@ -241,10 +246,11 @@ function MultipleStudentLoan() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="state_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={state_tax}
-                      onChange={(e) => setStateTax(parseInt(e.target.value))}
+                      onChange={(e) => setStateTax(parseFloat(e.target.value))}
                     />
                   </div>
                   {/* TUESDAY */}
@@ -254,10 +260,11 @@ function MultipleStudentLoan() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="sdi_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={sdi_tax}
-                      onChange={(e) => setSDITax(parseInt(e.target.value))}
+                      onChange={(e) => setSDITax(parseFloat(e.target.value))}
                     />
                   </div> 
 

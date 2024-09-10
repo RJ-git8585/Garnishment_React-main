@@ -15,12 +15,12 @@ function FederalTax() {
   const [filing_status, setFilingStatus] = useState('');
   const [employee_id, setEmployeeId] = useState(null);
   const [calculationResult, setCalculationResult] = useState(null);
-  const [mexico_tax, setmexico_tax] = useState(null);
+  const [local_tax, setlocal_tax] = useState(null);
   const [workers_compensation, setworkers_compensation] = useState(null);
   const [medical_insurance, setmedical_insurance] = useState(null);
   const [contribution, setcontribution] = useState(null);
   const [united_way_contribution, setUnitedWayContribution] = useState(null);
-  const [social_and_security, setSocialandSecurity] = useState(null);
+  const [social_tax, setSocialTax] = useState(null);
   const [medicare_tax, setMedicareTax] = useState(null);
   const [state_tax, setStateTax] = useState(null);
   const [federal_income_tax, setFederalIncomeTaxRate] = useState(null);
@@ -60,12 +60,12 @@ function FederalTax() {
       pay_period,
       no_of_exception,
       filing_status,
-      mexico_tax,
+      local_tax,
       workers_compensation,
       medical_insurance,
       contribution,
       united_way_contribution,
-      social_and_security,
+      social_tax,
       medicare_tax,
       state_tax,
       federal_income_tax
@@ -103,13 +103,13 @@ function FederalTax() {
     setExceptions(0);
     setFilingStatus('');
     setCalculationResult(null);
-    setmexico_tax('');
+    setlocal_tax('');
     setworkers_compensation('');
     setmedical_insurance('');
     setGarnishmentFees('');
     setcontribution('');
     setUnitedWayContribution('');
-    setSocialandSecurity('');
+    setSocialTax('');
     setmedical_insurance('');
     setMedicareTax('');
     setStateTax('');
@@ -185,10 +185,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="earning"
                       className="shadow appearance-none border text-sm text-sm rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={earnings}
-                      onChange={(e) => setEarnings(parseInt(e.target.value,10))}
+                      onChange={(e) => setEarnings(parseFloat(e.target.value,10))}
                     />
                   </div>
                  
@@ -198,10 +199,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="garnishmentFees"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={garnishment_fees}
-                      onChange={(e) => setGarnishmentFees(parseInt(e.target.value))}
+                      onChange={(e) => setGarnishmentFees(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -256,15 +258,16 @@ function FederalTax() {
 
                   </div>
                   <div>
-                    <label htmlFor="mexico_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                    Mexico Tax:
+                    <label htmlFor="local_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    Local Tax:
                     </label>
                     <input
                       type="number"
-                      id="mexico_tax"
+                      step="0.01"
+                      id="local_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={mexico_tax}
-                      onChange={(e) => setmexico_tax(parseInt(e.target.value))}
+                      value={local_tax}
+                      onChange={(e) => setlocal_tax(parseFloat(e.target.value))}
                     />
                   </div>
              
@@ -274,10 +277,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="workers_compensation"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={workers_compensation}
-                      onChange={(e) => setworkers_compensation(parseInt(e.target.value))}
+                      onChange={(e) => setworkers_compensation(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -286,10 +290,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="medical_insurance"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={medical_insurance}
-                      onChange={(e) => setmedical_insurance(parseInt(e.target.value))}
+                      onChange={(e) => setmedical_insurance(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -298,10 +303,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="contribution"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={contribution}
-                      onChange={(e) => setcontribution(parseInt(e.target.value))}
+                      onChange={(e) => setcontribution(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -310,22 +316,24 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="united_way_contribution"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={united_way_contribution}
-                      onChange={(e) => setworkers_compensation(parseInt(e.target.value))}
+                      onChange={(e) => setworkers_compensation(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
-                    <label htmlFor="social_and_security" className="block text-gray-700 text-sm font-bold mb-2">
-                    Social and Security Tax:
+                    <label htmlFor="social_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    Social Security Tax:
                     </label>
                     <input
                       type="number"
-                      id="social_and_security"
+                      step="0.01"
+                      id="social_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={social_and_security}
-                      onChange={(e) => setSocialandSecurity(parseInt(e.target.value))}
+                      value={social_tax}
+                      onChange={(e) => setSocialTax(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -334,10 +342,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="medicare_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={medicare_tax}
-                      onChange={(e) => setMedicareTax(parseInt(e.target.value))}
+                      onChange={(e) => setMedicareTax(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -346,10 +355,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="state_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={state_tax}
-                      onChange={(e) => setStateTax(parseInt(e.target.value))}
+                      onChange={(e) => setStateTax(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
@@ -358,10 +368,11 @@ function FederalTax() {
                     </label>
                     <input
                       type="number"
+                      step="0.01"
                       id="federal_income_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={federal_income_tax}
-                      onChange={(e) => setFederalIncomeTaxRate(parseInt(e.target.value))}
+                      onChange={(e) => setFederalIncomeTaxRate(parseFloat(e.target.value))}
                     />
                   </div>
 
