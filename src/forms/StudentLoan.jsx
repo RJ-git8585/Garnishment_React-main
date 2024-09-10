@@ -16,7 +16,7 @@ function StudentLoan() {
 
   const [federal_income_tax, setFederalIncmoeTax] = useState('');
   const [social_tax, setSocialTax] = useState('');
-  const [social_and_security, setSocialAndSecurityTax] = useState('');
+  // const [social_and_security, setSocialAndSecurityTax] = useState('');
 
   const [medicare_tax, setMedicareTax] = useState('');
   const [state_tax, setStateTax] = useState('');
@@ -56,7 +56,7 @@ function StudentLoan() {
       federal_income_tax,
       social_tax,
     
-      social_and_security,
+      // social_and_security,
 
       medicare_tax,
       state_tax,
@@ -230,16 +230,6 @@ function StudentLoan() {
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={social_tax}
                       onChange={(e) => setSocialTax(parseFloat(e.target.value)|| '')}
-/>
-                    <label htmlFor="social_and_security" className="block text-gray-700 text-sm font-bold mb-2">
-                      Social And Security Tax:
-                    </label>
-                    <input
-                      type="number"
-                      id="social_and_security"
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={social_and_security}
-                      onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
 
                     />
                   </div>
