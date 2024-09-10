@@ -274,7 +274,7 @@ function StudentLoan() {
 
                       
                       value={SDI_tax}
-                      onChange={(e) => setSDITax(parseInt(e.target.value))}
+                      onChange={(e) => setSDITax(parseFloat(e.target.value))}
 
                     />
                   </div>
