@@ -14,7 +14,7 @@ function MultipleChild() {
   const [order_id, setOrderID] = useState('');
   const [state, setState] = useState('');
   const [number_of_arrears, setnumber_of_arrears] = useState('');
-  const [minimum_wages, setminimum_wages] = useState('');
+  // const [minimum_wages, setminimum_wages] = useState('');
   const [arrears_greater_than_12_weeks, setIsChecked] = useState(false);
   const [support_second_family, setIsCheckedFamily] = useState(false);
   const [employee_id, setSelectedOption] = useState(null);
@@ -179,7 +179,7 @@ function MultipleChild() {
     setOrderID('');
     setState('');
     setnumber_of_arrears('');
-    setminimum_wages('');
+    // setminimum_wages('');
     setIsChecked(false);
     setIsCheckedFamily(false);
     setInputs([{ id: 1, value: '' }]);
@@ -213,7 +213,7 @@ function MultipleChild() {
         garnishment_fees,
         order_id,
         state,
-        minimum_wages,
+        // minimum_wages,
         number_of_arrears,
         amount_to_withhold_child1: filledInputs[0].value,
         amount_to_withhold_child2: filledInputs[1].value,
@@ -376,20 +376,7 @@ return (
                     </select>
                 </div>
 
-                <div>
-                  <label htmlFor="minimum_wages" className="block text-gray-700 text-sm font-bold mb-2">
-                    Minimum Wages:
-                  </label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    id="minimum_wages"
-                     placeholder='Enter Minimum Wagesd'
-                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={minimum_wages}
-                    onChange={(e) => setminimum_wages(parseFloat(e.target.value, 10))}
-                  />
-                </div>
+              
                 <div>
                   <label htmlFor="number_of_arrears" className="block text-gray-700 text-sm font-bold mb-2">
                     Number of Arrears:
