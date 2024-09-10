@@ -324,3 +324,11 @@ button.absolute.right-2.custom_position.text-gray-500 {
   top: 148px;
 }
   }
+
+  @media (min-width: 768px) and (max-width: 1020px) {
+    /* Styles for screens between 768px and 1080px */
+    .sidebar{
+      display:none;
+    }
+    
+  }
