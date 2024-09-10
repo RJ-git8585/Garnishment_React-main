@@ -13,6 +13,11 @@ function MultipleStudentLoan() {
   const [employee_id, setEmployeeId] = useState(null);
   const [calculationResult, setCalculationResult] = useState(null);
   const employer_id = parseInt(localStorage.getItem("id"));
+  const [federal_income_tax, setFederalIncmoeTax] = useState('');
+  const [social_and_security_tax, setSocialAndSecurityTax] = useState('');
+  const [medicare_tax, setMedicareTax] = useState('');
+  const [state_tax, setStateTax] = useState('');
+  const [sdi_tax, setSDITax] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +48,13 @@ function MultipleStudentLoan() {
       employee_name,
       earnings,
       garnishment_fees,
-      order_id
+      order_id,
+      federal_income_tax,
+      social_and_security_tax,
+      medicare_tax,
+      state_tax,
+      sdi_tax
+
     };
 
     try {
@@ -76,6 +87,11 @@ function MultipleStudentLoan() {
     setGarnishmentFees('');
     setOrderID('');
     setCalculationResult(null);
+    setFederalIncmoeTax();
+    setSocialAndSecurityTax();
+    setMedicareTax();
+    setStateTax();
+    setSDITax();
   };
 
   const handleChange = (e) => {
@@ -178,6 +194,76 @@ function MultipleStudentLoan() {
                       onChange={(e) => setOrderID(parseInt(e.target.value))}
                     />
                   </div>
+                  {/* TUESDAY */}
+                  
+                 <div>
+                    <label htmlFor="federal_income_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                      Federal Income Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="federal_income_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={federal_income_tax}
+                      onChange={(e) => setFederalIncmoeTax(parseInt(e.target.value))}
+                    />
+                  </div>
+                  {/* SOCIAL&SECURITY_TAX */}
+                  <div>
+                    <label htmlFor="social_and_security_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                      Social And Security Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="social_and_security_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={social_and_security_tax}
+                      onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
+                    />
+                  </div>
+                  {/*  */}
+                  <div>
+                    <label htmlFor="medicare_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                      Medicare Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="medicare_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={medicare_tax}
+                      onChange={(e) => setMedicareTax(parseInt(e.target.value))}
+                    />
+                  </div>
+                    {/*  */}
+                  <div>
+                    <label htmlFor="state_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                      State Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="state_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={state_tax}
+                      onChange={(e) => setStateTax(parseInt(e.target.value))}
+                    />
+                  </div>
+                  {/* TUESDAY */}
+                  <div>
+                    <label htmlFor="sdi_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                      SDI Tax:
+                    </label>
+                    <input
+                      type="number"
+                      id="sdi_tax"
+                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      value={sdi_tax}
+                      onChange={(e) => setSDITax(parseInt(e.target.value))}
+                    />
+                  </div> 
+
+                  
+
+                  {/* TUESDAY */}
 
              </div>
                
