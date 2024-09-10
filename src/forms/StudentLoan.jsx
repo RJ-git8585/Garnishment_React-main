@@ -13,7 +13,7 @@ function StudentLoan() {
   const [calculationResult, setCalculationResult] = useState(null);
   const [options, setOptions] = useState([]);
   const employer_id = parseInt(localStorage.getItem("id"));
-  const [federal_income_tax, setFederalIncmoeTax] = useState('');
+  const [fedral_income_tax, setFederalIncmoeTax] = useState('');
   const [social_and_security_tax, setSocialAndSecurityTax] = useState('');
   const [medicare_tax, setMedicareTax] = useState('');
   const [state_tax, setStateTax] = useState('');
@@ -49,7 +49,7 @@ function StudentLoan() {
       earnings,
       garnishment_fees,
       order_id,
-      federal_income_tax,
+      fedral_income_tax,
       social_and_security_tax,
       medicare_tax,
       state_tax,
@@ -194,7 +194,7 @@ function StudentLoan() {
                       type="number"
                       id="federal_income_tax"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={federal_income_tax}
+                      value={fedral_income_tax}
                       onChange={(e) => setFederalIncmoeTax(parseInt(e.target.value))}
                     />
                   </div>
