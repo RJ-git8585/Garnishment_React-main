@@ -205,7 +205,7 @@ function StudentLoan() {
                     </label>
                     <input
                       type="number"
-                      id="ssocial_and_security"
+                      id="social_and_security"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={social_and_security}
                       onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
