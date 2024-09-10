@@ -65,7 +65,7 @@ margin-right:4px ;
 
 li.sidebar-item {
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
@@ -338,6 +338,9 @@ button.absolute.right-2.custom_position.text-gray-500 {
     /* Styles for screens between 768px and 1080px */
     .custom_menu_full{
       display:none;
+    }
+    .menu-mobile{
+      display: none !important;
     }
     
   }
