@@ -86,8 +86,7 @@ function dashboard(  ) {
       <div className="min-h-full"> 
        <div  className='container' >
          {/* <div  className={isChecked === 'light-mode container main' ?  'light-mode container main' : 'dark-mode container main' } > */}
-        <div className='sidebar hidden md:block'><Sidebar/></div>
-        
+         <div className='sidebar hidden lg:block'><Sidebar/></div>
         <div className='contant content ml-auto remove-btns'>
         {/* {isHidden ? null : (  */}
         <Headertop />
