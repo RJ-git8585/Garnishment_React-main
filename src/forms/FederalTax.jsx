@@ -20,7 +20,7 @@ function FederalTax() {
   const [medical_insurance, setmedical_insurance] = useState(null);
   const [contribution, setcontribution] = useState(null);
   const [united_way_contribution, setUnitedWayContribution] = useState(null);
-  const [social_tax, setSocialTax] = useState(null);
+  const [social_and_security, setSocialandSecurity] = useState(null);
   const [medicare_tax, setMedicareTax] = useState(null);
   const [state_tax, setStateTax] = useState(null);
   const [federal_income_tax, setFederalIncomeTaxRate] = useState(null);
@@ -65,7 +65,7 @@ function FederalTax() {
       medical_insurance,
       contribution,
       united_way_contribution,
-      social_tax,
+      social_and_security,
       medicare_tax,
       state_tax,
       federal_income_tax
@@ -109,7 +109,7 @@ function FederalTax() {
     setGarnishmentFees('');
     setcontribution('');
     setUnitedWayContribution('');
-    setSocialTax('');
+    setSocialandSecurity('');
     setmedical_insurance('');
     setMedicareTax('');
     setStateTax('');
@@ -324,16 +324,16 @@ function FederalTax() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="social_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                    <label htmlFor="social_and_security" className="block text-gray-700 text-sm font-bold mb-2">
                     Social Security Tax:
                     </label>
                     <input
                       type="number"
                       step="0.01"
-                      id="social_tax"
+                      id="social_and_security"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={social_tax}
-                      onChange={(e) => setSocialTax(parseFloat(e.target.value))}
+                      value={social_and_security}
+                      onChange={(e) => setSocialandSecurity(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
