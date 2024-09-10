@@ -272,7 +272,7 @@ return (
         <div className="">
           <div className="p-0">
             <form onSubmit={handleSubmit}>
-              <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+              <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                 <div>
                   <label htmlFor="empID" className="block text-gray-700 text-sm font-bold mb-3">
                     Employee ID:
@@ -422,7 +422,7 @@ return (
                   onClick={handleAddArrearInput} >
                   Add Arrears Amount
                 </button>
-                <div className="shadow appearance-none border mt-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+                <div className="shadow appearance-none border mt-4 p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
                 {arrearInputs.map((input, index) => (
                  
                   <div key={input.id} className="mt-4">
@@ -453,15 +453,15 @@ return (
                 Add Child Withhold Amount
               </button>
             </div>
-            <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-4 md:grid-cols-4 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+            <div className="shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
             {inputs.map((input, index) => (
               <div key={input.id} className="mb-4 ">
-                <div className='flex items-center'>
-                <label className="block text-gray-700 text-sm font-bold mb-2">Withhold Amount {index + 1}:</label>
-                <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveInput(input.id)}>
-                <FaTrashAlt style={style} />
-             </button>
-             </div>
+                        <div className='flex items-center'>
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Withhold Amount {index + 1}:</label>
+                        <button type="button" className="text-sm text-red ml-10 mb-2" onClick={() => handleRemoveInput(input.id)}>
+                        <FaTrashAlt style={style} />
+                    </button>
+                    </div>
                 <input
                   type="number"
                   placeholder='Enter amount'
@@ -469,66 +469,66 @@ return (
                   onChange={(event) => handleInputChange(event, index)}
                   className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 />
+              
               {/* TUESDAY */}
-                  
-              <div>
-                    <label htmlFor="federal_income_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                      Federal Income Tax:
-                    </label>
-                    <input
-                      type="number"
-                      id="federal_income_tax"
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={federal_income_tax}
-                      onChange={(e) => setFederalIncmoeTax(parseInt(e.target.value))}
-                    />
+                  </div>
+                   ))}
+              
+             </div>
+             <div className="mt-6 shadow appearance-none border p-2 pb-4 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 divide-y-reverse sm:mx-auto sm:w-full gap-4 mb-2">
+                  <div>
+                      <label htmlFor="federal_income_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                        Federal Income Tax:
+                      </label>
+                      <input
+                        type="number"
+                        id="federal_income_tax"
+                        className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        value={federal_income_tax}
+                        onChange={(e) => setFederalIncmoeTax(parseInt(e.target.value))}
+                      />
                   </div>
                   {/* SOCIAL&SECURITY_TAX */}
                   <div>
-                    <label htmlFor="social_and_security_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                      Social And Security Tax:
-                    </label>
-                    <input
-                      type="number"
-                      id="social_and_security_tax"
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={social_and_security_tax}
-                      onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
-                    />
+                      <label htmlFor="social_and_security_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                        Social And Security Tax:
+                      </label>
+                      <input
+                        type="number"
+                        id="social_and_security_tax"
+                        className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        value={social_and_security_tax}
+                        onChange={(e) => setSocialAndSecurityTax(parseInt(e.target.value))}
+                      />
                   </div>
-                  {/*  */}
+                 
                   <div>
-                    <label htmlFor="medicare_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                      Medicare Tax:
-                    </label>
-                    <input
-                      type="number"
-                      id="medicare_tax"
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={medicare_tax}
-                      onChange={(e) => setMedicareTax(parseInt(e.target.value))}
-                    />
+                      <label htmlFor="medicare_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                        Medicare Tax:
+                      </label>
+                      <input
+                        type="number"
+                        id="medicare_tax"
+                        className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        value={medicare_tax}
+                        onChange={(e) => setMedicareTax(parseInt(e.target.value))}
+                      />
                   </div>
                     {/*  */}
                   <div>
-                    <label htmlFor="state_tax" className="block text-gray-700 text-sm font-bold mb-2">
-                      State Tax:
-                    </label>
-                    <input
-                      type="number"
-                      id="state_tax"
-                      className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={state_tax}
-                      onChange={(e) => setStateTax(parseInt(e.target.value))}
-                    />
+                      <label htmlFor="state_tax" className="block text-gray-700 text-sm font-bold mb-2">
+                        State Tax:
+                      </label>
+                      <input
+                        type="number"
+                        id="state_tax"
+                        className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        value={state_tax}
+                        onChange={(e) => setStateTax(parseInt(e.target.value))}
+                      />
                   </div>
-                  {/* TUESDAY */} 
-
-              </div>
-            ))}
-
-              
-             </div>
+                  </div>
+                 
               <div className="flex items-center sm:mx-auto sm:w-full sm:max-w-lg justify-center mt-4">
                 <button
                   type="submit"

@@ -75,13 +75,7 @@ const Sidebar = () => {
             <p>IWO</p>
           </Link>
         </li>
-        <li className="sidebar-item border-b-[3px] py-2">
-          <Link to="/setting" className="sidebar-link" >
-            <FaTools />
-            <p> Settings</p>
-          </Link>
-          
-        </li>
+       
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/garnishment" className="sidebar-link">
             <FaBalanceScaleRight />
@@ -93,6 +87,13 @@ const Sidebar = () => {
             <FaHornbill />
             <p> Results</p>
           </Link>
+        </li>
+        <li className="sidebar-item border-b-[3px] py-2">
+          <Link to="/setting" className="sidebar-link" >
+            <FaTools />
+            <p> Settings</p>
+          </Link>
+          
         </li>
         <li className="sidebar-item border-b-[3px] py-2">
           <Link to="/help" className="sidebar-link">
