@@ -320,7 +320,7 @@ function FederalTax() {
                       id="united_way_contribution"
                       className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                       value={united_way_contribution}
-                      onChange={(e) => setworkers_compensation(parseFloat(e.target.value))}
+                      onChange={(e) => setUnitedWayContribution(parseFloat(e.target.value))}
                     />
                   </div>
                   <div>
