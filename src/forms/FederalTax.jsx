@@ -5,6 +5,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../Config';
 
+
+
 function FederalTax() {
   const [employee_name, setEmpName] = useState('');
   const [earnings, setEarnings] = useState('');
