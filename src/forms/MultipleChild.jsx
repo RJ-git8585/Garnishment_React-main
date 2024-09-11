@@ -252,10 +252,10 @@ function MultipleChild() {
             if (getResult.ok) {
               console.log(resultData);
            
-                setCalculationResult(resultData.data[0].result);
-                setCalculationNetpay(resultData.data[0].net_pay);
+                setCalculationResult(resultData.data[3].result);
+                // setCalculationNetpay(resultData.data[0].net_pay);
                 console.log(calculationResult);
-              console.log(calculationNetpay); // Set result in state
+              // console.log(calculationNetpay); // Set result in state
             } else {
                 throw new Error(`Failed to fetch results: ${resultData.message}`);
             }
@@ -542,7 +542,7 @@ return (
                 <div className="result-section mt-4">
                   <h2>Calculation Result:</h2>
                   <p>{calculationResult}</p>
-                  <p>{calculationNetpay}</p>
+                
                 </div>
               )}
           </div>
