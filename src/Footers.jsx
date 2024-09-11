@@ -3,8 +3,8 @@ import React from 'react'
 
 function Footers() {
   return (
-    <div>footer</div>
-    
+    <div>footer le</div>
+
   )
 }
 
