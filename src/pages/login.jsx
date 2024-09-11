@@ -9,7 +9,7 @@ import Form from '../component/form';
 
 function Login() {
 
-  if (localStorage.getItem("token") == null) {
+  if (sessionStorage.getItem("token") == null) {
     console.log('yaha tokan nhi h ')
   }
   console.log('token hai abhi')

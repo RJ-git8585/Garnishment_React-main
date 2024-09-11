@@ -46,9 +46,15 @@ function Form() {
     try {
       const response = await axios.post(`${BASE_URL}/User/login`, loginCredentials,);
       if (response.data.success) {
-        localStorage.setItem('token', response.data.access);
+        // Store the access token in both localStorage and sessionStorage
+        localStorage.setItem('token', response.data.access); // Store in local storage
+        sessionStorage.setItem('token', response.data.access); // Store in session storage
+
+        // Optionally store other user data
         localStorage.setItem('id', response.data.user_data.employer_id); 
-        localStorage.setItem('name', response.data.user_data.name);// Store the access token
+        sessionStorage.setItem('id', response.data.user_data.employer_id); 
+        localStorage.setItem('name', response.data.user_data.name); 
+        sessionStorage.setItem('name', response.data.user_data.name);
         navigate('/dashboard');
         toast('Login successful!', {
           autoClose: 3000, // Delay in milliseconds
