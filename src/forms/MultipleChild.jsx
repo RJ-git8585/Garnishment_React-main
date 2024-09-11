@@ -353,20 +353,7 @@ return (
                     onChange={(e) => setOrderID(parseInt(e.target.value, 10))}
                   />
                 </div>
-                
-{/* 
-                <div>
-                  <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
-                    State:
-                  </label>
-                  <input
-                    type="text"
-                    id="state"
-                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                  />
-                </div> */}
+
 
                 <div>
                   <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
@@ -390,6 +377,7 @@ return (
                   <input
                     type="number"
                     id="number_of_arrears"
+                    placeholder='Enter Number of Arrears'
                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     value={number_of_arrears}
                     onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
@@ -479,6 +467,7 @@ return (
                       <input
                         type="number"
                         step="0.01"
+                        placeholder='Enter Federal Income Tax'
                         id="federal_income_tax"
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={federal_income_tax}
@@ -494,6 +483,7 @@ return (
                         type="number"
                         step="0.01"
                         id="social_tax"
+                         placeholder='Enter Social Security Tax'
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={social_tax}
                         onChange={(e) => setSocialTax(parseFloat(e.target.value))}
@@ -508,6 +498,7 @@ return (
                         type="number"
                         step="0.01"
                         id="medicare_tax"
+                       placeholder='Enter Medicare Tax'
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={medicare_tax}
                         onChange={(e) => setMedicareTax(parseFloat(e.target.value))}
@@ -522,6 +513,7 @@ return (
                         type="number"
                         step="0.01"
                         id="state_tax"
+                       placeholder='Enter State Tax'
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={state_tax}
                         onChange={(e) => setStateTax(parseFloat(e.target.value))}
