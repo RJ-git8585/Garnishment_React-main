@@ -20,7 +20,8 @@ function MultipleChild() {
   const [employee_id, setSelectedOption] = useState(null);
   const [inputs, setInputs] = useState([{ id: 1, value: '' }]);
   const [arrearInputs, setArrearInputs] = useState([{ id: 1, value: '' }]);
-  const [calculationResult, setCalculationResult] = useState(null); // New state for result
+  const [calculationResult, setCalculationResult] = useState(null);
+  const [calculationNetpay, setCalculationNetpay] = useState(null);
   const employer_id = parseInt(localStorage.getItem("id"));
   const [options, setOptions] = useState([]);
   const style = { color: "#b90707", fontSize: "1.2em" };
@@ -193,44 +194,44 @@ function MultipleChild() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const filledInputs = [...inputs];
     const filledArrears = [...arrearInputs];
-
+  
     while (filledInputs.length < 5) {
       filledInputs.push({ id: filledInputs.length + 1, value: '0' });
     }
-    
+  
     while (filledArrears.length < 5) {
       filledArrears.push({ id: filledArrears.length + 1, value: '0' });
     }
-
+  
+    // Convert string inputs to numbers before sending to the backend
     const postData = {
-        employer_id,
-        employee_id,
-        employee_name,
-        earnings,
-        garnishment_fees,
-        order_id,
-        state,
-        // minimum_wages,
-        number_of_arrears,
-        amount_to_withhold_child1: filledInputs[0].value,
-        amount_to_withhold_child2: filledInputs[1].value,
-        amount_to_withhold_child3: filledInputs[2].value,
-        amount_to_withhold_child4: filledInputs[3].value,
-        amount_to_withhold_child5: filledInputs[4].value,
-        arrears_greater_than_12_weeks,
-        support_second_family,
-        arrears_amt_Child1: filledArrears[0].value,
-        arrears_amt_Child2: filledArrears[1].value,
-        arrears_amt_Child3: filledArrears[2].value,
-        arrears_amt_Child4: filledArrears[3].value,
-        arrears_amt_Child5: filledArrears[4].value,
-        federal_income_tax,
-        social_tax,
-        medicare_tax,
-        state_tax,
+      employer_id,
+      employee_id,
+      employee_name,
+      earnings: parseFloat(earnings),  // Ensure it's a number
+      garnishment_fees: parseFloat(garnishment_fees),
+      order_id: parseInt(order_id, 10),
+      state,
+      number_of_arrears: parseInt(number_of_arrears, 10),
+      amount_to_withhold_child1: parseFloat(filledInputs[0].value),
+      amount_to_withhold_child2: parseFloat(filledInputs[1].value),
+      amount_to_withhold_child3: parseFloat(filledInputs[2].value),
+      amount_to_withhold_child4: parseFloat(filledInputs[3].value),
+      amount_to_withhold_child5: parseFloat(filledInputs[4].value),
+      arrears_greater_than_12_weeks,
+      support_second_family,
+      arrears_amt_Child1: parseFloat(filledArrears[0].value),
+      arrears_amt_Child2: parseFloat(filledArrears[1].value),
+      arrears_amt_Child3: parseFloat(filledArrears[2].value),
+      arrears_amt_Child4: parseFloat(filledArrears[3].value),
+      arrears_amt_Child5: parseFloat(filledArrears[4].value),
+      federal_income_tax: parseFloat(federal_income_tax),
+      social_tax: parseFloat(social_tax),
+      medicare_tax: parseFloat(medicare_tax),
+      state_tax: parseFloat(state_tax),
     };
 
     try {
@@ -249,7 +250,12 @@ function MultipleChild() {
             const getResult = await fetch(`${BASE_URL}/User/Gcalculations/${employer_id}/${employee_id}/`);
             const resultData = await getResult.json();
             if (getResult.ok) {
-                setCalculationResult(resultData.data[0].result); // Set result in state
+              console.log(resultData);
+           
+                setCalculationResult(resultData.data[3].result);
+                // setCalculationNetpay(resultData.data[0].net_pay);
+                console.log(calculationResult);
+              // console.log(calculationNetpay); // Set result in state
             } else {
                 throw new Error(`Failed to fetch results: ${resultData.message}`);
             }
@@ -347,20 +353,7 @@ return (
                     onChange={(e) => setOrderID(parseInt(e.target.value, 10))}
                   />
                 </div>
-                
-{/* 
-                <div>
-                  <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
-                    State:
-                  </label>
-                  <input
-                    type="text"
-                    id="state"
-                    className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    value={state}
-                    onChange={(e) => setState(e.target.value)}
-                  />
-                </div> */}
+
 
                 <div>
                   <label htmlFor="state" className="block text-gray-700 text-sm font-bold mb-2">
@@ -384,6 +377,7 @@ return (
                   <input
                     type="number"
                     id="number_of_arrears"
+                    placeholder='Enter Number of Arrears'
                     className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     value={number_of_arrears}
                     onChange={(e) => setnumber_of_arrears(parseInt(e.target.value, 10))}
@@ -473,6 +467,7 @@ return (
                       <input
                         type="number"
                         step="0.01"
+                        placeholder='Enter Federal Income Tax'
                         id="federal_income_tax"
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={federal_income_tax}
@@ -488,6 +483,7 @@ return (
                         type="number"
                         step="0.01"
                         id="social_tax"
+                         placeholder='Enter Social Security Tax'
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={social_tax}
                         onChange={(e) => setSocialTax(parseFloat(e.target.value))}
@@ -502,6 +498,7 @@ return (
                         type="number"
                         step="0.01"
                         id="medicare_tax"
+                       placeholder='Enter Medicare Tax'
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={medicare_tax}
                         onChange={(e) => setMedicareTax(parseFloat(e.target.value))}
@@ -516,6 +513,7 @@ return (
                         type="number"
                         step="0.01"
                         id="state_tax"
+                       placeholder='Enter State Tax'
                         className="shadow appearance-none border rounded w-full text-sm py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         value={state_tax}
                         onChange={(e) => setStateTax(parseFloat(e.target.value))}
@@ -544,6 +542,7 @@ return (
                 <div className="result-section mt-4">
                   <h2>Calculation Result:</h2>
                   <p>{calculationResult}</p>
+                
                 </div>
               )}
           </div>

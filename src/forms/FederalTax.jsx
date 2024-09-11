@@ -10,7 +10,7 @@ function FederalTax() {
   const [earnings, setEarnings] = useState('');
   const [garnishment_fees, setGarnishmentFees] = useState('');
   const [order_id, setOrderID] = useState('');
-  const [pay_period, setPay] = useState('daily');
+  const [pay_period, setPay] = useState('');
   const [no_of_exception, setExceptions] = useState(0);
   const [filing_status, setFilingStatus] = useState('');
   const [employee_id, setEmployeeId] = useState(null);
@@ -99,7 +99,7 @@ function FederalTax() {
     setEarnings('');
     setGarnishmentFees('');
     setOrderID('');
-    setPay('daily');
+    setPay('');
     setExceptions(0);
     setFilingStatus('');
     setCalculationResult(null);
