@@ -20,7 +20,8 @@ function MultipleChild() {
   const [employee_id, setSelectedOption] = useState(null);
   const [inputs, setInputs] = useState([{ id: 1, value: '' }]);
   const [arrearInputs, setArrearInputs] = useState([{ id: 1, value: '' }]);
-  const [calculationResult, setCalculationResult] = useState(null); // New state for result
+  const [calculationResult, setCalculationResult] = useState(null);
+  const [calculationNetpay, setCalculationNetpay] = useState(null);
   const employer_id = parseInt(localStorage.getItem("id"));
   const [options, setOptions] = useState([]);
   const style = { color: "#b90707", fontSize: "1.2em" };
@@ -249,7 +250,12 @@ function MultipleChild() {
             const getResult = await fetch(`${BASE_URL}/User/Gcalculations/${employer_id}/${employee_id}/`);
             const resultData = await getResult.json();
             if (getResult.ok) {
-                setCalculationResult(resultData.data[0].result); // Set result in state
+              console.log(resultData);
+           
+                setCalculationResult(resultData.data[0].result);
+                setCalculationNetpay(resultData.data[0].net_pay);
+                console.log(calculationResult);
+              console.log(calculationNetpay); // Set result in state
             } else {
                 throw new Error(`Failed to fetch results: ${resultData.message}`);
             }
@@ -544,6 +550,7 @@ return (
                 <div className="result-section mt-4">
                   <h2>Calculation Result:</h2>
                   <p>{calculationResult}</p>
+                  <p>{calculationNetpay}</p>
                 </div>
               )}
           </div>

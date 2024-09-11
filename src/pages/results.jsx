@@ -102,64 +102,52 @@ import { BASE_URL } from '../Config';
   <div className="-m-1.5 overflow-x-auto">
     <div className="p-1.5 min-w-full inline-block align-middle">
       <div className="overflow-hidden">
-     
-            <table className="min-w-full divide-y divide-gray-200">
-          
-               <thead>
-                 <tr>
-                 {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
-                 <th className="pb-4 text-left text-xs  text-gray-500 uppercase">TimeStamp</th>
-                  
-                   <th className="pb-4 text-left text-xs  text-gray-500 uppercase">Employee Id</th>
-                   <th className="pb-4 text-left text-xs  text-gray-500 uppercase">Employer Id</th>
-                   <th className="pb-4 text-left text-xs  text-gray-500 uppercase">Result Amount</th>
-                  
-                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th> */}
-                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>  */}
-                 </tr>
-               </thead>
-              
-               
-                {loading ? (
-          <div className="text-sm w-full  text-left m-0"><div className="text-sm w-full  text-left m-0"><img
-          className="mx-auto h-10 logo-inner w-auto custom_logo_side"
+      <table className="min-w-full divide-y divide-gray-200 table-auto overflow-hidden">
+  <thead>
+    <tr>
+      {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
+      <th className="pb-4 pl-4 text-left text-xs text-gray-500 uppercase">TimeStamp</th>
+      <th className="pb-4 pl-4 text-left text-xs text-gray-500 uppercase">Employee Id</th>
+      <th className="pb-4 pl-4 text-left text-xs text-gray-500 uppercase">Employer Id</th>
+      <th className="pb-4 pl-4 text-left text-xs text-gray-500 uppercase">Result Amount</th>
+    </tr>
+  </thead>
+
+  {loading ? (
+    <div className="text-sm w-full text-left m-0">
+      <div className="text-sm w-full text-left m-0">
+        <img
+          className="mx-auto h-10 w-auto custom_logo_side"
           src={load}
           alt="Your Company"
-        /></div></div>
-        ) : data ? (
-              
-                 <tbody className='divide-y divide-gray-200'> 
-                
-                {data.slice(page * 10 - 10,page * 10).map((item) => (
-                
-                   <tr key={item.employer_id}>
-                   {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                   <td className=" text-left p-2 border-slate-300 text-xs">{item.timestamp}</td><td className="p-2 text-left text-xs">{item.employee_id}</td><td className="text-left p-2 text-xs">{item.employer_id}</td><td className=" text-left text-xs">{item.result}</td>
-              {/* <td>
-                  <EditItemComponent id={item.employee_id} // Pass the record ID
- onEditSuccess={onEditSuccess} // Optional callback for successful deletion
-          />s
-                  </td> */}
-                  
-                  {/* <td>
-                  <DeleteItemComponent
-            id={item.employee_id} // Pass the record ID
-            onDeleteSuccess={onDeleteSuccess} // Optional callback for successful deletion
-          />
-                  </td> */}
+        />
+      </div>
+    </div>
+  ) : data ? (
+    <tbody className="divide-y divide-gray-200">
+      {data.slice(page * 10 - 10, page * 10).map((item) => (
+        <tr key={item.employer_id} className="hover:bg-gray-100">
+          {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
+          <td className="text-left p-2 pl-4 border-slate-300 text-xs whitespace-nowrap">
+            {item.timestamp}
+          </td>
+          <td className="p-2 text-left pl-4 text-xs whitespace-nowrap">
+            {item.employee_id}
+          </td>
+          <td className="text-left p-2 pl-4 text-xs whitespace-nowrap">
+            {item.employer_id}
+          </td>
+          <td className="text-left pl-4 text-xs whitespace-nowrap">
+            {item.result}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  ) : (
+    <div className="text-center text-sm nodatacls">No data found</div>
+  )}
+</table>
 
-                  </tr>
-                )) } 
-             </tbody>
-             
-            
-               
-          
-      
-            ) : <div className="text-center text-sm nodatacls">No data found</div>}
-  
-  </table>
-  
   {data?.length  > 0 &&  <div className="pagination">
     
         <span className="text-sm p-2 mt-4 text-blue colr font-semibold">Pages : </span>
