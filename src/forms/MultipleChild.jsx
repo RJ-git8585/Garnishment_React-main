@@ -194,44 +194,44 @@ function MultipleChild() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const filledInputs = [...inputs];
     const filledArrears = [...arrearInputs];
-
+  
     while (filledInputs.length < 5) {
       filledInputs.push({ id: filledInputs.length + 1, value: '0' });
     }
-    
+  
     while (filledArrears.length < 5) {
       filledArrears.push({ id: filledArrears.length + 1, value: '0' });
     }
-
+  
+    // Convert string inputs to numbers before sending to the backend
     const postData = {
-        employer_id,
-        employee_id,
-        employee_name,
-        earnings,
-        garnishment_fees,
-        order_id,
-        state,
-        // minimum_wages,
-        number_of_arrears,
-        amount_to_withhold_child1: filledInputs[0].value,
-        amount_to_withhold_child2: filledInputs[1].value,
-        amount_to_withhold_child3: filledInputs[2].value,
-        amount_to_withhold_child4: filledInputs[3].value,
-        amount_to_withhold_child5: filledInputs[4].value,
-        arrears_greater_than_12_weeks,
-        support_second_family,
-        arrears_amt_Child1: filledArrears[0].value,
-        arrears_amt_Child2: filledArrears[1].value,
-        arrears_amt_Child3: filledArrears[2].value,
-        arrears_amt_Child4: filledArrears[3].value,
-        arrears_amt_Child5: filledArrears[4].value,
-        federal_income_tax,
-        social_tax,
-        medicare_tax,
-        state_tax,
+      employer_id,
+      employee_id,
+      employee_name,
+      earnings: parseFloat(earnings),  // Ensure it's a number
+      garnishment_fees: parseFloat(garnishment_fees),
+      order_id: parseInt(order_id, 10),
+      state,
+      number_of_arrears: parseInt(number_of_arrears, 10),
+      amount_to_withhold_child1: parseFloat(filledInputs[0].value),
+      amount_to_withhold_child2: parseFloat(filledInputs[1].value),
+      amount_to_withhold_child3: parseFloat(filledInputs[2].value),
+      amount_to_withhold_child4: parseFloat(filledInputs[3].value),
+      amount_to_withhold_child5: parseFloat(filledInputs[4].value),
+      arrears_greater_than_12_weeks,
+      support_second_family,
+      arrears_amt_Child1: parseFloat(filledArrears[0].value),
+      arrears_amt_Child2: parseFloat(filledArrears[1].value),
+      arrears_amt_Child3: parseFloat(filledArrears[2].value),
+      arrears_amt_Child4: parseFloat(filledArrears[3].value),
+      arrears_amt_Child5: parseFloat(filledArrears[4].value),
+      federal_income_tax: parseFloat(federal_income_tax),
+      social_tax: parseFloat(social_tax),
+      medicare_tax: parseFloat(medicare_tax),
+      state_tax: parseFloat(state_tax),
     };
 
     try {
