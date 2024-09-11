@@ -126,7 +126,7 @@ import { BASE_URL } from '../Config';
   ) : data ? (
     <tbody className="divide-y divide-gray-200">
       {data.slice(page * 10 - 10, page * 10).map((item) => (
-        <tr key={item.employer_id} className="hover:bg-gray-100">
+        <tr key={item.employer_id} className="hover:bg-gray-100 bg-gray-200">
           {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
           <td className="text-left p-2 pl-4 border-slate-300 text-xs whitespace-nowrap">
             {item.timestamp}

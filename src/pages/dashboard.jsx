@@ -118,7 +118,7 @@ function dashboard(  ) {
               {data.length > 0 ? (  // Check if data is available
       <ul>
         {data.map((item) => (
-          <li className="text-sm mb-2 mt-2 flex logs_cls"key={item.id}><DiJqueryLogo /> 
+          <li className="text-sm mb-2 mt-2 flex logs_cls p-2"key={item.id}><DiJqueryLogo /> 
             {item.details} 
           </li>
         ))}
@@ -136,7 +136,7 @@ function dashboard(  ) {
               {data.length > 0 ? (  // Check if data is available
       <ul>
         {data.map((item) => (
-          <li className="text-sm mb-2 mt-2 flex logs_cls"key={item.id}><DiJqueryLogo /> 
+          <li className="text-sm mb-2 mt-2 flex logs_cls p-2"key={item.id}><DiJqueryLogo /> 
             {item.details} 
           </li>
         ))}

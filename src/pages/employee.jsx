@@ -89,63 +89,54 @@ function employee(onDeleteSuccess,onEditSuccess) {
     <div className="p-1.5 min-w-full inline-block align-middle">
       <div className="overflow-hidden">
      
-            <table className="min-w-full divide-y divide-gray-200">
-          
-               <thead>
-                 <tr>
-                 {/* <th className="text-center border border-slate-300 p-2 uppercase text-xs">Sr</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employee Name</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employee Id</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Employer Id</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Location</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Department</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">N0. of Garnihsment</th>
-                   {/* <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Calculation</th> */}
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Pay Cycle</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
-                   <th className="pb-4 text-start text-xs  text-gray-500 uppercase">Action</th>
-                 </tr>
-               </thead>
-              
-               
-                {loading ? (
-          <div className="text-sm w-full  text-center m-0"><div className="text-sm w-full  text-center m-0"><img
-          className="mx-auto h-10 logo-inner w-auto custom_logo_side"
-          src={load}
-          alt="Your Company"
-        /></div></div>
-        ) : data ? (
-              
-                 <tbody className='divide-y divide-gray-200'> 
-                
-                {data.slice(page * 10 - 10,page * 10).map((item) => (
-                
-                   <tr key={item.employer_id}>
-                   {/* <td className="border border-slate-300 text-xs">{index + 1}</td> */}
-                  <td className="  text-xs">{item.employee_name}</td><td className=" text-xs">{item.employee_id}</td><td className=" text-xs">{item.employer_id}</td><td className=" border-slate-300 text-xs">{item.location}</td><td className=" border-slate-300 text-xs">{item.department}</td><td className=" border-slate-300 custom-cls_td col-span-full text-xs">{item.number_of_garnishment}</td>
-                  {/* <td>NA</td> */}
-                  <td className=" border-slate-300 text-xs">{item.pay_cycle} </td><td>
-                  <EditItemComponent id={item.employee_id} // Pass the record ID
- onEditSuccess={onEditSuccess} // Optional callback for successful deletion
-          />
-                  </td><td>
-                  <DeleteItemComponent
-            id={item.employee_id} // Pass the record ID
-            onDeleteSuccess={onDeleteSuccess} // Optional callback for successful deletion
-          />
-                  </td>
-                  </tr>
-                )) } 
-             </tbody>
-             
-            
-               
-          
-      
-            ) : <div className="text-center text-sm nodatacls">No data found</div>}
-  
+      <div className="overflow-x-auto">
+  <table className="min-w-full divide-y divide-gray-200 table-auto">
+    <thead>
+      <tr>
+        <th className="pb-4 pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Employee Name</th>
+        <th className="pb-4 pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Employee Id</th>
+        <th className="pb-4 pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Employer Id</th>
+        <th className="pb-4 pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Location</th>
+        <th className="pb-4  pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Department</th>
+        <th className="pb-4  pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">No. of Garnishment</th>
+        <th className="pb-4 pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Pay Cycle</th>
+        <th className="pb-4 pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Edit</th>
+        <th className="pb-4 pl-4 text-start text-xs sm:text-sm text-gray-500 uppercase">Delete</th>
+      </tr>
+    </thead>
+
+    {loading ? (
+      <div className="text-sm w-full text-center m-0">
+        <div className="text-sm w-full text-center m-0">
+          <img className="mx-auto h-10 w-auto custom_logo_side" src={load} alt="Loading" />
+        </div>
+      </div>
+    ) : data ? (
+      <tbody className="divide-y divide-gray-200">
+        {data.slice(page * 10 - 10, page * 10).map((item) => (
+          <tr key={item.employer_id} className="hover:bg-gray-100 bg-gray-200">
+            <td className="p-2 text-xs sm:text-sm">{item.employee_name}</td>
+            <td className="p-2 text-xs sm:text-sm">{item.employee_id}</td>
+            <td className="p-2 text-xs sm:text-sm">{item.employer_id}</td>
+            <td className="p-2 text-xs sm:text-sm">{item.location}</td>
+            <td className="p-2 text-xs sm:text-sm">{item.department}</td>
+            <td className="p-2 text-xs sm:text-sm">{item.number_of_garnishment}</td>
+            <td className="p-2 text-xs sm:text-sm">{item.pay_cycle}</td>
+            <td className="p-2 text-xs sm:text-sm">
+              <EditItemComponent id={item.employee_id} onEditSuccess={onEditSuccess} />
+            </td>
+            <td className="p-2 text-xs sm:text-sm">
+              <DeleteItemComponent id={item.employee_id} onDeleteSuccess={onDeleteSuccess} />
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    ) : (
+      <div className="text-center text-sm nodatacls">No data found</div>
+    )}
   </table>
-  
+</div>
+
   {data?.length  > 0 &&  <div className="pagination">
     
         <span className="text-sm p-2 mt-4 text-blue colr font-semibold">Pages : </span>
