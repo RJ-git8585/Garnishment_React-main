@@ -375,6 +375,7 @@ function StudentLoan() {
                 <div className="result-section">
                   <h3>Calculation Result:</h3>
                   <p>Result: {calculationResult.garnishment_amount}</p>
+                  <p>Net Pay: {calculationResult.net_pay}</p>
                 </div>
               )}
               
