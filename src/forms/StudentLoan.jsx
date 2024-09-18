@@ -79,7 +79,8 @@ function StudentLoan() {
       if (!resultResponse.ok) throw new Error('Failed to fetch results');
 
       setCalculationResult(resultData.data[0]);
-      toast.success(`Result: ${resultData.data[0].result}`);
+      toast.success(`Result: ${resultData.data[0].garnishment_amount}`);
+       toast.success(`Result: ${resultData.data[0].net_pay}`);
     } catch (error) {
       console.error('Submission Error:', error);
       // toast.error(`Error: ${error.message}`);
@@ -377,8 +378,7 @@ function StudentLoan() {
                   <p>Result: {calculationResult.garnishment_amount}</p>
                   <p>Net Pay: {calculationResult.net_pay}</p>
                 </div>
-              )}
-              
+              )}             
             </div>
           </div>
         </div> 
